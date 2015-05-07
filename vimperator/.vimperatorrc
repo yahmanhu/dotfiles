@@ -1,0 +1,147 @@
+"============================================="
+"   General settings                          "
+"============================================="
+
+colorscheme vimperatorfox-dark
+set toolbars=nonavigation
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set newtab=all
+"let mapleader = "\"
+
+"============================================"
+"   Key mappings                             "
+"============================================"
+
+"Faster scrolling
+nnoremap j 3j
+nnoremap k 3k
+nnoremap J <C-d>
+nnoremap K <C-u>
+
+"Tabs
+nnoremap > :tabnext<CR>
+nnoremap < :tabprevious<CR>
+"nnoremap  :tabmove +1<CR>
+"nnoremap  :tabmove -1<CR>
+
+"History navigation
+nmap , :back<CR>
+nmap . :forward<CR>
+
+"Quick help
+nnoremap h :help<Space>
+
+"Quick select text in CARET/VISUAL mode: move to the beginning/end of line
+vnoremap H ^
+vnoremap L $
+
+"Escape from focused textarea
+inoremap <C-e> <C-[>
+
+"Context menu
+nnoremap cc ;c
+
+"Vimpv (Play videos with mpv)
+nmap m ;m
+
+"Search highlight
+"nmap <leader>h :noh<CR>
+
+"Bookmarks toggle
+nmap <C-b> :ignorekeys<CR> :sidebar Bookmarks<CR>
+
+"Select ALL
+nnoremap <C-a> i<C-a>
+inoremap <C-a> i<C-a>
+
+"Add bookmark
+nnoremap B :bmark<CR>
+
+"============================================"
+"   Commands                                 "
+"============================================"
+
+"Quick open Addons
+command! -description="Open addons page (custom command)" AA :tabopen about:addons
+
+"Toggle userstyle (stylish.js plugin)
+command! -description="Toggle Stylish userstyle for this page (custom command)" ST :stylish toggle
+
+"Open private window
+command! -description="Open private window (custom command)" private :normal i<C-S-p>
+
+"Source this config
+command! -description="Source .vimperatorrc (custom command)" RR source ~/.vimperatorrc
+
+"=========
+"Bookmarks
+"=========
+
+"Open google drive
+command! -description="Google drive" drive :tabopen https://drive.google.com/
+
+"Open google translate (english - hungarian)
+command! -description="Google translate" gten :tabopen https://translate.google.com/#en/hu/
+
+"Open google translate (hungarian - english)
+command! -description="Google translate" gthu :tabopen https://translate.google.com/#hu/en/
+
+"Open facebook.com
+command! -description="Facebook" facebook :open https://www.facebook.com
+
+"Open youtube.com
+command! -description="Youtube" yt :open https://www.youtube.com
+
+"Open youtube.com/watch later
+command! -description="Youtube/Watch Later" wl :open https://www.youtube.com/playlist?list=WL 
+
+"Open sorozatjunkie.hu
+command! -description="Sorozatjunkie.hu" junkie :open http://www.sorozatjunkie.hu
+
+"Open prohardver.hu
+command! -description="Prohardver" ph :open http://www.prohardver.hu
+
+"Open filmbuzi.hu
+command! -description="Filmbuzi" filmbuzi :open http://filmbuzi.hu/
+
+"Open nfl.com
+command! -description="NFL.com" nfl :open http://www.nfl.com/
+
+"Open pats.hu
+command! -description="Patriots.hu" patshu :open http://patriots.hu/
+
+"Open IDDQD
+command! -description="IDDQD" iddqd :open http://iddqd.blog.hu/
+
+"Open yummie
+command! -description="Yummie" yummie :open http://yummie.hu/
+
+"Open port.hu
+command! -description="Port.hu" port :open http://port.hu/tv/pls/tv/oldtv.prog
+
+"Open whatnext
+command! -description="Whatnext" whatnext :open http://whatnext.eu/koveto
+
+"Open letterboxd
+command! -description="Letterboxd" letterboxd :open http://letterboxd.com/
+
+"Open wikipedia HU
+command! -description="Wikipedia HU" wikihu :open http://hu.wikipedia.org/
+
+"Open wikipedia ENG
+command! -description="Wikipedia ENG" wikieng :open http://en.wikipedia.org
+
+
+"============================================"
+"   Autocommands                             "
+"============================================"
+
+"Autocommands won't be refreshed properly while Firefox is running!
+"To source/refresh them, we need to restart Firefox.
+
+"Enable angol-magyar-szotar.hu site functions with Adblocker
+"http://stackoverflow.com/questions/15995201/how-do-i-getelementbyid-in-vimperator
+autocmd PageLoad angol-magyar-szotar\.hu js window.content.window.document.getElementById("forditInput").removeAttribute('disabled'); window.content.window.document.getElementById("ForditGomb").removeAttribute('disabled');
+
+"Redirect Youtube main page to subscriptions page
+autocmd DOMLoad ^(http|https):\/\/(www)?.youtube.com\/?$ js window.content.window.location = "https://www.youtube.com/feed/subscriptions"

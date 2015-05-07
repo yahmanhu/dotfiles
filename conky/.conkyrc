@@ -1,0 +1,75 @@
+# http://conky.sourceforge.net/config_settings.html
+# http://conky.sourceforge.net/variables.html
+
+#====================================
+# General settings
+#====================================
+
+alignment bottom_left
+background true
+border_width 0
+border_inner_margin 0
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+double_buffer yes
+use_xft yes
+xftfont Liberation Mono Powerline:size=10
+gap_x 2
+gap_y 4
+minimum_size 1280 1
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+override_utf8_locale yes
+own_window yes
+own_window_class Conky
+own_window_type dock
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour 000
+stippled_borders 0
+update_interval 3.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+#====================================
+# Custom colors
+#====================================
+
+color1 D64937 #numix red
+color2 7CF9E4 #blue
+color3 FF1200 #red
+color4 F1EA43 #gold
+color5 10BE06 #green
+color6 FFC317 #orange
+color7 FF2B14 #light red
+color8 4A4A4A #grey
+
+#====================================
+# Output
+#====================================
+
+    ${color2}FS:$color $fs_used / $fs_size ($fs_used_perc%)\
+    ${color2}HOME:$color ${fs_used /home} / ${fs_size /home} (${fs_used_perc /home}%)\
+    ${color4}Uptime: ${color} $uptime_short\
+
+TEXT
+    ${color4}Battery:$color ${exec cat /sys/class/power_supply/BAT0/status} (${exec cat /sys/class/power_supply/BAT0/capacity}%)\
+    ${color5}CPU:$color ${cpu}%\
+    ${color5}MEM:$color $mem / $memmax ($memperc%)\
+    ${color3}Temp:$color ${exec sensors | grep -n 'Core 0' | awk '{print $3}' | cut -c 2-}\
+    ${exec amixer get Master | egrep 'Playback.*?\[o' | egrep -o '\[o.+\]' > ~/conky_volume_state}${if_existing /home/rio/conky_volume_state [on]}Volume${else}${color8}Volume${endif}\
+    ${color}${if_existing /sys/class/net/eth0/operstate up} Wired Connection ${else}${color8} Wired Connection ${endif}\
+    ${color}${if_existing /sys/class/net/wlan0/operstate up} Wi-Fi ${else}${color8} Wi-Fi ${endif}\
+    ${color2}${exec echo $(ls /media | grep -v 'rio' | grep -v 'root' | grep -v 'usb')}\
+    ${color}${alignr 20}${time %Y.%m.%d. %a}\
+    ${color}${time %H:%M}\

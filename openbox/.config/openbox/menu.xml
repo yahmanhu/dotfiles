@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<item label="Browser">
+			<action name="Execute">
+				<execute>x-www-browser</execute>
+			</action>
+		</item>
+		<item label="File Manager">
+			<action name="Execute">
+				<execute>xfce4-terminal -I ~/.icons/xfce-terminal.svg -e ranger -T &quot;Ranger&quot;</execute>
+			</action>
+		</item>
+		<item label="Editor">
+			<action name="Execute">
+				<execute>xfce4-terminal -I ~/.icons/xfce-terminal.svg -e vim -T &quot;Vim&quot;</execute>
+			</action>
+		</item>
+		<item label="Terminal">
+			<action name="Execute">
+				<execute>xfce4-terminal -I ~/.icons/xfce-terminal.svg</execute>
+			</action>
+		</item>
+		<item label="Htop">
+			<action name="Execute">
+				<execute>xfce4-terminal -I ~/.icons/xfce-terminal.svg -e htop -T &quot;htop&quot;</execute>
+			</action>
+		</item>
+		<item label="Deluge">
+			<action name="Execute">
+				<execute>deluge</execute>
+			</action>
+		</item>
+		<item label="Spotify">
+			<action name="Execute">
+				<execute>spotify</execute>
+			</action>
+		</item>
+		<separator/>
+		<menu id="root-menu-21594" label="Disk">
+			<item label="Disks">
+				<action name="Execute">
+					<execute>gnome-disks</execute>
+				</action>
+			</item>
+			<item label="Startup Disk Creator">
+				<action name="Execute">
+					<execute>gksudo usb-creator-gtk</execute>
+				</action>
+			</item>
+			<item label="Unetbootin">
+				<action name="Execute">
+					<execute>unetbootin</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<menu id="root-menu-55037" label="Config">
+			<item label="Lxappearance">
+				<action name="Execute">
+					<execute>lxappearance</execute>
+				</action>
+			</item>
+			<item label="Obmenu">
+				<action name="Execute">
+					<execute>obmenu</execute>
+				</action>
+			</item>
+			<item label="Obconf">
+				<action name="Execute">
+					<execute>obconf</execute>
+				</action>
+			</item>
+			<item label="Reconfigure">
+				<action name="Reconfigure"/>
+			</item>
+			<item label="Restart Openbox">
+				<action name="Restart"/>
+			</item>
+			<item label="Printer config">
+				<action name="Execute">
+					<execute>system-config-printer</execute>
+				</action>
+			</item>
+			<item label="Tint2 restart">
+				<action name="Execute">
+					<execute>/home/rio/bin/tint2-restart</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<!-- This requires the presence of the 'menu' package to work -->
+		<menu id="root-menu-78575" label="Other">
+			<item label="Task Manager">
+				<action name="Execute">
+					<execute>xfce4-taskmanager</execute>
+				</action>
+			</item>
+			<item label="Tpfan">
+				<action name="Execute">
+					<execute>tpfan-admin</execute>
+				</action>
+			</item>
+			<item label="Xfburn">
+				<action name="Execute">
+					<execute>xfburn</execute>
+				</action>
+			</item>
+			<item label="Gpick">
+				<action name="Execute">
+					<execute>gpick</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<item label="Wifi switcher">
+			<action name="Execute">
+				<execute>/home/rio/bin/switch-wifi</execute>
+			</action>
+		</item>
+		<item label="Keyboard switcher">
+			<action name="Execute">
+				<execute>/home/rio/bin/switch-keyboard</execute>
+			</action>
+		</item>
+		<item label="Monitor switcher">
+			<action name="Execute">
+				<execute>/home/rio/bin/switch-monitor</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Clear Admin">
+			<action name="Execute">
+				<execute>env LANG=hu_HU.UTF-8 wine &quot;/home/rio/.wine/drive_c/Program Files (x86)/Clear Admin Szamlazo/Szamlazo.exe&quot;</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Change wallpaper">
+			<action name="Execute">
+				<execute>nitrogen</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Logout">
+			<action name="Exit"/>
+		</item>
+		<item label="Reboot">
+			<action name="Execute">
+				<prompt>
+            Are you sure you want to reboot?
+        </prompt>
+				<execute>sudo reboot</execute>
+			</action>
+		</item>
+		<item label="Suspend">
+			<action name="Execute">
+				<execute>sudo pm-suspend</execute>
+			</action>
+		</item>
+		<item label="Power off">
+			<action name="Execute">
+				<prompt>
+            Are you sure you want to shutdown?
+        </prompt>
+				<execute>sudo shutdown -h now</execute>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
