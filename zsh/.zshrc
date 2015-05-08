@@ -76,7 +76,6 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 alias package-info='dpkg -p'
-#alias ls='ls -l --color=auto'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias install='sudo apt-get install'
@@ -99,7 +98,6 @@ alias list-drives-id='sudo blkid'
 alias mountie='sudo python3 ~/.mountie/mountie.py'
 alias mount1='sudo mount /dev/sdb1 /media/rio'
 alias umount1='sudo umount /dev/sdb1'
-
 alias gstat='git status'
 alias gadd='git add --all'
 alias gcommit='git commit -m'

@@ -1,6 +1,7 @@
-# Background definitions
+# Tint2 config
+# Show only running applications
 
-# ID 1
+# Background ID 1
 rounded = 0
 border_width = 0
 background_color = #000000 100

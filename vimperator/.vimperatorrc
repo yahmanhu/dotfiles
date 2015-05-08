@@ -93,7 +93,7 @@ command! -description="Facebook" facebook :open https://www.facebook.com
 command! -description="Youtube" yt :open https://www.youtube.com
 
 "Open youtube.com/watch later
-command! -description="Youtube/Watch Later" wl :open https://www.youtube.com/playlist?list=WL 
+command! -description="Youtube/Watch Later" wl :open https://www.youtube.com/playlist?list=WL
 
 "Open sorozatjunkie.hu
 command! -description="Sorozatjunkie.hu" junkie :open http://www.sorozatjunkie.hu
