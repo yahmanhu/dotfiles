@@ -116,6 +116,9 @@ command! -description="IDDQD" iddqd :open http://iddqd.blog.hu/
 "Open yummie
 command! -description="Yummie" yummie :open http://yummie.hu/
 
+"Open plastik.hu
+command! -description="Plastik.hu" plastik :open http://plastik.hu/
+
 "Open port.hu
 command! -description="Port.hu" port :open http://port.hu/tv/pls/tv/oldtv.prog
 
