@@ -75,6 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# Custom aliases
 alias package-info='dpkg -p'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
@@ -95,7 +96,6 @@ alias tgrep='trash-list | grep'
 alias trm='trash-rm'
 alias list-drives='sudo fdisk -l'
 alias drives-id='sudo blkid'
-alias mountie='sudo python3 ~/.mountie/mountie.py'
 alias mount1='sudo mount /dev/sdb1 ~/USB -o uid=rio,gid=rio'
 alias umount1='sudo umount /dev/sdb1'
 alias gstat='git status'
@@ -103,3 +103,5 @@ alias gadd='git add --all'
 alias gcommit='git commit -m'
 alias gpush='git push origin master'
 alias gdiff='git diff'
+alias list-path='find $PWD'
+alias Q='exit'

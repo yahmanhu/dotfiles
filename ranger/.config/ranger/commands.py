@@ -26,16 +26,7 @@ class trestore(Command):
     def execute(self):
         self.fm.run("cd ~ && trash-restore")
 
-class mount1(Command):
-    """:mount1
-    Mounts /dev/sdb1 usb drive to /media/rio
-    """
-    def execute(self):
-        self.fm.run("sudo mount /dev/sdb1 /media/rio")
+#class mount1(Command):
 
-class umount1(Command):
-    """:umount1
-    Unmounts /dev/sdb1 usb drive
-    """
-    def execute(self):
-        self.fm.run("sudo umount /dev/sdb1")
+    #def execute(self):
+        #self.fm.run("mount1")
