@@ -87,6 +87,7 @@ alias music_downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-
 alias openbox_win_info='obxprop | grep "^_OB_APP"'
 alias RR='source ~/.zshrc'
 alias zshrc='vim ~/.zshrc'
+alias xinitrc='vim ~/.xinitrc'
 alias rm='rmtrash -r'
 alias unpack='aunpack'
 alias trestore='trash-restore'

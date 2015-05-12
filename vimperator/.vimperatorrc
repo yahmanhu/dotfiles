@@ -77,6 +77,12 @@ command! -description="Source .vimperatorrc (custom command)" RR source ~/.vimpe
 "Bookmarks
 "=========
 
+"Open gmail inbox for account no. 0
+command! -description="Inbox for account 0" inbox0 :tabopen https://mail.google.com/mail/u/0/
+
+"Open gmail inbox for account no. 1
+command! -description="Inbox for account 1" inbox1 :tabopen https://mail.google.com/mail/u/1/
+
 "Open google drive
 command! -description="Google drive" drive :tabopen https://drive.google.com/
 
@@ -133,7 +139,6 @@ command! -description="Wikipedia HU" wikihu :open http://hu.wikipedia.org/
 
 "Open wikipedia ENG
 command! -description="Wikipedia ENG" wikieng :open http://en.wikipedia.org
-
 
 "============================================"
 "   Autocommands                             "

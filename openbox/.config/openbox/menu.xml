@@ -165,5 +165,10 @@
 				<execute>sudo shutdown -h now</execute>
 			</action>
 		</item>
+		<item label="Exit">
+			<action name="Execute">
+				<execute>openbox --exit</execute>
+			</action>
+		</item>
 	</menu>
 </openbox_menu>

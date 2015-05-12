@@ -70,6 +70,5 @@ TEXT
     ${exec amixer get Master | egrep 'Playback.*?\[o' | egrep -o '\[o.+\]' > ~/conky_volume_state}${if_existing /home/rio/conky_volume_state [on]}Volume${else}${color8}Volume${endif}\
     ${color}${if_existing /sys/class/net/eth0/operstate up} Wired Connection ${else}${color8} Wired Connection ${endif}\
     ${color}${if_existing /sys/class/net/wlan0/operstate up} Wi-Fi ${else}${color8} Wi-Fi ${endif}\
-    ${color2}${exec echo $(ls /media | grep -v 'rio' | grep -v 'root' | grep -v 'usb')}\
     ${color}${alignr 20}${time %Y.%m.%d. %a}\
     ${color}${time %H:%M}\
