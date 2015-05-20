@@ -87,10 +87,10 @@ command! -description="Inbox for account 1" inbox1 :tabopen https://mail.google.
 command! -description="Google drive" drive :tabopen https://drive.google.com/
 
 "Open google translate (english - hungarian)
-command! -description="Google translate" gten :tabopen https://translate.google.com/#en/hu/
+command! -description="Google translate" gten :winopen https://translate.google.com/#en/hu/
 
 "Open google translate (hungarian - english)
-command! -description="Google translate" gthu :tabopen https://translate.google.com/#hu/en/
+command! -description="Google translate" gthu :winopen https://translate.google.com/#hu/en/
 
 "Open facebook.com
 command! -description="Facebook" facebook :open https://www.facebook.com

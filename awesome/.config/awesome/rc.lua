@@ -10,6 +10,8 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+-- Vicious library (for widgets)
+local vicious = require("vicious")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -48,13 +50,12 @@ awful.util.spawn_with_shell("compton -b --backend glx --paint-on-overlay --vsync
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/yahman_theme/theme.lua")
+beautiful.init("~/.config/awesome/themes/yahman_theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
-
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -93,7 +94,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 'terminal', 'web', 'editor', 'files', 'music', 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 'web', 'terminal', 'files', 'music', 5, 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -119,12 +120,111 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- Battery indicator widget
+battwidget = wibox.widget.textbox()
+
+function Battery_widget()
+    local file = io.open("/sys/class/power_supply/BAT0/status", "r")
+    batstat = file:read()
+    file:close()
+    local file = io.open("/sys/class/power_supply/BAT0/capacity", "r")
+    batcap = file:read()
+    file:close()
+
+    if (batstat == "Charging") then
+        battwidget:set_markup('<span color="#F0DFAF">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+    else
+        battwidget:set_markup('<span color="#848484">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+end
+end
+
+Battery_widget()
+battery_timer = timer({timeout=60})
+battery_timer:connect_signal("timeout",Battery_widget)
+battery_timer:start()
+
+-- Wi-Fi connection widget
+wifi_widget= wibox.widget.textbox()
+
+function Wifi()
+    wifistat_file = io.open("/sys/class/net/wlan0/operstate", "r")
+    wifistat = wifistat_file:read()
+    wifistat_file:close()
+
+    if (wifistat == "up") then
+        wifi_widget:set_markup('<span color="#ffffff">Wi-Fi</span>')
+    else
+        wifi_widget:set_markup('<span color="#848484">Wi-Fi</span>')
+    end
+end
+
+Wifi()
+
+wifi_timer = timer({timeout=10})
+wifi_timer:connect_signal("timeout",Wifi)
+wifi_timer:start()
+
+-- Ethernet connection widget
+ethernet_widget = wibox.widget.textbox()
+
+function Ethernet()
+    ethstat_file = io.open("/sys/class/net/eth0/operstate", "r")
+    ethstat = ethstat_file:read()
+    ethstat_file:close()
+
+    if (ethstat == "up") then
+        ethernet_widget:set_markup('<span color="#ffffff">Wired Connection</span>')
+    else
+        ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
+    end
+end
+Ethernet()
+
+eth_timer = timer({timeout=10})
+eth_timer:connect_signal("timeout",Ethernet)
+eth_timer:start()
+
+-- Volume indicator wiget
+volume_widget = wibox.widget.textbox()
+
+function Vol_widget()
+
+    local volcommand = io.popen("amixer get Master | egrep Playback | egrep -o '\\[o.+]'")
+    local volstat = volcommand:read("*a")
+    volcommand:close()
+    if string.find(volstat, "on") then
+        os.execute("amixer sset Master mute")
+        volume_widget:set_markup('<span color="#848484"> Volume </span>')
+    else
+        os.execute("amixer sset Master unmute")
+        volume_widget:set_markup('<span color="#ffffff"> Volume </span>')
+    end
+end
+
+Vol_widget()
+volume_widget:buttons (awful.util.table.join (awful.button({}, 1, function() Vol_widget() end)))
+
+-- Clock and calendar widget
+clockcal_widget = wibox.widget.textbox()
+
+function Clockcal()
+    clockcal_widget:set_text(os.date("%A %B %d %Y  %H:%M"))
+end
+
+Clockcal()
+
+clockcal_widget:buttons (awful.util.table.join (awful.button({}, 1, function() awful.util.spawn("gsimplecal") end)))
+clockcal_timer = timer({timeout=60})
+clockcal_timer:connect_signal("timeout",Clockcal)
+clockcal_timer:start()
+
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+--mytextclock = awful.widget.textclock()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
+mywibox2 = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -192,26 +292,31 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox2[s] = awful.wibox({ position = "bottom", screen = s })
 
     -- Widgets that are aligned to the left
-    local left_layout = wibox.layout.fixed.horizontal()
-    --left_layout:add(mylauncher)
-    left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
+    local top_layout = wibox.layout.fixed.horizontal()
+    top_layout:add(mytaglist[s])
+    top_layout:add(mypromptbox[s])
+    top_layout:add(mytasklist[s])
 
     -- Widgets that are aligned to the right
-    local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
-    right_layout:add(mylayoutbox[s])
+    local bottom_layout = wibox.layout.flex.horizontal()
+    bottom_layout:add(mylayoutbox[s])
+    bottom_layout:add(battwidget)
+    bottom_layout:add(wifi_widget)
+    bottom_layout:add(ethernet_widget)
+    bottom_layout:add(volume_widget)
+    bottom_layout:add(clockcal_widget)
+    --if s == 1 then bottom_layout:add(wibox.widget.systray()) end
 
     -- Now bring it all together (with the tasklist in the middle)
-    local layout = wibox.layout.align.horizontal()
-    layout:set_left(left_layout)
-    layout:set_middle(mytasklist[s])
-    layout:set_right(right_layout)
+    --local layout = wibox.layout.align.horizontal()
+    --layout:set_left(left_layout)
+    --layout:set_right(right_layout)
 
-    mywibox[s]:set_widget(layout)
+    mywibox[s]:set_widget(top_layout)
+    mywibox2[s]:set_widget(bottom_layout)
 end
 -- }}}
 
@@ -228,7 +333,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, ",",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, ".",   awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-
+    awful.key({                   }, "XF86AudioMute", function () Vol_widget()  end),
     awful.key({ modkey,           }, "h",
         function ()
             awful.client.focus.byidx( 1)
@@ -256,13 +361,13 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "b", function () awful.util.spawn("firefox") end),
-    awful.key({ modkey,           }, "e", function () awful.util.spawn("xfce4-terminal -T vim -e vim") end),
-    awful.key({ modkey,           }, "f", function () awful.util.spawn("xfce4-terminal -T ranger -e ranger") end),
-    awful.key({ modkey,           }, "m", function () awful.util.spawn("spotify") end),
+    awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
+    awful.key({ modkey, "Control" }, "e", function () awful.util.spawn(editor_cmd) end),
+    awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("xfce4-terminal -T ranger -e ranger") end),
+    awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ modkey, "Control" }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "j",     function () awful.tag.incmwfact( 0.1)    end),
     awful.key({ modkey,           }, "k",     function () awful.tag.incmwfact(-0.1)    end),
@@ -299,12 +404,12 @@ clientkeys = awful.util.table.join(
         function (c)
             ---- The client currently has the input focus, so it cannot be
             ---- minimized, since minimized clients can't have the focus.
-            --c.minimized = true
-        --end),
-    --awful.key({ modkey,           }, "m",
-        --function (c)
-            --c.maximized_horizontal = not c.maximized_horizontal
-            --c.maximized_vertical   = not c.maximized_vertical
+            c.minimized = true
+        end),
+    awful.key({ modkey,           }, "m",
+        function (c)
+            c.maximized_horizontal = not c.maximized_horizontal
+            c.maximized_vertical   = not c.maximized_vertical
         end)
 )
 -- Bind all key numbers to tags.
@@ -375,15 +480,13 @@ awful.rules.rules = {
     { rule = { class = "mpv" },
       properties = { floating = true } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "Xfce4-terminal" },
-      properties = { tag = tags [1][1] } },
-    { rule = { name = "vim" },
-      properties = { tag = tags [1][3] } },
+      properties = { tag = tags [1][2] } },
     { rule = { name = "ranger" },
-      properties = { tag = tags [1][4] } },
+      properties = { tag = tags [1][3] } },
     { rule = { name = "Spotify" },
-      properties = { tag = tags [1][5] } },
+      properties = { tag = tags [1][4] } },
 }
 
 -- {{{ Signals

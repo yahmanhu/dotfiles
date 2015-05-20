@@ -67,7 +67,7 @@ TEXT
     ${color5}CPU:$color ${cpu}%\
     ${color5}MEM:$color $mem / $memmax ($memperc%)\
     ${color3}Temp:$color ${exec sensors | grep -n 'Core 0' | awk '{print $3}' | cut -c 2-}\
-    ${exec amixer get Master | egrep 'Playback.*?\[o' | egrep -o '\[o.+\]' > ~/conky_volume_state}${if_existing /home/rio/conky_volume_state [on]}Volume${else}${color8}Volume${endif}\
+    ${exec amixer get Master | egrep 'Playback.*?\[o' | egrep -o '\[o.+\]' > ~/volume_state}${if_existing /home/rio/volume_state [on]}Volume${else}${color8}Volume${endif}\
     ${color}${if_existing /sys/class/net/eth0/operstate up} Wired Connection ${else}${color8} Wired Connection ${endif}\
     ${color}${if_existing /sys/class/net/wlan0/operstate up} Wi-Fi ${else}${color8} Wi-Fi ${endif}\
     ${color}${alignr 20}${time %Y.%m.%d. %a}\

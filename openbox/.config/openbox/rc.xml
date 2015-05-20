@@ -547,10 +547,6 @@
     <application title="Vim">
       <maximized>yes</maximized>
     </application>
-    <application title="Mountie">
-      <maximized>yes</maximized>
-      <decor>no</decor>
-    </application>
     <application class="Deluge">
       <size>
         <width>924</width>
