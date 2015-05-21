@@ -1,2 +1,2 @@
 # dotfiles
-My confiugration files
+My configuration files
