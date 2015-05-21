@@ -189,15 +189,32 @@ volume_widget = wibox.widget.textbox()
 
 function Vol_widget()
 
-    local volcommand = io.popen("amixer get Master | egrep Playback | egrep -o '\\[o.+]'")
-    local volstat = volcommand:read("*a")
-    volcommand:close()
-    if string.find(volstat, "on") then
-        os.execute("amixer sset Master mute")
-        volume_widget:set_markup('<span color="#848484"> Volume </span>')
+    local volstat_command = io.popen("amixer get Master | egrep Playback | egrep -o off")
+    local volstat = volstat_command:read("*a")
+    volstat_command:close()
+
+    local vol_value_command = io.popen("amixer get Master | egrep Playback | egrep -o '[^[]*%'")
+    local vol_value = vol_value_command:read()
+    vol_value_command:close()
+
+    if string.find(volstat, "off") then
+        volume_widget:set_markup('<span color="#848484">Volume</span>')
     else
-        os.execute("amixer sset Master unmute")
-        volume_widget:set_markup('<span color="#ffffff"> Volume </span>')
+        if vol_value == "100%" then
+            volume_widget:set_markup('<span color="#ffffff">Volume</span>')
+        elseif vol_value > "90%" then 
+            volume_widget:set_markup('<span color="#ffffff">Volum</span>'..'<span color="#848484">e</span>')
+        elseif vol_value == "0%" then
+            volume_widget:set_markup('<span color="#848484">Volume</span>')
+        elseif vol_value <= "50%" then
+            volume_widget:set_markup('<span color="#ffffff">V</span>'..'<span color="#848484">olume</span>')
+        elseif vol_value <= "60%" then
+            volume_widget:set_markup('<span color="#ffffff">Vo</span>'..'<span color="#848484">lume</span>')
+        elseif vol_value <= "80%" then
+            volume_widget:set_markup('<span color="#ffffff">Vol</span>'..'<span color="#848484">ume</span>')
+        elseif vol_value <= "90%" then
+            volume_widget:set_markup('<span color="#ffffff">Volu</span>'..'<span color="#848484">me</span>')
+        end
     end
 end
 
@@ -333,7 +350,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, ",",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, ".",   awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-    awful.key({                   }, "XF86AudioMute", function () Vol_widget()  end),
+    awful.key({                   }, "XF86AudioMute", function () Vol_widget() end),
+    awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer sset Master toggle") end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () Vol_widget() end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -M sset Master 5%-") end),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () Vol_widget() end),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -M sset Master 5%+") end),
     awful.key({ modkey,           }, "h",
         function ()
             awful.client.focus.byidx( 1)
