@@ -9,7 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
+--local menubar = require("menubar")
 -- Vicious library (for widgets)
 local vicious = require("vicious")
 
@@ -42,11 +42,14 @@ end
 -- }}}
 
 -- {{{ Autostart
+-- Start compton
+awful.util.spawn_with_shell("compton --backend glx --paint-on-overlay --vsync opengl-swc")
 -- Write xmodmap
 awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
+-- Start nm-applet
+awful.util.spawn_with_shell("nm-applet")
 
--- Start compton
-awful.util.spawn_with_shell("compton -b --backend glx --paint-on-overlay --vsync opengl-swc")
+
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -94,30 +97,48 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 'web', 'terminal', 'files', 'music', 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 'web', 'terminal', 'files', 'music', 'torrent', 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
 -- {{{ Menu
--- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
-}
+-- {{{ {{{ Menu variables
+switch_keybaord = function() awful.util.spawn("/home/rio/bin/switch-keyboard") end
+switch_wifi = function() awful.util.spawn("/home/rio/bin/switch-wifi") end
+switch_monitor = function() awful.util.spawn("/home/rio/bin/switch-monitor") end
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    --{ "Debian", debian.menu.Debian_menu.Debian },
-                                    --{ "open terminal", terminal }
+logout = function() awful.util.spawn("sudo pkill -u rio") end
+suspend = function() awful.util.spawn("sudo pm-suspend") end
+reboot = function() awful.util.spawn("sudo reboot") end
+poweroff = function() awful.util.spawn("sudo poweroff") end
+
+gnome_disks = function() awful.util.spawn("gnome-disks") end
+usb_creator = function() awful.util.spawn("gksudo usb-creator-gtk") end
+unetbootin = function() awful.util.spawn("unetbootin") end
+
+printer_config = function() awful.util.spawn("system-config-printer") end
+
+tpfan = function() awful.util.spawn("tpfan-admin") end
+
+mymainmenu = awful.menu({ items = { {"Keyboard switcher", switch_keybaord},
+                                    {"Wifi switcher", switch_wifi},
+                                    {"Monitor switcher", switch_monitor},
+                                    {"--------------------------"},
+                                    {"Gnome Disks", gnome_disks},
+                                    {"USB Creator", usb_creator},
+                                    {"Unetbootin", unetbootin},
+                                    {"TPFan", tpfan},
+                                    {"Printer Config", printer_config},
+                                    {"--------------------------"},
+                                    {"Logout", logout},
+                                    {"Suspend", suspend},
+                                    {"Reboot", reboot},
+                                    {"Poweroff", poweroff},
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+mylauncher = awful.widget.launcher({ menu = mymainmenu })
 
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- Battery indicator widget
@@ -131,10 +152,16 @@ function Battery_widget()
     batcap = file:read()
     file:close()
 
-    if (batstat == "Charging") then
-        battwidget:set_markup('<span color="#F0DFAF">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
-    else
+    if (batstat == "Discharging") then
+        if (batcap <= "20") then
+        battwidget:set_markup('<span color="#ff0000">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        elseif (batcap <= "30") then
+        battwidget:set_markup('<span color="#DCC939">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        else
         battwidget:set_markup('<span color="#848484">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        end
+    else
+        battwidget:set_markup('<span color="#5FE36C">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
 end
 end
 
@@ -152,7 +179,7 @@ function Wifi()
     wifistat_file:close()
 
     if (wifistat == "up") then
-        wifi_widget:set_markup('<span color="#ffffff">Wi-Fi</span>')
+        wifi_widget:set_markup('<span color="#5FE36C">Wi-Fi</span>')
     else
         wifi_widget:set_markup('<span color="#848484">Wi-Fi</span>')
     end
@@ -173,7 +200,7 @@ function Ethernet()
     ethstat_file:close()
 
     if (ethstat == "up") then
-        ethernet_widget:set_markup('<span color="#ffffff">Wired Connection</span>')
+        ethernet_widget:set_markup('<span color="#5FE36C">Wired Connection</span>')
     else
         ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
     end
@@ -201,31 +228,30 @@ function Vol_widget()
         volume_widget:set_markup('<span color="#848484">Volume</span>')
     else
         if vol_value == "100%" then
-            volume_widget:set_markup('<span color="#ffffff">Volume</span>')
-        elseif vol_value > "90%" then 
-            volume_widget:set_markup('<span color="#ffffff">Volum</span>'..'<span color="#848484">e</span>')
+            volume_widget:set_markup('<span color="#5FE36C">Volume</span>')
+        elseif vol_value > "90%" then
+            volume_widget:set_markup('<span color="#5FE36C">Volum</span>'..'<span color="#848484">e</span>')
         elseif vol_value == "0%" then
             volume_widget:set_markup('<span color="#848484">Volume</span>')
         elseif vol_value <= "50%" then
-            volume_widget:set_markup('<span color="#ffffff">V</span>'..'<span color="#848484">olume</span>')
+            volume_widget:set_markup('<span color="#5FE36C">V</span>'..'<span color="#848484">olume</span>')
         elseif vol_value <= "60%" then
-            volume_widget:set_markup('<span color="#ffffff">Vo</span>'..'<span color="#848484">lume</span>')
+            volume_widget:set_markup('<span color="#5FE36C">Vo</span>'..'<span color="#848484">lume</span>')
         elseif vol_value <= "80%" then
-            volume_widget:set_markup('<span color="#ffffff">Vol</span>'..'<span color="#848484">ume</span>')
+            volume_widget:set_markup('<span color="#5FE36C">Vol</span>'..'<span color="#848484">ume</span>')
         elseif vol_value <= "90%" then
-            volume_widget:set_markup('<span color="#ffffff">Volu</span>'..'<span color="#848484">me</span>')
+            volume_widget:set_markup('<span color="#5FE36C">Volu</span>'..'<span color="#848484">me</span>')
         end
     end
 end
 
 Vol_widget()
-volume_widget:buttons (awful.util.table.join (awful.button({}, 1, function() Vol_widget() end)))
 
 -- Clock and calendar widget
 clockcal_widget = wibox.widget.textbox()
 
 function Clockcal()
-    clockcal_widget:set_text(os.date("%A %B %d %Y  %H:%M"))
+    clockcal_widget:set_markup('<span color="#ffffff">' .. os.date("%A %B %d %Y  %H:%M") .. '</span>')
 end
 
 Clockcal()
@@ -356,6 +382,10 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -M sset Master 5%-") end),
     awful.key({                   }, "XF86AudioRaiseVolume", function () Vol_widget() end),
     awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -M sset Master 5%+") end),
+    awful.key({                   }, "Pause", function () awful.util.spawn("xset dpms force off") end),
+    awful.key({                   }, "XF86Back", function () awful.util.spawn("xbacklight -time 0 -dec 10%") end),
+    awful.key({                   }, "XF86Forward", function () awful.util.spawn("xbacklight -time 0 -inc 15%") end),
+    awful.key({                   }, "XF86PowerOff", function () awful.util.spawn("sudo pm-suspend") end),
     awful.key({ modkey,           }, "h",
         function ()
             awful.client.focus.byidx( 1)
@@ -388,6 +418,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "e", function () awful.util.spawn(editor_cmd) end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("xfce4-terminal -T ranger -e ranger") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify") end),
+    awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("deluge") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
 
@@ -501,6 +532,12 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "mpv" },
       properties = { floating = true } },
+    { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin" } },
+      properties = { floating = true },
+      callback = function (c) c:geometry({width = 800, height=500}) end },
+    { rule = { class = "System-config-printer.py"},
+      properties = { floating = true },
+      callback = function (c) c:geometry({width = 200, height=200}) end },
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][1] } },
     { rule = { class = "Xfce4-terminal" },
@@ -509,6 +546,8 @@ awful.rules.rules = {
       properties = { tag = tags [1][3] } },
     { rule = { name = "Spotify" },
       properties = { tag = tags [1][4] } },
+    { rule = { name = "Deluge" },
+      properties = { tag = tags [1][5] } },
 }
 
 -- {{{ Signals
@@ -534,8 +573,14 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
-    if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
+    local titlebars_enabled = true
+    if titlebars_enabled and (c.class == "mpv" or
+                              c.class == "Gnome-disks" or
+                              c.lass == "Usb-creator-gtk" or
+                              c.class == "Unetbootin" or
+                              c.class == "System-config-printer.py")
+                         then
+
         -- buttons for the titlebar
         local buttons = awful.util.table.join(
                 awful.button({ }, 1, function()
@@ -550,18 +595,18 @@ client.connect_signal("manage", function (c, startup)
                 end)
                 )
 
-        -- Widgets that are aligned to the left
-        local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(awful.titlebar.widget.iconwidget(c))
-        left_layout:buttons(buttons)
+        ---- Widgets that are aligned to the left
+        --local left_layout = wibox.layout.fixed.horizontal()
+        --left_layout:add(awful.titlebar.widget.iconwidget(c))
+        --left_layout:buttons(buttons)
 
-        -- Widgets that are aligned to the right
-        local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
+        ---- Widgets that are aligned to the right
+        --local right_layout = wibox.layout.fixed.horizontal()
+        --right_layout:add(awful.titlebar.widget.floatingbutton(c))
+        --right_layout:add(awful.titlebar.widget.maximizedbutton(c))
+        --right_layout:add(awful.titlebar.widget.stickybutton(c))
+        --right_layout:add(awful.titlebar.widget.ontopbutton(c))
+        --right_layout:add(awful.titlebar.widget.closebutton(c))
 
         -- The title goes in the middle
         local middle_layout = wibox.layout.flex.horizontal()
@@ -572,8 +617,8 @@ client.connect_signal("manage", function (c, startup)
 
         -- Now bring it all together
         local layout = wibox.layout.align.horizontal()
-        layout:set_left(left_layout)
-        layout:set_right(right_layout)
+        --layout:set_left(left_layout)
+        --layout:set_right(right_layout)
         layout:set_middle(middle_layout)
 
         awful.titlebar(c):set_widget(layout)
