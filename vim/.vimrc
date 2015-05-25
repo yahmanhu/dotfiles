@@ -134,6 +134,17 @@ noremap <leader>] lbi[<ESC>ea]<ESC>
 noremap <leader>< lbi<<ESC>ea><ESC>
 noremap <leader>> lbi<<ESC>ea><ESC>
 
+vnoremap <leader>{ lbi{<ESC>ea}<ESC>
+vnoremap <leader>} lbi{<ESC>ea}<ESC>
+vnoremap <leader>" lbi"<ESC>ea"<ESC>
+vnoremap <leader>' lbi'<ESC>ea'<ESC>
+vnoremap <leader>( lbi(<ESC>ea)<ESC>
+vnoremap <leader>) lbi(<ESC>ea)<ESC>
+vnoremap <leader>[ lbi[<ESC>ea]<ESC>
+vnoremap <leader>] lbi[<ESC>ea]<ESC>
+vnoremap <leader>< lbi<<ESC>ea><ESC>
+vnoremap <leader>> lbi<<ESC>ea><ESC>
+
 "Delete surrounding quotes, brackets etc.
 noremap <leader><leader>{ F{xf}x
 noremap <leader><leader>" F"x,x
@@ -144,6 +155,16 @@ noremap <leader><leader>[ F[xf]x
 noremap <leader><leader>] F[xf]x
 noremap <leader><leader>< F<xf>x
 noremap <leader><leader>> F<xf>x
+
+vnoremap <leader><leader>{ F{xf}x
+vnoremap <leader><leader>" F"x,x
+vnoremap <leader><leader>' F'x,x
+vnoremap <leader><leader>( F(xf)x
+vnoremap <leader><leader>) F(xf)x
+vnoremap <leader><leader>[ F[xf]x
+vnoremap <leader><leader>] F[xf]x
+vnoremap <leader><leader>< F<xf>x
+vnoremap <leader><leader>> F<xf>x
 
 "Indenting in normal and visual mode
 nnoremap <S-tab> <<
@@ -182,8 +203,8 @@ nnoremap e el
 "NERDTree Toggle
 nnoremap TN :NERDTreeToggle<ENTER>
 
-"Toggle colorizer
-nnoremap <silent> <leader>cz :ColorToggle<CR>
+"Turn on color highlight
+nnoremap <silent> <leader>cz :ColorHighlight syntax<CR>
 
 "Vcoolor
 nnoremap <silent> <leader>vc :VCoolor<CR>

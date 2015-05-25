@@ -120,20 +120,20 @@ printer_config = function() awful.util.spawn("system-config-printer") end
 
 tpfan = function() awful.util.spawn("tpfan-admin") end
 
-mymainmenu = awful.menu({ items = { {"Keyboard switcher", switch_keybaord},
-                                    {"Wifi switcher", switch_wifi},
-                                    {"Monitor switcher", switch_monitor},
-                                    {"--------------------------"},
-                                    {"Gnome Disks", gnome_disks},
-                                    {"USB Creator", usb_creator},
-                                    {"Unetbootin", unetbootin},
-                                    {"TPFan", tpfan},
-                                    {"Printer Config", printer_config},
-                                    {"--------------------------"},
-                                    {"Logout", logout},
-                                    {"Suspend", suspend},
-                                    {"Reboot", reboot},
-                                    {"Poweroff", poweroff},
+mymainmenu = awful.menu({ items = { {"&Keyboard switcher", switch_keybaord},
+                                    {"&Wifi switcher", switch_wifi},
+                                    {"&Monitor switcher", switch_monitor},
+                                    {},
+                                    {"&Gnome Disks", gnome_disks},
+                                    {"&USB Creator", usb_creator},
+                                    {"Unet&bootin", unetbootin},
+                                    {"&TPFan", tpfan},
+                                    {"Printer &Config", printer_config},
+                                    {},
+                                    {"&Logout", logout},
+                                    {"&Reboot", reboot},
+                                    {"&Suspend", suspend},
+                                    {"&Poweroff", poweroff},
                                   }
                         })
 
