@@ -120,7 +120,7 @@ printer_config = function() awful.util.spawn("system-config-printer") end
 
 tpfan = function() awful.util.spawn("tpfan-admin") end
 
-mymainmenu = awful.menu({ items = { {"&Keyboard switcher", switch_keybaord},
+mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
                                     {"&Wifi switcher", switch_wifi},
                                     {"&Monitor switcher", switch_monitor},
                                     {},
@@ -434,15 +434,15 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "F2",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "F2",     function () mypromptbox[mouse.screen]:run() end)
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end)
+    --awful.key({ modkey }, "x",
+              --function ()
+                  --awful.prompt.run({ prompt = "Run Lua code: " },
+                  --mypromptbox[mouse.screen].widget,
+                  --awful.util.eval, nil,
+                  --awful.util.getdir("cache") .. "/history_eval")
+              --end)
 )
 
 clientkeys = awful.util.table.join(
@@ -530,7 +530,7 @@ awful.rules.rules = {
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "mpv" },
+    { rule_any = { class = { "mpv", "Tpfan-admin" } },
       properties = { floating = true } },
     { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin" } },
       properties = { floating = true },
@@ -578,7 +578,8 @@ client.connect_signal("manage", function (c, startup)
                               c.class == "Gnome-disks" or
                               c.lass == "Usb-creator-gtk" or
                               c.class == "Unetbootin" or
-                              c.class == "System-config-printer.py")
+                              c.class == "System-config-printer.py" or
+                              c.class == "Tpfan-admin")
                          then
 
         -- buttons for the titlebar

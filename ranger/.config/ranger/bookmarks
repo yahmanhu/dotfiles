@@ -2,11 +2,13 @@ a:/home/rio/Applications
 c:/home/rio/.config
 b:/home/rio/Backup
 d:/home/rio/Documents
-':/home/rio
+':/usr/share/awesome/themes/yahman_theme
+f:/home/rio/dotfiles
+l:/home/rio/.config/mpv/watch_later
 n:/home/rio/bin
 p:/home/rio/Pictures
-u:/media/rio
+s:/home/rio/scripts
+u:/home/rio/USB
 t:/home/rio/.local/share/Trash/files
 w:/home/rio/Downloads
 v:/home/rio/Videos
-f:/home/rio/dotfiles
