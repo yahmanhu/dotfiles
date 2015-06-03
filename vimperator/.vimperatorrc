@@ -77,12 +77,6 @@ command! -description="Source .vimperatorrc (custom command)" RR source ~/.vimpe
 "Bookmarks
 "=========
 
-"Open gmail inbox for account no. 0
-command! -description="Inbox for account 0" inbox0 :tabopen https://mail.google.com/mail/u/0/
-
-"Open gmail inbox for account no. 1
-command! -description="Inbox for account 1" inbox1 :tabopen https://mail.google.com/mail/u/1/
-
 "Open google drive
 command! -description="Google drive" drive :tabopen https://drive.google.com/
 
@@ -97,9 +91,6 @@ command! -description="Facebook" facebook :open https://www.facebook.com
 
 "Open youtube.com
 command! -description="Youtube" yt :open https://www.youtube.com
-
-"Open youtube.com/watch later
-command! -description="Youtube/Watch Later" wl :open https://www.youtube.com/playlist?list=WL
 
 "Open sorozatjunkie.hu
 command! -description="Sorozatjunkie.hu" junkie :open http://www.sorozatjunkie.hu

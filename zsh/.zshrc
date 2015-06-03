@@ -45,7 +45,7 @@ ZSH_THEME="yahmanhu"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 
@@ -74,6 +74,17 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+
+
+# Search google
+google() {
+    search=""
+    echo "Googling: $@"
+    for term in $@; do
+        search="$search%20$term"
+    done
+    xdg-open "http://www.google.com/search?q=$search"
+}
 
 # Custom aliases
 alias package-info='dpkg -p'
@@ -108,4 +119,4 @@ alias list-path='find $PWD'
 alias Q='exit'
 alias batstat='cat /sys/class/power_supply/BAT0/status'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
-alias suspend='sudo pm-suspend'
+alias ls='ls -l --color=auto'
