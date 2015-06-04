@@ -75,18 +75,39 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+#=================
+# Custom functions
+#=================
 
-# Search google
+# Google search
 google() {
     search=""
     echo "Googling: $@"
     for term in $@; do
         search="$search%20$term"
     done
-    xdg-open "http://www.google.com/search?q=$search"
+    x-www-browser "http://www.google.com/search?q=$search"
 }
 
+# Wikipedia search
+wiki() {
+    search=""
+    echo "Searching: $@"
+    for term in $@; do
+        search="$search%20$term"
+    done
+    x-www-browser "http://www.wikipedia.org/wiki/$search"
+}
+
+# List custom aliases
+lsalias() {
+    cat .zshrc | grep '^alias'
+}
+
+#===============
 # Custom aliases
+#===============
+
 alias package-info='dpkg -p'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
@@ -115,7 +136,6 @@ alias gadd='git add --all'
 alias gcommit='git commit -m'
 alias gpush='git push origin master'
 alias gdiff='git diff'
-alias list-path='find $PWD'
 alias Q='exit'
 alias batstat='cat /sys/class/power_supply/BAT0/status'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
