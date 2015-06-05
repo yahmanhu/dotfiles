@@ -84,9 +84,11 @@ google() {
     search=""
     echo "Googling: $@"
     for term in $@; do
-        search="$search%20$term"
+        #search="$search%20$term"
+        search="$search+$term"
     done
     x-www-browser "http://www.google.com/search?q=$search"
+    #w3m -dump "http://www.google.com/search?q=$search"
 }
 
 # Wikipedia search
@@ -129,6 +131,8 @@ alias tgrep='trash-list | grep'
 alias trm='trash-rm'
 alias list-drives='sudo fdisk -l'
 alias drives-id='sudo blkid'
+alias mount0='sudo mount /dev/sdb ~/USB -o uid=rio,gid=rio'
+alias umount0='sudo umount /dev/sdb'
 alias mount1='sudo mount /dev/sdb1 ~/USB -o uid=rio,gid=rio'
 alias umount1='sudo umount /dev/sdb1'
 alias gstat='git status'

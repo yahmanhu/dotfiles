@@ -84,7 +84,8 @@ command! -description="Google drive" drive :tabopen https://drive.google.com/
 command! -description="Google translate" gten :winopen https://translate.google.com/#en/hu/
 
 "Open google translate (hungarian - english)
-command! -description="Google translate" gthu :winopen https://translate.google.com/#hu/en/
+"command! -description="Google translate" gthu :winopen https://translate.google.com/#hu/en/
+command! -description="Google translate" gthu :! gthu
 
 "Open facebook.com
 command! -description="Facebook" facebook :open https://www.facebook.com

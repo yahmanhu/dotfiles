@@ -157,16 +157,16 @@ noremap <leader><leader>] F[xf]x
 noremap <leader><leader>< F<xf>x
 noremap <leader><leader>> F<xf>x
 
-vnoremap <leader><leader>{ <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>} <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>" <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>' <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>( <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>) <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>[ <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>] <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>< <ESC>`<x<ESC>`>hx<ESC>
-vnoremap <leader><leader>> <ESC>`<x<ESC>`>hx<ESC>
+vnoremap <leader><leader>{ <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>} <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>" <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>' <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>( <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>) <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>[ <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>] <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>< <ESC>`<x<ESC>`>x<ESC>
+vnoremap <leader><leader>> <ESC>`<x<ESC>`>x<ESC>
 
 "Indenting in normal and visual mode
 nnoremap <S-tab> <<
