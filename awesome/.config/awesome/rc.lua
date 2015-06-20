@@ -97,7 +97,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 'web', 'terminal', 'files', 'music', 'torrent', 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 'web', 'terminal', 'files', 'torrent', 'music', "office", 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -419,6 +419,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("xfce4-terminal -T ranger -e ranger") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify") end),
     awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("deluge") end),
+    awful.key({ modkey, "Control" }, "o", function () awful.util.spawn("libreoffice") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
 
@@ -531,9 +532,9 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
-    { rule_any = { class = { "mpv", "Tpfan-admin" } },
+    { rule_any = { class = { "mpv", "Tpfan-admin", } },
       properties = { floating = true } },
-    { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin" } },
+    { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin", "Nomacs" } },
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
     { rule = { class = "System-config-printer.py"},
@@ -545,10 +546,12 @@ awful.rules.rules = {
       properties = { tag = tags [1][2] } },
     { rule = { name = "ranger" },
       properties = { tag = tags [1][3] } },
-    { rule = { name = "Spotify" },
-      properties = { tag = tags [1][4] } },
     { rule = { name = "Deluge" },
+      properties = { tag = tags [1][4] } },
+    { rule = { name = "Spotify" },
       properties = { tag = tags [1][5] } },
+    { rule = { class = "libreoffice-startcenter" },
+      properties = { tag = tags [1][6] } },
 }
 
 -- {{{ Signals
@@ -580,7 +583,8 @@ client.connect_signal("manage", function (c, startup)
                               c.lass == "Usb-creator-gtk" or
                               c.class == "Unetbootin" or
                               c.class == "System-config-printer.py" or
-                              c.class == "Tpfan-admin")
+                              c.class == "Tpfan-admin" or
+                              c.class == "Nomacs")
                          then
 
         -- buttons for the titlebar
