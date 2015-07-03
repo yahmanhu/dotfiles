@@ -11,10 +11,10 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 --local menubar = require("menubar")
 -- Vicious library (for widgets)
-local vicious = require("vicious")
+-- local vicious = require("vicious")
 
 -- Load Debian menu entries
-require("debian.menu")
+-- require("debian.menu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -45,18 +45,18 @@ end
 -- Start compton
 awful.util.spawn_with_shell("compton --backend glx --paint-on-overlay --vsync opengl-swc")
 -- Write xmodmap
-awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
+-- awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
 -- Start nm-applet
-awful.util.spawn_with_shell("nm-applet")
+-- awful.util.spawn_with_shell("nm-applet")
 
 
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/themes/yahman_theme/theme.lua")
+beautiful.init("~/.config/awesome/themes/yahman/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xfce4-terminal"
+terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 -- Default modkey.
@@ -107,10 +107,10 @@ switch_keybaord = function() awful.util.spawn("/home/rio/bin/switch-keyboard") e
 switch_wifi = function() awful.util.spawn("/home/rio/bin/switch-wifi") end
 switch_monitor = function() awful.util.spawn("/home/rio/bin/switch-monitor") end
 
-logout = function() awful.util.spawn("sudo pkill -u rio") end
-suspend = function() awful.util.spawn("sudo pm-suspend") end
-reboot = function() awful.util.spawn("sudo reboot") end
-poweroff = function() awful.util.spawn("sudo poweroff") end
+logout = function() awful.util.spawn("pkill -u rio") end
+suspend = function() awful.util.spawn("systemctl suspend") end
+reboot = function() awful.util.spawn("systemctl reboot") end
+poweroff = function() awful.util.spawn("systemctl poweroff") end
 
 gnome_disks = function() awful.util.spawn("gnome-disks") end
 usb_creator = function() awful.util.spawn("gksudo usb-creator-gtk") end
@@ -118,7 +118,7 @@ unetbootin = function() awful.util.spawn("unetbootin") end
 
 printer_config = function() awful.util.spawn("system-config-printer") end
 
-tpfan = function() awful.util.spawn("tpfan-admin") end
+tpfan = function() awful.util.spawn("sudo tpfan-admin") end
 
 mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
                                     {"&Wifi switcher", switch_wifi},
@@ -174,7 +174,7 @@ battery_timer:start()
 wifi_widget= wibox.widget.textbox()
 
 function Wifi()
-    wifistat_file = io.open("/sys/class/net/wlan0/operstate", "r")
+    wifistat_file = io.open("/sys/class/net/wlp3s0/operstate", "r")
     wifistat = wifistat_file:read()
     wifistat_file:close()
 
@@ -195,7 +195,7 @@ wifi_timer:start()
 ethernet_widget = wibox.widget.textbox()
 
 function Ethernet()
-    ethstat_file = io.open("/sys/class/net/eth0/operstate", "r")
+    ethstat_file = io.open("/sys/class/net/enp4s0/operstate", "r")
     ethstat = ethstat_file:read()
     ethstat_file:close()
 
@@ -416,8 +416,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "e", function () awful.util.spawn(editor_cmd) end),
-    awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("xfce4-terminal -T ranger -e ranger") end),
-    awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify") end),
+    awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -T ranger -e ranger") end),
+    awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),
     awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("deluge") end),
     awful.key({ modkey, "Control" }, "o", function () awful.util.spawn("libreoffice") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
@@ -532,9 +532,9 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
-    { rule_any = { class = { "mpv", "Tpfan-admin", } },
+    { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2"} },
       properties = { floating = true } },
-    { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin", "Nomacs" } },
+    { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin", "feh" } },
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
     { rule = { class = "System-config-printer.py"},
@@ -542,8 +542,8 @@ awful.rules.rules = {
       callback = function (c) c:geometry({width = 200, height=200}) end },
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][1] } },
-    { rule = { class = "Xfce4-terminal" },
-      properties = { tag = tags [1][2] } },
+    --{ rule = { class = "URxvt" },
+      --properties = { tag = tags [1][2] } },
     { rule = { name = "ranger" },
       properties = { tag = tags [1][3] } },
     { rule = { name = "Deluge" },
@@ -584,7 +584,8 @@ client.connect_signal("manage", function (c, startup)
                               c.class == "Unetbootin" or
                               c.class == "System-config-printer.py" or
                               c.class == "Tpfan-admin" or
-                              c.class == "Nomacs")
+                              c.class == "feh" or
+                              c.class == "Gcolor2")
                          then
 
         -- buttons for the titlebar

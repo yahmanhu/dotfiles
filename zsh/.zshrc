@@ -52,17 +52,19 @@ plugins=(git zsh-syntax-highlighting)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/rio/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export EDITOR="/usr/bin/vim"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+ #if [[ -n $SSH_CONNECTION ]]; then
+   #export EDITOR='vim'
+ #else
+   #export EDITOR='mvim'
+ #fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -75,30 +77,85 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+
+# Load dircolors
+eval $(dircolors ~/.dircolors)
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 #=================
 # Custom functions
 #=================
 
-# Google search
-google() {
-    search=""
-    echo "Googling: $@"
-    for term in $@; do
-        #search="$search%20$term"
-        search="$search+$term"
-    done
-    x-www-browser "http://www.google.com/search?q=$search"
-    #w3m -dump "http://www.google.com/search?q=$search"
+# trashman: list
+TL() {
+    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Listing Trash:"
+    trash --list
 }
 
-# Wikipedia search
-wiki() {
-    search=""
-    echo "Searching: $@"
-    for term in $@; do
-        search="$search%20$term"
-    done
-    x-www-browser "http://www.wikipedia.org/wiki/$search"
+# trashman: put
+TP() {
+    trash $@
+    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Files have been put to Trash:"
+    printf '%s\n' "$@"
+}
+
+# trashman: restore
+TR() {
+    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Restore file from Trash:"
+    trash --list
+    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT To restore file(s), use the command: trash -r filename1 filename2 ..."
+    cd ~/.local/share/Trash/files
+}
+
+# trashman: empty
+TE() {
+    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Emptying Trash, are you sure? (y = yes)"
+    read answer_trash
+    if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
+        trash --empty
+        echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Done! Trash is empty."
+    else
+        echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Exit. Trash hasn't been emptied."
+    fi
+}
+
+# pacman: removed orphaned
+pacrmo() {
+    echo -e "$COLOR_HL1::$COLOR_TITLE sudo pacman -Rns \$(pacman -Qdtq) $COLOR_DEFAULT:: Remove all orphaned packages, their configuration files and unneeded dependecies.\n"
+    sudo pacman -Rns $(pacman -Qdtq)
+}
+
+# pacman: remove packages
+pacrm() {
+    echo -e "$COLOR_HL1::$COLOR_TITLE sudo pacman -Rns $COLOR_DEFAULT:: Remove packages, their configuration files and unneeded dependecies.\n"
+    sudo pacman -Rns $@
+}
+
+# pacman set up mirror list
+pacmirror() {
+    echo -e "$COLOR_HL1::$COLOR_TITLE pacmirror >$COLOR_DEFAULT Use the new pacman mirrorlist as the default mirrorlist and create a backup of the current mirrorlist? (y = yes)"
+    read answer_list
+    if [[ $answer_list == "y" ]] || [[ $answer_list == "Y" ]]; then
+        sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+        sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+        echo "New mirrorlist: done!"
+        echo "Opening the new mirrorlist for editing."
+        sudo vim /etc/pacman.d/mirrorlist
+    else
+        echo "pacmirror script stopped. Nothing changed."
+    fi
+}
+
+# pacman: list or search in cache
+pacpkg() {
+    cache_dir=/var/cache/pacman/pkg
+    if [[ $1 == "" ]]; then
+    echo -e "$COLOR_HL1::$COLOR_TITLE pacpkg >$COLOR_DEFAULT Listing $cache_dir:"
+        ls -l $cache_dir
+    else
+    echo -e "$COLOR_HL1::$COLOR_TITLE pacpkg >$COLOR_DEFAULT Search results for $1 in $cache_dir:"
+        ls -l $cache_dir | grep $1
+    fi
 }
 
 # List custom aliases
@@ -106,41 +163,69 @@ lsalias() {
     cat .zshrc | grep '^alias'
 }
 
+# Downaload bbtv
+bbtv() {
+ youtube-dl -o "~/Downloads/%(title)s.%(ext)s" http://www.bbtv.hu/bbtv-$1
+}
+
+# Colored man pages (https://wiki.archlinux.org/index.php/Man_page#Using_less_.28Recommended.29)
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+
 #===============
 # Custom aliases
 #===============
 
-alias package-info='dpkg -p'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
-alias install='sudo apt-get install --no-install-recommends'
-alias repo='sudo add-apt-repository'
-alias hdparm='sudo hdparm -I /dev/sda | grep level'
-alias remove='sudo apt-get remove'
-alias music_downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/Downloads/%(title)s.%(ext)s"'
-alias openbox_win_info='obxprop | grep "^_OB_APP"'
-alias RR='source ~/.zshrc'
+# Pacman
+alias install='sudo pacman -S'
+alias remove='sudo pacman -Rs'
+alias update='sudo pacman -Syy'
+alias upgrade='sudo pacman -Syyu'
+alias paclog='less /var/log/pacman.log'
+alias cdpacpkg='cd /var/cache/pacman/pkg'
+alias pacconf='sudo vim /etc/pacman.conf'
+
+# Config files
 alias zshrc='vim ~/.zshrc'
+alias vimrc='vim ~/.vimrc'
+alias vimprc='vim ~/.vimperatorrc'
+alias awerc='vim ~/.config/awesome/rc.lua'
+alias rangerrc='vim ~/.config/ranger/rc.conf'
 alias xinitrc='vim ~/.xinitrc'
-alias rm='rmtrash -r'
-alias unpack='aunpack'
-alias trestore='trash-restore'
-alias tlist='trash-list'
-alias tempty='trash-empty'
-alias tgrep='trash-list | grep'
-alias trm='trash-rm'
-alias list-drives='sudo fdisk -l'
-alias drives-id='sudo blkid'
-alias mount0='sudo mount /dev/sdb ~/USB -o uid=rio,gid=rio'
+alias xresources='vim ~/.Xresources'
+
+# Mount
+alias mount0='sudo mount /dev/sdb ~/USB -o uid=rio'
 alias umount0='sudo umount /dev/sdb'
-alias mount1='sudo mount /dev/sdb1 ~/USB -o uid=rio,gid=rio'
+alias mount1='sudo mount /dev/sdb1 ~/USB -o uid=rio'
 alias umount1='sudo umount /dev/sdb1'
+
+# Git
 alias gstat='git status'
 alias gadd='git add --all'
 alias gcommit='git commit -m'
 alias gpush='git push origin master'
 alias gdiff='git diff'
-alias Q='exit'
+
+# Battery
 alias batstat='cat /sys/class/power_supply/BAT0/status'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
+
+# Other
+alias RR='source ~/.zshrc'
+alias unpack='aunpack'
 alias ls='ls -l --color=auto'
+alias tpfan='sudo tpfan-admin'
+alias conn='nmcli d'
+alias music-downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/Downloads/%(title)s.%(ext)s"'
+alias hdparm='sudo hdparm -I /dev/sda | grep level'
+alias pingg='ping google.com'
+alias Q='exit'

@@ -1,0 +1,6 @@
+touch vimsetup
+open_with vim
+chmod +x %s
+chmod %s 777
+shell
+shell 

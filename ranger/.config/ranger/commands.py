@@ -13,20 +13,20 @@ class tempty(Command):
 
     Empties the Trash directory:
     ~/.local/share/Trash/
-    Requires trash-cli
+    Requires trashman
     """
     def execute(self):
-        self.fm.run("trash-empty")
+        self.fm.run("trash -e")
 
-class trestore(Command):
-    """:trestore
+#class trestore(Command):
+    #""":trestore
 
-    Restores file(s) from the Trash directory:
-    ~/.local/share/Trash/
-    Requires trash-cli
-    """
-    def execute(self):
-        self.fm.run("cd ~ && trash-restore")
+    #Restores file(s) from the Trash directory:
+    #~/.local/share/Trash/
+    #Requires trash-cli
+    #"""
+    #def execute(self):
+        #self.fm.run("cd ~ && trash-restore")
 
 class mpv(Command):
     """:mpv
