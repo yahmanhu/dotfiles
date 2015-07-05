@@ -57,7 +57,7 @@ export EDITOR="/usr/bin/vim"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
- export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  #if [[ -n $SSH_CONNECTION ]]; then
@@ -180,6 +180,14 @@ man() {
     man "$@"
 }
 
+gten() {
+    trans en:hu "$*"
+}
+
+gthu() {
+    trans hu:en "$*"
+}
+
 #===============
 # Custom aliases
 #===============
@@ -220,12 +228,13 @@ alias batstat='cat /sys/class/power_supply/BAT0/status'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
 
 # Other
-alias RR='source ~/.zshrc'
+alias RR='source ~/.zshrc && clear'
 alias unpack='aunpack'
 alias ls='ls -l --color=auto'
-alias tpfan='sudo tpfan-admin'
+alias tpfan='sudo tpfan-admin && clear'
 alias conn='nmcli d'
 alias music-downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/Downloads/%(title)s.%(ext)s"'
 alias hdparm='sudo hdparm -I /dev/sda | grep level'
 alias pingg='ping google.com'
 alias Q='exit'
+alias htop='htop && clear'

@@ -7,7 +7,7 @@ set number
 set t_Co=256
 syntax on
 filetype plugin indent on
-colorscheme grb256rio
+colorscheme tomorrow-night-spcmd 
 set showcmd
 set linebreak
 set hlsearch
@@ -25,7 +25,7 @@ set ttimeoutlen=10
 set splitbelow
 set splitright
 set cursorline
-set noshowmode
+set showmode
 set laststatus=2
 set listchars=tab:▸\ ,eol:¬,trail:⋅
 set autoread
@@ -35,15 +35,18 @@ set incsearch
 set wildmenu
 set scrolloff=10
 set noswapfile
+set statusline=
+set statusline+=%f%m%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ L:%l/%L\ C:%c\ (%P)
 
 "================
 "Plugins settings
 "================
 
-let g:airline#extensions#tabline#enabled = 1 "display buffers/tabs at the top
-let g:airline#extensions#tabline#fnamemod = ':t' "show filenames only on tabs
-let g:airline_section_b = '%{getcwd()}' "show current working directory
-let g:airline_powerline_fonts = 0 "load patched powerline fonts
+"let g:airline#extensions#tabline#enabled = 1 "display buffers/tabs at the top
+"let g:airline#extensions#tabline#fnamemod = ':t' "show filenames only on tabs
+"let g:airline_section_b = '%{getcwd()}' "show current working directory
+"let g:airline_powerline_fonts = 0 "load patched powerline fonts
+"let g:airline_theme='darkrio' "set airline theme
 
 let g:session_autosave="yes" "autosave session
 let g:session_autoload="yes" "autoload session
@@ -51,7 +54,7 @@ let g:session_autoload="yes" "autoload session
 let g:neocomplete#enable_at_startup = 1 "enable Neocomplete
 let g:neocomplete#enable_smart_case = 1 "smartcase for Neocomplete
 
-"let g:airline_theme='darkrio' "set airline theme
+let g:buftabline_indicators = 1
 
 "===============
 "Custom commands

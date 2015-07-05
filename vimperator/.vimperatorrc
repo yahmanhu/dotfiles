@@ -57,6 +57,9 @@ inoremap <C-a> i<C-a>
 "Add bookmark
 nnoremap B :bmark<CR>
 
+" Copy link to clipboard
+nnoremap C ;y
+
 "============================================"
 "   Commands                                 "
 "============================================"
