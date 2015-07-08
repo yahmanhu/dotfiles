@@ -180,14 +180,6 @@ man() {
     man "$@"
 }
 
-gten() {
-    trans en:hu "$*"
-}
-
-gthu() {
-    trans hu:en "$*"
-}
-
 #===============
 # Custom aliases
 #===============

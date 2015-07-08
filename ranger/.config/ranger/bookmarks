@@ -1,14 +1,15 @@
-b:/home/rio/Backup
-s:/home/rio/scripts
+r:/home/rio/Scripts
+t:/home/rio/.local/share/Trash/files
+u:/home/rio/USB
+w:/home/rio/Downloads
+s:/home/rio/Scripts
 d:/home/rio/Documents
-l:/home/rio/.config/mpv/watch_later
+':/home/rio/USB/My_Books/The-Wealth-of-Nations
+p:/home/rio/Pictures
+b:/home/rio/Backup
+f:/home/rio/dotfiles
 c:/home/rio/.config
-':/home/rio/Downloads/Sons Of Anarchy Season 1 to 5 Mp4 720p/Sons Of Anarchy Season 1 Mp4
+a:/home/rio/Applications
+l:/home/rio/.config/mpv/watch_later
 v:/home/rio/Videos
 n:/home/rio/bin
-u:/home/rio/USB
-a:/home/rio/Applications
-w:/home/rio/Downloads
-f:/home/rio/dotfiles
-p:/home/rio/Pictures
-t:/home/rio/.local/share/Trash/files
