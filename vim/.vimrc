@@ -215,12 +215,6 @@ nnoremap <silent> <leader>cz :ColorHighlight syntax<CR>
 nnoremap <silent> <leader>vc :VCoolor<CR>
 inoremap <silent> <leader>vc <Esc>:VCoolor<CR>a
 
-"=============
-"Abbreviations
-"=============
-
-iab fucntion function
-
 "============
 "Autocommands
 "============

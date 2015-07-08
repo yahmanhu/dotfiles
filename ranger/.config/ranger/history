@@ -5,3 +5,6 @@ chmod %s 777
 shell
 shell 
 
+mount1
+shell mount1
+delete
