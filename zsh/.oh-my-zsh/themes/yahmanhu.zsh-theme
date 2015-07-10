@@ -64,10 +64,24 @@ keyboard() {
 
 }
 
+mount() {
 
-local ret_status="%(?:%{$fg_bold[yellow]%}[%T] :%{$fg_bold[red]%}[%T] %s)"
-PROMPT='${ret_status}$(keyboard) $(volume) $(bat_status) $(bat_capacity) $(ethernet) $(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
-RPROMPT="%(?:%{$fg_bold[yellow]%}[%D{ %A %B %d %Y }] :%{$fg_bold[red]%}[%D{ %A %B %d %Y }] %s)"
+    if [[ "$(ls ~/USB)" == "total 0" ]]; then
+        :
+    else
+        echo "\e[91mUSB Mounted "
+    fi
+
+}
+
+TMOUT=60
+
+TRAPALRM() {
+    zle reset-prompt
+}
+
+local ret_status="%(?:%{$fg_bold[yellow]%}[%D{%a.%m.%d.%y}][%T] :%{$fg_bold[red]%}[%D{%a.%m.%d.%y}][%T] %s)"
+PROMPT='${ret_status}$(mount)$(keyboard) $(bat_capacity) $(bat_status) $(volume) $(ethernet) $(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

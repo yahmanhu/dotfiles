@@ -1,15 +1,15 @@
-r:/home/rio/Scripts
-t:/home/rio/.local/share/Trash/files
-u:/home/rio/USB
-c:/home/rio/.config
+l:/home/rio/.config/mpv/watch_later
 b:/home/rio/Backup
-a:/home/rio/Applications
 v:/home/rio/Videos
-':/home/rio/bin
+':/home/rio/Downloads/Sons Of Anarchy Season 1 to 5 Mp4 720p/Sons Of Anarchy Season 2 Mp4/English Subtitles
+a:/home/rio/Applications
 p:/home/rio/Pictures
 w:/home/rio/Downloads
 f:/home/rio/dotfiles
+r:/home/rio/Scripts
 d:/home/rio/Documents
-l:/home/rio/.config/mpv/watch_later
-n:/home/rio/bin
 s:/home/rio/Scripts
+u:/home/rio/USB
+n:/home/rio/bin
+t:/home/rio/.local/share/Trash/files
+c:/home/rio/.config

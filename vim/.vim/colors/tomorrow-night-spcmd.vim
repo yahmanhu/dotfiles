@@ -49,7 +49,7 @@ let s:folded_bg = "252525"
 hi clear
 syntax reset
 
-let g:colors_name = "Tomorrow-Night-spcmd"
+let g:colors_name = "tomorrow-night-spcmd"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Returns an approximate grey index for the given grey level

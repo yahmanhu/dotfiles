@@ -155,6 +155,12 @@ command! -description="CNN" cnn :open http://cnn.com
 "Open AUR
 command! -description="Arch User Respository" aur :open https://www.archlinux.org/packages/
 
+"Open yahmanhu github page
+command! -description="Yahmanhu github" yahman :open https://github.com/yahmanhu
+
+"Open spcmd github page
+command! -description="spcmd github" spcmd :open https://github.com/spcmd
+
 "============================================"
 "   Autocommands                             "
 "============================================"

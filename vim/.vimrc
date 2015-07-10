@@ -205,6 +205,9 @@ nnoremap dw diw
 "Jump to end of word then add an extra space
 nnoremap e el
 
+"Select all text
+nnoremap <C-a> ggVG
+
 "NERDTree Toggle
 nnoremap TN :NERDTreeToggle<ENTER>
 
