@@ -215,10 +215,6 @@ alias gcommit='git commit -m'
 alias gpush='git push origin master'
 alias gdiff='git diff'
 
-# Battery
-alias batstat='cat /sys/class/power_supply/BAT0/status'
-alias batcap='cat /sys/class/power_supply/BAT0/capacity'
-
 # Other
 alias RR='source ~/.zshrc && clear'
 alias unpack='aunpack'
@@ -232,3 +228,4 @@ alias Q='exit'
 alias htop='htop && clear'
 alias lgt='logout'
 alias wl='mpv-watch-later'
+alias suspend='systemctl suspend'

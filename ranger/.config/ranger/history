@@ -6,6 +6,11 @@ shell
 shell 
 mount1
 shell mount1
-delete
-
 x
+
+Q
+delete
+q
+shell testfile
+shell touch testftile
+shell touch test

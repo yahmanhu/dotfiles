@@ -532,7 +532,7 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
-    { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2"} },
+    { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2", "Zathura"} },
       properties = { floating = true } },
     { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin", "feh" } },
       properties = { floating = true },
@@ -585,7 +585,8 @@ client.connect_signal("manage", function (c, startup)
                               c.class == "System-config-printer.py" or
                               c.class == "Tpfan-admin" or
                               c.class == "feh" or
-                              c.class == "Gcolor2")
+                              c.class == "Gcolor2" or
+                              c.class == "Zathura")
                          then
 
         -- buttons for the titlebar
