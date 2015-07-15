@@ -160,7 +160,7 @@ pacpkg() {
 
 # List custom aliases
 lsalias() {
-    cat .zshrc | grep '^alias'
+    cat ~/.zshrc | grep '^alias'
 }
 
 # Downaload bbtv
@@ -215,6 +215,9 @@ alias gcommit='git commit -m'
 alias gpush='git push origin master'
 alias gdiff='git diff'
 
+# Suffixes
+alias -s torrent='rtorrent'
+
 # Other
 alias RR='source ~/.zshrc && clear'
 alias unpack='aunpack'
@@ -229,3 +232,4 @@ alias htop='htop && clear'
 alias lgt='logout'
 alias wl='mpv-watch-later'
 alias suspend='systemctl suspend'
+
