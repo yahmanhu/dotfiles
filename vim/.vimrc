@@ -37,6 +37,7 @@ set scrolloff=10
 set noswapfile
 set statusline=
 set statusline+=%f%m%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ L:%l/%L\ C:%c\ (%P)
+set mouse=a
 
 "================
 "Plugins settings

@@ -180,6 +180,19 @@ man() {
     man "$@"
 }
 
+lsgrep() {
+
+    ls -l | grep $1
+
+} 
+
+lsdir() {
+
+    ls -l $HOME/$1
+
+}
+
+
 #===============
 # Custom aliases
 #===============
@@ -215,9 +228,6 @@ alias gcommit='git commit -m'
 alias gpush='git push origin master'
 alias gdiff='git diff'
 
-# Suffixes
-alias -s torrent='rtorrent'
-
 # Other
 alias RR='source ~/.zshrc && clear'
 alias unpack='aunpack'
@@ -232,4 +242,4 @@ alias htop='htop && clear'
 alias lgt='logout'
 alias wl='mpv-watch-later'
 alias suspend='systemctl suspend'
-
+alias calc='python -ic "from __future__ import division; from math import *; from random import *"'

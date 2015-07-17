@@ -1,5 +1,4 @@
 touch vimsetup
-open_with vim
 chmod +x %s
 chmod %s 777
 shell
@@ -9,8 +8,11 @@ shell mount1
 x
 
 Q
-delete
 q
 shell testfile
 shell touch testftile
 shell touch test
+shell -p d
+delete
+rename yahmanhu.zsh-theme
+open_with vim

@@ -38,24 +38,32 @@ ethernet() {
 
 volume() {
 
-    vol_state=$(amixer get Master | egrep Playback | egrep -o off)
+if [[ $(pidof Xorg) ]]; then
 
-    if [[ $vol_state == "off" ]]; then
+        vol_state=$(amixer get Master | egrep Playback | egrep -o off)
+
+        if [[ $vol_state == "off" ]]; then
         :
-    else
-        echo "\e[95m vol"
-    fi
+        else
+            echo "\e[95m vol"
+        fi
+
+fi
+
 }
 
 keyboard() {
 
-    check_layout=$(setxkbmap -query | grep 'layout')
+if [[ $(pidof Xorg) ]]; then
 
-    if [[ $check_layout = *"hu"* ]]; then
-        echo "\e[37mhu"
-    elif [[ $check_layout = *"gb"* ]]; then
-        echo "\e[37mgb"
-    fi
+        check_layout=$(setxkbmap -query | grep 'layout')
+
+        if [[ $check_layout = *"hu"* ]]; then
+            echo "\e[37mhu"
+        elif [[ $check_layout = *"gb"* ]]; then
+            echo "\e[37mgb"
+        fi
+fi
 
 }
 
