@@ -182,13 +182,13 @@ man() {
 
 lsgrep() {
 
-    ls -l | grep $1
+    ls -lh --color=auto | grep $1
 
 } 
 
 lsdir() {
 
-    ls -l $HOME/$1
+    ls -lh --color=auto $HOME/$1
 
 }
 
@@ -231,7 +231,7 @@ alias gdiff='git diff'
 # Other
 alias RR='source ~/.zshrc && clear'
 alias unpack='aunpack'
-alias ls='ls -l --color=auto'
+alias ls='ls -lh --color=auto'
 alias tpfan='sudo tpfan-admin && clear'
 alias conn='nmcli d'
 alias music-downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/Downloads/%(title)s.%(ext)s"'
