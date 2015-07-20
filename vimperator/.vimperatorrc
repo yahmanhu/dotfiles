@@ -164,6 +164,9 @@ command! -description="Yahmanhu github" yahman :open https://github.com/yahmanhu
 "Open spcmd github page
 command! -description="spcmd github" spcmd :open https://github.com/spcmd
 
+"Open tiddlytux
+command! -description="TiddlyTux" tiddlytux :open http://tiddlytux.tiddlyspot.com/
+
 "============================================"
 "   Autocommands                             "
 "============================================"
