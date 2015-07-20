@@ -13,6 +13,6 @@ shell testfile
 shell touch testftile
 shell touch test
 shell -p d
-delete
 rename yahmanhu.zsh-theme
 open_with vim
+delete

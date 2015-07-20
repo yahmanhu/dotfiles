@@ -60,6 +60,9 @@ nnoremap B :bmark<CR>
 " Copy link to clipboard
 nnoremap C ;y
 
+"Translate the selected text with Translate Shell (https://github.com/soimort/translate-shell)
+nmap <leader>t :trans<CR>
+
 "============================================"
 "   Commands                                 "
 "============================================"

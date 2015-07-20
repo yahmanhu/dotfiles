@@ -192,6 +192,18 @@ lsdir() {
 
 }
 
+volume-switcher() {
+
+vol_state=$(amixer get Master | egrep Playback | egrep -o off)
+
+    if [[ $vol_state == "off" ]]; then
+        amixer sset Master unmute
+    else
+        amixer sset Master mute
+    fi
+
+}
+
 
 #===============
 # Custom aliases
@@ -243,3 +255,5 @@ alias lgt='logout'
 alias wl='mpv-watch-later'
 alias suspend='systemctl suspend'
 alias calc='python -ic "from __future__ import division; from math import *; from random import *"'
+alias swvol='volume-switcher'
+alias swifi='switch-wifi'
