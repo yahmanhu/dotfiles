@@ -158,6 +158,12 @@ pacpkg() {
     fi
 }
 
+pacdep() {
+
+    pacman -Qi $@ | grep "Depends"
+
+}
+
 # List custom aliases
 lsalias() {
     cat ~/.zshrc | grep '^alias'
@@ -217,6 +223,7 @@ alias upgrade='sudo pacman -Syyu'
 alias paclog='less /var/log/pacman.log'
 alias cdpacpkg='cd /var/cache/pacman/pkg'
 alias pacconf='sudo vim /etc/pacman.conf'
+alias pacinfo='pacman -Qi'
 
 # Config files
 alias zshrc='vim ~/.zshrc'
