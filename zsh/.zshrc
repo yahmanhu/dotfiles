@@ -210,6 +210,30 @@ vol_state=$(amixer get Master | egrep Playback | egrep -o off)
 
 }
 
+find-file(){
+
+    find -type f -iname $1 -exec ls --color -d {} \;
+
+}
+
+find-dir(){
+
+    find -type d -iname $1 -exec ls --color -d {} \;
+
+}
+
+find-by-file-type(){
+
+    find -iname "*.$1" -exec ls --color -d {} \;
+
+}
+
+find-by-name(){
+
+    find -iname $1 -exec ls --color -d {} \;
+
+}
+
 
 #===============
 # Custom aliases
@@ -246,6 +270,13 @@ alias gadd='git add --all'
 alias gcommit='git commit -m'
 alias gpush='git push origin master'
 alias gdiff='git diff'
+alias gitign='git ls-files --other --ignored --exclude-standar'
+
+# Find
+alias findf='find-file'
+alias findd='find-dir'
+alias findt='find-by-file-type'
+alias findn='find-by-name'
 
 # Other
 alias RR='source ~/.zshrc && clear'
