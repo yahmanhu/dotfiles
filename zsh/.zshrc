@@ -87,20 +87,20 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #=================
 
 # trashman: list
-TL() {
+tl() {
     echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Listing Trash:"
     trash --list
 }
 
 # trashman: put
-TP() {
+tp() {
     trash $@
     echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Files have been put to Trash:"
     printf '%s\n' "$@"
 }
 
 # trashman: restore
-TR() {
+tr() {
     echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Restore file from Trash:"
     trash --list
     echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT To restore file(s), use the command: trash -r filename1 filename2 ..."
@@ -108,7 +108,7 @@ TR() {
 }
 
 # trashman: empty
-TE() {
+te() {
     echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Emptying Trash, are you sure? (y = yes)"
     read answer_trash
     if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
@@ -203,9 +203,9 @@ volume-switcher() {
 vol_state=$(amixer get Master | egrep Playback | egrep -o off)
 
     if [[ $vol_state == "off" ]]; then
-        amixer sset Master unmute
+        amixer sset Master unmute > /dev/null
     else
-        amixer sset Master mute
+        amixer sset Master mute > /dev/null
     fi
 
 }
@@ -234,6 +234,11 @@ find-by-name(){
 
 }
 
+quick-backup(){
+
+    cp $@ ~/backup
+
+}
 
 #===============
 # Custom aliases
@@ -293,5 +298,7 @@ alias lgt='logout'
 alias wl='mpv-watch-later'
 alias suspend='systemctl suspend'
 alias calc='python -ic "from __future__ import division; from math import *; from random import *"'
-alias swvol='volume-switcher'
+alias svol='volume-switcher'
 alias swifi='switch-wifi'
+alias DS='periscope -l en'
+alias BB='quick-backup'

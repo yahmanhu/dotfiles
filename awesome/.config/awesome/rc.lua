@@ -153,12 +153,10 @@ function Battery_widget()
     file:close()
 
     if (batstat == "Discharging") then
-        if (batcap <= "20") then
+        if (batcap <= "30") then
         battwidget:set_markup('<span color="#ff0000">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
-        elseif (batcap <= "30") then
-        battwidget:set_markup('<span color="#DCC939">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
         else
-        battwidget:set_markup('<span color="#848484">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#ffffff">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
         end
     else
         battwidget:set_markup('<span color="#5FE36C">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
@@ -181,7 +179,7 @@ function Wifi()
     if (wifistat == "up") then
         wifi_widget:set_markup('<span color="#5FE36C">Wi-Fi</span>')
     else
-        wifi_widget:set_markup('<span color="#848484">Wi-Fi</span>')
+        wifi_widget:set_markup('<span color="#ffffff">Wi-Fi</span>')
     end
 end
 
@@ -202,7 +200,7 @@ function Ethernet()
     if (ethstat == "up") then
         ethernet_widget:set_markup('<span color="#5FE36C">Wired Connection</span>')
     else
-        ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
+        ethernet_widget:set_markup('<span color="#ffffff">Wired Connection</span>')
     end
 end
 Ethernet()
@@ -225,23 +223,9 @@ function Vol_widget()
     vol_value_command:close()
 
     if string.find(volstat, "off") then
-        volume_widget:set_markup('<span color="#848484">Volume</span>')
+        volume_widget:set_markup('<span color="#ffffff">Volume</span>')
     else
-        if vol_value == "100%" then
-            volume_widget:set_markup('<span color="#5FE36C">Volume</span>')
-        elseif vol_value > "90%" then
-            volume_widget:set_markup('<span color="#5FE36C">Volum</span>'..'<span color="#848484">e</span>')
-        elseif vol_value == "0%" then
-            volume_widget:set_markup('<span color="#848484">Volume</span>')
-        elseif vol_value <= "50%" then
-            volume_widget:set_markup('<span color="#5FE36C">V</span>'..'<span color="#848484">olume</span>')
-        elseif vol_value <= "60%" then
-            volume_widget:set_markup('<span color="#5FE36C">Vo</span>'..'<span color="#848484">lume</span>')
-        elseif vol_value <= "80%" then
-            volume_widget:set_markup('<span color="#5FE36C">Vol</span>'..'<span color="#848484">ume</span>')
-        elseif vol_value <= "90%" then
-            volume_widget:set_markup('<span color="#5FE36C">Volu</span>'..'<span color="#848484">me</span>')
-        end
+        volume_widget:set_markup('<span color="#5FE36C">Volume</span>')
     end
 end
 
@@ -340,12 +324,13 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the left
     local top_layout = wibox.layout.fixed.horizontal()
     top_layout:add(mytaglist[s])
-    top_layout:add(mypromptbox[s])
+    --top_layout:add(mypromptbox[s])
     top_layout:add(mytasklist[s])
 
     -- Widgets that are aligned to the right
     local bottom_layout = wibox.layout.flex.horizontal()
-    bottom_layout:add(mylayoutbox[s])
+    --bottom_layout:add(mylayoutbox[s])
+    bottom_layout:add(mypromptbox[s])
     bottom_layout:add(battwidget)
     bottom_layout:add(wifi_widget)
     bottom_layout:add(ethernet_widget)
