@@ -131,6 +131,9 @@ command! -description="Yummie" yummie :open http://yummie.hu/
 "Open plastik.hu
 command! -description="Plastik.hu" plastik :open http://plastik.hu/
 
+"Open eletamerikaban
+command! -description="Elet Amerikaban blog" eletamerikaban :open http://eletamerikabanesutana.blogspot.hu/
+
 "Open port.hu
 command! -description="Port.hu" port :open http://port.hu/tv/pls/tv/oldtv.prog
 

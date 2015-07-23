@@ -212,25 +212,25 @@ vol_state=$(amixer get Master | egrep Playback | egrep -o off)
 
 find-file(){
 
-    find -type f -iname $1 -exec ls --color -d {} \;
+    find ~ -type f -iname $1\* -exec ls --color -d {} \;
 
 }
 
 find-dir(){
 
-    find -type d -iname $1 -exec ls --color -d {} \;
+    find ~ -type d -iname $1\* -exec ls --color -d {} \;
 
 }
 
 find-by-file-type(){
 
-    find -iname "*.$1" -exec ls --color -d {} \;
+    find ~ -iname "*.$1" -exec ls --color -d {} \;
 
 }
 
 find-by-name(){
 
-    find -iname $1 -exec ls --color -d {} \;
+    find ~ -iname $1\* -exec ls --color -d {} \;
 
 }
 
@@ -278,10 +278,11 @@ alias gdiff='git diff'
 alias gitign='git ls-files --other --ignored --exclude-standar'
 
 # Find
-alias findf='find-file'
-alias findd='find-dir'
-alias findt='find-by-file-type'
-alias findn='find-by-name'
+alias findfile='find-file'
+alias finddir='find-dir'
+alias findtype='find-by-file-type'
+alias findname='find-by-name'
+alias fap='find-and-play'
 
 # Other
 alias RR='source ~/.zshrc && clear'

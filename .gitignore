@@ -1,6 +1,7 @@
 mpv/.config/mpv/watch_later
 awesome/.config/awesome/debian
 ranger/.config/ranger/__pycache__
+ranger/.config/ranger/history
 ranger/.config/ranger/plugins/__pycache__
 /ranger/.config/ranger/plugins/__init__.py
 __pycache__

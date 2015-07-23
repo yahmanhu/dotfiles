@@ -38,17 +38,13 @@ ethernet() {
 
 volume() {
 
-if [[ $(pidof Xorg) ]]; then
+    vol_state=$(amixer get Master | egrep Playback | egrep -o off)
 
-        vol_state=$(amixer get Master | egrep Playback | egrep -o off)
-
-        if [[ $vol_state == "off" ]]; then
-        :
-        else
-            echo "\e[95m vol"
-        fi
-
-fi
+    if [[ $vol_state == "off" ]]; then
+    :
+    else
+        echo "\e[95m vol"
+    fi
 
 }
 
@@ -84,7 +80,7 @@ TRAPALRM() {
 }
 
 local ret_status="%(?:%{$fg_bold[yellow]%}[%D{%a.%m.%d.%y}][%T] :%{$fg_bold[red]%}[%D{%a.%m.%d.%y}][%T] %s)"
-PROMPT='${ret_status}$(mount)$(keyboard) $(bat_status)$(volume) $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+PROMPT='${ret_status}$(mount)$(bat_status)$(volume) $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
