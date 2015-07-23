@@ -278,10 +278,10 @@ alias gdiff='git diff'
 alias gitign='git ls-files --other --ignored --exclude-standar'
 
 # Find
-alias findfile='find-file'
-alias finddir='find-dir'
-alias findtype='find-by-file-type'
-alias findname='find-by-name'
+alias ffile='find-file'
+alias fdir='find-dir'
+alias ftype='find-by-file-type'
+alias fname='find-by-name'
 alias fap='find-and-play'
 
 # Other
