@@ -154,12 +154,12 @@ function Battery_widget()
 
     if (batstat == "Discharging") then
         if (batcap <= "30") then
-        battwidget:set_markup('<span color="#ff0000">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
         else
-        battwidget:set_markup('<span color="#ffffff">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#848484">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
         end
     else
-        battwidget:set_markup('<span color="#000000">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#5FE36C">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
 end
 end
 
@@ -177,9 +177,9 @@ function Wifi()
     wifistat_file:close()
 
     if (wifistat == "up") then
-        wifi_widget:set_markup('<span color="#000000">Wi-Fi</span>')
+        wifi_widget:set_markup('<span color="#5FE36C">Wi-Fi</span>')
     else
-        wifi_widget:set_markup('<span color="#ffffff">Wi-Fi</span>')
+        wifi_widget:set_markup('<span color="#848484">Wi-Fi</span>')
     end
 end
 
@@ -198,9 +198,9 @@ function Ethernet()
     ethstat_file:close()
 
     if (ethstat == "up") then
-        ethernet_widget:set_markup('<span color="#000000">Wired Connection</span>')
+        ethernet_widget:set_markup('<span color="#5FE36C">Wired Connection</span>')
     else
-        ethernet_widget:set_markup('<span color="#ffffff">Wired Connection</span>')
+        ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
     end
 end
 Ethernet()
@@ -223,19 +223,19 @@ function Vol_widget()
     vol_value_command:close()
 
     if string.find(volstat, "off") then
-        volume_widget:set_markup('<span color="#ffffff">Volume</span>')
+        volume_widget:set_markup('<span color="#C3C3C3">Volume</span>')
     else
         volume_widget:set_markup('<span color="#000000">Volume</span>')
     end
 end
 
-Vol_widget()
+--Vol_widget()
 
 -- Clock and calendar widget
 clockcal_widget = wibox.widget.textbox()
 
 function Clockcal()
-    --clockcal_widget:set_markup('<span color="#ffffff">' .. os.date("%A %B %d  %H:%M") .. '</span>')
+    --clockcal_widget:set_markup('<span color="#FFFFFF">' .. os.date("%A %B %d  %H:%M") .. '</span>')
     clockcal_widget:set_markup('<span color="#FFFFFF">' .. os.date("%H:%M") .. '</span>')
 end
 
@@ -250,7 +250,7 @@ clockcal_timer:start()
 separator_widget = wibox.widget.textbox()
 
 function Separator_widget()
-        separator_widget:set_markup('<span color="#000000">  |  </span>')
+        separator_widget:set_markup('<span color="#5FE36C">  |  </span>')
 end
 Separator_widget()
 

@@ -10,8 +10,8 @@ theme = {}
 theme.font      = "Sans 9"
 
 -- {{{ Colors
-theme.fg_normal  = "#FFFFFF"
-theme.bg_normal  = "#848484"
+theme.fg_normal  = "#848484"
+theme.bg_normal  = "#000000"
 theme.fg_focus   = "#000000"
 theme.bg_focus   = "#5FE36C"
 theme.fg_urgent  = "#000000"
@@ -21,10 +21,10 @@ theme.bg_systray = theme.bg_normal
 --theme.bg_urgent  = "#DCC939"
 -- }}}
 
-theme.tasklist_bg_normal = "#848484"
-theme.tasklist_fg_normal = "#FFFFFF"
-theme.tasklist_bg_focus = "#848484"
-theme.tasklist_fg_focus = "#000000"
+theme.tasklist_bg_normal = "#000000"
+theme.tasklist_fg_normal = "#848484"
+theme.tasklist_bg_focus = "#000000"
+theme.tasklist_fg_focus = "#5FE36C"
 
 -- {{{ Borders
 theme.border_width  = 0
@@ -34,9 +34,9 @@ theme.border_marked = "#CC9393"
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus  = theme.bg_normal
-theme.titlebar_bg_normal = theme.bg_normal
-theme.titlebar_fg_normal = "#FFFFFF"
+theme.titlebar_bg_focus  = "#000000" 
+theme.titlebar_bg_normal = "#000000"
+theme.titlebar_fg_normal = "#848484"
 theme.titlebar_fg_focus = "#5FE35C"
 -- }}}
 
@@ -58,8 +58,8 @@ theme.titlebar_fg_focus = "#5FE35C"
 --theme.fg_widget        = "#AECF96"
 --theme.fg_center_widget = "#88A175"
 --theme.fg_end_widget    = "#FF5656"
---theme.bg_widget        = "#494B4F"
---theme.border_widget    = "#3F3F3F"
+--theme.bg_widget        = "#5FE36C"
+--theme.border_widget    = "#5FE36C"
 -- }}}
 
 -- {{{ Mouse finder
