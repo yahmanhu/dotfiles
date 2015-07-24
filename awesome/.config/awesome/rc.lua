@@ -159,7 +159,7 @@ function Battery_widget()
         battwidget:set_markup('<span color="#ffffff">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
         end
     else
-        battwidget:set_markup('<span color="#5FE36C">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#000000">'.. batstat.." ".. '</span>'.. '<span color="#ffffff">'.. batcap.."% "..'</span>')
 end
 end
 
@@ -177,7 +177,7 @@ function Wifi()
     wifistat_file:close()
 
     if (wifistat == "up") then
-        wifi_widget:set_markup('<span color="#5FE36C">Wi-Fi</span>')
+        wifi_widget:set_markup('<span color="#000000">Wi-Fi</span>')
     else
         wifi_widget:set_markup('<span color="#ffffff">Wi-Fi</span>')
     end
@@ -198,7 +198,7 @@ function Ethernet()
     ethstat_file:close()
 
     if (ethstat == "up") then
-        ethernet_widget:set_markup('<span color="#5FE36C">Wired Connection</span>')
+        ethernet_widget:set_markup('<span color="#000000">Wired Connection</span>')
     else
         ethernet_widget:set_markup('<span color="#ffffff">Wired Connection</span>')
     end
@@ -225,7 +225,7 @@ function Vol_widget()
     if string.find(volstat, "off") then
         volume_widget:set_markup('<span color="#ffffff">Volume</span>')
     else
-        volume_widget:set_markup('<span color="#5FE36C">Volume</span>')
+        volume_widget:set_markup('<span color="#000000">Volume</span>')
     end
 end
 
@@ -235,15 +235,24 @@ Vol_widget()
 clockcal_widget = wibox.widget.textbox()
 
 function Clockcal()
-    clockcal_widget:set_markup('<span color="#ffffff">' .. os.date("%A %B %d %Y  %H:%M") .. '</span>')
+    --clockcal_widget:set_markup('<span color="#ffffff">' .. os.date("%A %B %d  %H:%M") .. '</span>')
+    clockcal_widget:set_markup('<span color="#FFFFFF">' .. os.date("%H:%M") .. '</span>')
 end
 
 Clockcal()
 
-clockcal_widget:buttons (awful.util.table.join (awful.button({}, 1, function() awful.util.spawn("gsimplecal") end)))
 clockcal_timer = timer({timeout=60})
 clockcal_timer:connect_signal("timeout",Clockcal)
 clockcal_timer:start()
+
+-- Separator widget
+--
+separator_widget = wibox.widget.textbox()
+
+function Separator_widget()
+        separator_widget:set_markup('<span color="#000000">  |  </span>')
+end
+Separator_widget()
 
 -- {{{ Wibox
 -- Create a textclock widget
@@ -312,39 +321,39 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.noempty, mytaglist.buttons)
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
-    mywibox2[s] = awful.wibox({ position = "bottom", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, })
+    mywibox2[s] = awful.wibox({ position = "bottom", screen = s, })
 
-    -- Widgets that are aligned to the left
-    local top_layout = wibox.layout.fixed.horizontal()
-    top_layout:add(mytaglist[s])
-    --top_layout:add(mypromptbox[s])
-    top_layout:add(mytasklist[s])
+    local left_layout = wibox.layout.fixed.horizontal()
+    left_layout:add(mytaglist[s])
+    left_layout:add(mypromptbox[s])
 
-    -- Widgets that are aligned to the right
+    local right_layout = wibox.layout.fixed.horizontal()
+    right_layout:add(battwidget)
+    right_layout:add(separator_widget)
+    right_layout:add(ethernet_widget)
+    right_layout:add(separator_widget)
+    right_layout:add(wifi_widget)
+    right_layout:add(separator_widget)
+    right_layout:add(clockcal_widget)
+
     local bottom_layout = wibox.layout.flex.horizontal()
-    --bottom_layout:add(mylayoutbox[s])
-    bottom_layout:add(mypromptbox[s])
-    bottom_layout:add(battwidget)
-    bottom_layout:add(wifi_widget)
-    bottom_layout:add(ethernet_widget)
-    bottom_layout:add(volume_widget)
-    bottom_layout:add(clockcal_widget)
-    --if s == 1 then bottom_layout:add(wibox.widget.systray()) end
+    bottom_layout:add(mytasklist[s])
 
-    -- Now bring it all together (with the tasklist in the middle)
-    --local layout = wibox.layout.align.horizontal()
-    --layout:set_left(left_layout)
-    --layout:set_right(right_layout)
+    local layout = wibox.layout.align.horizontal()
+    layout:set_left(left_layout)
+    layout:set_middle()
+    layout:set_right(right_layout)
 
-    mywibox[s]:set_widget(top_layout)
+    mywibox[s]:set_widget(layout)
     mywibox2[s]:set_widget(bottom_layout)
+
 end
 -- }}}
 

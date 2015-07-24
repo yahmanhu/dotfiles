@@ -240,6 +240,13 @@ quick-backup(){
 
 }
 
+fehbg(){
+
+    feh --bg-fill $1
+
+}
+
+
 #===============
 # Custom aliases
 #===============
