@@ -5,6 +5,7 @@ ranger/.config/ranger/history
 ranger/.config/ranger/tagged
 ranger/.config/ranger/plugins/__pycache__
 /ranger/.config/ranger/plugins/__init__.py
+/vim/.vim/colors/tomorrow-night-spcmd.vim
 __pycache__
 *.pyo
 __init__.py
