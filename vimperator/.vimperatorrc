@@ -2,10 +2,11 @@
 "   General settings                          "
 "============================================="
 
-colorscheme vimperatorfox-dark
+colorscheme yahman_theme
 set toolbars=nonavigation
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set newtab=all
+set editor="urxvtc -e vim"
 "let mapleader = "\"
 
 "============================================"
@@ -50,12 +51,18 @@ nmap m ;m
 "Bookmarks toggle
 nmap <C-b> :ignorekeys<CR> :sidebar Bookmarks<CR>
 
+"Downloads toggle
+nnoremap <C-w> <C-S-y>
+
 "Select ALL
 nnoremap <C-a> i<C-a>
 inoremap <C-a> i<C-a>
 
 "Add bookmark
 nnoremap B :bmark<CR>
+
+"Open bookmarks
+nnoremap bm :bmarks! 
 
 " Copy link to clipboard
 nnoremap C ;y

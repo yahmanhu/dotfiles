@@ -52,7 +52,7 @@ plugins=(git zsh-syntax-highlighting)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/rio/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export EDITOR="/usr/bin/vim"
+export EDITOR='vim'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -266,6 +266,7 @@ alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
 alias vimprc='vim ~/.vimperatorrc'
 alias awerc='vim ~/.config/awesome/rc.lua'
+alias yahmantheme='vim ~/.config/awesome/themes/yahman/theme.lua'
 alias rangerrc='vim ~/.config/ranger/rc.conf'
 alias xinitrc='vim ~/.xinitrc'
 alias xresources='vim ~/.Xresources'

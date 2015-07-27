@@ -9,14 +9,9 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
---local menubar = require("menubar")
--- Vicious library (for widgets)
--- local vicious = require("vicious")
 
--- Load Debian menu entries
--- require("debian.menu")
 
--- {{{ Error handling
+--  Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -39,19 +34,14 @@ do
         in_error = false
     end)
 end
--- }}}
+-- 
 
--- {{{ Autostart
+--  Autostart
 -- Start compton
 awful.util.spawn_with_shell("compton --backend glx --paint-on-overlay --vsync opengl-swc")
--- Write xmodmap
--- awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
--- Start nm-applet
--- awful.util.spawn_with_shell("nm-applet")
 
 
-
--- {{{ Variable definitions
+--  Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/themes/yahman/theme.lua")
 
@@ -82,27 +72,27 @@ local layouts =
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
--- }}}
+-- 
 
--- {{{ Wallpaper
+--  Wallpaper
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
 end
--- }}}
+-- 
 
--- {{{ Tags
+--  Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({ 'web', 'terminal', 'files', 'torrent', 'music', "office", 7, 8, 9 }, s, layouts[1])
 end
--- }}}
+-- 
 
--- {{{ Menu
--- {{{ {{{ Menu variables
+--  Menu
+--   Menu variables
 switch_keybaord = function() awful.util.spawn("/home/rio/bin/switch-keyboard") end
 switch_wifi = function() awful.util.spawn("/home/rio/bin/switch-wifi") end
 switch_monitor = function() awful.util.spawn("/home/rio/bin/switch-monitor") end
@@ -139,7 +129,7 @@ mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
 
 mylauncher = awful.widget.launcher({ menu = mymainmenu })
 
--- }}}
+-- 
 
 -- Battery indicator widget
 battwidget = wibox.widget.textbox()
@@ -239,6 +229,10 @@ function Clockcal()
     clockcal_widget:set_markup('<span color="#FFFFFF">' .. os.date("%H:%M") .. '</span>')
 end
 
+clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })
+
+clockcal_widget:connect_signal("mouse::enter", function() clockcal_tooltip:set_text(os.date("%A %B %d %Y")) end)
+
 Clockcal()
 
 clockcal_timer = timer({timeout=60})
@@ -254,7 +248,7 @@ function Separator_widget()
 end
 Separator_widget()
 
--- {{{ Wibox
+--  Wibox
 -- Create a textclock widget
 --mytextclock = awful.widget.textclock()
 
@@ -321,7 +315,7 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.noempty, mytaglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
@@ -342,6 +336,7 @@ for s = 1, screen.count() do
     right_layout:add(wifi_widget)
     right_layout:add(separator_widget)
     right_layout:add(clockcal_widget)
+    right_layout:add(separator_widget)
 
     local bottom_layout = wibox.layout.flex.horizontal()
     bottom_layout:add(mytasklist[s])
@@ -355,17 +350,17 @@ for s = 1, screen.count() do
     mywibox2[s]:set_widget(bottom_layout)
 
 end
--- }}}
+-- 
 
--- {{{ Mouse bindings
+--  Mouse bindings
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
--- }}}
+-- 
 
--- {{{ Key bindings
+--  Key bindings
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, ",",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, ".",   awful.tag.viewnext       ),
@@ -517,11 +512,11 @@ clientbuttons = awful.util.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- }}}
+-- 
 
--- {{{ Rules
+--  Rules
 -- Rules to apply to new clients (through the "manage" signal).
--- }}}
+-- 
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -553,7 +548,7 @@ awful.rules.rules = {
       properties = { tag = tags [1][6] } },
 }
 
--- {{{ Signals
+--  Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
     -- Enable sloppy focus
@@ -634,4 +629,6 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
+
+--  Notification border color
+naughty.config.defaults.border_color = "#000000"

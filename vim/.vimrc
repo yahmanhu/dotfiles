@@ -39,6 +39,24 @@ set statusline=
 set statusline+=%f%m%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ L:%l/%L\ C:%c\ (%P)
 set mouse=a
 
+"===============
+"Cursor settings
+"===============
+
+" Cursor color & shape
+" 1 or 0 -> blinking block
+" 2 -> normal block
+" 3 -> blinking underscore
+" 4 -> normal underscore
+" 5 -> blinking vertical bar
+" 6 -> normal vertical bar
+"let &t_SI = "\<Esc>]12;white\x7"
+"let &t_EI = "\<Esc>]12;green\x7"
+"let &t_SI .= "\<Esc>[4 q"
+"let &t_EI .= "\<Esc>[2 q"
+"silent !echo -ne "\033]12;yellow\007"
+"autocmd VimLeave * silent !echo -ne "\033]12;green\007"
+
 "================
 "Plugins settings
 "================
