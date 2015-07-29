@@ -73,14 +73,21 @@ mount() {
 
 }
 
+cursor(){
+
+    echo -e "\033[?17;0;127c"
+
+}
+
 TMOUT=60
 
 TRAPALRM() {
     zle reset-prompt
 }
 
+
 local ret_status="%(?:%{$fg_bold[yellow]%}[%D{%a.%m.%d.%y}][%T] :%{$fg_bold[red]%}[%D{%a.%m.%d.%y}][%T] %s)"
-PROMPT='${ret_status}$(mount)$(bat_status)$(volume) $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+PROMPT='$(cursor)${ret_status}$(mount)$(bat_status)$(volume) $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

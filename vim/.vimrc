@@ -7,7 +7,7 @@ set number
 set t_Co=256
 syntax on
 filetype plugin indent on
-colorscheme tomorrow-night-spcmd
+colorscheme Tomorrow-Night-spcmd
 set showcmd
 set linebreak
 set hlsearch
@@ -43,6 +43,13 @@ set mouse=a
 "Cursor settings
 "===============
 
+" Set the cursor on tty
+if 1
+  let &t_ve = substitute(&t_ve, '\e[?\zs0c', '112;0;0c', 'g')
+endif
+
+" Set the cursor on X11
+
 " Cursor color & shape
 " 1 or 0 -> blinking block
 " 2 -> normal block
@@ -52,7 +59,7 @@ set mouse=a
 " 6 -> normal vertical bar
 "let &t_SI = "\<Esc>]12;white\x7"
 "let &t_EI = "\<Esc>]12;green\x7"
-"let &t_SI .= "\<Esc>[4 q"
+"let &t_SI .= "\<Esc>[2 q"
 "let &t_EI .= "\<Esc>[2 q"
 "silent !echo -ne "\033]12;yellow\007"
 "autocmd VimLeave * silent !echo -ne "\033]12;green\007"

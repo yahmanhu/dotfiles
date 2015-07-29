@@ -7,6 +7,9 @@ export ZSH=/home/rio/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="yahmanhu"
 
+#echo -e "\033[?17;0;127c"
+#echo -e "\e[?16;0;200c"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -303,7 +306,6 @@ alias hdparm='sudo hdparm -I /dev/sda | grep level'
 alias pingg='ping google.com'
 alias Q='exit'
 alias htop='htop && clear'
-alias lgt='logout'
 alias wl='mpv-watch-later'
 alias suspend='systemctl suspend'
 alias calc='python -ic "from __future__ import division; from math import *; from random import *"'
