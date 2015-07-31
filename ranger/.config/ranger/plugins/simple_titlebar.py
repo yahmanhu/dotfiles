@@ -7,16 +7,16 @@ import os
 
 def _get_left_part(self, bar):
 
-    username = os.environ["USER"]
-    trashdir = "/home/"+username+"/.local/share/Trash/files"
+    #username = os.environ["USER"]
+    #trashdir = "/home/"+username+"/.local/share/Trash/files"
 
-    if self.fm.username == 'root':
-        clr = 'bad'
-    else:
-        clr = 'good'
+    #if self.fm.username == 'root':
+        #clr = 'bad'
+    #else:
+        #clr = 'good'
 
-    if len(os.listdir(trashdir)) > 0:
-        bar.add('↻ ', clr, fixed=True)
+    #if len(os.listdir(trashdir)) > 0:
+        #bar.add('↻ ', clr, fixed=True)
 
     # Username and hostname commented out for simplicity, however it still usable
     #bar.add(self.fm.username, 'hostname', clr, fixed=True)

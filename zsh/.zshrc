@@ -89,54 +89,52 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # Custom functions
 #=================
 
-# trashman: list
+# Trash list
 tl() {
-    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Listing Trash:"
-    trash --list
+    echo -e "Trash:"
+    ls -lh ~/.local/share/Trash/files/
 }
 
 # trashman: put
 tp() {
     trash $@
-    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Files have been put to Trash:"
+    echo -e "Deleted:"
     printf '%s\n' "$@"
-}
-
-# trashman: restore
-tr() {
-    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Restore file from Trash:"
-    trash --list
-    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT To restore file(s), use the command: trash -r filename1 filename2 ..."
-    cd ~/.local/share/Trash/files
 }
 
 # trashman: empty
 te() {
-    echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Emptying Trash, are you sure? (y = yes)"
-    read answer_trash
-    if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
-        trash --empty
-        echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Done! Trash is empty."
+
+    if [[ "$(ls ~/.local/share/Trash/files/)" == "total 0" ]]; then
+        echo "Trash is empty."
     else
-        echo -e "$COLOR_HL1::$COLOR_TITLE trashman >$COLOR_DEFAULT Exit. Trash hasn't been emptied."
+        echo -e "Are you sure you want to remove these files? (y = yes)"
+        trash --list
+        read answer_trash
+        if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
+            trash --empty
+            echo -e "Trash is empty."
+        else
+            echo -e "Trash hasn't been emptied."
+        fi
     fi
 }
 
 # pacman: removed orphaned
 pacrmo() {
-    echo -e "$COLOR_HL1::$COLOR_TITLE sudo pacman -Rns \$(pacman -Qdtq) $COLOR_DEFAULT:: Remove all orphaned packages, their configuration files and unneeded dependecies.\n"
+    echo -e "sudo pacman -Rns \$(pacman -Qdtq). Remove all orphaned packages, their configuration files and unneeded dependecies.\n"
     sudo pacman -Rns $(pacman -Qdtq)
 }
 
 # pacman: remove packages
 pacrm() {
-    echo -e "$COLOR_HL1::$COLOR_TITLE sudo pacman -Rns $COLOR_DEFAULT:: Remove packages, their configuration files and unneeded dependecies.\n"
+    echo -e "sudo pacman -Rns. Remove packages, their configuration files and unneeded dependecies.\n"
     sudo pacman -Rns $@
 }
 
 # pacman set up mirror list
 pacmirror() {
-    echo -e "$COLOR_HL1::$COLOR_TITLE pacmirror >$COLOR_DEFAULT Use the new pacman mirrorlist as the default mirrorlist and create a backup of the current mirrorlist? (y = yes)"
+    echo -e "Use the new pacman mirrorlist as the default mirrorlist and create a backup of the current mirrorlist? (y = yes)"
     read answer_list
     if [[ $answer_list == "y" ]] || [[ $answer_list == "Y" ]]; then
         sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
@@ -153,10 +151,10 @@ pacmirror() {
 pacpkg() {
     cache_dir=/var/cache/pacman/pkg
     if [[ $1 == "" ]]; then
-    echo -e "$COLOR_HL1::$COLOR_TITLE pacpkg >$COLOR_DEFAULT Listing $cache_dir:"
+    echo -e "Listing $cache_dir:"
         ls -l $cache_dir
     else
-    echo -e "$COLOR_HL1::$COLOR_TITLE pacpkg >$COLOR_DEFAULT Search results for $1 in $cache_dir:"
+    echo -e "Search results for $1 in $cache_dir:"
         ls -l $cache_dir | grep $1
     fi
 }
@@ -313,3 +311,6 @@ alias svol='volume-switcher'
 alias swifi='switch-wifi'
 alias DS='periscope -l en'
 alias BB='quick-backup'
+alias del='trash'
+alias back='cd $OLDPWD'
+alias tr='trash -r'
