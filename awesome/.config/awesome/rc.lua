@@ -149,7 +149,7 @@ function Battery_widget()
         battwidget:set_markup('<span color="#848484">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
         end
     else
-        battwidget:set_markup('<span color="#5FE36C">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#00FF00">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
 end
 end
 
@@ -167,7 +167,7 @@ function Wifi()
     wifistat_file:close()
 
     if (wifistat == "up") then
-        wifi_widget:set_markup('<span color="#5FE36C">Wi-Fi</span>')
+        wifi_widget:set_markup('<span color="#FFA500">Wi-Fi</span>')
     else
         wifi_widget:set_markup('<span color="#848484">Wi-Fi</span>')
     end
@@ -188,7 +188,7 @@ function Ethernet()
     ethstat_file:close()
 
     if (ethstat == "up") then
-        ethernet_widget:set_markup('<span color="#5FE36C">Wired Connection</span>')
+        ethernet_widget:set_markup('<span color="#00BFFF">Wired Connection</span>')
     else
         ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
     end
@@ -226,7 +226,7 @@ clockcal_widget = wibox.widget.textbox()
 
 function Clockcal()
     --clockcal_widget:set_markup('<span color="#FFFFFF">' .. os.date("%A %B %d  %H:%M") .. '</span>')
-    clockcal_widget:set_markup('<span color="#FFFFFF">' .. os.date("%H:%M") .. '</span>')
+    clockcal_widget:set_markup('<span color="#FF6347">' .. os.date("%H:%M") .. '</span>')
 end
 
 clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })

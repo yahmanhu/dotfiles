@@ -98,6 +98,9 @@ command! RWS %s/\s\+$//|echo "Removing trailing white spaces"
 "Quick delete/close buffer
 command! QQ bd
 
+"Turn on color highlight
+command! COL :ColorHighlight syntax<CR>
+
 "==================
 "Custom keybindings
 "==================
@@ -236,9 +239,6 @@ nnoremap <C-a> ggVG
 
 "NERDTree Toggle
 nnoremap TN :NERDTreeToggle<ENTER>
-
-"Turn on color highlight
-nnoremap <silent> <leader>cz :ColorHighlight syntax<CR>
 
 "Vcoolor
 nnoremap <silent> <leader>vc :VCoolor<CR>
