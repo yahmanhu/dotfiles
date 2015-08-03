@@ -6,7 +6,7 @@ colorscheme yahman_theme
 set toolbars=nonavigation
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set newtab=all
-set editor="urxvtc -e vim"
+"set editor="urxvtc -e vim"
 "let mapleader = "\"
 
 "============================================"
