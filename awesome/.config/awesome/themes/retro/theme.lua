@@ -1,52 +1,42 @@
---  Yahman's Awesome Theme
+--  Yahman's Retro Theme
 
 theme = {}
 
 --  Font
 
-theme.font      = "Sans Bold 8"
---theme.font      = "Terminus 10"
---theme.font      = "Perfect DOS VGA 437 11"
---theme.font      = "Ubuntu Mono derivative Powerline Bold 10"
+theme.font      = "Perfect DOS VGA 437 11"
 
 --  Colors
 
-    -- Normal
-theme.bg_normal  = "#2F4F4F"
 theme.fg_normal  = "#FFFFFF"
-    -- Focus
-theme.bg_focus   = "#BEBEBE"
+theme.bg_normal  = "#0000FF"
 theme.fg_focus   = "#000000"
-    -- Urgent
-theme.bg_urgent  = "#DC0000"
+theme.bg_focus   = "#BEBEBE"
 theme.fg_urgent  = "#000000"
+theme.bg_urgent  = "#DC0000"
 --theme.bg_systray = theme.bg_normal
 --theme.bg_focus   = "#20EC11"
 --theme.bg_urgent  = "#DCC939"
 
 --  Tasklist
 
-    -- Normal
-theme.tasklist_bg_normal = theme.bg_normal
-theme.tasklist_fg_normal = "#BEBEBE"
-    -- Focus
-theme.tasklist_bg_focus = theme.bg_normal
+theme.tasklist_fg_normal = "#848484"
+theme.tasklist_bg_normal = "#0000FF"
 theme.tasklist_fg_focus = "#FFFFFF"
+theme.tasklist_bg_focus = "#0000FF"
 
 --  Titlebars
 
-    -- Normal
-theme.titlebar_bg_normal = theme.bg_normal
-theme.titlebar_fg_normal = theme.tasklist_fg_normal
-    -- Focus
-theme.titlebar_bg_focus  = theme.bg_normal 
-theme.titlebar_fg_focus = theme.tasklist_fg_focus
+theme.titlebar_fg_normal = "#848484"
+theme.titlebar_bg_normal = "#0000FF"
+theme.titlebar_fg_focus = "#FFFFFF"
+theme.titlebar_bg_focus  = "#0000FF" 
 
 --  Tooltip
 
-theme.tooltip_bg_color = "#000000"
 theme.tooltip_fg_color = "#FFFFFF"
-theme.tooltip_font = "Sans 10"
+theme.tooltip_bg_color = "#0000FF"
+theme.tooltip_font = "TPerfect DOS VGA 437 11"
 
 --  Menu
 

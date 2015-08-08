@@ -261,6 +261,7 @@ alias paclog='less /var/log/pacman.log'
 alias cdpacpkg='cd /var/cache/pacman/pkg'
 alias pacconf='sudo vim /etc/pacman.conf'
 alias pacinfo='pacman -Qi'
+alias pacsrch='pacman -Ss'
 
 # Config files
 alias zshrc='vim ~/.zshrc'
@@ -293,6 +294,10 @@ alias ftype='find-by-file-type'
 alias fname='find-by-name'
 alias fap='find-and-play'
 
+# Suffix aliases
+alias -s pdf=zathura
+alias -s tex=vim
+
 # Other
 alias RR='source ~/.zshrc && clear'
 alias unpack='aunpack'
@@ -314,3 +319,4 @@ alias BB='quick-backup'
 alias del='trash'
 alias back='cd $OLDPWD'
 alias tr='trash -r'
+alias xrdbload='xrdb load .Xresources'

@@ -87,7 +87,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 'web', 'terminal', 'files', 'torrent', 'music', "office", 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ '1. web', '2. terminal', '3. files', '4. torrent', '5. music', "6. office", 7, 8, 9 }, s, layouts[1])
 end
 -- 
 
@@ -526,8 +526,10 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
-    { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2", "Zathura"} },
+    { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2" } },
       properties = { floating = true } },
+    { rule_any = { class = { "Zathura" } },
+      properties = { floating = true, maximized_vertical = true, maximized_horizontal = true } },
     { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin", "feh" } },
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
