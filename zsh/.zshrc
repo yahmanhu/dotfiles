@@ -172,7 +172,7 @@ lsalias() {
 
 # Downaload bbtv
 bbtv() {
- youtube-dl -o "~/Downloads/%(title)s.%(ext)s" http://www.bbtv.hu/bbtv-$1
+ youtube-dl -o "~/downloads/%(title)s.%(ext)s" http://www.bbtv.hu/bbtv-$1
 }
 
 # Colored man pages (https://wiki.archlinux.org/index.php/Man_page#Using_less_.28Recommended.29)

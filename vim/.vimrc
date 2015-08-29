@@ -251,3 +251,7 @@ inoremap <silent> <leader>vc <Esc>:VCoolor<CR>a
 autocmd BufRead .vimperatorrc setfiletype vim
 autocmd BufRead *.markdown,*tex call DistractFree#DistractFreeToggle() | wincmd w
 autocmd BufRead *tex colorscheme darkroom
+
+au BufRead,BufNewFile *.fountain set filetype=fountain
+autocmd BufRead *.markdown,*fountain call DistractFree#DistractFreeToggle() | wincmd w
+autocmd BufRead *fountain colorscheme darkroom
