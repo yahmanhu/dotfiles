@@ -12,14 +12,17 @@ theme.font      = "Sans Bold 8"
 --  Colors
 
     -- Normal
-theme.bg_normal  = "#2F4F4F"
-theme.fg_normal  = "#FFFFFF"
+--theme.bg_normal  = "#2F4F4F"
+theme.bg_normal  = "#D3D3D3"
+--theme.fg_normal  = "#FFFFFF"
+theme.fg_normal  = "#000000"
     -- Focus
-theme.bg_focus   = "#BEBEBE"
-theme.fg_focus   = "#000000"
+--theme.bg_focus   = "#A9A9A9"
+theme.bg_focus   = "#4169E1"
+theme.fg_focus   = "#FFFFFF"
     -- Urgent
-theme.bg_urgent  = "#DC0000"
-theme.fg_urgent  = "#000000"
+--theme.bg_urgent  = "#DC0000"
+--theme.fg_urgent  = "#000000"
 --theme.bg_systray = theme.bg_normal
 --theme.bg_focus   = "#20EC11"
 --theme.bg_urgent  = "#DCC939"

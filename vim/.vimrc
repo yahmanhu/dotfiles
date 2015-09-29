@@ -82,6 +82,8 @@ let g:neocomplete#enable_smart_case = 1 "smartcase for Neocomplete
 
 let g:buftabline_indicators = 1
 
+let g:vcoolor_disable_mappings = 1
+
 "===============
 "Custom commands
 "===============
@@ -241,8 +243,9 @@ nnoremap <C-a> ggVG
 nnoremap TN :NERDTreeToggle<ENTER>
 
 "Vcoolor
-nnoremap <silent> <leader>vc :VCoolor<CR>
-inoremap <silent> <leader>vc <Esc>:VCoolor<CR>a
+"nnoremap <silent> <leader>vc :VCoolor<CR>
+"inoremap <silent> <leader>vc <Esc>:VCoolor<CR>a
+
 
 "============
 "Autocommands

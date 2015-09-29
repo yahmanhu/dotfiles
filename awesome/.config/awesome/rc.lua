@@ -102,23 +102,9 @@ suspend = function() awful.util.spawn("systemctl suspend") end
 reboot = function() awful.util.spawn("systemctl reboot") end
 poweroff = function() awful.util.spawn("systemctl poweroff") end
 
-gnome_disks = function() awful.util.spawn("gnome-disks") end
-usb_creator = function() awful.util.spawn("gksudo usb-creator-gtk") end
-unetbootin = function() awful.util.spawn("unetbootin") end
-
-printer_config = function() awful.util.spawn("system-config-printer") end
-
-tpfan = function() awful.util.spawn("sudo tpfan-admin") end
-
 mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
                                     {"&Wifi switcher", switch_wifi},
                                     {"&Monitor switcher", switch_monitor},
-                                    {},
-                                    {"&Gnome Disks", gnome_disks},
-                                    {"&USB Creator", usb_creator},
-                                    {"Unet&bootin", unetbootin},
-                                    {"&TPFan", tpfan},
-                                    {"Printer &Config", printer_config},
                                     {},
                                     {"&Logout", logout},
                                     {"&Reboot", reboot},
@@ -144,12 +130,12 @@ function Battery_widget()
 
     if (batstat == "Discharging") then
         if (batcap <= "30") then
-        battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#000000">'.. batcap.."% "..'</span>')
         else
-        battwidget:set_markup('<span color="#848484">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#000000">'.. batstat.." ".. '</span>'.. '<span color="#000000">'.. batcap.."% "..'</span>')
         end
     else
-        battwidget:set_markup('<span color="#00FF00">'.. batstat.." ".. '</span>'.. '<span color="#FFFFFF">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#000000">'.. batstat.." ".. '</span>'.. '<span color="#000000">'.. batcap.."% "..'</span>')
 end
 end
 
@@ -173,11 +159,11 @@ function Wifi()
     end
 end
 
-Wifi()
+--Wifi()
 
-wifi_timer = timer({timeout=10})
-wifi_timer:connect_signal("timeout",Wifi)
-wifi_timer:start()
+--wifi_timer = timer({timeout=10})
+--wifi_timer:connect_signal("timeout",Wifi)
+--wifi_timer:start()
 
 -- Ethernet connection widget
 ethernet_widget = wibox.widget.textbox()
@@ -193,11 +179,11 @@ function Ethernet()
         ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
     end
 end
-Ethernet()
+--Ethernet()
 
-eth_timer = timer({timeout=10})
-eth_timer:connect_signal("timeout",Ethernet)
-eth_timer:start()
+--eth_timer = timer({timeout=10})
+--eth_timer:connect_signal("timeout",Ethernet)
+--eth_timer:start()
 
 -- Volume indicator wiget
 volume_widget = wibox.widget.textbox()
@@ -225,8 +211,8 @@ end
 clockcal_widget = wibox.widget.textbox()
 
 function Clockcal()
-    --clockcal_widget:set_markup('<span color="#FFFFFF">' .. os.date("%A %B %d  %H:%M") .. '</span>')
-    clockcal_widget:set_markup('<span color="#FF6347">' .. os.date("%H:%M") .. '</span>')
+    --clockcal_widget:set_markup('<span color="#000000">' .. os.date("%A %B %d  %H:%M") .. '</span>')
+    clockcal_widget:set_markup('<span color="#000000">' .. os.date("%H:%M") .. '</span>')
 end
 
 clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })
@@ -244,7 +230,7 @@ clockcal_timer:start()
 separator_widget = wibox.widget.textbox()
 
 function Separator_widget()
-        separator_widget:set_markup('<span color="#5FE36C">  |  </span>')
+        separator_widget:set_markup('<span color="#4169E1">  |  </span>')
 end
 Separator_widget()
 
@@ -322,7 +308,7 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s, })
-    mywibox2[s] = awful.wibox({ position = "bottom", screen = s, })
+    --mywibox2[s] = awful.wibox({ position = "bottom", screen = s, })
 
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mytaglist[s])
@@ -330,10 +316,10 @@ for s = 1, screen.count() do
 
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(battwidget)
-    right_layout:add(separator_widget)
-    right_layout:add(ethernet_widget)
-    right_layout:add(separator_widget)
-    right_layout:add(wifi_widget)
+    --right_layout:add(separator_widget)
+    --right_layout:add(ethernet_widget)
+    --right_layout:add(separator_widget)
+    --right_layout:add(wifi_widget)
     right_layout:add(separator_widget)
     right_layout:add(clockcal_widget)
     right_layout:add(separator_widget)
@@ -347,7 +333,7 @@ for s = 1, screen.count() do
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
-    mywibox2[s]:set_widget(bottom_layout)
+    --mywibox2[s]:set_widget(bottom_layout)
 
 end
 -- 
@@ -404,22 +390,23 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
-    awful.key({ modkey, "Control" }, "e", function () awful.util.spawn(editor_cmd) end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -T ranger -e ranger") end),
+    awful.key({ modkey, "Control" }, "e", function () awful.util.spawn("urxvt -T Translate -e gten") end),
+    awful.key({ modkey, "Control" }, "h", function () awful.util.spawn("urxvt -T Translate -e gthu") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),
     awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("urxvt -T Transmission -e transmission-remote-cli") end),
     awful.key({ modkey, "Control" }, "o", function () awful.util.spawn("libreoffice") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "j",     function () awful.tag.incmwfact( 0.1)    end),
-    awful.key({ modkey,           }, "k",     function () awful.tag.incmwfact(-0.1)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+    --awful.key({ modkey,           }, "j",     function () awful.tag.incmwfact( 0.1)    end),
+    --awful.key({ modkey,           }, "k",     function () awful.tag.incmwfact(-0.1)    end),
+    --awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
+    --awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
+    --awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
+    --awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+    --awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
+    --awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -530,7 +517,7 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule_any = { class = { "Zathura" } },
       properties = { floating = true, maximized_vertical = true, maximized_horizontal = true } },
-    { rule_any = { class = { "Gnome-disks", "Usb-creator-gtk", "Unetbootin", "feh" } },
+    { rule_any = { class = { "Usb-creator-gtk", "Unetbootin", "feh" } },
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
     { rule = { class = "System-config-printer.py"},
@@ -548,6 +535,9 @@ awful.rules.rules = {
       properties = { tag = tags [1][5] } },
     { rule = { class = "libreoffice-startcenter" },
       properties = { tag = tags [1][6] } },
+    { rule = { name = "Translate" },
+      properties = { floating = true },
+      callback = function (c) awful.placement.center_horizontal(c,nil) end },
 }
 
 --  Signals
