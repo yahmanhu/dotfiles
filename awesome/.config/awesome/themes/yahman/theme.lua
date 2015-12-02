@@ -21,8 +21,8 @@ theme.fg_normal  = "#000000"
 theme.bg_focus   = "#4169E1"
 theme.fg_focus   = "#FFFFFF"
     -- Urgent
---theme.bg_urgent  = "#DC0000"
---theme.fg_urgent  = "#000000"
+theme.bg_urgent  = "#DC0000"
+theme.fg_urgent  = "#000000"
 --theme.bg_systray = theme.bg_normal
 --theme.bg_focus   = "#20EC11"
 --theme.bg_urgent  = "#DCC939"
@@ -40,9 +40,9 @@ theme.tasklist_fg_focus = "#FFFFFF"
 
     -- Normal
 theme.titlebar_bg_normal = theme.bg_normal
-theme.titlebar_fg_normal = theme.tasklist_fg_normal
+theme.titlebar_fg_normal = theme.fg_normal
     -- Focus
-theme.titlebar_bg_focus  = theme.bg_normal 
+theme.titlebar_bg_focus  = theme.bg_focus 
 theme.titlebar_fg_focus = theme.tasklist_fg_focus
 
 --  Tooltip

@@ -247,6 +247,11 @@ fehbg(){
 
 }
 
+grepword(){
+
+    grep -rnw $1 -e $2
+
+}
 
 #===============
 # Custom aliases
@@ -262,6 +267,7 @@ alias cdpacpkg='cd /var/cache/pacman/pkg'
 alias pacconf='sudo vim /etc/pacman.conf'
 alias pacinfo='pacman -Qi'
 alias pacsrch='pacman -Ss'
+alias packages='pacman -Q'
 
 # Config files
 alias zshrc='vim ~/.zshrc'
@@ -314,7 +320,7 @@ alias suspend='systemctl suspend'
 alias calc='python -ic "from __future__ import division; from math import *; from random import *"'
 alias svol='volume-switcher'
 alias swifi='switch-wifi'
-alias DS='periscope -l en'
+alias Ds='periscope -l en'
 alias BB='quick-backup'
 alias del='trash'
 alias back='cd $OLDPWD'
@@ -323,3 +329,8 @@ alias xrdbload='xrdb load .Xresources'
 alias sww='swifi && startx'
 alias usbcreator='gksudo usb-creator-gtk'
 alias printer='system-config-printer'
+alias fs='df -h | grep Filesystem && df -h | grep sda1 && df -h | grep home'
+alias batcap='cat /sys/class/power_supply/BAT0/capacity'
+alias batstat='cat /sys/class/power_supply/BAT0/status'
+alias addtorrent='transmission-remote -a'
+alias trc='transmission-remote-cli'

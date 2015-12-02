@@ -87,7 +87,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ '1. web', '2. terminal', '3. files', '4. torrent', '5. music', "6. office", 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ '1. web ', '2. terminal ', '3. files ', '4. torrent ', '5. music ', '6. office ', }, s, layouts[1])
 end
 -- 
 
@@ -230,7 +230,7 @@ clockcal_timer:start()
 separator_widget = wibox.widget.textbox()
 
 function Separator_widget()
-        separator_widget:set_markup('<span color="#4169E1">  |  </span>')
+        separator_widget:set_markup('<span color="#4169E1">  >  </span>')
 end
 Separator_widget()
 
@@ -391,8 +391,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -T ranger -e ranger") end),
-    awful.key({ modkey, "Control" }, "e", function () awful.util.spawn("urxvt -T Translate -e gten") end),
-    awful.key({ modkey, "Control" }, "h", function () awful.util.spawn("urxvt -T Translate -e gthu") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),
     awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("urxvt -T Transmission -e transmission-remote-cli") end),
     awful.key({ modkey, "Control" }, "o", function () awful.util.spawn("libreoffice") end),
@@ -535,9 +533,6 @@ awful.rules.rules = {
       properties = { tag = tags [1][5] } },
     { rule = { class = "libreoffice-startcenter" },
       properties = { tag = tags [1][6] } },
-    { rule = { name = "Translate" },
-      properties = { floating = true },
-      callback = function (c) awful.placement.center_horizontal(c,nil) end },
 }
 
 --  Signals
