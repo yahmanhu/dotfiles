@@ -247,7 +247,7 @@ fehbg(){
 
 }
 
-grepword(){
+grepstr(){
 
     grep -rnw $1 -e $2
 
