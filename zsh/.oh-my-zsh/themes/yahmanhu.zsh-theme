@@ -2,8 +2,8 @@ bat_status() {
     bat_stat=$(cat /sys/class/power_supply/BAT0/status)
     bat_cap=$(cat /sys/class/power_supply/BAT0/capacity)
 
-    if [[ $bat_stat == "Charging" ]]; then
-        echo "\e[94m$bat_cap"
+    if [[ $bat_stat == "Charging" ]] || [[ $bat_stat == "Full" ]]; then
+        echo "\e[32m$bat_cap"
     elif [[ $bat_stat == "Discharging" ]] && [[ $bat_cap == "30" ]] || [[ $bat_cap < "30" ]]; then
         echo "\e[91m$bat_cap"
     elif [[ $bat_stat == "Discharging" ]] && [[ $bat_cap > "30" ]]; then

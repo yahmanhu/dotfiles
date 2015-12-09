@@ -250,7 +250,8 @@ fehbg(){
 strgrep(){
 
     grep -rnw $1 -e $2
-
+    matches=$(grep -ro $2 $1 | wc -w)
+    echo "Total matches: $matches"
 }
 
 #===============
