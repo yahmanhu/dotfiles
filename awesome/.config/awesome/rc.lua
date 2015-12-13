@@ -87,7 +87,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ '1. web ', '2. terminal ', '3. files ', '4. torrent ', '5. music ', '6. office ', }, s, layouts[1])
+    tags[s] = awful.tag({ ' 1. web ', ' 2. terminal ', ' 3. files ', ' 4. torrent ', ' 5. music ', ' 6. office ', }, s, layouts[1])
 end
 -- 
 
@@ -130,12 +130,12 @@ function Battery_widget()
 
     if (batstat == "Discharging") then
         if (batcap <= "30") then
-        battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#000000">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#DC0000">'.. batcap.."% "..'</span>')
         else
-        battwidget:set_markup('<span color="#000000">'.. batstat.." ".. '</span>'.. '<span color="#000000">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#FF8C00">'.. batstat.." ".. '</span>'.. '<span color="#FF8C00">'.. batcap.."% "..'</span>')
         end
     else
-        battwidget:set_markup('<span color="#000000">'.. batstat.." ".. '</span>'.. '<span color="#000000">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#FF8C00">'.. batstat.." ".. '</span>'.. '<span color="#FF8C00">'.. batcap.."% "..'</span>')
 end
 end
 
@@ -212,7 +212,7 @@ clockcal_widget = wibox.widget.textbox()
 
 function Clockcal()
     --clockcal_widget:set_markup('<span color="#000000">' .. os.date("%A %B %d  %H:%M") .. '</span>')
-    clockcal_widget:set_markup('<span color="#000000">' .. os.date("%H:%M") .. '</span>')
+    clockcal_widget:set_markup('<span color="#FF8C00">' .. os.date("%H:%M") .. '</span>')
 end
 
 clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })
@@ -230,7 +230,7 @@ clockcal_timer:start()
 separator_widget = wibox.widget.textbox()
 
 function Separator_widget()
-        separator_widget:set_markup('<span color="#4169E1">  >  </span>')
+        separator_widget:set_markup('<span color="#000000">  |  </span>')
 end
 Separator_widget()
 
