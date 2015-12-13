@@ -95,18 +95,18 @@ end
 --   Menu variables
 switch_keybaord = function() awful.util.spawn("/home/rio/bin/switch-keyboard") end
 switch_wifi = function() awful.util.spawn("/home/rio/bin/switch-wifi") end
-switch_monitor = function() awful.util.spawn("/home/rio/bin/switch-monitor") end
+--switch_monitor = function() awful.util.spawn("/home/rio/bin/switch-monitor") end
 
-logout = function() awful.util.spawn("pkill -u rio") end
+--logout = function() awful.util.spawn("pkill -u rio") end
 suspend = function() awful.util.spawn("systemctl suspend") end
 reboot = function() awful.util.spawn("systemctl reboot") end
 poweroff = function() awful.util.spawn("systemctl poweroff") end
 
 mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
                                     {"&Wifi switcher", switch_wifi},
-                                    {"&Monitor switcher", switch_monitor},
+                                    --{"&Monitor switcher", switch_monitor},
                                     {},
-                                    {"&Logout", logout},
+                                    --{"&Logout", logout},
                                     {"&Reboot", reboot},
                                     {"&Suspend", suspend},
                                     {"&Poweroff", poweroff},

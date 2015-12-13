@@ -1,4 +1,5 @@
 bat_status() {
+
     bat_stat=$(cat /sys/class/power_supply/BAT0/status)
     bat_cap=$(cat /sys/class/power_supply/BAT0/capacity)
 
@@ -43,24 +44,8 @@ volume() {
     if [[ $vol_state == "off" ]]; then
     :
     else
-        echo "\e[95m vol"
+        echo "\e[95mvol"
     fi
-
-}
-
-keyboard() {
-
-if [[ $(pidof Xorg) ]]; then
-
-        check_layout=$(setxkbmap -query | grep 'layout')
-
-        if [[ $check_layout = *"hu"* ]]; then
-            echo "\e[37mhu"
-        elif [[ $check_layout = *"gb"* ]]; then
-            echo "\e[37mgb"
-        fi
-fi
-
 }
 
 mount() {
@@ -82,12 +67,13 @@ cursor(){
 TMOUT=60
 
 TRAPALRM() {
+
     zle reset-prompt
 }
 
 
-local ret_status="%(?:%{$fg_bold[yellow]%}[%T] :%{$fg_bold[red]%}[%T] %s)"
-PROMPT='$(cursor)${ret_status}$(mount)$(bat_status)$(volume) $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+local ret_status="%(?:%{$fg_bold[white]%}[%T] :%{$fg_bold[red]%}[%T] %s)"
+PROMPT='$(cursor)%B--%T-- [ $(bat_status)$fg[white] ] $(mount)$(volume) $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
