@@ -237,7 +237,7 @@ find-by-name(){
 
 quick-backup(){
 
-    cp $@ ~/backup
+    cp -r $@ ~/backup
 
 }
 
@@ -252,6 +252,13 @@ strgrep(){
     grep -rnw $1 -e $2
     matches=$(grep -ro $2 $1 | wc -w)
     echo "Total matches: $matches"
+}
+
+takef() {
+
+    touch $1
+    $EDITOR $1
+
 }
 
 #===============
@@ -280,13 +287,13 @@ alias awetheme='vim ~/.config/awesome/themes/yahman/theme.lua'
 alias rangerrc='vim ~/.config/ranger/rc.conf'
 alias xinitrc='vim ~/.xinitrc'
 alias xresources='vim ~/.Xresources'
-alias xrdbload='xrdbload ~/.Xresources'
+alias xrdbload='xrdb -load ~/.Xresources'
 
 # Mount
-alias mount0='sudo mount /dev/sdb ~/USB -o uid=rio'
-alias umount0='sudo umount /dev/sdb'
-alias mount1='sudo mount /dev/sdb1 ~/USB -o uid=rio'
-alias umount1='sudo umount /dev/sdb1'
+alias mount0='udisksctl mount -b /dev/sdb0'
+alias unmount0='udisksctl unmount -b /dev/sdb0'
+alias mount1='udisksctl mount -b /dev/sdb1'
+alias unmount1='udisksctl unmount -b /dev/sdb1'
 
 # Git
 alias gstat='git status'
@@ -333,3 +340,5 @@ alias fs='df -h | grep Filesystem && df -h | grep sda1 && df -h | grep home'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
 alias batstat='cat /sys/class/power_supply/BAT0/status'
 alias trc='transmission-remote-cli'
+alias usb='cd /run/media/$USER/*'
+alias lsusb='ls /run/media/$USER/*'

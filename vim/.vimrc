@@ -1,8 +1,28 @@
 "================
+"Plugins settings
+"================
+
+call plug#begin('~/.vim/plugged')
+
+    Plug 'ap/vim-buftabline'
+    Plug 'chrisbra/Colorizer', { 'on': 'ColorHighlight' }
+    Plug 'Shougo/neocomplete.vim'
+    Plug 'scrooloose/nerdcommenter'
+
+call plug#end()
+
+"let g:session_autosave="yes" "autosave session
+"let g:session_autoload="yes" "autoload session
+
+let g:neocomplete#enable_at_startup = 1 "enable Neocomplete
+let g:neocomplete#enable_smart_case = 1 "smartcase for Neocomplete
+
+let g:buftabline_indicators = 1
+
+"================
 "General settings
 "================
 
-execute pathogen#infect()
 set number
 set t_Co=256
 syntax on
@@ -64,25 +84,6 @@ endif
 "silent !echo -ne "\033]12;yellow\007"
 "autocmd VimLeave * silent !echo -ne "\033]12;green\007"
 
-"================
-"Plugins settings
-"================
-
-"let g:airline#extensions#tabline#enabled = 1 "display buffers/tabs at the top
-"let g:airline#extensions#tabline#fnamemod = ':t' "show filenames only on tabs
-"let g:airline_section_b = '%{getcwd()}' "show current working directory
-"let g:airline_powerline_fonts = 0 "load patched powerline fonts
-"let g:airline_theme='darkrio' "set airline theme
-
-let g:session_autosave="yes" "autosave session
-let g:session_autoload="yes" "autoload session
-
-let g:neocomplete#enable_at_startup = 1 "enable Neocomplete
-let g:neocomplete#enable_smart_case = 1 "smartcase for Neocomplete
-
-let g:buftabline_indicators = 1
-
-let g:vcoolor_disable_mappings = 1
 
 "===============
 "Custom commands
