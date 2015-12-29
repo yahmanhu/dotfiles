@@ -515,7 +515,7 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule_any = { class = { "Zathura" } },
       properties = { floating = true, maximized_vertical = true, maximized_horizontal = true } },
-    { rule_any = { class = { "Usb-creator-gtk", "Unetbootin", "feh" } },
+    { rule_any = { name = { "feh", "trans" } },
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
     { rule = { class = "System-config-printer.py"},
@@ -560,14 +560,12 @@ client.connect_signal("manage", function (c, startup)
 
     local titlebars_enabled = true
     if titlebars_enabled and (c.class == "mpv" or
-                              c.class == "Gnome-disks" or
-                              c.lass == "Usb-creator-gtk" or
-                              c.class == "Unetbootin" or
                               c.class == "System-config-printer.py" or
                               c.class == "Tpfan-admin" or
                               c.class == "feh" or
                               c.class == "Gcolor2" or
-                              c.class == "Zathura")
+                              c.class == "Zathura" or
+                              c.name == "trans")
                          then
 
         -- buttons for the titlebar

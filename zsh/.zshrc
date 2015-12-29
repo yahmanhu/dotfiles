@@ -254,9 +254,18 @@ strgrep(){
     echo "Total matches: $matches"
 }
 
-takef() {
+takef(){
 
     touch $1
+    $EDITOR $1
+
+}
+
+takesh(){
+
+    touch $1 
+    chmod +x $1
+    echo "#!/bin/bash" > $1
     $EDITOR $1
 
 }
@@ -282,6 +291,7 @@ alias zshrc='vim ~/.zshrc'
 alias zshtheme='vim ~/.oh-my-zsh/themes/yahmanhu.zsh-theme'
 alias vimrc='vim ~/.vimrc'
 alias vimprc='vim ~/.vimperatorrc'
+alias vimpcolors='vim ~/.vimperator/colors/yahman_theme.vimp'
 alias awerc='vim ~/.config/awesome/rc.lua'
 alias awetheme='vim ~/.config/awesome/themes/yahman/theme.lua'
 alias rangerrc='vim ~/.config/ranger/rc.conf'
@@ -334,7 +344,6 @@ alias del='trash'
 alias back='cd $OLDPWD'
 alias tr='trash -r'
 alias sww='swifi && startx'
-alias usbcreator='gksudo usb-creator-gtk'
 alias printer='system-config-printer'
 alias fs='df -h | grep Filesystem && df -h | grep sda1 && df -h | grep home'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'

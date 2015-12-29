@@ -90,7 +90,7 @@ command! -description="Open private window (custom command)" private :normal i<C
 command! -description="Source .vimperatorrc (custom command)" RR source ~/.vimperatorrc
 
 "Translate the selected text with Translate Shell (https://github.com/soimort/translate-shell)
-command! trans -description="Translate the selected text with Translate Shell" silent execute "!urxvtc --hold -e trans :hu "+window.content.window.getSelection().toString()
+command! trans -description="Translate the selected text with Translate Shell" silent execute "!urxvtc -hold -e trans :hu "+window.content.window.getSelection().toString()
 
 "Translate page with Google Translate
 command! transpage -description="Translate page with Google Translate" js window.content.window.location = "https://translate.google.com/translate?sl=auto&tl=en&js=y&hl=en&ie=UTF-8&u="+window.content.window.location
