@@ -270,6 +270,15 @@ takesh(){
 
 }
 
+free_space(){
+
+    root_dir=$(df -h / | tail -1 | awk '{print $4}')
+    home_dir=$(df -h /home | tail -1 | awk '{print $4}')
+    
+    echo -e "\e[1mFree space available\n\\ \t\t $root_dir\n\\home\t\t $home_dir"
+
+}
+
 #===============
 # Custom aliases
 #===============
@@ -345,7 +354,7 @@ alias back='cd $OLDPWD'
 alias tr='trash -r'
 alias sww='swifi && startx'
 alias printer='system-config-printer'
-alias fs='df -h | grep Filesystem && df -h | grep sda1 && df -h | grep home'
+alias fs='free_space'
 alias sum='du -ch --time'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
 alias batstat='cat /sys/class/power_supply/BAT0/status'
