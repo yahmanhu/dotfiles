@@ -361,6 +361,7 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86Back", function () awful.util.spawn("xbacklight -time 0 -dec 10%") end),
     awful.key({                   }, "XF86Forward", function () awful.util.spawn("xbacklight -time 0 -inc 15%") end),
     awful.key({                   }, "XF86PowerOff", function () awful.util.spawn("sudo pm-suspend") end),
+    awful.key({                   }, "Print", function () awful.util.spawn("scrot") end),
     awful.key({ modkey,           }, "h",
         function ()
             awful.client.focus.byidx( 1)

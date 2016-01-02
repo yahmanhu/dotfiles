@@ -132,9 +132,6 @@ command! -description="NFL.com" nfl :open http://www.nfl.com/
 "Open pats.hu
 command! -description="Patriots.hu" patshu :open http://patriots.hu/
 
-"Open IDDQD
-command! -description="IDDQD" iddqd :open http://iddqd.blog.hu/
-
 "Open yummie
 command! -description="Yummie" yummie :open http://yummie.hu/
 

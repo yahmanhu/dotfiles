@@ -213,25 +213,25 @@ vol_state=$(amixer get Master | egrep Playback | egrep -o off)
 
 find-file(){
 
-    find ~ -type f -iname $1\* -exec ls --color -d {} \;
+    find ~ -type f -iname $1\*
 
 }
 
 find-dir(){
 
-    find ~ -type d -iname $1\* -exec ls --color -d {} \;
+    find ~ -type d -iname $1\*
 
 }
 
 find-by-file-type(){
 
-    find ~ -iname "*.$1" -exec ls --color -d {} \;
+    find ~ -iname "*.$1"
 
 }
 
 find-by-name(){
 
-    find ~ -iname $1\* -exec ls --color -d {} \;
+    find ~ -iname $1\*
 
 }
 
@@ -249,7 +249,7 @@ fehbg(){
 
 strgrep(){
 
-    grep -rnw $1 -e $2
+    grep -rnw $1 -e "$2"
     matches=$(grep -ro $2 $1 | wc -w)
     echo "Total matches: $matches"
 }

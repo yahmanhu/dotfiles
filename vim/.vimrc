@@ -3,9 +3,9 @@
 "================
 
 call plug#begin('~/.vim/plugged')
-
+    Plug 'lilydjwg/colorizer'
     Plug 'ap/vim-buftabline'
-    Plug 'chrisbra/Colorizer', { 'on': 'ColorHighlight' }
+    "Plug 'chrisbra/Colorizer', { 'on': 'ColorHighlight' }
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/nerdcommenter'
 
