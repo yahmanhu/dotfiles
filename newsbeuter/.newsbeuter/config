@@ -1,0 +1,60 @@
+# SETTINGS
+# --------
+
+articlelist-format "%4i %f %D %6L  %?T?|%-17T|  ?%t"
+auto-reload yes
+browser /usr/bin/firefox
+#html-renderer "/usr/bin/lynx -display_charset=utf-8 -cfg ~/.config/lynx/lynx.cfg -dump"
+confirm-exit yes
+#datetime-format %b %d
+display-article-progress yes
+feedlist-format "%4i %n %11u %t"
+goto-next-feed no
+goto-first-unread no
+history-limit 0
+max-items 20
+reload-time 15
+download-path "~/downloads" #podbeuter
+save-path "~/downloads"
+show-keymap-hint yes
+show-read-feeds yes
+show-read-articles yes
+suppress-first-reload no
+text-width 80
+
+# KEY BINDINGS
+# ------------
+
+unbind-key ^K
+unbind-key ^J
+
+bind-key j next
+bind-key k prev
+bind-key j down article
+bind-key k up article
+bind-key l open
+bind-key h quit
+bind-key J pagedown
+bind-key K pageup
+bind-key n reload
+bind-key ^N reload-all
+bind-key ; macro-prefix
+macro m set browser "mpv %u"; open-in-browser ; set browser "/usr/bin/firefox"
+
+# COLORS
+# ------
+
+# color <element> <foreground color> <background color> [<attribute> ...]
+
+color background color2 color1
+color listnormal color2 color1
+color listfocus  color2 color6 
+color listnormal_unread color2 color1
+color listfocus_unread  color2 color6
+color info       color1 color2 
+color article    color2 color1
+
+#search-highlight-colors color5 color1 bold
+#highlight feedlist "Youtube" white red
+#highlight feedlist "Arch Linux" white blue
+highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color1 color6

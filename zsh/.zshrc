@@ -84,6 +84,7 @@ export LANG=en_US.UTF-8
 # Load dircolors
 eval $(dircolors ~/.dircolors)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#zstyle ":completion:*:descriptions" format "%B%d%b"
 
 #=================
 # Custom functions
@@ -304,13 +305,14 @@ alias vimpcolors='vim ~/.vimperator/colors/yahman_theme.vimp'
 alias awerc='vim ~/.config/awesome/rc.lua'
 alias awetheme='vim ~/.config/awesome/themes/yahman/theme.lua'
 alias rangerrc='vim ~/.config/ranger/rc.conf'
+alias newsconf='vim ~/.newsbeuter/config'
 alias xinitrc='vim ~/.xinitrc'
 alias xresources='vim ~/.Xresources'
 alias xrdbload='xrdb -load ~/.Xresources'
 
 # Mount
-alias mount0='udisksctl mount -b /dev/sdb0'
-alias unmount0='udisksctl unmount -b /dev/sdb0'
+alias mount0='udisksctl mount -b /dev/sdb'
+alias unmount0='udisksctl unmount -b /dev/sdb'
 alias mount1='udisksctl mount -b /dev/sdb1'
 alias unmount1='udisksctl unmount -b /dev/sdb1'
 
@@ -361,3 +363,5 @@ alias batstat='cat /sys/class/power_supply/BAT0/status'
 alias trc='transmission-remote-cli'
 alias usb='cd /run/media/$USER/*'
 alias lsusb='ls /run/media/$USER/*'
+alias cal='cal -mw'
+alias news='urxvt -name newsbeuter -e newsbeuter'
