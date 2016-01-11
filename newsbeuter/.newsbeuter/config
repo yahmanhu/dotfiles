@@ -5,7 +5,7 @@ articlelist-format "%4i %f %D %6L  %?T?|%-17T|  ?%t"
 auto-reload yes
 browser /usr/bin/firefox
 #html-renderer "/usr/bin/lynx -display_charset=utf-8 -cfg ~/.config/lynx/lynx.cfg -dump"
-confirm-exit yes
+#confirm-exit yes
 #datetime-format %b %d
 display-article-progress yes
 feedlist-format "%4i %n %11u %t"
@@ -51,10 +51,10 @@ color listnormal color2 color1
 color listfocus  color2 color6 
 color listnormal_unread color2 color1
 color listfocus_unread  color2 color6
-color info       color1 color2 
+color info       color2 color1 
 color article    color2 color1
 
 #search-highlight-colors color5 color1 bold
 #highlight feedlist "Youtube" white red
 #highlight feedlist "Arch Linux" white blue
-highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color1 color6
+#highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6
