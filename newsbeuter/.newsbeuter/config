@@ -1,6 +1,7 @@
 # SETTINGS
 # --------
 
+feedlist-format "%4i %n %11u %T %t"
 articlelist-format "%4i %f %D %6L  %?T?|%-17T|  ?%t"
 auto-reload yes
 browser /usr/bin/firefox
@@ -8,7 +9,6 @@ browser /usr/bin/firefox
 #confirm-exit yes
 #datetime-format %b %d
 display-article-progress yes
-feedlist-format "%4i %n %11u %t"
 goto-next-feed no
 goto-first-unread no
 history-limit 0
@@ -36,7 +36,10 @@ bind-key l open
 bind-key h quit
 bind-key J pagedown
 bind-key K pageup
-bind-key n reload
+bind-key n next-unread
+bind-key N prev-unread
+bind-key g pageup
+bind-key G pagedown
 bind-key ^N reload-all
 bind-key ; macro-prefix
 macro m set browser "mpv %u"; open-in-browser ; set browser "/usr/bin/firefox"
@@ -54,7 +57,11 @@ color listfocus_unread  color2 color6
 color info       color2 color1 
 color article    color2 color1
 
-#search-highlight-colors color5 color1 bold
-#highlight feedlist "Youtube" white red
-#highlight feedlist "Arch Linux" white blue
+search-highlight-colors color9 color1 bold
+highlight feedlist "Youtube" color1 color5
+highlight feedlist "Youtube" color1 color5
+highlight feedlist "News" color1 color7
+highlight feedlist "Blog" color1 color8
+highlight feedlist "--Unread--" color9 color1 bold
+highlight feedlist "--Watch Later--" color9 color1 bold
 #highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6

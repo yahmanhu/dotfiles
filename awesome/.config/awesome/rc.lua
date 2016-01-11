@@ -535,8 +535,8 @@ awful.rules.rules = {
       properties = { tag = tags [1][5] } },
     { rule = { class = "libreoffice-startcenter" },
       properties = { tag = tags [1][6] } },
-    { rule = { name = "newsbeuter" },
-      properties = { tag = tags [1][7] } },
+    --{ rule = { name = "newsbeuter" },
+      --properties = { tag = tags [1][7] } },
 }
 
 --  Signals
