@@ -1,5 +1,5 @@
 "query:--Unread--:unread = \"yes\""
-"query:--Watch Later--:flags # \"L\""
+"query:--Later--:flags # \"L\""
 "query:Youtube:tags # \"Youtube\""
 "query:Blog:tags # \"Blog\""
 http://feeds.feedburner.com/sorozataddikt Blog

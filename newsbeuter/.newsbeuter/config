@@ -63,5 +63,5 @@ highlight feedlist "Youtube" color1 color5
 highlight feedlist "News" color1 color7
 highlight feedlist "Blog" color1 color8
 highlight feedlist "--Unread--" color9 color1 bold
-highlight feedlist "--Watch Later--" color9 color1 bold
+highlight feedlist "--Later--" color9 color1 bold
 #highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6
