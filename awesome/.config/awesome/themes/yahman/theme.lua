@@ -22,6 +22,17 @@ theme.bg_urgent  = "#DC0000"
 theme.fg_urgent  = "#FFFFFF"
 
 
+-- Grey/blue
+--theme.bg_normal  = "#DCDAD5"
+--theme.fg_normal  = "#000000"
+
+--theme.bg_focus   = "#4169E1"
+--theme.fg_focus   = "#FFFFFF"
+
+--theme.bg_urgent  = "#DC0000"
+--theme.fg_urgent  = "#FFFFFF"
+
+
 -- Other colors
 
 --theme.bg_normal  = "#2F4F4F"

@@ -6,6 +6,9 @@ colorscheme yahman_theme
 set toolbars=nonavigation
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set newtab=all
+
+set! ui.caretWidth=8
+set! ui.caretBlinkTime=0
 "set editor="urxvtc -e vim"
 "let mapleader = "\"
 
@@ -72,6 +75,15 @@ nnoremap s ;a
 
 "Translate the selected text with Translate Shell (https://github.com/soimort/translate-shell)
 nmap <leader>t :trans<CR>
+vmap <leader>t :trans<CR>
+
+"Search selected text in Google
+nmap <leader>g :google<CR>
+vmap <leader>g :google<CR>
+
+nmap v cvv
+vnoremap q <ESC>
+
 
 "============================================"
 "   Commands                                 "
@@ -94,6 +106,9 @@ command! trans -description="Translate the selected text with Translate Shell" s
 
 "Translate page with Google Translate
 command! transpage -description="Translate page with Google Translate" js window.content.window.location = "https://translate.google.com/translate?sl=auto&tl=en&js=y&hl=en&ie=UTF-8&u="+window.content.window.location
+
+"Search selected text in Google
+command! google -description="Search the selected text in Google" js window.content.window.open("https://www.google.com/search?q="+window.content.window.getSelection().toString(), '_blank')
 
 "=========
 "Bookmarks

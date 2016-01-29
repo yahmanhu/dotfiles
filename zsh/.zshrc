@@ -97,13 +97,6 @@ tl() {
     ls -lh ~/.local/share/Trash/files/
 }
 
-# trashman: put
-tp() {
-    trash $@
-    echo -e "Deleted:"
-    printf '%s\n' "$@"
-}
-
 # trashman: empty
 te() {
 
@@ -353,7 +346,7 @@ alias swifi='switch-wifi'
 alias Ds='periscope -l en'
 alias BB='quick-backup'
 alias del='trash'
-alias back='cd $OLDPWD'
+alias cdprev='cd $OLDPWD'
 alias tr='trash -r'
 alias sww='swifi && startx'
 alias printer='system-config-printer'
@@ -362,7 +355,9 @@ alias sum='du -ch --time'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
 alias batstat='cat /sys/class/power_supply/BAT0/status'
 alias trc='transmission-remote-cli'
+alias trl='transmission-remote -l'
 alias usb='cd /run/media/$USER/*'
 alias lsusb='ls /run/media/$USER/*'
 alias cal='cal -mw'
 alias news='urxvt -name newsbeuter -e newsbeuter'
+alias tvdt='tvd "tv2" "super_tv2" "rtl_klub" "viasat3" "viasat6" "cool" "comedy_central" "film_p" "film_cafe" "pro4" "paramount" "story4"'

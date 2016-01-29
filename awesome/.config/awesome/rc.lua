@@ -9,6 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+require("eminent")
 
 
 --  Error handling
@@ -391,9 +392,9 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
-    awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -T ranger -e ranger") end),
+    awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),
-    awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("urxvt -T Transmission -e transmission-remote-cli") end),
+    awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("urxvt -name Transmission -T Transmission -e transmission-remote-cli") end),
     awful.key({ modkey, "Control" }, "o", function () awful.util.spawn("libreoffice") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
@@ -434,12 +435,12 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
-        function (c)
-            ---- The client currently has the input focus, so it cannot be
-            ---- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end),
+    --awful.key({ modkey,           }, "n",
+        --function (c)
+            ------ The client currently has the input focus, so it cannot be
+            ------ minimized, since minimized clients can't have the focus.
+            --c.minimized = true
+        --end),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
@@ -512,28 +513,35 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
+
     { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2" } },
       properties = { floating = true } },
+
     { rule_any = { class = { "Zathura" } },
       properties = { floating = true, maximized_vertical = true, maximized_horizontal = true } },
+
     { rule_any = { name = { "feh", "trans" } },
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
+
     { rule = { class = "System-config-printer.py"},
       properties = { floating = true },
       callback = function (c) c:geometry({width = 200, height=200}) end },
+
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][1] } },
-    --{ rule = { class = "URxvt" },
-      --properties = { tag = tags [1][2] } },
-    { rule = { name = "ranger" },
-      properties = { tag = tags [1][3] } },
-    { rule = { name = "Transmission" },
-      properties = { tag = tags [1][4] } },
-    { rule = { name = "Spotify" },
-      properties = { tag = tags [1][5] } },
-    { rule = { class = "libreoffice-startcenter" },
-      properties = { tag = tags [1][6] } },
+
+    { rule_any = { name = { "ranger", "Transmission", "Spotify", "LibreOffice" } },
+        callback = function(c)
+                
+          awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()+1], c)
+          awful.tag.viewonly(tags[mouse.screen][awful.tag.getidx()+1])
+      end
+  },
+
+    { rule = { type = "normal"  },
+    except_any = { class =  { "Firefox", "URxvt" }  },
+    },
 }
 
 --  Signals
@@ -612,6 +620,8 @@ client.connect_signal("manage", function (c, startup)
         awful.titlebar(c):set_widget(layout)
     end
 end)
+
+
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
