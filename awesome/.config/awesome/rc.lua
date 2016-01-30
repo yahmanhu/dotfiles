@@ -85,12 +85,92 @@ end
 
 --  Tags
 -- Define a tag table which hold all screen tags.
-tags = {}
+
+
+--function client_name(tag, client)
+    --for _, c in pairs(tag:clients()) do
+        --client_name = client.get_xproperty()
+    --end
+--end 
+
+
+--tags = {}
+--for s = 1, screen.count() do
+    ---- Each screen has its own tag table.
+   --tags[s] = awful.tag({ ' 1. web ', ' 2. terminal ', ' 3. files ', ' 4. torrent ', ' 5. music ', ' 6. office ', }, s, layouts[1])
+
+    
+--end
+
+tags = {
+	names = {
+        "[ New Tag ]",
+        "[ New Tag ]",
+        "[ New Tag ]",
+        "[ New Tag ]",
+        "[ New Tag ]",
+        "[ New Tag ]"
+    },
+	layout = {
+        layouts[1],
+        layouts[1],
+        layouts[1],
+        layouts[1],
+        layouts[1],
+        layouts[1]
+    },
+}
 for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ ' 1. web ', ' 2. terminal ', ' 3. files ', ' 4. torrent ', ' 5. music ', ' 6. office ', }, s, layouts[1])
+  tags[s] = awful.tag(tags.names, s, tags.layout)
 end
--- 
+
+
+-- change tag names dynamically (from: http://crunchbang.org/forums/viewtopic.php?id=32259)
+dynamic_tagging = function() 
+	for s = 1, screen.count() do
+    screen[s]:connect_signal("tag::history::update", function()
+		-- get a list of all tags 
+		--local atags = screen[s]:tags()
+        local atags = awful.tag.gettags(s)
+		-- set the standard icon
+		for i, t in ipairs(atags) do
+			t.name = "[ New Tag ]"
+		end
+
+		-- get a list of all running clients
+		local clist = client.get(s)
+		for i, c in ipairs(clist) do
+			-- get the tags on which the client is displayed
+			local ctags = c:tags()
+			for i, t in ipairs(ctags) do
+                local cname = c.name
+				-- set active icon
+                --t.name = "◆"
+                t.name = cname
+			end
+		end
+    end)
+	end
+end	
+
+    -- signal function to execute when a new client appears
+client.connect_signal("manage", function (c, startup)
+	dynamic_tagging()
+
+	if not startup then
+		-- place windows in a smart way if they do not set an initial position
+		if not c.size_hints.user_position and not c.size_hints.program_position then
+			awful.placement.no_overlap(c)
+			awful.placement.no_offscreen(c)
+		end
+	end
+end)
+
+    -- signal function to execute when a client disappears
+client.connect_signal("unmanage", function (c, startup)
+	dynamic_tagging()
+end)
+
 
 --  Menu
 --   Menu variables
@@ -503,7 +583,7 @@ root.keys(globalkeys)
 
 --  Rules
 -- Rules to apply to new clients (through the "manage" signal).
--- 
+
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -513,6 +593,13 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
+
+    { rule = { type = "normal"  },
+    except_any = { class =  { "Firefox", "URxvt" }  },
+    },
+
+    --{ rule = { class = "Firefox" },
+      --properties = { tag = tags[1][1] } },
 
     { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2" } },
       properties = { floating = true } },
@@ -528,20 +615,16 @@ awful.rules.rules = {
       properties = { floating = true },
       callback = function (c) c:geometry({width = 200, height=200}) end },
 
-    { rule = { class = "Firefox" },
-      properties = { tag = tags[1][1] } },
-
     { rule_any = { name = { "ranger", "Transmission", "Spotify", "LibreOffice" } },
+
         callback = function(c)
-                
+
           awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()+1], c)
           awful.tag.viewonly(tags[mouse.screen][awful.tag.getidx()+1])
+
       end
   },
 
-    { rule = { type = "normal"  },
-    except_any = { class =  { "Firefox", "URxvt" }  },
-    },
 }
 
 --  Signals
