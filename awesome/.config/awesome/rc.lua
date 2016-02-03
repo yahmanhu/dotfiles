@@ -234,10 +234,10 @@ function Battery_widget()
         if (batcap <= "30") then
         battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#DC0000">'.. batcap.."% "..'</span>')
         else
-        battwidget:set_markup('<span color="#FF8C00">'.. batstat.." ".. '</span>'.. '<span color="#FF8C00">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#eeeeee">'.. batstat.." ".. '</span>'.. '<span color="#eeeeee">'.. batcap.."% "..'</span>')
         end
     else
-        battwidget:set_markup('<span color="#FF8C00">'.. batstat.." ".. '</span>'.. '<span color="#FF8C00">'.. batcap.."% "..'</span>')
+        battwidget:set_markup('<span color="#eeeeee">'.. batstat.." ".. '</span>'.. '<span color="#eeeeee">'.. batcap.."% "..'</span>')
 end
 end
 
@@ -314,7 +314,8 @@ clockcal_widget = wibox.widget.textbox()
 
 function Clockcal()
     --clockcal_widget:set_markup('<span color="#000000">' .. os.date("%A %B %d  %H:%M") .. '</span>')
-    clockcal_widget:set_markup('<span color="#FF8C00">' .. os.date("%H:%M") .. '</span>')
+    --clockcal_widget:set_markup('<span color="#FF8C00">' .. os.date("%H:%M") .. '</span>')
+    clockcal_widget:set_markup('<span color="#eeeeee">' .. os.date("%H:%M") .. '</span>')
 end
 
 clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })
@@ -332,7 +333,7 @@ clockcal_timer:start()
 separator_widget = wibox.widget.textbox()
 
 function Separator_widget()
-        separator_widget:set_markup('<span color="#000000">  |  </span>')
+        separator_widget:set_markup('<span color="#005577">  |  </span>')
 end
 Separator_widget()
 
@@ -492,6 +493,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey            },  "r", function () awful.util.spawn("dmenu_run -fn 'Droid Sans Mono-12'") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),
@@ -514,18 +516,8 @@ globalkeys = awful.util.table.join(
     -- Chane tty
     awful.key({ modkey,           }, "F2", function () awful.util.spawn("sudo chvt 2") end),
     awful.key({ modkey,           }, "F3", function () awful.util.spawn("sudo chvt 3") end),
-    awful.key({ modkey,           }, "F4", function () awful.util.spawn("sudo chvt 4") end),
+    awful.key({ modkey,           }, "F4", function () awful.util.spawn("sudo chvt 4") end)
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
-
-    --awful.key({ modkey }, "x",
-              --function ()
-                  --awful.prompt.run({ prompt = "Run Lua code: " },
-                  --mypromptbox[mouse.screen].widget,
-                  --awful.util.eval, nil,
-                  --awful.util.getdir("cache") .. "/history_eval")
-              --end)
 )
 
 clientkeys = awful.util.table.join(

@@ -12,15 +12,24 @@ theme.font      = "Sans Bold 8"
 --  Colors
 
 -- Ubuntu colors
-theme.bg_normal  = "#454343"
-theme.fg_normal  = "#FFFFFF"
+--theme.bg_normal  = "#454343"
+--theme.fg_normal  = "#FFFFFF"
 
-theme.bg_focus   = "#FF8C00"
-theme.fg_focus   = "#000000"
+--theme.bg_focus   = "#FF8C00"
+--theme.fg_focus   = "#000000"
+
+--theme.bg_urgent  = "#DC0000"
+--theme.fg_urgent  = "#FFFFFF"
+
+-- dmenu colors
+theme.bg_normal  = "#222222"
+theme.fg_normal  = "#bbbbbb"
+
+theme.bg_focus   = "#005577"
+theme.fg_focus   = "#eeeeee"
 
 theme.bg_urgent  = "#DC0000"
-theme.fg_urgent  = "#FFFFFF"
-
+theme.fg_urgent  = "#eeeeee"
 
 -- Grey/blue
 --theme.bg_normal  = "#DCDAD5"

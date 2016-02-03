@@ -303,7 +303,7 @@ alias rangerrc='vim ~/.config/ranger/rc.conf'
 alias newsconf='vim ~/.newsbeuter/config'
 alias xinitrc='vim ~/.xinitrc'
 alias xresources='vim ~/.Xresources'
-alias xrr='xrdb -load ~/.Xresources'
+alias XRR='xrdb -load ~/.Xresources'
 
 # Mount
 alias mount0='udisksctl mount -b /dev/sdb'

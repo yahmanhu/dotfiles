@@ -9,11 +9,13 @@ URxvt.terminalName: rxvt-unicode-256color
 
 ! True transparency - Ranger w3m image display will not work when enabled -- using compton setting instead
 !URxvt.depth: 32
+!URxvt.background: [100]#300A24 
+!URxvt.background: [100]#005577 
+URxvt.background: [100]#222222 
 !URxvt.background: [90]#000000
 !URxvt.background: [100]#2B66C9
 !URxvt.background: [100]#4B0082 
 !URxvt.background: [100]#4B0082 
-URxvt.background: [100]#300A24 
 !URxvt.background: [100]#365588 
 !URxvt.background: [100]#FFFFFF 
 
@@ -95,9 +97,11 @@ URxvt.color15: #ffffff
 !URxvt.cursorColor: #00AA00
 !URxvt.cursorColor: #5FE36C
 !URxvt.cursorColor: #FFFFFF
-URxvt.cursorColor: grey
+!URxvt.cursorColor: #222222
+!URxvt.cursorColor: #005577
+!URxvt.cursorColor: grey
 !URxvt.cursorColor: black
-!URxvt.cursorColor: white
+URxvt.cursorColor: white
 
 ! Newsbeuter colors
 newsbeuter.color1:#FFFFFF
