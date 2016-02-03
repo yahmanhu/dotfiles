@@ -128,9 +128,8 @@ end
 -- change tag names dynamically (from: http://crunchbang.org/forums/viewtopic.php?id=32259)
 dynamic_tagging = function() 
 	for s = 1, screen.count() do
-    screen[s]:connect_signal("tag::history::update", function()
 		-- get a list of all tags 
-		--local atags = screen[s]:tags()
+        --local atags = screen[s]:tags()
         local atags = awful.tag.gettags(s)
 		-- set the standard icon
 		for i, t in ipairs(atags) do
@@ -146,10 +145,27 @@ dynamic_tagging = function()
                 local cname = c.name
 				-- set active icon
                 --t.name = "◆"
-                t.name = cname
-			end
+                --t.name = cname
+                
+                if string.find(cname, "Vimperator") then
+                    t.name = " Firefox "
+                elseif string.find(cname, "VIM") then
+                    t.name = " vim "
+                elseif string.find(cname, "archr") then
+                    t.name = " terminal "
+                elseif string.find(cname, "Transmission") then
+                    t.name = " Transmission "
+                elseif string.find(cname, "ranger") then
+                    t.name = " ranger "
+                elseif string.find(cname, "LibreOffice") then
+                    t.name = " LibreOffice "
+                elseif string.find(cname, "Spotify") then
+                    t.name = " Spotify "
+                end
+
+            end
 		end
-    end)
+
 	end
 end	
 
@@ -170,6 +186,11 @@ end)
 client.connect_signal("unmanage", function (c, startup)
 	dynamic_tagging()
 end)
+
+
+for s = 1, screen.count() do
+    screen[s]:connect_signal("tag::history::update", function() dynamic_tagging() end)
+end
 
 
 --  Menu
@@ -615,7 +636,7 @@ awful.rules.rules = {
       properties = { floating = true },
       callback = function (c) c:geometry({width = 200, height=200}) end },
 
-    { rule_any = { name = { "ranger", "Transmission", "Spotify", "LibreOffice" } },
+    { rule_any = { name = { "ranger", "Transmission", "Spotify Free - Linux Preview", "LibreOffice" }, class = { "Spotify", "spotify" }},
 
         callback = function(c)
 

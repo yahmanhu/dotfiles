@@ -87,6 +87,7 @@ eval $(dircolors ~/.dircolors)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #zstyle ":completion:*:descriptions" format "%B%d%b"
 
+
 #=================
 # Custom functions
 #=================
@@ -318,6 +319,12 @@ alias gpush='git push origin master'
 alias gdiff='git diff'
 alias gitign='git ls-files --other --ignored --exclude-standar'
 
+# Transmission
+alias trc='transmission-remote-cli'
+alias trl='transmission-remote -l'
+alias trs='transmission-remote -tall --start'
+alias trp='transmission-remote -tall --stop'
+
 # Find
 alias findf='find-file'
 alias findd='find-dir'
@@ -354,8 +361,6 @@ alias fs='free_space'
 alias sum='du -ch --time'
 alias batcap='cat /sys/class/power_supply/BAT0/capacity'
 alias batstat='cat /sys/class/power_supply/BAT0/status'
-alias trc='transmission-remote-cli'
-alias trl='transmission-remote -l'
 alias usb='cd /run/media/$USER/*'
 alias lsusb='ls /run/media/$USER/*'
 alias cal='cal -mw'

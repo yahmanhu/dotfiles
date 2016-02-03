@@ -127,7 +127,7 @@ command! -description="Google translate" gthu :tabopen https://translate.google.
 command! -description="Facebook" facebook :open https://www.facebook.com
 
 "Open youtube.com
-command! -description="Youtube" yt :open https://www.youtube.com/feed/subscriptions
+command! -description="Youtube" yt :open https://www.youtube.com/feed/subscriptions/
 
 "Open sorozatjunkie.hu
 command! -description="Sorozatjunkie.hu" junkie :open http://www.sorozatjunkie.hu
