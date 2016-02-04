@@ -58,13 +58,14 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
+
 local layouts =
 {
+    awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
@@ -73,8 +74,6 @@ local layouts =
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
--- 
-
 --  Wallpaper
 if beautiful.wallpaper then
     for s = 1, screen.count() do
@@ -112,12 +111,12 @@ tags = {
         "[ New Tag ]"
     },
 	layout = {
-        layouts[1],
-        layouts[1],
-        layouts[1],
-        layouts[1],
-        layouts[1],
-        layouts[1]
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
     },
 }
 for s = 1, screen.count() do
@@ -465,25 +464,41 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86Forward", function () awful.util.spawn("xbacklight -time 0 -inc 15%") end),
     awful.key({                   }, "XF86PowerOff", function () awful.util.spawn("sudo pm-suspend") end),
     awful.key({                   }, "Print", function () awful.util.spawn("scrot") end),
+
+    -- Navigate between clients
+    awful.key({ modkey,           }, "j",
+        function ()
+            awful.client.focus.byidx( 1)
+            if client.focus then client.focus:raise() end
+        end),
+
     awful.key({ modkey,           }, "h",
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
         end),
+
+    awful.key({ modkey,           }, "k",
+        function ()
+            awful.client.focus.byidx(-1)
+            if client.focus then client.focus:raise() end
+        end),
+
+
     awful.key({ modkey,           }, "l",
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
+
+
     awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey,           }, "Tab",
+    awful.key({ modkey, "Control"   }, "j", function () awful.client.swap.byidx(  1)    end),
+    awful.key({ modkey, "Control"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    awful.key({ modkey,             }, "u", awful.client.urgent.jumpto),
+    awful.key({ modkey,             }, "Tab",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
@@ -493,7 +508,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey            },  "r", function () awful.util.spawn("dmenu_run -fn 'Droid Sans Mono-12'") end),
+    awful.key({ modkey            }, "r", function () awful.util.spawn("dmenu_run -fn 'Droid Sans Mono-12'") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),
@@ -611,8 +626,8 @@ awful.rules.rules = {
     except_any = { class =  { "Firefox", "URxvt" }  },
     },
 
-    --{ rule = { class = "Firefox" },
-      --properties = { tag = tags[1][1] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][1] } },
 
     { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2" } },
       properties = { floating = true } },

@@ -51,9 +51,9 @@ macro m set browser "mpv %u"; open-in-browser ; set browser "/usr/bin/firefox"
 
 color background color2 color1
 color listnormal color2 color1
-color listfocus  color2 color6 
+color listfocus  color1 color6 
 color listnormal_unread color2 color1
-color listfocus_unread  color2 color6
+color listfocus_unread  color1 color6
 color info       color2 color1 
 color article    color2 color1
 
