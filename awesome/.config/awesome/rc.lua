@@ -508,7 +508,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey            }, "Menu", function () awful.util.spawn("dmenu_recent_aliases -l 5 -fn 'Droid Sans Mono-12'") end),
+    awful.key({ modkey            }, "Menu", function () awful.util.spawn("dmenu_run -l 5 -fn 'Droid Sans Mono-12'") end),
     awful.key({ modkey            }, "b", function () awful.util.spawn("dmb") end),
     awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
