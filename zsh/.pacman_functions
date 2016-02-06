@@ -1,0 +1,46 @@
+# Pacman functions
+
+# pacman: removed orphaned
+pacrmo() {
+    echo -e "sudo pacman -Rns \$(pacman -Qdtq). Remove all orphaned packages, their configuration files and unneeded dependecies.\n"
+    sudo pacman -Rns $(pacman -Qdtq)
+}
+
+# pacman: remove packages
+pacrm() {
+    echo -e "sudo pacman -Rns. Remove packages, their configuration files and unneeded dependecies.\n"
+    sudo pacman -Rns $@
+}
+
+# pacman set up mirror list
+pacmirror() {
+    echo -e "Use the new pacman mirrorlist as the default mirrorlist and create a backup of the current mirrorlist? (y = yes)"
+    read answer_list
+    if [[ $answer_list == "y" ]] || [[ $answer_list == "Y" ]]; then
+        sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+        sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+        echo "New mirrorlist: done!"
+        echo "Opening the new mirrorlist for editing."
+        sudo vim /etc/pacman.d/mirrorlist
+    else
+        echo "pacmirror script stopped. Nothing changed."
+    fi
+}
+
+# pacman: list or search in cache
+pacpkg() {
+    cache_dir=/var/cache/pacman/pkg
+    if [[ $1 == "" ]]; then
+    echo -e "Listing $cache_dir:"
+        ls -l $cache_dir
+    else
+    echo -e "Search results for $1 in $cache_dir:"
+        ls -l $cache_dir | grep $1
+    fi
+}
+
+pacdep() {
+
+    pacman -Qi $@ | grep "Depends"
+
+}

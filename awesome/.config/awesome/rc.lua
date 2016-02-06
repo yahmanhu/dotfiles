@@ -492,7 +492,7 @@ globalkeys = awful.util.table.join(
         end),
 
 
-    awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
+    --awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
     awful.key({ modkey, "Control"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -508,7 +508,9 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey            }, "r", function () awful.util.spawn("dmenu_run -fn 'Droid Sans Mono-12'") end),
+    awful.key({ modkey            }, "Menu", function () awful.util.spawn("dmenu_recent_aliases -l 5 -fn 'Droid Sans Mono-12'") end),
+    awful.key({ modkey            }, "b", function () awful.util.spawn("dmb") end),
+    awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),

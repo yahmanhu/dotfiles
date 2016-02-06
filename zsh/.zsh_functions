@@ -1,0 +1,139 @@
+# Custom functions
+
+# Trash list
+tl() {
+    echo -e "Trash:"
+    ls -lh ~/.local/share/Trash/files/
+}
+
+# trashman: empty
+te() {
+
+    if [[ "$(ls ~/.local/share/Trash/files/)" == "total 0" ]]; then
+        echo "Trash is empty."
+    else
+        echo -e "Are you sure you want to remove these files? (y = yes)"
+        trash --list
+        read answer_trash
+        if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
+            trash --empty
+            echo -e "Trash is empty."
+        else
+            echo -e "Trash hasn't been emptied."
+        fi
+    fi
+}
+
+# List custom aliases
+lsalias() {
+    cat ~/.zshrc | grep '^alias'
+}
+
+# Downaload bbtv
+bbtv() {
+ youtube-dl -o "~/downloads/%(title)s.%(ext)s" http://www.bbtv.hu/bbtv-$1
+}
+
+# Colored man pages (https://wiki.archlinux.org/index.php/Man_page#Using_less_.28Recommended.29)
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+
+lsgrep() {
+
+    ls -lh --color=auto | grep $1
+
+} 
+
+lsdir() {
+
+    ls -lh --color=auto $HOME/$1
+
+}
+
+volume-switcher() {
+
+vol_state=$(amixer get Master | egrep Playback | egrep -o off)
+
+    if [[ $vol_state == "off" ]]; then
+        amixer sset Master unmute > /dev/null
+    else
+        amixer sset Master mute > /dev/null
+    fi
+
+}
+
+find-file(){
+
+    find ~ -type f -iname $1\*
+
+}
+
+find-dir(){
+
+    find ~ -type d -iname $1\*
+
+}
+
+find-by-file-type(){
+
+    find ~ -iname "*.$1"
+
+}
+
+find-by-name(){
+
+    find ~ -iname $1\*
+
+}
+
+quick-backup(){
+
+    cp -r $@ ~/backup
+
+}
+
+fehbg(){
+
+    feh --bg-fill $1
+
+}
+
+strgrep(){
+
+    grep -rnw $1 -e "$2"
+    matches=$(grep -ro $2 $1 | wc -w)
+    echo "Total matches: $matches"
+}
+
+takef(){
+
+    touch $1
+    $EDITOR $1
+
+}
+
+takesh(){
+
+    touch $1 
+    chmod +x $1
+    echo "#!/bin/bash" > $1
+    $EDITOR $1
+
+}
+
+free_space(){
+
+    root_dir=$(df -h / | tail -1 | awk '{print $4}')
+    home_dir=$(df -h /home | tail -1 | awk '{print $4}')
+    
+    echo -e "\e[1mFree space available\n\\ \t\t $root_dir\n\\home\t\t $home_dir"
+
+}

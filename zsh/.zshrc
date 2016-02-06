@@ -57,9 +57,12 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export EDITOR='vim'
+export BROWSER='firefox'
 
 source $ZSH/oh-my-zsh.sh
-
+source ~/.zsh_aliases
+source ~/.zsh_functions
+source ~/.pacman_functions
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
@@ -87,282 +90,47 @@ eval $(dircolors ~/.dircolors)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #zstyle ":completion:*:descriptions" format "%B%d%b"
 
-
-#=================
-# Custom functions
-#=================
-
-# Trash list
-tl() {
-    echo -e "Trash:"
-    ls -lh ~/.local/share/Trash/files/
-}
-
-# trashman: empty
-te() {
-
-    if [[ "$(ls ~/.local/share/Trash/files/)" == "total 0" ]]; then
-        echo "Trash is empty."
-    else
-        echo -e "Are you sure you want to remove these files? (y = yes)"
-        trash --list
-        read answer_trash
-        if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
-            trash --empty
-            echo -e "Trash is empty."
-        else
-            echo -e "Trash hasn't been emptied."
-        fi
-    fi
-}
-
 # pacman: removed orphaned
-pacrmo() {
-    echo -e "sudo pacman -Rns \$(pacman -Qdtq). Remove all orphaned packages, their configuration files and unneeded dependecies.\n"
-    sudo pacman -Rns $(pacman -Qdtq)
-}
+#pacrmo() {
+    #echo -e "sudo pacman -Rns \$(pacman -Qdtq). Remove all orphaned packages, their configuration files and unneeded dependecies.\n"
+    #sudo pacman -Rns $(pacman -Qdtq)
+#}
 
-# pacman: remove packages
-pacrm() {
-    echo -e "sudo pacman -Rns. Remove packages, their configuration files and unneeded dependecies.\n"
-    sudo pacman -Rns $@
-}
+## pacman: remove packages
+#pacrm() {
+    #echo -e "sudo pacman -Rns. Remove packages, their configuration files and unneeded dependecies.\n"
+    #sudo pacman -Rns $@
+#}
 
-# pacman set up mirror list
-pacmirror() {
-    echo -e "Use the new pacman mirrorlist as the default mirrorlist and create a backup of the current mirrorlist? (y = yes)"
-    read answer_list
-    if [[ $answer_list == "y" ]] || [[ $answer_list == "Y" ]]; then
-        sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-        sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
-        echo "New mirrorlist: done!"
-        echo "Opening the new mirrorlist for editing."
-        sudo vim /etc/pacman.d/mirrorlist
-    else
-        echo "pacmirror script stopped. Nothing changed."
-    fi
-}
+## pacman set up mirror list
+#pacmirror() {
+    #echo -e "Use the new pacman mirrorlist as the default mirrorlist and create a backup of the current mirrorlist? (y = yes)"
+    #read answer_list
+    #if [[ $answer_list == "y" ]] || [[ $answer_list == "Y" ]]; then
+        #sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+        #sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+        #echo "New mirrorlist: done!"
+        #echo "Opening the new mirrorlist for editing."
+        #sudo vim /etc/pacman.d/mirrorlist
+    #else
+        #echo "pacmirror script stopped. Nothing changed."
+    #fi
+#}
 
-# pacman: list or search in cache
-pacpkg() {
-    cache_dir=/var/cache/pacman/pkg
-    if [[ $1 == "" ]]; then
-    echo -e "Listing $cache_dir:"
-        ls -l $cache_dir
-    else
-    echo -e "Search results for $1 in $cache_dir:"
-        ls -l $cache_dir | grep $1
-    fi
-}
+## pacman: list or search in cache
+#pacpkg() {
+    #cache_dir=/var/cache/pacman/pkg
+    #if [[ $1 == "" ]]; then
+    #echo -e "Listing $cache_dir:"
+        #ls -l $cache_dir
+    #else
+    #echo -e "Search results for $1 in $cache_dir:"
+        #ls -l $cache_dir | grep $1
+    #fi
+#}
 
-pacdep() {
+#pacdep() {
 
-    pacman -Qi $@ | grep "Depends"
+    #pacman -Qi $@ | grep "Depends"
 
-}
-
-# List custom aliases
-lsalias() {
-    cat ~/.zshrc | grep '^alias'
-}
-
-# Downaload bbtv
-bbtv() {
- youtube-dl -o "~/downloads/%(title)s.%(ext)s" http://www.bbtv.hu/bbtv-$1
-}
-
-# Colored man pages (https://wiki.archlinux.org/index.php/Man_page#Using_less_.28Recommended.29)
-man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
-    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-    LESS_TERMCAP_me=$'\E[0m' \
-    LESS_TERMCAP_se=$'\E[0m' \
-    LESS_TERMCAP_so=$'\E[38;5;246m' \
-    LESS_TERMCAP_ue=$'\E[0m' \
-    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-    man "$@"
-}
-
-lsgrep() {
-
-    ls -lh --color=auto | grep $1
-
-} 
-
-lsdir() {
-
-    ls -lh --color=auto $HOME/$1
-
-}
-
-volume-switcher() {
-
-vol_state=$(amixer get Master | egrep Playback | egrep -o off)
-
-    if [[ $vol_state == "off" ]]; then
-        amixer sset Master unmute > /dev/null
-    else
-        amixer sset Master mute > /dev/null
-    fi
-
-}
-
-find-file(){
-
-    find ~ -type f -iname $1\*
-
-}
-
-find-dir(){
-
-    find ~ -type d -iname $1\*
-
-}
-
-find-by-file-type(){
-
-    find ~ -iname "*.$1"
-
-}
-
-find-by-name(){
-
-    find ~ -iname $1\*
-
-}
-
-quick-backup(){
-
-    cp -r $@ ~/backup
-
-}
-
-fehbg(){
-
-    feh --bg-fill $1
-
-}
-
-strgrep(){
-
-    grep -rnw $1 -e "$2"
-    matches=$(grep -ro $2 $1 | wc -w)
-    echo "Total matches: $matches"
-}
-
-takef(){
-
-    touch $1
-    $EDITOR $1
-
-}
-
-takesh(){
-
-    touch $1 
-    chmod +x $1
-    echo "#!/bin/bash" > $1
-    $EDITOR $1
-
-}
-
-free_space(){
-
-    root_dir=$(df -h / | tail -1 | awk '{print $4}')
-    home_dir=$(df -h /home | tail -1 | awk '{print $4}')
-    
-    echo -e "\e[1mFree space available\n\\ \t\t $root_dir\n\\home\t\t $home_dir"
-
-}
-
-#===============
-# Custom aliases
-#===============
-
-# Pacman
-alias install='sudo pacman -S'
-alias remove='sudo pacman -Rs'
-alias update='sudo pacman -Syy'
-alias upgrade='sudo pacman -Syyu'
-alias paclog='less /var/log/pacman.log'
-alias cdpkg='cd /var/cache/pacman/pkg'
-alias pacconf='sudo vim /etc/pacman.conf'
-alias pacinfo='pacman -Qi'
-alias pacsrc='pacman -Ss'
-alias packages='pacman -Q'
-
-# Config files
-alias zshrc='vim ~/.zshrc'
-alias zshtheme='vim ~/.oh-my-zsh/themes/yahmanhu.zsh-theme'
-alias vimrc='vim ~/.vimrc'
-alias vimprc='vim ~/.vimperatorrc'
-alias vimpcolors='vim ~/.vimperator/colors/yahman_theme.vimp'
-alias awerc='vim ~/.config/awesome/rc.lua'
-alias awetheme='vim ~/.config/awesome/themes/yahman/theme.lua'
-alias rangerrc='vim ~/.config/ranger/rc.conf'
-alias newsconf='vim ~/.newsbeuter/config'
-alias xinitrc='vim ~/.xinitrc'
-alias xresources='vim ~/.Xresources'
-alias XRR='xrdb -load ~/.Xresources'
-
-# Mount
-alias mount0='udisksctl mount -b /dev/sdb'
-alias unmount0='udisksctl unmount -b /dev/sdb'
-alias mount1='udisksctl mount -b /dev/sdb1'
-alias unmount1='udisksctl unmount -b /dev/sdb1'
-
-# Git
-alias gstat='git status'
-alias gadd='git add --all'
-alias gcommit='git commit -m'
-alias gpush='git push origin master'
-alias gdiff='git diff'
-alias gitign='git ls-files --other --ignored --exclude-standar'
-
-# Transmission
-alias trc='transmission-remote-cli'
-alias trl='transmission-remote -l'
-alias trs='transmission-remote -tall --start'
-alias trp='transmission-remote -tall --stop'
-
-# Find
-alias findf='find-file'
-alias findd='find-dir'
-alias findt='find-by-file-type'
-alias findn='find-by-name'
-alias fap='find-and-play'
-
-# Suffix aliases
-alias -s pdf=zathura
-alias -s tex=vim
-
-# Other
-alias RR='source ~/.zshrc && clear'
-alias unpack='aunpack'
-alias ls='ls -lh --color=auto'
-alias tpfan='sudo tpfan-admin && clear'
-alias conn='nmcli d'
-alias music-downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/Downloads/%(title)s.%(ext)s"'
-alias hdparm='sudo hdparm -I /dev/sda | grep level'
-alias pingg='ping google.com'
-alias wl='mpv-watch-later'
-alias suspend='systemctl suspend'
-alias calc='python -ic "from __future__ import division; from math import *; from random import *"'
-alias svol='volume-switcher'
-alias swifi='switch-wifi'
-alias Ds='periscope -l en'
-alias BB='quick-backup'
-alias del='trash'
-alias cdprev='cd $OLDPWD'
-alias tr='trash -r'
-alias sww='swifi && startx'
-alias printer='system-config-printer'
-alias fs='free_space'
-alias sum='du -ch --time'
-alias batcap='cat /sys/class/power_supply/BAT0/capacity'
-alias batstat='cat /sys/class/power_supply/BAT0/status'
-alias usb='cd /run/media/$USER/*'
-alias lsusb='ls /run/media/$USER/*'
-alias cal='cal -mw'
-alias news='urxvt -name newsbeuter -e newsbeuter'
-alias tvdt='tvd "tv2" "super_tv2" "rtl_klub" "viasat3" "viasat6" "cool" "comedy_central" "film_p" "film_cafe" "pro4" "paramount" "story4"'
+#}
