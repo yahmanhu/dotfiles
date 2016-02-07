@@ -146,7 +146,12 @@ dynamic_tagging = function()
                 --t.name = "◆"
                 --t.name = cname
                 
-                if string.find(cname, "Vimperator") then
+                --if cname == nil then
+                    --t.name = cname
+                    --
+                if cname == nil then
+                    t.name = "[ New Tag ]"
+                elseif string.find(cname, "Vimperator") then
                     t.name = " Firefox "
                 elseif string.find(cname, "VIM") then
                     t.name = " vim "
@@ -158,8 +163,10 @@ dynamic_tagging = function()
                     t.name = " ranger "
                 elseif string.find(cname, "LibreOffice") then
                     t.name = " LibreOffice "
-                elseif string.find(cname, "Spotify") then
-                    t.name = " Spotify "
+                --elseif string.find(cname, "Spotify") then
+                    --t.name = " Spotify "
+                else
+                    t.name = cname
                 end
 
             end
@@ -464,6 +471,11 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86Forward", function () awful.util.spawn("xbacklight -time 0 -inc 15%") end),
     awful.key({                   }, "XF86PowerOff", function () awful.util.spawn("sudo pm-suspend") end),
     awful.key({                   }, "Print", function () awful.util.spawn("scrot") end),
+    
+    -- Spotify control
+    awful.key({ modkey,           }, "p", function () awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
+    awful.key({ modkey,           }, "Left", function () awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
+    awful.key({ modkey,           }, "Right", function () awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
 
     -- Navigate between clients
     awful.key({ modkey,           }, "j",
@@ -509,7 +521,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey            }, "Menu", function () awful.util.spawn("dmenu_run -l 5 -fn 'Droid Sans Mono-12'") end),
-    awful.key({ modkey            }, "b", function () awful.util.spawn("dmb") end),
+    awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),
     awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
@@ -572,7 +584,7 @@ for i = 1, 9 do
                         end
                   end),
         -- Toggle tag.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
+        awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       local screen = mouse.screen
                       local tag = awful.tag.gettags(screen)[i]
@@ -581,7 +593,7 @@ for i = 1, 9 do
                       end
                   end),
         -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
+        awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
                       if client.focus then
                           local tag = awful.tag.gettags(client.focus.screen)[i]
@@ -645,7 +657,7 @@ awful.rules.rules = {
       properties = { floating = true },
       callback = function (c) c:geometry({width = 200, height=200}) end },
 
-    { rule_any = { name = { "ranger", "Transmission", "Spotify Free - Linux Preview", "LibreOffice" }, class = { "Spotify", "spotify" }},
+    { rule_any = { name = { "ranger", "Transmission", "LibreOffice", "Spotify" }},
 
         callback = function(c)
 
