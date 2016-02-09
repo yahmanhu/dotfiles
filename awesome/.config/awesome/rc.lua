@@ -198,33 +198,6 @@ for s = 1, screen.count() do
     screen[s]:connect_signal("tag::history::update", function() dynamic_tagging() end)
 end
 
-
---  Menu
---   Menu variables
-switch_keybaord = function() awful.util.spawn("/home/rio/bin/switch-keyboard") end
-switch_wifi = function() awful.util.spawn("/home/rio/bin/switch-wifi") end
---switch_monitor = function() awful.util.spawn("/home/rio/bin/switch-monitor") end
-
---logout = function() awful.util.spawn("pkill -u rio") end
-suspend = function() awful.util.spawn("systemctl suspend") end
-reboot = function() awful.util.spawn("systemctl reboot") end
-poweroff = function() awful.util.spawn("systemctl poweroff") end
-
-mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
-                                    {"&Wifi switcher", switch_wifi},
-                                    --{"&Monitor switcher", switch_monitor},
-                                    {},
-                                    --{"&Logout", logout},
-                                    {"&Reboot", reboot},
-                                    {"&Suspend", suspend},
-                                    {"&Poweroff", poweroff},
-                                  }
-                        })
-
-mylauncher = awful.widget.launcher({ menu = mymainmenu })
-
--- 
-
 -- Battery indicator widget
 battwidget = wibox.widget.textbox()
 
@@ -523,13 +496,23 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "Menu", function () awful.util.spawn("dmenu_run -l 5 -fn 'Droid Sans Mono-12'") end),
     awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),
     awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
+    awful.key({ modkey            }, "o", function () awful.util.spawn("dma") end),
+    awful.key({ modkey            }, "w", function () awful.util.spawn("dmw") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
-    awful.key({ modkey, "Control" }, "s", function () awful.util.spawn("spotify --ui.track_notifications_enabled=false") end),
     awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("urxvt -name Transmission -T Transmission -e transmission-remote-cli") end),
     awful.key({ modkey, "Control" }, "o", function () awful.util.spawn("libreoffice") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
+    awful.key({ modkey, "Control" }, "s",
+                 function ()
+                       local screen = mouse.screen
+                       local tag = awful.tag.gettags(screen)[4]
+                       if tag then
+                          awful.tag.viewonly(tag)
+                       end
+                       awful.util.spawn("spotify --ui.track_notifications_enabled=false")
+                 end),
 
     --awful.key({ modkey,           }, "j",     function () awful.tag.incmwfact( 0.1)    end),
     --awful.key({ modkey,           }, "k",     function () awful.tag.incmwfact(-0.1)    end),
