@@ -153,6 +153,8 @@ dynamic_tagging = function()
                     t.name = "[ New Tag ]"
                 elseif string.find(cname, "Vimperator") then
                     t.name = " Firefox "
+                elseif string.find(cname, "Firefox") then
+                    t.name = " Firefox "
                 elseif string.find(cname, "VIM") then
                     t.name = " vim "
                 elseif string.find(cname, "archr") then
