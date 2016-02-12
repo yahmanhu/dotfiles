@@ -495,10 +495,10 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey            }, "Menu", function () awful.util.spawn("dmenu_run -l 5 -fn 'Droid Sans Mono-12'") end),
+    awful.key({ modkey            }, "Menu", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'monospace-12'") end),
     awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),
     awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
-    awful.key({ modkey            }, "o", function () awful.util.spawn("dma") end),
+    awful.key({ modkey            }, "o", function () awful.util.spawn("spotymenu") end),
     awful.key({ modkey            }, "w", function () awful.util.spawn("dmw") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
@@ -509,7 +509,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "s",
                  function ()
                        local screen = mouse.screen
-                       local tag = awful.tag.gettags(screen)[4]
+                       local tag = awful.tag.gettags(screen)[3]
                        if tag then
                           awful.tag.viewonly(tag)
                        end
@@ -637,10 +637,6 @@ awful.rules.rules = {
     { rule_any = { name = { "feh", "trans" } },
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
-
-    { rule = { class = "System-config-printer.py"},
-      properties = { floating = true },
-      callback = function (c) c:geometry({width = 200, height=200}) end },
 
     { rule_any = { name = { "ranger", "Transmission", "LibreOffice", "Spotify" }},
 
