@@ -18,7 +18,7 @@ wifi() {
     wifi_state=$(cat /sys/class/net/wlp3s0/operstate)
 
     if [[ $wifi_state == "up" ]]; then
-        echo " \e[32mwi-fi"
+        echo "wi-fi"
     else
         :
     fi
@@ -30,7 +30,7 @@ ethernet() {
     eth_state=$(cat /sys/class/net/enp4s0/operstate)
 
     if [[ $eth_state == "up" ]]; then
-        echo "\e[32mwired"
+        echo "wired"
     else
         :
     fi
@@ -44,14 +44,14 @@ volume() {
     if [[ $vol_state == "off" ]]; then
     :
     else
-        echo "\e[95mvol"
+        echo "vol"
     fi
 }
 
 mount() {
 
     if [[ -d /run/media/$USER/* ]]; then
-        echo "\e[91mUSB Mounted "
+        echo "USB Mounted"
     else
         :
     fi
@@ -73,7 +73,7 @@ TRAPALRM() {
 
 
 local ret_status="%(?:%{$fg_bold[white]%}[%T] :%{$fg_bold[red]%}[%T] %s)"
-PROMPT='$(cursor)%B--%T-- $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+PROMPT='%B--%T--%{$fg_bold[green]%} $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
