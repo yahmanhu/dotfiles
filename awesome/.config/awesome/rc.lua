@@ -638,7 +638,7 @@ awful.rules.rules = {
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
 
-    { rule_any = { name = { "ranger", "Transmission", "LibreOffice", "Spotify" }},
+    { rule_any = { name = { "ranger", "Transmission", "LibreOffice",}},
 
         callback = function(c)
 
