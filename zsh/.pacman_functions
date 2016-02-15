@@ -21,7 +21,7 @@ pacmirror() {
         sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
         echo "New mirrorlist: done!"
         echo "Opening the new mirrorlist for editing."
-        sudo vim /etc/pacman.d/mirrorlist
+        sudo -e /etc/pacman.d/mirrorlist
     else
         echo "pacmirror script stopped. Nothing changed."
     fi

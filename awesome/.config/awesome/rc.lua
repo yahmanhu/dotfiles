@@ -39,7 +39,7 @@ end
 
 --  Autostart
 -- Start compton
-awful.util.spawn_with_shell("compton --backend glx --paint-on-overlay --vsync opengl-swc")
+--awful.util.spawn_with_shell("compton --backend glx --paint-on-overlay --vsync opengl-swc")
 
 
 --  Variable definitions
