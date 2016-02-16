@@ -31,7 +31,8 @@ URxvt.foreground: #FFFFFF
 !URxvt.font: 9x15
 
 !URxvt.font: xft:Dejavu Sans Mono:pixelsize=14:antialias=true:hinting=true
-URxvt.font: xft:Liberation Mono for Powerline:pixelsize=15:antialias=true:hinting=true
+!URxvt.font: xft:Liberation Mono for Powerline:pixelsize=15:antialias=true:hinting=true
+URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:pixelsize=17:antialias=true:hinting=true
 !URxvt.letterSpace: -2
 URxvt.lineSpace: 1
