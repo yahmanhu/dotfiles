@@ -200,6 +200,30 @@ for s = 1, screen.count() do
     screen[s]:connect_signal("tag::history::update", function() dynamic_tagging() end)
 end
 
+---  Menu
+---   Menu variables
+switch_keybaord = function() awful.util.spawn("/home/rio/scripts/skeyboard") end
+switch_wifi = function() awful.util.spawn("/home/rio/scripts/swifi") end
+---switch_monitor = function() awful.util.spawn("/home/rio/scripts/switch-monitor") end
+
+---logout = function() awful.util.spawn("pkill -u rio") end
+suspend = function() awful.util.spawn("systemctl suspend") end
+reboot = function() awful.util.spawn("systemctl reboot") end
+poweroff = function() awful.util.spawn("systemctl poweroff") end
+
+mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
+                                    {"&Wifi switcher", switch_wifi},
+                                    --{"&Monitor switcher", switch_monitor},
+                                    {},
+                                    --{"&Logout", logout},
+                                    {"&Reboot", reboot},
+                                    {"&Suspend", suspend},
+                                    {"&Poweroff", poweroff},
+                                  }
+                        })
+
+mylauncher = awful.widget.launcher({ menu = mymainmenu })
+
 -- Battery indicator widget
 battwidget = wibox.widget.textbox()
 
@@ -495,11 +519,13 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey            }, "Menu", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'monospace-12'") end),
+    awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
+    awful.key({ modkey            }, "r", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'monospace-12'") end),
     awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),
     awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
     awful.key({ modkey            }, "o", function () awful.util.spawn("spotymenu") end),
     awful.key({ modkey            }, "w", function () awful.util.spawn("dmw") end),
+    awful.key({ modkey            }, "t", function () awful.util.spawn("dmt") end),
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "f", function () awful.util.spawn("urxvt -name ranger -T ranger -e ranger") end),
     awful.key({ modkey, "Control" }, "d", function () awful.util.spawn("urxvt -name Transmission -T Transmission -e transmission-remote-cli") end),
