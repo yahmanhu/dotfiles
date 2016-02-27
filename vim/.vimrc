@@ -27,7 +27,7 @@ set number
 set t_Co=256
 syntax on
 filetype plugin indent on
-colorscheme Tomorrow-Night-spcmd
+colorscheme Tomorrow-Night-Eighties
 set showcmd
 set linebreak
 set hlsearch
