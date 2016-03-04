@@ -1,13 +1,13 @@
-s:/home/rio/scripts
-':/home/rio/downloads/The.Big.Bang.Theory.S09E17.720p.HDTV.X264-DIMENSION[rarbg]
-l:/home/rio/.config/mpv/watch_later
 p:/home/rio/pictures
-f:/home/rio/dotfiles
+':/home/rio/downloads/Mad Men Season 3 - COMPLETE S03 720p BRRip  x264 [MKV,AC3,5.1] Ehhhh
 b:/home/rio/backup
 u:/run/media
-t:/home/rio/.local/share/Trash/files
 c:/home/rio/.config
-w:/home/rio/downloads
-d:/home/rio/documents
-n:/home/rio/bin
 B:/home/rio/backup
+n:/home/rio/bin
+w:/home/rio/downloads
+f:/home/rio/dotfiles
+d:/home/rio/documents
+s:/home/rio/scripts
+l:/home/rio/.config/mpv/watch_later
+t:/home/rio/.local/share/Trash/files

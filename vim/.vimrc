@@ -247,6 +247,9 @@ nnoremap TN :NERDTreeToggle<ENTER>
 "nnoremap <silent> <leader>vc :VCoolor<CR>
 "inoremap <silent> <leader>vc <Esc>:VCoolor<CR>a
 
+"Shell script abbreviations
+au FileType sh iab iff if [[ ]]; then<CR>fi<Esc>?[[ ]]<Esc>:noh<Esc>i
+au FileType sh iab awkk awk '{ }'<Esc>{? }<Esc>:noh<Esc>i
 
 "============
 "Autocommands
