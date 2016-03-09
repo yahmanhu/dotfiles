@@ -5,6 +5,7 @@ theme = {}
 --  Font
 
 theme.font      = "Sans Bold 8"
+--theme.font      = "monospace bold 10"
 --theme.font      = "Terminus 10"
 --theme.font      = "Perfect DOS VGA 437 11"
 --theme.font      = "Ubuntu Mono derivative Powerline Bold 10"

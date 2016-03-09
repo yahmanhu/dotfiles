@@ -208,17 +208,17 @@ switch_wifi = function() awful.util.spawn("/home/rio/scripts/swifi") end
 
 ---logout = function() awful.util.spawn("pkill -u rio") end
 suspend = function() awful.util.spawn("systemctl suspend") end
-reboot = function() awful.util.spawn("systemctl reboot") end
-poweroff = function() awful.util.spawn("systemctl poweroff") end
+--reboot = function() awful.util.spawn("systemctl reboot") end
+--poweroff = function() awful.util.spawn("systemctl poweroff") end
 
 mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
                                     {"&Wifi switcher", switch_wifi},
                                     --{"&Monitor switcher", switch_monitor},
-                                    {},
+                                    --{},
                                     --{"&Logout", logout},
-                                    {"&Reboot", reboot},
+                                    --{"&Reboot", reboot},
                                     {"&Suspend", suspend},
-                                    {"&Poweroff", poweroff},
+                                    --{"&Poweroff", poweroff},
                                   }
                         })
 
