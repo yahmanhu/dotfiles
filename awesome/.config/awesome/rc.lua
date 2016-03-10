@@ -518,7 +518,7 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
     awful.key({ modkey            }, "r", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'monospace-12'") end),
     awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),

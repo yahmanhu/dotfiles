@@ -249,6 +249,7 @@ nnoremap TN :NERDTreeToggle<ENTER>
 
 "Shell script abbreviations
 au FileType sh iab iff if [[ ]]; then<CR>fi<Esc>?[[ ]]<Esc>:noh<Esc>i
+au FileType sh iab eliff elif [[ ]]; then<Esc>?[[ ]]<Esc>:noh<Esc>i
 au FileType sh iab awkk awk '{ }'<Esc>{? }<Esc>:noh<Esc>i
 au FileType sh iab forr for; do<CR>done<Esc>?;<Esc>:noh<Esc>i
 "au FileType sh iab " ""<Esc>:"?"<CR>:noh<Esc>i
