@@ -32,9 +32,12 @@ URxvt.foreground: #FFFFFF
 
 !URxvt.font: xft:Dejavu Sans Mono:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Liberation Mono for Powerline:pixelsize=15:antialias=true:hinting=true
-URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
+!URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:pixelsize=17:antialias=true:hinting=true
 !URxvt.letterSpace: -2
+!URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
+!URxvt.font: -misc-fixed-medium-r-*-*-13-*-*-*-*-60-*-*
+URxvt.font: 8x13
 URxvt.lineSpace: 1
 
 ! True: enable the scrollbar [default]; option -sb. False: disable the scrollbar; option +sb.
