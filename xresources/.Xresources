@@ -35,9 +35,12 @@ URxvt.foreground: #FFFFFF
 !URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:pixelsize=17:antialias=true:hinting=true
 !URxvt.letterSpace: -2
-!URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
+URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
+!URxvt.font: -ctrld-fixed-medium-r-normal--13-80-96-96-c-80-iso10646-1
+!URxvt.font: -ctrld-fixed-medium-r-normal-*-16-*-*-*-*-*-*-*
+!URxvt.font: -misc-tamsyn-medium-r-normal-*-16-*-*-*-*-*-*-*
 !URxvt.font: -misc-fixed-medium-r-*-*-13-*-*-*-*-60-*-*
-URxvt.font: 8x13
+!URxvt.font: 8x13
 URxvt.lineSpace: 1
 
 ! True: enable the scrollbar [default]; option -sb. False: disable the scrollbar; option +sb.
@@ -46,12 +49,14 @@ URxvt.scrollBar: false
 !URxvt.dynamicColors: on
 
 ! Perl Extensions: copy/paste, url-selection,
-URxvt.perl-ext-common: default,clipboard,matcher,url-select
-URxvt.url-select.launcher: /usr/bin/firefox
-URxvt.keysym.M-f: perl:url-select:select_next
+URxvt.perl-ext-common: default,clipboard,matcher,url-select-plus
+URxvt.url-select-plus.mediaplayer: mpv
+URxvt.url-select-plus.imgviewer: feh
+URxvt.url-select-plus.launcher: /usr/bin/firefox
+URxvt.keysym.M-f: perl:url-select-plus:select_next
 !URxvt.url-launcher: firefox
 !URxvt.matcher.button: 1
-URxvt.url-select-underline: true
+URxvt.url-select-plus-underline: true
 URxvt.iso14755: False
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste

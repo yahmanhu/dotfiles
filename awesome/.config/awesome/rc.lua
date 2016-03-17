@@ -520,7 +520,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
-    awful.key({ modkey            }, "r", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'monospace-12'") end),
+    awful.key({ modkey            }, "r", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'Terminus'") end),
     awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),
     awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
     awful.key({ modkey            }, "o", function () awful.util.spawn("spotymenu") end),

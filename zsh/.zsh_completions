@@ -1,0 +1,11 @@
+# Custom completions
+
+function _tvd_completion {
+	reply=($(cat $HOME/.tvd_channels))
+}
+compctl -K _tvd_completion tvd
+
+function _send_completion {
+	reply=($(cat $HOME/.mail_list))
+}
+compctl -K _send_completion send
