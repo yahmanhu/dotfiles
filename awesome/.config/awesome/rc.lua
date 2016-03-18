@@ -224,6 +224,90 @@ mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
 
 mylauncher = awful.widget.launcher({ menu = mymainmenu })
 
+
+icon_mail = "<span color='#FFFFFF'>Mail: </span>"
+
+mail_widget = wibox.widget.textbox()
+
+-- Mail checker (run mail checker script)
+function check_mail()
+    awful.util.spawn_with_shell("gmailcheck.sh")
+end
+check_mail_timer = timer({timeout=180})
+check_mail_timer:connect_signal("timeout",check_mail)
+check_mail_timer:start()
+
+function newmail_count()
+ local newmail_count_file = io.open(os.getenv("HOME") .. "/.mutt/newmail_count", "r")
+ local newmail_count_content = newmail_count_file:read()
+ newmail_count_file:close()
+ return newmail_count_content
+end
+
+function mailchecker_set()
+    local mailchecker_set_file = io.open(os.getenv("HOME") .. "/.config/awesome/mailchecker", "r")
+    local mailchecker_set_content = mailchecker_set_file:read()
+    mailchecker_set_file:close()
+    return mailchecker_set_content
+end
+
+function mail_status()
+    if mailchecker_set() == "off" then
+        --mail_widget:set_markup(icon_mail.."<span background='#E9AD00' color='" ..beautiful.bg_normal .. "'>OFF</span> ")
+        mail_widget:set_markup(icon_mail.."<span color='#fff300'>OFF</span> ")
+    elseif (mailchecker_set() ~= "off" and tonumber(newmail_count()) >= 1) then
+        mail_widget:set_markup(icon_mail.."<span background='#C90303' color='#FFFFFF'> "..tonumber(newmail_count()).." mail </span>")
+    else
+        mail_widget:set_markup(icon_mail.."<span color='#FFFFFF'>0</span>")
+    end
+end
+mail_status()
+
+mail_widget_timer = timer({timeout=30})
+mail_widget_timer:connect_signal("timeout",mail_status)
+mail_widget_timer:start()
+
+------ Mail widget mouse button action
+mail_widget:buttons (awful.util.table.join (
+    awful.button ({}, 1, function()
+        awful.util.spawn(terminal .. " -name mutt -e mutt -F ~/.mutt/account.1.muttrc")
+        -- jump to mail tag
+        local screen = mouse.screen
+        local tag = awful.tag.gettags(screen)[7]
+        if tag then
+           awful.tag.viewonly(tag)
+        end
+    end),
+    awful.button ({}, 2, function()
+        awful.util.spawn_with_shell("gmailcheck.sh")
+        naughty.notify({ title = "awesome Mailchecker", text = "Check done!" })
+    end),
+    awful.button ({}, 3, function()
+        awful.util.spawn(terminal .. " -name mutt -e mutt -F ~/.mutt/account.2.muttrc")
+        -- jump to mail tag
+        local screen = mouse.screen
+        local tag = awful.tag.gettags(screen)[7]
+        if tag then
+           awful.tag.viewonly(tag)
+        end
+    end)
+))
+
+------ Mail list tooltip
+function newmail_list()
+    local newmail_list_file = io.open(os.getenv("HOME") .. "/.mutt/newmail_list")
+    newmail_list_content = newmail_list_file:read("*all")
+    newmail_list_file:close()
+    return newmail_list_content
+end
+
+list_newmail_tooltip = awful.tooltip({ objects = { mail_widget }})
+
+mail_widget:connect_signal("mouse::enter", function ()
+    --list_newmail_tooltip:set_markup("<span color='#ff0000'>"..newmail_list().."</span> ")
+    list_newmail_tooltip:set_text(newmail_list())
+end)
+
 -- Battery indicator widget
 battwidget = wibox.widget.textbox()
 
@@ -423,6 +507,8 @@ for s = 1, screen.count() do
     left_layout:add(mypromptbox[s])
 
     local right_layout = wibox.layout.fixed.horizontal()
+    right_layout:add(mail_widget)
+    right_layout:add(separator_widget)
     right_layout:add(battwidget)
     --right_layout:add(separator_widget)
     --right_layout:add(ethernet_widget)
