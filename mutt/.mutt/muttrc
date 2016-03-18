@@ -1,0 +1,211 @@
+# {{{   Security
+# -----------------------------------------------------
+
+#source "gpg2 -dq $HOME/.pwds-mutt.gpg |"
+#bind generic,alias,attach,browser,editor,index,compose,pager,pgp,postpone ':' noop
+
+# }}}
+# {{{   Basic settings
+# -----------------------------------------------------
+
+set editor = "vim -u ~/.mutt/mutt-vimrc"
+#set editor = "vim -u ~/.vimrc"
+set send_charset="utf-8"
+set allow_8bit
+set mailcap_path = ~/.mutt/mailcap                                          # Mime type settings, open attachments with...
+#set my_script_mailboxes = ~/.mutt/mailboxes.sh                              # Add/remove folder/label names to mailboxes in the account files
+set mail_check = 280                                                        # Time between new checks
+set imap_keepalive = 250                                                    # Keep IMAP connection alive by polling intermittently (time in seconds).
+set timeout = 300                                                           # Time to wait for idle mutt (no key pressed) before the status is updated again
+set wait_key = no                                                           # Do not wait for key press (when shell escape, etc.)
+set mark_old = no                                                           # Do not mark old unread mail from the last session
+set move = no                                                               # Stop asking to "move read messages to mbox"!
+#set imap_check_subscribed                                                  # Check all folder (Unset when using multiple accounts!)
+set auto_tag = yes                                                          # Auto apply tag prefix (;) when running a command on tagged messages
+set record = ""                                                             # Record (log) of the sent mails (default: ~/sent)
+
+set implicit_autoview = yes                                                 # Use autoview, if a "copiousoutput" is in mailcap
+auto_view text/html                                                         # Auto view html format
+#alternative_order text/enriched text/plain text/html text
+#set display_filter="sed '/^.*\\[-- .*--]$/d'"                           # Remove Attachments and Auto view blocks from message body
+set display_filter="sed -e '/^.*\\[-- .*--]$/d;/cid/d'"                           # Remove Attachments and Auto view blocks from message body
+#set display_filter="sed '/^.*\\[-- Autoview using .* --]$/d'"
+#set edit_headers
+
+set beep = yes                                                              # Send signal to the terminal (have to set: URxvt.urgentOnBell: true)
+set beep_new =yes                                                           # Send signal to the terminal (have to set: URxvt.urgentOnBell: true)
+
+set sort = 'threads'                                                        # Like gmail
+set sort_aux = 'reverse-last-date-received'                                 # Like gmail
+set uncollapse_jump                                                         # Don't collapse on an unread message
+unset collapse_unread                                                       # Don't collapse threads with unread mails
+set sleep_time = 0                                                          # Faster folder switch (this should be default!)
+
+set include                                                                 # Quote message, when replying
+set mime_forward                                                            # Forward attachments as part of body
+set mime_forward_rest                                                       # Include attachments
+set fast_reply                                                              # Skip to compose when replying
+set text_flowed = yes                                                       # Plain text formatting and quote formatting
+
+set pager_index_lines = 10                                                  # Show the mail list above (index) when reading an email (pager)
+set pager_context = 3                                                       # Number of context lines to show
+set pager_stop                                                              # Don't go to next message automatically
+set menu_scroll                                                             # Scroll in menus
+set tilde                                                                   # Show tildes like in vim
+set prompt_after = no                                                       # Do not prompt after using external pager (e.g.: less)
+
+ignore *                                                                    # Ignore all headers
+unignore from: to: cc: date: subject:                                       # Show only these headers
+unhdr_order *                                                               # Ignore default header order
+hdr_order from: to: cc: date: subject:                                      # show headers in this order
+
+# }}}
+# {{{   Key Bindings
+# -----------------------------------------------------
+
+# Basic
+macro index,pager,compose,browser -r "<enter-command>source ~/.mutt/muttrc<enter>" "Source muttrc"
+bind index gg first-entry
+bind index G last-entry
+macro index h "<change-folder>+INBOX<enter>" "Go to INBOX"
+bind index l display-message
+bind pager h exit
+macro index \CJ "<next-entry><next-entry><next-entry>" "Move quickly down (3j)"
+macro index \CK "<previous-entry><previous-entry><previous-entry>" "Move quickly up (3k)"
+bind index zm collapse-thread
+bind index zM collapse-all
+bind index <space> tag-entry
+bind index p recall-message
+bind index \CR recall-message
+bind index \CN imap-fetch-mail
+bind index x sync-mailbox
+macro index,pager \CL "<refresh><redraw-screen>" "Refresh and Redraw screen"
+bind index,pager N search-opposite
+macro index \CF "<search>~B " "Search in the messages' body" #  / is searching in the To: and Subject: fields only!
+macro index f "<search>~B " "Search in the messages' body" #  / is searching in the To: and Subject: fields only!
+#macro index,pager q "<sync-mailbox><shell-escape>gmailcheck.sh<enter><quit>" "update local mail counter and quit"
+
+# Pager
+bind pager k  previous-line
+bind pager j  next-line
+bind pager l  view-attachments
+bind pager gg top
+bind pager G  bottom
+bind pager \CH display-toggle-weed
+
+# Compose
+bind compose l view-attach
+bind compose dd detach-file
+bind compose y noop
+bind compose \CY send-message
+macro compose a "<attach-file><bol>~/downloads/<eol>\t\t" "Attach file (view file browser)"
+
+# Attachments
+bind attach <return> view-mailcap
+bind attach l view-mailcap
+bind attach h exit
+bind attach <space> tag-entry
+macro attach s "<save-entry><bol>~/downloads/<eol>" "Save attachmen to downloads directory" # From Stackoverflow: http://goo.gl/zMjj68
+
+# Labels / Folders
+macro index c "<change-folder>?" "Select Folder/Label"
+macro index L "<copy-message>?3<enter>" "Add label (copy to folder)"
+macro index yy "<copy-message>?3<enter>" "Add label (copy to folder)"
+
+# File Browser
+bind browser l select-entry
+bind browser pp select-entry
+bind browser <space> tag-entry
+macro browser h "<exit><shell-escape>xdotool Ctrl+g<enter><refresh>" "Quit file browser" # http://unix.stackexchange.com/a/126715
+bind browser dd delete-mailbox
+bind browser cw rename-mailbox
+
+
+# Tab Completion
+bind editor <Tab> complete
+bind editor \CT complete-query
+bind editor <space> noop
+
+# Sidebar
+#bind index,pager <up> sidebar-prev
+#bind index,pager <down> sidebar-next
+#bind index,pager <right> sidebar-open
+#macro index \CB "<enter-command>toggle sidebar_visible<enter><refresh>"
+#macro pager \CB "<enter-command>toggle sidebar_visible<enter><redraw-screen>"
+
+# }}}
+# {{{   Layout (index, status, pager, sidebar)
+# -----------------------------------------------------
+
+set date_format="%Y %b %d %R"
+set index_format = "%4C [%Z]  %D  %-18.18F [%-20.20y] %?X?[%X]&   ?%?M?+& ?%1M %s"
+set to_chars = "  TCSL"
+set status_chars = "-MRA"
+set status_on_top
+set pager_format = "Reading e-mail %C of %m |%>────%lL [%P]"
+#set pager_format = "Reading e-mail %C of %m  |───[ From: %F ]───[ Subject: %s ]%?y?───[ Labels: %y ]───?%>────%lL [%P]"
+
+# Sidebar (http://www.lunar-linux.org/mutt-sidebar)
+#set sidebar_width=25
+#set sidebar_visible=yes
+#set sidebar_delim='|'
+#set sidebar_sort=no
+#set sidebar_shortpath=yes
+#set sidebar_format = '%B %! %> %S '
+#set sidebar_folderindent=yes
+
+# }}}
+# {{{   Address book (Aliases)
+# -----------------------------------------------------
+
+set alias_file = "~/.mutt/aliases"
+set sort_alias = alias
+set reverse_alias = no
+source $alias_file
+
+# }}}
+# {{{   Colors
+# -----------------------------------------------------
+
+#color sidebar_new   default         default                     # Folders that contain new messages
+color hdrdefault    white           blue                        # Header (in the pager)
+color attachment    white           green                       # Attachments (in the pager)
+
+color quoted        blue            default                     # Quoted text in messages
+color quoted1       magenta         default                     # Quoted text in messages
+color quoted2       blue            default                     # Quoted text in messages
+color quoted3       magenta         default                     # Quoted text in messages
+
+color error         white           red                         # Error messages
+color message       white           default                     # Message  informational messages
+color indicator     white           blue                  # Selection highlight (on the current message)
+color status        white           blue                        # "Window" color (statusbar)
+color tree          yellow          default                     # Tree indicator (of threads)
+color search        white           blue                        # Search matches found with search within the internal pager
+color markers       red             default                     # The markers indicate a wrapped line
+
+# Pattern modifiers: http://www.mutt.org/doc/devel/manual.html#tab-patterns
+color index         green           default '~O'                # Old flagged messages
+color index         white           red     '~N'                # New messages
+color index         red             yellow  '~F'                # Important (Starred) messages
+color index         brightred       black   '~D'                # Marked for deletion
+color index         brightyellow    default '~T'                # Tagged messages
+color body          yellow          default '.+\[cid.+\]'       # Inline content/image indicator when using html view with w3m
+#color index        white green '~y LABELNAME'
+
+# }}}
+# {{{   Accounts
+# -----------------------------------------------------
+
+# Folder hooks
+#folder-hook 'account.1.muttrc' 'source ~/.mutt/account.1.muttrc'
+#folder-hook 'account.2.muttrc' 'source ~/.mutt/account.2.muttrc'
+
+# Switching accounts
+#macro index \' '<sync-mailbox><enter-command>source ~/.mutt/account.1.muttrc <enter><change-folder>!<enter>'
+#macro index \" '<sync-mailbox><enter-command>source ~/.mutt/account.2.muttrc <enter><change-folder>!<enter>'
+
+# Default account
+#source ~/.mutt/account.1.muttrc
+
+# }}}
