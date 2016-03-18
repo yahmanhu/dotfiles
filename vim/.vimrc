@@ -109,8 +109,7 @@ command! COL :ColorHighlight syntax<CR>
 "==================
 
 "Set leader key
-"let nomapleader = "\\"
-let mapleader = ","
+let nomapleader = "\\"
 
 "Faster navigation
 nnoremap J <C-d>
