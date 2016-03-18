@@ -1,5 +1,6 @@
 mpv/.config/mpv/watch_later
 awesome/.config/awesome/debian
+awesome/.config/awesome/mailchecker
 ranger/.config/ranger/__pycache__
 ranger/.config/ranger/history
 ranger/.config/ranger/bookmarks
