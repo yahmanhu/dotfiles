@@ -30,6 +30,7 @@ alias newsconf='vim ~/.newsbeuter/config'
 alias xinitrc='vim ~/.xinitrc'
 alias xresources='vim ~/.Xresources'
 alias XRR='xrdb -load ~/.Xresources'
+alias muttrc='vim ~/.mutt/muttrc'
 
 # Mount
 alias mount0='udisksctl mount -b /dev/sdb'

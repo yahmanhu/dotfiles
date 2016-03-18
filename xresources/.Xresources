@@ -83,8 +83,10 @@ URxvt.color3: #FAE56B
 URxvt.color11: #FAE56B
 ! blue
 !URxvt.color4: #71A6B7
-URxvt.color12:#1C7EFF
-URxvt.color4: #1C7EFF
+!URxvt.color12:#1C7EFF
+!URxvt.color4: #1C7EFF
+URxvt.color12:#005577
+URxvt.color4: #005577
 !URxvt.color4: #1C7EFF
 ! magenta
 URxvt.color5: #F860CD
@@ -113,14 +115,12 @@ URxvt.color15: #ffffff
 URxvt.cursorColor: white
 
 ! Newsbeuter colors
-newsbeuter.color1:#FFFFFF
-newsbeuter.color2:#000000
+newsbeuter.color1:#222222
+newsbeuter.color2:#FFFFFF
 newsbeuter.color3:#808080
 newsbeuter.color4:#c0c0c0
 newsbeuter.color5:#ff0000
 newsbeuter.color6:#005577
 newsbeuter.color7:#00AA00
 newsbeuter.color8:#1C7EFF
-newsbeuter.color9:#000000
-
-mutt.background:#FFFFFF
+newsbeuter.color9:#FFFFFF
