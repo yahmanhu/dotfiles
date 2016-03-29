@@ -50,7 +50,7 @@ URxvt.scrollBar: false
 
 ! Perl Extensions: copy/paste, url-selection,
 URxvt.perl-ext-common: default,clipboard,matcher,url-select-plus
-URxvt.url-select-plus.mediaplayer: mpv
+URxvt.url-select-plus.mediaplayer: urxvtc -e mpv
 URxvt.url-select-plus.imgviewer: feh
 URxvt.url-select-plus.launcher: /usr/bin/firefox
 URxvt.keysym.M-f: perl:url-select-plus:select_next

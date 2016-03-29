@@ -58,6 +58,7 @@ set noswapfile
 set statusline=
 set statusline+=%f%m%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ L:%l/%L\ C:%c\ (%P)
 set mouse=a
+set spelllang=hu,en
 
 "===============
 "Cursor settings
@@ -265,3 +266,5 @@ autocmd BufRead *tex colorscheme darkroom
 au BufRead,BufNewFile *.fountain set filetype=fountain
 autocmd BufRead *.markdown,*fountain call DistractFree#DistractFreeToggle() | wincmd w
 autocmd BufRead *fountain colorscheme darkroom
+"Remove trailing whitespace when saving the file
+autocmd BufWritePre * :%s/\s\+$//e

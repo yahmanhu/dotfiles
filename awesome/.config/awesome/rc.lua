@@ -254,9 +254,9 @@ end
 function mail_status()
     if mailchecker_set() == "off" then
         --mail_widget:set_markup(icon_mail.."<span background='#E9AD00' color='" ..beautiful.bg_normal .. "'>OFF</span> ")
-        mail_widget:set_markup(icon_mail.."<span color='#fff300'>OFF</span> ")
+        mail_widget:set_markup("<span color='#c0c0c0'>Mail: OFF</span>")
     elseif (mailchecker_set() ~= "off" and tonumber(newmail_count()) >= 1) then
-        mail_widget:set_markup(icon_mail.."<span background='#DC0000' color='#FFFFFF'> "..tonumber(newmail_count()).." mail </span>")
+        mail_widget:set_markup(icon_mail.."<span background='#DC0000' color='#FFFFFF'> "..tonumber(newmail_count()).." </span>")
     else
         mail_widget:set_markup(icon_mail.."<span color='#FFFFFF'>0</span>")
     end

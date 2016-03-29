@@ -86,6 +86,8 @@ theme.tooltip_font = "Sans 10"
 
 theme.menu_height = 25
 theme.menu_width  = 200
+theme.menu_border_color = theme.bg_focus
+theme.menu_border_width = 1
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]

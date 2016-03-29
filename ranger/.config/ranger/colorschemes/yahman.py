@@ -5,6 +5,9 @@ class Scheme(Default):
     progress_bar_color = cyan
     def use(self, context):
         fg, bg, attr = Default.use(self, context)
+
+        if context.border:
+            fg = blue
         
         if context.directory:
             fg = cyan

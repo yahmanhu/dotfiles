@@ -134,12 +134,6 @@ free_space(){
     root_dir=$(df -h / | tail -1 | awk '{print $4}')
     home_dir=$(df -h /home | tail -1 | awk '{print $4}')
     
-    echo -e "\e[1mFree space available\n\\ \t\t $root_dir\n\\home\t\t $home_dir"
-
-}
-
-send(){
-
-    xdg-email --cc $1 --subject $2 --body $3
+    echo -e "Free space available\n\\ \t\t $root_dir\n\\home\t\t $home_dir"
 
 }
