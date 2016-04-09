@@ -35,7 +35,7 @@ do
         in_error = false
     end)
 end
--- 
+--
 
 --  Autostart
 -- Start compton
@@ -80,7 +80,7 @@ if beautiful.wallpaper then
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
 end
--- 
+--
 
 --  Tags
 -- Define a tag table which hold all screen tags.
@@ -90,7 +90,7 @@ end
     --for _, c in pairs(tag:clients()) do
         --client_name = client.get_xproperty()
     --end
---end 
+--end
 
 
 --tags = {}
@@ -98,7 +98,7 @@ end
     ---- Each screen has its own tag table.
    --tags[s] = awful.tag({ ' 1. web ', ' 2. terminal ', ' 3. files ', ' 4. torrent ', ' 5. music ', ' 6. office ', }, s, layouts[1])
 
-    
+
 --end
 
 tags = {
@@ -125,9 +125,9 @@ end
 
 
 -- change tag names dynamically (from: http://crunchbang.org/forums/viewtopic.php?id=32259)
-dynamic_tagging = function() 
+dynamic_tagging = function()
 	for s = 1, screen.count() do
-		-- get a list of all tags 
+		-- get a list of all tags
         --local atags = screen[s]:tags()
         local atags = awful.tag.gettags(s)
 		-- set the standard icon
@@ -145,7 +145,7 @@ dynamic_tagging = function()
 				-- set active icon
                 --t.name = "◆"
                 --t.name = cname
-                
+
                 --if cname == nil then
                     --t.name = cname
                     --
@@ -175,7 +175,7 @@ dynamic_tagging = function()
 		end
 
 	end
-end	
+end
 
     -- signal function to execute when a new client appears
 client.connect_signal("manage", function (c, startup)
@@ -530,7 +530,7 @@ for s = 1, screen.count() do
     --mywibox2[s]:set_widget(bottom_layout)
 
 end
--- 
+--
 
 --  Mouse bindings
 root.buttons(awful.util.table.join(
@@ -538,7 +538,7 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
--- 
+--
 
 --  Key bindings
 globalkeys = awful.util.table.join(
@@ -556,7 +556,7 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86Forward", function () awful.util.spawn("xbacklight -time 0 -inc 15%") end),
     awful.key({                   }, "XF86PowerOff", function () awful.util.spawn("sudo pm-suspend") end),
     awful.key({                   }, "Print", function () awful.util.spawn("scrot") end),
-    
+
     -- Spotify control
     awful.key({ modkey,           }, "p", function () awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
     awful.key({ modkey,           }, "Left", function () awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
@@ -718,7 +718,7 @@ clientbuttons = awful.util.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- 
+--
 
 --  Rules
 -- Rules to apply to new clients (through the "manage" signal).
