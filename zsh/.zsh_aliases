@@ -52,6 +52,13 @@ alias trl='transmission-remote -l'
 alias trs='transmission-remote -tall --start'
 alias trp='transmission-remote -tall --stop'
 
+# Mail
+
+alias mutt1='mutt -F ~/.mutt/account.1.muttrc'
+alias mutt2='mutt -F ~/.mutt/account.2.muttrc'
+alias mailstat='cat ~/.config/awesome/mailchecker'
+alias lsm='cat ~/.mutt/newmail_list'
+
 # Find
 alias findf='find-file'
 alias findd='find-dir'
@@ -95,6 +102,4 @@ alias lsusb='ls /run/media/$USER/*'
 alias cal='cal -mw'
 alias news='urxvt -name newsbeuter -e newsbeuter'
 alias q='exit'
-alias mutt1='mutt -F ~/.mutt/account.1.muttrc'
-alias mutt2='mutt -F ~/.mutt/account.2.muttrc'
-alias mailstat='cat ~/.config/awesome/mailchecker'
+alias ytdl='youtube-dl -f 22'

@@ -50,7 +50,7 @@ lsgrep() {
 
     ls -lh --color=auto | grep $1
 
-} 
+}
 
 lsdir() {
 
@@ -122,7 +122,7 @@ takef(){
 
 takesh(){
 
-    touch $1 
+    touch $1
     chmod +x $1
     echo "#!/bin/bash" > $1
     $EDITOR $1
@@ -133,7 +133,17 @@ free_space(){
 
     root_dir=$(df -h / | tail -1 | awk '{print $4}')
     home_dir=$(df -h /home | tail -1 | awk '{print $4}')
-    
+
     echo -e "Free space available\n\\ \t\t $root_dir\n\\home\t\t $home_dir"
 
+}
+
+bbdl() {
+    start_date=$(date)
+    num_days=5
+    for i in $(seq 1 $num_days)
+    do
+        date=$(date +"%y%m%d" -d "${start_date}+${i} days")
+        wget -P ~/downloads http://video.builder.hu/bunny/bb.radio_$date.mp3
+    done
 }

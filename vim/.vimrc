@@ -261,10 +261,8 @@ au FileType sh iab forr for; do<CR>done<Esc>?;<Esc>:noh<Esc>i
 
 autocmd BufRead .vimperatorrc setfiletype vim
 autocmd BufRead *.markdown,*tex call DistractFree#DistractFreeToggle() | wincmd w
-autocmd BufRead *tex colorscheme darkroom
 
 au BufRead,BufNewFile *.fountain set filetype=fountain
 autocmd BufRead *.markdown,*fountain call DistractFree#DistractFreeToggle() | wincmd w
-autocmd BufRead *fountain colorscheme darkroom
 "Remove trailing whitespace when saving the file
 autocmd BufWritePre * :%s/\s\+$//e

@@ -1,9 +1,8 @@
-"query:--Unread--:unread = \"yes\""
-#"query:--Later--:flags # \"l\""
+#"query:--Unread--:unread = \"yes\""
+##"query:--Later--:flags # \"l\""
 "query:Youtube:tags # \"Youtube\""
 #"query:Blog:tags # \"Blog\""
 http://feeds.feedburner.com/sorozataddikt Blog
-http://www.sorozatjunkie.hu/2016/01/05/shameless-kezdett-a-6-evad/feed/ Blog
 http://filmbuzi.hu/feed/ Blog
 http://feeds.feedburner.com/plastikmedia Blog
 http://iddqd.blog.hu/rss Blog
