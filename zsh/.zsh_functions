@@ -147,3 +147,31 @@ bbdl() {
         wget -P ~/downloads http://video.builder.hu/bunny/bb.radio_$date.mp3
     done
 }
+
+fda() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf -e --reverse +m) && cd "$dir"
+}
+
+
+fdr() {
+  local declare dirs=()
+  get_parent_dirs() {
+    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
+    if [[ "${1}" == '/' ]]; then
+      for _dir in "${dirs[@]}"; do echo $_dir; done
+    else
+      get_parent_dirs $(dirname "$1")
+    fi
+  }
+  local DIR=$(get_parent_dirs $(realpath "${1:-$(pwd)}") | fzf -e --reverse)
+  cd "$DIR"
+}
+
+fe() {
+  IFS='
+'
+  local declare files=($(fzf -e --reverse --query="$1" --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  unset IFS
+}
