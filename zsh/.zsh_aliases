@@ -31,6 +31,7 @@ alias xinitrc='vim ~/.xinitrc'
 alias xresources='vim ~/.Xresources'
 alias XRR='xrdb -load ~/.Xresources'
 alias muttrc='vim ~/.mutt/muttrc'
+alias tmuxconf='vim ~/.tmux.conf'
 
 # Mount
 alias mount0='udisksctl mount -b /dev/sdb'
@@ -103,3 +104,5 @@ alias cal='cal -mw'
 alias news='urxvt -name newsbeuter -e newsbeuter'
 alias q='exit'
 alias ytdl='youtube-dl -f 22'
+alias mpvc='mpv -vo=opengl -ao=alsa'
+alias wttr='curl wttr.in/pecs'

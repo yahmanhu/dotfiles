@@ -217,7 +217,7 @@ mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
                                     --{},
                                     --{"&Logout", logout},
                                     --{"&Reboot", reboot},
-                                    {"&Suspend", suspend},
+                                    --{"&Suspend", suspend},
                                     --{"&Poweroff", poweroff},
                                   }
                         })
@@ -609,6 +609,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "r", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'Terminus'") end),
     awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),
     awful.key({ modkey            }, "/", function () awful.util.spawn("dms") end),
+    awful.key({ modkey            }, "d", function () awful.util.spawn("dmd") end),
     awful.key({ modkey            }, "o", function () awful.util.spawn("spotymenu") end),
     awful.key({ modkey            }, "w", function () awful.util.spawn("dmw") end),
     awful.key({ modkey            }, "t", function () awful.util.spawn("dmt") end),
@@ -621,7 +622,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "s",
                  function ()
                        local screen = mouse.screen
-                       local tag = awful.tag.gettags(screen)[3]
+                       local tag = awful.tag.gettags(screen)[6]
                        if tag then
                           awful.tag.viewonly(tag)
                        end

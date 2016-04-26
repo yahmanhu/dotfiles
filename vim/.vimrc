@@ -85,7 +85,6 @@ endif
 "silent !echo -ne "\033]12;yellow\007"
 "autocmd VimLeave * silent !echo -ne "\033]12;green\007"
 
-
 "===============
 "Custom commands
 "===============
