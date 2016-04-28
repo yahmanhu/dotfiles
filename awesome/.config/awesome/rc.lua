@@ -641,6 +641,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Change tty
+    awful.key({ modkey,           }, "F1", function () awful.util.spawn("sudo chvt 1") end),
     awful.key({ modkey,           }, "F2", function () awful.util.spawn("sudo chvt 2") end),
     awful.key({ modkey,           }, "F3", function () awful.util.spawn("sudo chvt 3") end),
     awful.key({ modkey,           }, "F4", function () awful.util.spawn("sudo chvt 4") end)

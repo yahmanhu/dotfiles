@@ -68,22 +68,3 @@ highlight feedlist "Blog" color2 color8
 #highlight feedlist "--Later--" color9 color1 bold
  highlight article "https?://[^ ]+" color8 color1 bold
 highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6
-
-# Colors for tty
-#color background white black
-#color listnormal white black
-#color listfocus  white blue
-#color listnormal_unread white black
-#color listfocus_unread  white blue
-#color info       black white
-#color article    white black
-
-#search-highlight-colors color9 color1 bold
-#highlight feedlist "Youtube" white red
-#highlight feedlist "Youtube" white red
-#highlight feedlist "News" white blue
-#highlight feedlist "Blog" white green
-##highlight feedlist "--Unread--" white black bold
-##highlight feedlist "--Later--" color9 color1 bold
- #highlight article "https?://[^ ]+" white blue bold
-#highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6
