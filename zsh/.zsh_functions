@@ -182,3 +182,12 @@ bindkey ^O fzf-vim-open
 fzf-history () { RBUFFER=$(fc -ln -500 | fzf --tac --no-sort --header="History") $RBUFFER; }
 zle -N fzf-history
 bindkey ^s fzf-history
+
+news(){
+
+    if [[ $DISPLAY = ":0" ]]; then
+        urxvtc -name newsbeuter -e newsbeuter -C ~/.newsbeuter/config_x
+    else
+        newsbeuter -C ~/.newsbeuter/config_tty
+    fi
+}
