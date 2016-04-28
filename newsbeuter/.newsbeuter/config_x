@@ -1,0 +1,89 @@
+# SETTINGS
+# --------
+
+feedlist-format "%4i %n %11u %T %t"
+articlelist-format "%4i %f %D %6L  %?T?|%-17T|  ?%t"
+auto-reload yes
+browser /usr/bin/firefox
+#html-renderer "/usr/bin/lynx -display_charset=utf-8 -cfg ~/.config/lynx/lynx.cfg -dump"
+#confirm-exit yes
+#datetime-format %b %d
+display-article-progress yes
+goto-next-feed no
+goto-first-unread no
+history-limit 0
+max-items 20
+reload-time 15
+download-path "~/downloads" #podbeuter
+save-path "~/downloads"
+show-keymap-hint yes
+show-read-feeds yes
+show-read-articles yes
+suppress-first-reload no
+text-width 80
+
+# KEY BINDINGS
+# ------------
+
+unbind-key ^K
+unbind-key ^J
+
+bind-key j next
+bind-key k prev
+bind-key j down article
+bind-key k up article
+bind-key l open
+bind-key h quit
+bind-key J pagedown
+bind-key K pageup
+bind-key n next-unread
+bind-key N prev-unread
+bind-key g pageup
+bind-key G pagedown
+bind-key ^N reload-all
+bind-key ; macro-prefix
+macro m set browser "mpv %u"; open-in-browser ; set browser "/usr/bin/firefox"
+macro d set browser "urxvtc -e youtube-dl -f 22 %u"; open-in-browser ; set browser "/usr/bin/firefox"
+
+# COLORS
+# ------
+
+# color <element> <foreground color> <background color> [<attribute> ...]
+
+#  Colors for X
+color background color2 color1
+color listnormal color2 color1
+color listfocus  color2 color6
+color listnormal_unread color2 color1
+color listfocus_unread  color2 color6
+color info       color2 color1
+color article    color2 color1
+
+search-highlight-colors color9 color1 bold
+highlight feedlist "Youtube" color2 color5
+highlight feedlist "Youtube" color2 color5
+highlight feedlist "News" color2 color7
+highlight feedlist "Blog" color2 color8
+#highlight feedlist "--Unread--" color9 color1 bold
+#highlight feedlist "--Later--" color9 color1 bold
+ highlight article "https?://[^ ]+" color8 color1 bold
+highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6
+
+# Colors for tty
+#color background white black
+#color listnormal white black
+#color listfocus  white blue
+#color listnormal_unread white black
+#color listfocus_unread  white blue
+#color info       black white
+#color article    white black
+
+#search-highlight-colors color9 color1 bold
+#highlight feedlist "Youtube" white red
+#highlight feedlist "Youtube" white red
+#highlight feedlist "News" white blue
+#highlight feedlist "Blog" white green
+##highlight feedlist "--Unread--" white black bold
+##highlight feedlist "--Later--" color9 color1 bold
+ #highlight article "https?://[^ ]+" white blue bold
+#highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6
