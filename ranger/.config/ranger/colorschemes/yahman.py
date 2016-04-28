@@ -7,8 +7,8 @@ class Scheme(Default):
         fg, bg, attr = Default.use(self, context)
 
         if context.border:
-            fg = blue
-        
+            fg = white
+
         if context.directory:
             fg = cyan
 

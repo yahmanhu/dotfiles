@@ -10,7 +10,7 @@ bat_status() {
     elif [[ $bat_stat == "Discharging" ]] && [[ $bat_cap > "30" ]]; then
         echo "\e[37m$bat_cap"
     fi
-         
+
 }
 
 wifi() {
@@ -64,16 +64,8 @@ cursor(){
 
 }
 
-TMOUT=60
-
-TRAPALRM() {
-
-    zle reset-prompt
-}
-
-
 local ret_status="%(?:%{$fg_bold[white]%}[%T] :%{$fg_bold[red]%}[%T] %s)"
-PROMPT='%B--%T--%{$fg_bold[green]%} $(ethernet)$(wifi) %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+PROMPT='%B%{$fg_bold[green]%} %{$fg_bold[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
