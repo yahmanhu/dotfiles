@@ -139,39 +139,46 @@ free_space(){
 }
 
 bbdl() {
+
     start_date=$(date)
     num_days=5
-    for i in $(seq 1 $num_days)
+    for i in $(seq 0 $num_days)
     do
         date=$(date +"%y%m%d" -d "${start_date}+${i} days")
         wget -P ~/downloads http://video.builder.hu/bunny/bb.radio_$date.mp3
     done
+
 }
 
 fda() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf -e --reverse +m) && cd "$dir"
+
+    local dir
+    dir=$(find ${1:-.} -type d 2> /dev/null | fzf --header="Change dir") && cd "$dir"
+
 }
 
+fds(){
 
-fdr() {
-  local declare dirs=()
-  get_parent_dirs() {
-    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
-    if [[ "${1}" == '/' ]]; then
-      for _dir in "${dirs[@]}"; do echo $_dir; done
-    else
-      get_parent_dirs $(dirname "$1")
+    selected_file=$(find ~/downloads \( -iregex ".+\.\(mkv\|mp4\|srt\)" ! -iname "sample.mkv" \) | awk -F "/" '{print $NF}' | sort | fzf --header="Download subtitle")
+
+    if [[ ! -z "$selected_file" ]]; then
+        selected_file_full_path=$(find ~/downloads/ -iname $(echo "$selected_file" | sed 's/ /\ /g;s/\[/\\[/g;s/\]/\\]/'))
+        periscope -l en "$selected_file_full_path"
     fi
-  }
-  local DIR=$(get_parent_dirs $(realpath "${1:-$(pwd)}") | fzf -e --reverse)
-  cd "$DIR"
+
 }
 
-fe() {
-  IFS='
-'
-  local declare files=($(fzf -e --reverse --query="$1" --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
-  unset IFS
+fzf-vim-open() {
+
+    dirs=(~/dotfiles ~/documents ~/scripts)
+    list=$(find "${dirs[@]}" -type f ! -iregex ".*[/]\.git[/]?.*\|^.+\.png$\|^.+\.jpg$\|^.+\.psd$\|^.+\.pdf$\|^.+\.odt$\|^.+\.ods$\|^.+\.docx?$\|^.+\.xlsx?$" | fzf --header "Edit file")
+    # Run Vim only if something was selected
+    [[ ! -z $list ]] && echo "$list" | xargs bash -c '</dev/tty vim "$@"' ignoreme
+
 }
+zle -N fzf-vim-open
+bindkey ^O fzf-vim-open
+
+fzf-history () { RBUFFER=$(fc -ln -500 | fzf --tac --no-sort --header="History") $RBUFFER; }
+zle -N fzf-history
+bindkey ^s fzf-history

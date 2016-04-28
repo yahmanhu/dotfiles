@@ -67,6 +67,10 @@ source ~/.zsh_completions
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# fzf
+export FZF_DEFAULT_COMMAND='find .'
+export FZF_DEFAULT_OPTS="--exact --extended --reverse --color=bg+:-1,fg+:-1,hl+:6,hl:9,info:11,pointer:6,prompt:10,header:3 --bind=tab:down,btab:up,ctrl-j:page-down,ctrl-k:page-up"
+
 # Preferred editor for local and remote sessions
  #if [[ -n $SSH_CONNECTION ]]; then
    #export EDITOR='vim'
@@ -90,3 +94,11 @@ export LANG=en_US.UTF-8
 eval $(dircolors ~/.dircolors)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #zstyle ":completion:*:descriptions" format "%B%d%b"
+
+# Custom key-bindings
+
+bindkey ^k up-line-or-history
+bindkey ^j down-line-or-history
+
+bindkey -M menuselect '^o' accept-and-infer-next-history
+bindkey -M menuselect '^s' accept-and-menu-complete
