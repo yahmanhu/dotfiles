@@ -44,6 +44,7 @@ bind-key ^N reload-all
 bind-key ; macro-prefix
 macro m set browser "tmux new-window mpv -vo=opengl -ao=alsa %u"; open-in-browser ; set browser "/usr/bin/firefox"
 macro d set browser "tmux new-window youtube-dl -f 22 %u"; open-in-browser ; set browser "/usr/bin/firefox
+macro o set browser "DISPLAY=:0 xdg-open %u"; open-in-browser ; set browser "/usr/bin/firefox
 
 # COLORS
 # ------
@@ -61,10 +62,9 @@ color article    white black
 
 search-highlight-colors color9 color1 bold
 highlight feedlist "Youtube" white red
-highlight feedlist "Youtube" white red
 highlight feedlist "News" white blue
-highlight feedlist "Blog" white green
+highlight feedlist "Blog" black green
 #highlight feedlist "--Unread--" white black bold
 #highlight feedlist "--Later--" color9 color1 bold
  highlight article "https?://[^ ]+" white blue bold
-highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color2 color6
+highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" white red

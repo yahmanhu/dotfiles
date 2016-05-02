@@ -202,7 +202,7 @@ end
 
 ---  Menu
 ---   Menu variables
-switch_keybaord = function() awful.util.spawn("/home/rio/scripts/skeyboard") end
+switch_keybaord = function() awful.util.spawn("/home/rio/scripts/skbd") end
 switch_wifi = function() awful.util.spawn("/home/rio/scripts/swifi") end
 ---switch_monitor = function() awful.util.spawn("/home/rio/scripts/switch-monitor") end
 
