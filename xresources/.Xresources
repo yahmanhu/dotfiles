@@ -9,15 +9,15 @@ URxvt.terminalName: rxvt-unicode-256color
 
 ! True transparency - Ranger w3m image display will not work when enabled -- using compton setting instead
 !URxvt.depth: 32
-!URxvt.background: [100]#300A24 
-!URxvt.background: [100]#005577 
-URxvt.background: [100]#222222 
-!URxvt.background: [90]#000000
+!URxvt.background: [100]#300A24
+!URxvt.background: [100]#005577
+!URxvt.background: [100]#222222
+URxvt.background: [100]#000000
 !URxvt.background: [100]#2B66C9
-!URxvt.background: [100]#4B0082 
-!URxvt.background: [100]#4B0082 
-!URxvt.background: [100]#365588 
-!URxvt.background: [100]#FFFFFF 
+!URxvt.background: [100]#4B0082
+!URxvt.background: [100]#4B0082
+!URxvt.background: [100]#365588
+!URxvt.background: [100]#FFFFFF
 
 ! Native (fake) transparency
 !URxvt*.transparent: true
@@ -50,77 +50,78 @@ URxvt.scrollBar: false
 
 ! Perl Extensions: copy/paste, url-selection,
 URxvt.perl-ext-common: default,clipboard,matcher,url-select-plus
-URxvt.url-select-plus.mediaplayer: urxvtc -e mpv
-URxvt.url-select-plus.imgviewer: feh
-URxvt.url-select-plus.launcher: /usr/bin/firefox
-URxvt.keysym.M-f: perl:url-select-plus:select_next
+!URxvt.url-select-plus.mediaplayer: urxvtc -e mpv
+!URxvt.url-select-plus.imgviewer: feh
+!URxvt.url-select-plus.launcher: /usr/bin/firefox
+!URxvt.keysym.M-g: perl:url-select-plus:select_next
 !URxvt.url-launcher: firefox
 !URxvt.matcher.button: 1
-URxvt.url-select-plus-underline: true
+!URxvt.url-select-plus-underline: true
 URxvt.iso14755: False
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.clipboard.copycmd: xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
 URxvt.tabbed.autohide: true
+URxvt.cursorUnderline: true
 
-! Basic colors
-! black
-URxvt.color0: #000000
-URxvt.color8: #121212
-! red
-URxvt.color1: #DC0000
-URxvt.color9: #DC0000
-! green
-!URxvt.color2: #20EC11
-!URxvt.color10: #20EC11
-!URxvt.color2:#5FE36C 
-!URxvt.color10:#5FE36C 
-URxvt.color2: #5FE36C
-URxvt.color10: #5FE36C
-! yellow
-URxvt.color3: #FAE56B
-URxvt.color11: #FAE56B
-! blue
-!URxvt.color4: #71A6B7
-!URxvt.color12:#1C7EFF
-!URxvt.color4: #1C7EFF
-URxvt.color12:#005577
-URxvt.color4: #005577
-!URxvt.color4: #1C7EFF
-! magenta
-URxvt.color5: #F860CD
-URxvt.color13: #F860CD
-!URxvt.color5: #90A7D0
-!URxvt.color13: #90A7D0
-! cyan
-!URxvt.color6: #4D7A89
-!URxvt.color14: #4D7A89
-!URxvt.color6: #2FC8C8
-!URxvt.color14: #2FC8C8
-URxvt.color6:#3EDFE3
-URxvt.color14:#3EDFE3
-! white
-URxvt.color7: #ffffff
-URxvt.color15: #ffffff
+!! Basic colors
+!! black
+!URxvt.color0: #000000
+!URxvt.color8: #121212
+!! red
+!URxvt.color1: #DC0000
+!URxvt.color9: #DC0000
+!! green
+!!URxvt.color2: #20EC11
+!!URxvt.color10: #20EC11
+!!URxvt.color2:#5FE36C
+!!URxvt.color10:#5FE36C
+!URxvt.color2: #5FE36C
+!URxvt.color10: #5FE36C
+!! yellow
+!URxvt.color3: #FAE56B
+!URxvt.color11: #FAE56B
+!! blue
+!!URxvt.color4: #71A6B7
+!!URxvt.color12:#1C7EFF
+!!URxvt.color4: #1C7EFF
+!URxvt.color12:#005577
+!URxvt.color4: #005577
+!!URxvt.color4: #1C7EFF
+!! magenta
+!URxvt.color5: #F860CD
+!URxvt.color13: #F860CD
+!!URxvt.color5: #90A7D0
+!!URxvt.color13: #90A7D0
+!! cyan
+!!URxvt.color6: #4D7A89
+!!URxvt.color14: #4D7A89
+!!URxvt.color6: #2FC8C8
+!!URxvt.color14: #2FC8C8
+!URxvt.color6:#3EDFE3
+!URxvt.color14:#3EDFE3
+!! white
+!URxvt.color7: #ffffff
+!URxvt.color15: #ffffff
 
-! Cursor color
-!URxvt.cursorColor: #00AA00
-!URxvt.cursorColor: #5FE36C
-!URxvt.cursorColor: #FFFFFF
-!URxvt.cursorColor: #222222
-!URxvt.cursorColor: #005577
-!URxvt.cursorColor: grey
-!URxvt.cursorColor: black
-URxvt.cursorColor: white
+!! Cursor color
+!!URxvt.cursorColor: #00AA00
+!!URxvt.cursorColor: #5FE36C
+!!URxvt.cursorColor: #FFFFFF
+!!URxvt.cursorColor: #222222
+!!URxvt.cursorColor: #005577
+!!URxvt.cursorColor: grey
+!!URxvt.cursorColor: black
+!URxvt.cursorColor: white
 
-! Newsbeuter colors
-newsbeuter.color1:#222222
-newsbeuter.color2:#FFFFFF
-newsbeuter.color3:#808080
-newsbeuter.color4:#c0c0c0
-newsbeuter.color5:#ff0000
-newsbeuter.color6:#005577
-newsbeuter.color7:#00AA00
-newsbeuter.color8:#1C7EFF
-newsbeuter.color9:#FFFFFF
+!! Newsbeuter colors
+!newsbeuter.color1:#222222
+!newsbeuter.color2:#FFFFFF
+!newsbeuter.color3:#808080
+!newsbeuter.color4:#c0c0c0
+!newsbeuter.color5:#ff0000
+!newsbeuter.color6:#005577
+!newsbeuter.color7:#00AA00
+!newsbeuter.color8:#1C7EFF
+!newsbeuter.color9:#FFFFFF

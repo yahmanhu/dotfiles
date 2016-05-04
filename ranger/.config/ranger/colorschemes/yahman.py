@@ -18,11 +18,11 @@ class Scheme(Default):
 
         if context.link:
             fg = magenta
-            attr |= bold
+            # attr |= bold
 
         if context.media:
             fg = magenta
-            attr |= bold
+            # attr |= bold
 
         if context.marked:
             fg = green

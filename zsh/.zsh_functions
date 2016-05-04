@@ -186,7 +186,8 @@ bindkey ^s fzf-history
 news(){
 
     if [[ $DISPLAY = ":0" ]]; then
-        urxvtc -name newsbeuter -e newsbeuter -C ~/.newsbeuter/config_x
+        #urxvtc -name newsbeuter -e newsbeuter -C ~/.newsbeuter/config_x
+        newsbeuter -C ~/.newsbeuter/config_x
     else
         newsbeuter -C ~/.newsbeuter/config_tty
     fi

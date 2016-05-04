@@ -59,21 +59,21 @@ modkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 
-local layouts =
-{
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
-}
+--local layouts =
+--{
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.bottom,
+    --awful.layout.suit.tile.top,
+    --awful.layout.suit.floating,
+    --awful.layout.suit.tile,
+    --awful.layout.suit.fair,
+    --awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.spiral,
+    --awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.max,
+    --awful.layout.suit.max.fullscreen,
+    --awful.layout.suit.magnifier
+--}
 --  Wallpaper
 if beautiful.wallpaper then
     for s = 1, screen.count() do
@@ -103,20 +103,20 @@ end
 
 tags = {
 	names = {
-        "[ New Tag ]",
-        "[ New Tag ]",
-        "[ New Tag ]",
-        "[ New Tag ]",
-        "[ New Tag ]",
-        "[ New Tag ]"
+        "[ Tag ]",
+        --"[ New Tag ]",
+        --"[ New Tag ]",
+        --"[ New Tag ]",
+        --"[ New Tag ]",
+        --"[ New Tag ]"
     },
 	layout = {
     awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.left,
     },
 }
 for s = 1, screen.count() do
@@ -124,81 +124,81 @@ for s = 1, screen.count() do
 end
 
 
--- change tag names dynamically (from: http://crunchbang.org/forums/viewtopic.php?id=32259)
-dynamic_tagging = function()
-	for s = 1, screen.count() do
-		-- get a list of all tags
-        --local atags = screen[s]:tags()
-        local atags = awful.tag.gettags(s)
-		-- set the standard icon
-		for i, t in ipairs(atags) do
-			t.name = "[ New Tag ]"
-		end
+---- change tag names dynamically (from: http://crunchbang.org/forums/viewtopic.php?id=32259)
+--dynamic_tagging = function()
+	--for s = 1, screen.count() do
+		---- get a list of all tags
+        ----local atags = screen[s]:tags()
+        --local atags = awful.tag.gettags(s)
+		---- set the standard icon
+		--for i, t in ipairs(atags) do
+			--t.name = "[ New Tag ]"
+		--end
 
-		-- get a list of all running clients
-		local clist = client.get(s)
-		for i, c in ipairs(clist) do
-			-- get the tags on which the client is displayed
-			local ctags = c:tags()
-			for i, t in ipairs(ctags) do
-                local cname = c.name
-				-- set active icon
-                --t.name = "◆"
-                --t.name = cname
+		---- get a list of all running clients
+		--local clist = client.get(s)
+		--for i, c in ipairs(clist) do
+			---- get the tags on which the client is displayed
+			--local ctags = c:tags()
+			--for i, t in ipairs(ctags) do
+                --local cname = c.name
+				---- set active icon
+                ----t.name = "◆"
+                ----t.name = cname
 
+                ----if cname == nil then
+                    ----t.name = cname
+                    ----
                 --if cname == nil then
+                    --t.name = "[ New Tag ]"
+                --elseif string.find(cname, "Vimperator") then
+                    --t.name = " Firefox "
+                --elseif string.find(cname, "Firefox") then
+                    --t.name = " Firefox "
+                --elseif string.find(cname, "VIM") then
+                    --t.name = " vim "
+                --elseif string.find(cname, "archr") then
+                    --t.name = " terminal "
+                --elseif string.find(cname, "Transmission") then
+                    --t.name = " Transmission "
+                --elseif string.find(cname, "ranger") then
+                    --t.name = " ranger "
+                --elseif string.find(cname, "LibreOffice") then
+                    --t.name = " LibreOffice "
+                ----elseif string.find(cname, "Spotify") then
+                    ----t.name = " Spotify "
+                --else
                     --t.name = cname
-                    --
-                if cname == nil then
-                    t.name = "[ New Tag ]"
-                elseif string.find(cname, "Vimperator") then
-                    t.name = " Firefox "
-                elseif string.find(cname, "Firefox") then
-                    t.name = " Firefox "
-                elseif string.find(cname, "VIM") then
-                    t.name = " vim "
-                elseif string.find(cname, "archr") then
-                    t.name = " terminal "
-                elseif string.find(cname, "Transmission") then
-                    t.name = " Transmission "
-                elseif string.find(cname, "ranger") then
-                    t.name = " ranger "
-                elseif string.find(cname, "LibreOffice") then
-                    t.name = " LibreOffice "
-                --elseif string.find(cname, "Spotify") then
-                    --t.name = " Spotify "
-                else
-                    t.name = cname
-                end
+                --end
 
-            end
-		end
+            --end
+		--end
 
-	end
-end
+	--end
+--end
 
-    -- signal function to execute when a new client appears
-client.connect_signal("manage", function (c, startup)
-	dynamic_tagging()
+    ---- signal function to execute when a new client appears
+--client.connect_signal("manage", function (c, startup)
+	--dynamic_tagging()
 
-	if not startup then
-		-- place windows in a smart way if they do not set an initial position
-		if not c.size_hints.user_position and not c.size_hints.program_position then
-			awful.placement.no_overlap(c)
-			awful.placement.no_offscreen(c)
-		end
-	end
-end)
+	--if not startup then
+		---- place windows in a smart way if they do not set an initial position
+		--if not c.size_hints.user_position and not c.size_hints.program_position then
+			--awful.placement.no_overlap(c)
+			--awful.placement.no_offscreen(c)
+		--end
+	--end
+--end)
 
-    -- signal function to execute when a client disappears
-client.connect_signal("unmanage", function (c, startup)
-	dynamic_tagging()
-end)
+    ---- signal function to execute when a client disappears
+--client.connect_signal("unmanage", function (c, startup)
+	--dynamic_tagging()
+--end)
 
 
-for s = 1, screen.count() do
-    screen[s]:connect_signal("tag::history::update", function() dynamic_tagging() end)
-end
+--for s = 1, screen.count() do
+    --screen[s]:connect_signal("tag::history::update", function() dynamic_tagging() end)
+--end
 
 ---  Menu
 ---   Menu variables
@@ -225,9 +225,9 @@ mymainmenu = awful.menu({ items = { {"K&eyboard switcher", switch_keybaord},
 mylauncher = awful.widget.launcher({ menu = mymainmenu })
 
 
-icon_mail = "<span color='#FFFFFF'>Mail: </span>"
+--icon_mail = "<span color='#FFFFFF'>Mail: </span>"
 
-mail_widget = wibox.widget.textbox()
+--mail_widget = wibox.widget.textbox()
 
 -- Mail checker (run mail checker script)
 function check_mail()
@@ -237,76 +237,76 @@ check_mail_timer = timer({timeout=180})
 check_mail_timer:connect_signal("timeout",check_mail)
 check_mail_timer:start()
 
-function newmail_count()
- local newmail_count_file = io.open(os.getenv("HOME") .. "/.mutt/newmail_count", "r")
- local newmail_count_content = newmail_count_file:read()
- newmail_count_file:close()
- return newmail_count_content
-end
+--function newmail_count()
+ --local newmail_count_file = io.open(os.getenv("HOME") .. "/.mutt/newmail_count", "r")
+ --local newmail_count_content = newmail_count_file:read()
+ --newmail_count_file:close()
+ --return newmail_count_content
+--end
 
-function mailchecker_set()
-    local mailchecker_set_file = io.open(os.getenv("HOME") .. "/.config/awesome/mailchecker", "r")
-    local mailchecker_set_content = mailchecker_set_file:read()
-    mailchecker_set_file:close()
-    return mailchecker_set_content
-end
+--function mailchecker_set()
+    --local mailchecker_set_file = io.open(os.getenv("HOME") .. "/.config/awesome/mailchecker", "r")
+    --local mailchecker_set_content = mailchecker_set_file:read()
+    --mailchecker_set_file:close()
+    --return mailchecker_set_content
+--end
 
-function mail_status()
-    if mailchecker_set() == "off" then
-        --mail_widget:set_markup(icon_mail.."<span background='#E9AD00' color='" ..beautiful.bg_normal .. "'>OFF</span> ")
-        mail_widget:set_markup("<span color='#c0c0c0'>Mail: OFF</span>")
-    elseif (mailchecker_set() ~= "off" and tonumber(newmail_count()) >= 1) then
-        mail_widget:set_markup(icon_mail.."<span background='#DC0000' color='#FFFFFF'> "..tonumber(newmail_count()).." </span>")
-    else
-        mail_widget:set_markup(icon_mail.."<span color='#FFFFFF'>0</span>")
-    end
-end
-mail_status()
+--function mail_status()
+    --if mailchecker_set() == "off" then
+        ----mail_widget:set_markup(icon_mail.."<span background='#E9AD00' color='" ..beautiful.bg_normal .. "'>OFF</span> ")
+        --mail_widget:set_markup("<span color='#c0c0c0'>Mail: OFF</span>")
+    --elseif (mailchecker_set() ~= "off" and tonumber(newmail_count()) >= 1) then
+        --mail_widget:set_markup(icon_mail.."<span background='#DC0000' color='#FFFFFF'> "..tonumber(newmail_count()).." </span>")
+    --else
+        --mail_widget:set_markup(icon_mail.."<span color='#FFFFFF'>0</span>")
+    --end
+--end
+--mail_status()
 
-mail_widget_timer = timer({timeout=30})
-mail_widget_timer:connect_signal("timeout",mail_status)
-mail_widget_timer:start()
+--mail_widget_timer = timer({timeout=30})
+--mail_widget_timer:connect_signal("timeout",mail_status)
+--mail_widget_timer:start()
 
------- Mail widget mouse button action
-mail_widget:buttons (awful.util.table.join (
-    awful.button ({}, 1, function()
-        awful.util.spawn(terminal .. " -name mutt -e mutt -F ~/.mutt/account.1.muttrc")
-        -- jump to mail tag
-        local screen = mouse.screen
-        local tag = awful.tag.gettags(screen)[7]
-        if tag then
-           awful.tag.viewonly(tag)
-        end
-    end),
-    awful.button ({}, 2, function()
-        awful.util.spawn_with_shell("gmailcheck.sh")
-        naughty.notify({ title = "awesome Mailchecker", text = "Check done!" })
-    end),
-    awful.button ({}, 3, function()
-        awful.util.spawn(terminal .. " -name mutt -e mutt -F ~/.mutt/account.2.muttrc")
-        -- jump to mail tag
-        local screen = mouse.screen
-        local tag = awful.tag.gettags(screen)[7]
-        if tag then
-           awful.tag.viewonly(tag)
-        end
-    end)
-))
+-------- Mail widget mouse button action
+--mail_widget:buttons (awful.util.table.join (
+    --awful.button ({}, 1, function()
+        --awful.util.spawn(terminal .. " -name mutt -e mutt -F ~/.mutt/account.1.muttrc")
+        ---- jump to mail tag
+        --local screen = mouse.screen
+        --local tag = awful.tag.gettags(screen)[7]
+        --if tag then
+           --awful.tag.viewonly(tag)
+        --end
+    --end),
+    --awful.button ({}, 2, function()
+        --awful.util.spawn_with_shell("gmailcheck.sh")
+        --naughty.notify({ title = "awesome Mailchecker", text = "Check done!" })
+    --end),
+    --awful.button ({}, 3, function()
+        --awful.util.spawn(terminal .. " -name mutt -e mutt -F ~/.mutt/account.2.muttrc")
+        ---- jump to mail tag
+        --local screen = mouse.screen
+        --local tag = awful.tag.gettags(screen)[7]
+        --if tag then
+           --awful.tag.viewonly(tag)
+        --end
+    --end)
+--))
 
------- Mail list tooltip
-function newmail_list()
-    local newmail_list_file = io.open(os.getenv("HOME") .. "/.mutt/newmail_list")
-    newmail_list_content = newmail_list_file:read("*all")
-    newmail_list_file:close()
-    return newmail_list_content
-end
+-------- Mail list tooltip
+--function newmail_list()
+    --local newmail_list_file = io.open(os.getenv("HOME") .. "/.mutt/newmail_list")
+    --newmail_list_content = newmail_list_file:read("*all")
+    --newmail_list_file:close()
+    --return newmail_list_content
+--end
 
-list_newmail_tooltip = awful.tooltip({ objects = { mail_widget }})
+--list_newmail_tooltip = awful.tooltip({ objects = { mail_widget }})
 
-mail_widget:connect_signal("mouse::enter", function ()
-    --list_newmail_tooltip:set_markup("<span color='#ff0000'>"..newmail_list().."</span> ")
-    list_newmail_tooltip:set_text(newmail_list())
-end)
+--mail_widget:connect_signal("mouse::enter", function ()
+    ----list_newmail_tooltip:set_markup("<span color='#ff0000'>"..newmail_list().."</span> ")
+    --list_newmail_tooltip:set_text(newmail_list())
+--end)
 
 -- Battery indicator widget
 battwidget = wibox.widget.textbox()
@@ -330,10 +330,10 @@ function Battery_widget()
 end
 end
 
-Battery_widget()
-battery_timer = timer({timeout=60})
-battery_timer:connect_signal("timeout",Battery_widget)
-battery_timer:start()
+--Battery_widget()
+--battery_timer = timer({timeout=60})
+--battery_timer:connect_signal("timeout",Battery_widget)
+--battery_timer:start()
 
 -- Wi-Fi connection widget
 wifi_widget= wibox.widget.textbox()
@@ -407,24 +407,24 @@ function Clockcal()
     clockcal_widget:set_markup('<span color="#eeeeee">' .. os.date("%H:%M") .. '</span>')
 end
 
-clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })
+--clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })
 
-clockcal_widget:connect_signal("mouse::enter", function() clockcal_tooltip:set_text(os.date("%A %B %d %Y")) end)
+--clockcal_widget:connect_signal("mouse::enter", function() clockcal_tooltip:set_text(os.date("%A %B %d %Y")) end)
 
-Clockcal()
+--Clockcal()
 
-clockcal_timer = timer({timeout=60})
-clockcal_timer:connect_signal("timeout",Clockcal)
-clockcal_timer:start()
+--clockcal_timer = timer({timeout=60})
+--clockcal_timer:connect_signal("timeout",Clockcal)
+--clockcal_timer:start()
 
 -- Separator widget
 --
-separator_widget = wibox.widget.textbox()
+--separator_widget = wibox.widget.textbox()
 
-function Separator_widget()
-        separator_widget:set_markup('<span color="#005577">  |  </span>')
-end
-Separator_widget()
+--function Separator_widget()
+        --separator_widget:set_markup('<span color="#005577">  |  </span>')
+--end
+--Separator_widget()
 
 --  Wibox
 -- Create a textclock widget
@@ -493,40 +493,40 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+    --mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
-    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
+    --mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, })
+    --mywibox[s] = awful.wibox({ position = "top", screen = s, })
     --mywibox2[s] = awful.wibox({ position = "bottom", screen = s, })
 
-    local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
+    --local left_layout = wibox.layout.fixed.horizontal()
+    --left_layout:add(mytaglist[s])
+    --left_layout:add(mypromptbox[s])
 
-    local right_layout = wibox.layout.fixed.horizontal()
-    right_layout:add(mail_widget)
-    right_layout:add(separator_widget)
-    right_layout:add(battwidget)
+    --local right_layout = wibox.layout.fixed.horizontal()
+    --right_layout:add(mail_widget)
     --right_layout:add(separator_widget)
-    --right_layout:add(ethernet_widget)
+    --right_layout:add(battwidget)
+    ----right_layout:add(separator_widget)
+    ----right_layout:add(ethernet_widget)
+    ----right_layout:add(separator_widget)
+    ----right_layout:add(wifi_widget)
     --right_layout:add(separator_widget)
-    --right_layout:add(wifi_widget)
-    right_layout:add(separator_widget)
-    right_layout:add(clockcal_widget)
-    right_layout:add(separator_widget)
+    --right_layout:add(clockcal_widget)
+    --right_layout:add(separator_widget)
 
-    local bottom_layout = wibox.layout.flex.horizontal()
-    bottom_layout:add(mytasklist[s])
+    --local bottom_layout = wibox.layout.flex.horizontal()
+    --bottom_layout:add(mytasklist[s])
 
-    local layout = wibox.layout.align.horizontal()
-    layout:set_left(left_layout)
-    layout:set_middle()
-    layout:set_right(right_layout)
+    --local layout = wibox.layout.align.horizontal()
+    --layout:set_left(left_layout)
+    --layout:set_middle()
+    --layout:set_right(right_layout)
 
-    mywibox[s]:set_widget(layout)
+    --mywibox[s]:set_widget(layout)
     --mywibox2[s]:set_widget(bottom_layout)
 
 end
@@ -542,8 +542,8 @@ root.buttons(awful.util.table.join(
 
 --  Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, ",",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, ".",   awful.tag.viewnext       ),
+    --awful.key({ modkey,           }, ",",   awful.tag.viewprev       ),
+    --awful.key({ modkey,           }, ".",   awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
     awful.key({                   }, "XF86AudioMute", function () Vol_widget() end),
     awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer sset Master toggle") end),
@@ -563,48 +563,48 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right", function () awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
 
     -- Navigate between clients
-    awful.key({ modkey,           }, "j",
+    awful.key({ modkey,           }, ".",
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
         end),
 
-    awful.key({ modkey,           }, "h",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
+    --awful.key({ modkey,           }, "h",
+        --function ()
+            --awful.client.focus.byidx( 1)
+            --if client.focus then client.focus:raise() end
+        --end),
 
-    awful.key({ modkey,           }, "k",
+    awful.key({ modkey,           }, ",",
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
 
 
-    awful.key({ modkey,           }, "l",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
+    --awful.key({ modkey,           }, "l",
+        --function ()
+            --awful.client.focus.byidx(-1)
+            --if client.focus then client.focus:raise() end
+        --end),
 
 
     --awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Control"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Control"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey,             }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey,             }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+    --awful.key({ modkey, "Control"   }, "j", function () awful.client.swap.byidx(  1)    end),
+    --awful.key({ modkey, "Control"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    --awful.key({ modkey,             }, "u", awful.client.urgent.jumpto),
+    --awful.key({ modkey,             }, "Tab",
+        --function ()
+            --awful.client.focus.history.previous()
+            --if client.focus then
+                --client.focus:raise()
+            --end
+        --end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey, "Control" }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "Menu", function () mymainmenu:show({keygrabber=true}) end),
     awful.key({ modkey            }, "r", function () awful.util.spawn_with_shell("~/scripts/dmenu_run -l 5 -fn 'Terminus'") end),
     awful.key({ modkey            }, ";", function () awful.util.spawn("dmb") end),
@@ -621,11 +621,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "q", awesome.quit),
     awful.key({ modkey, "Control" }, "s",
                  function ()
-                       local screen = mouse.screen
-                       local tag = awful.tag.gettags(screen)[6]
-                       if tag then
-                          awful.tag.viewonly(tag)
-                       end
+                       --local screen = mouse.screen
+                       --local tag = awful.tag.gettags(screen)[6]
+                       --if tag then
+                          --awful.tag.viewonly(tag)
+                       --end
                        awful.util.spawn("spotify --ui.track_notifications_enabled=false")
                  end),
 
@@ -651,11 +651,11 @@ globalkeys = awful.util.table.join(
 clientkeys = awful.util.table.join(
     --awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey,           }, "q",      function (c) c:kill()                         end),
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
+    --awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
+    --awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
+    --awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
+    --awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
+    --awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     --awful.key({ modkey,           }, "n",
         --function (c)
             ------ The client currently has the input focus, so it cannot be
@@ -671,52 +671,52 @@ clientkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
-    globalkeys = awful.util.table.join(globalkeys,
-        -- View tag only.
-        awful.key({ modkey }, "#" .. i + 9,
-                  function ()
-                        local screen = mouse.screen
-                        local tag = awful.tag.gettags(screen)[i]
-                        if tag then
-                           awful.tag.viewonly(tag)
-                        end
-                  end),
-        -- Toggle tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
-                  function ()
-                      local screen = mouse.screen
-                      local tag = awful.tag.gettags(screen)[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end),
-        -- Move client to tag.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = awful.tag.gettags(client.focus.screen)[i]
-                          if tag then
-                              awful.client.movetotag(tag)
-                          end
-                     end
-                  end),
-        -- Toggle tag.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = awful.tag.gettags(client.focus.screen)[i]
-                          if tag then
-                              awful.client.toggletag(tag)
-                          end
-                      end
-                  end))
-end
+--for i = 1, 9 do
+    --globalkeys = awful.util.table.join(globalkeys,
+        ---- View tag only.
+        --awful.key({ modkey }, "#" .. i + 9,
+                  --function ()
+                        --local screen = mouse.screen
+                        --local tag = awful.tag.gettags(screen)[i]
+                        --if tag then
+                           --awful.tag.viewonly(tag)
+                        --end
+                  --end),
+        ---- Toggle tag.
+        --awful.key({ modkey, "Shift" }, "#" .. i + 9,
+                  --function ()
+                      --local screen = mouse.screen
+                      --local tag = awful.tag.gettags(screen)[i]
+                      --if tag then
+                         --awful.tag.viewtoggle(tag)
+                      --end
+                  --end),
+        ---- Move client to tag.
+        --awful.key({ modkey, "Control" }, "#" .. i + 9,
+                  --function ()
+                      --if client.focus then
+                          --local tag = awful.tag.gettags(client.focus.screen)[i]
+                          --if tag then
+                              --awful.client.movetotag(tag)
+                          --end
+                     --end
+                  --end),
+        ---- Toggle tag.
+        --awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
+                  --function ()
+                      --if client.focus then
+                          --local tag = awful.tag.gettags(client.focus.screen)[i]
+                          --if tag then
+                              --awful.client.toggletag(tag)
+                          --end
+                      --end
+                  --end))
+--end
 
-clientbuttons = awful.util.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
-    awful.button({ modkey }, 1, awful.mouse.client.move),
-    awful.button({ modkey }, 3, awful.mouse.client.resize))
+--clientbuttons = awful.util.table.join(
+    --awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
+    --awful.button({ modkey }, 1, awful.mouse.client.move),
+    --awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 -- Set keys
 root.keys(globalkeys)
@@ -739,8 +739,8 @@ awful.rules.rules = {
     except_any = { class =  { "Firefox", "URxvt" }  },
     },
 
-    { rule = { class = "Firefox" },
-      properties = { tag = tags[1][1] } },
+    --{ rule = { class = "Firefox" },
+      --properties = { tag = tags[1][1] } },
 
     { rule_any = { class = { "mpv", "Tpfan-admin", "Gcolor2" } },
       properties = { floating = true } },
@@ -752,15 +752,15 @@ awful.rules.rules = {
       properties = { floating = true },
       callback = function (c) c:geometry({width = 800, height=500}) end },
 
-    { rule_any = { name = { "ranger", "Transmission", "LibreOffice",}},
+    --{ rule_any = { name = { "ranger", "Transmission", "LibreOffice",}},
 
-        callback = function(c)
+        --callback = function(c)
 
-          awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()+1], c)
-          awful.tag.viewonly(tags[mouse.screen][awful.tag.getidx()+1])
+          --awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()+1], c)
+          --awful.tag.viewonly(tags[mouse.screen][awful.tag.getidx()+1])
 
-      end
-  },
+      --end
+  --},
 
 }
 

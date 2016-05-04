@@ -59,6 +59,11 @@ alias mutt2='mutt -F ~/.mutt/account.2.muttrc'
 alias mailstat='cat ~/.config/awesome/mailchecker'
 alias lsm='cat ~/.mutt/newmail_list'
 
+# tmux
+
+alias td='tmux detach'
+alias ta='tmux attach'
+
 # Find
 alias findf='find-file'
 alias findd='find-dir'
@@ -103,4 +108,3 @@ alias q='exit'
 alias ytdl='youtube-dl -f 22'
 alias mpvc='mpv -vo=opengl -ao=alsa'
 alias wttr='curl wttr.in/pecs'
-alias -g today='date +%F'
