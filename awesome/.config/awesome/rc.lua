@@ -9,7 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-require("eminent")
+--require("eminent")
 
 
 --  Error handling
@@ -207,7 +207,7 @@ switch_wifi = function() awful.util.spawn("/home/rio/scripts/swifi") end
 ---switch_monitor = function() awful.util.spawn("/home/rio/scripts/switch-monitor") end
 
 ---logout = function() awful.util.spawn("pkill -u rio") end
-suspend = function() awful.util.spawn("systemctl suspend") end
+--suspend = function() awful.util.spawn("systemctl suspend") end
 --reboot = function() awful.util.spawn("systemctl reboot") end
 --poweroff = function() awful.util.spawn("systemctl poweroff") end
 
@@ -309,26 +309,26 @@ check_mail_timer:start()
 --end)
 
 -- Battery indicator widget
-battwidget = wibox.widget.textbox()
+--battwidget = wibox.widget.textbox()
 
-function Battery_widget()
-    local file = io.open("/sys/class/power_supply/BAT0/status", "r")
-    batstat = file:read()
-    file:close()
-    local file = io.open("/sys/class/power_supply/BAT0/capacity", "r")
-    batcap = file:read()
-    file:close()
+--function Battery_widget()
+    --local file = io.open("/sys/class/power_supply/BAT0/status", "r")
+    --batstat = file:read()
+    --file:close()
+    --local file = io.open("/sys/class/power_supply/BAT0/capacity", "r")
+    --batcap = file:read()
+    --file:close()
 
-    if (batstat == "Discharging") then
-        if (batcap <= "30") then
-        battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#DC0000">'.. batcap.."% "..'</span>')
-        else
-        battwidget:set_markup('<span color="#eeeeee">'.. batstat.." ".. '</span>'.. '<span color="#eeeeee">'.. batcap.."% "..'</span>')
-        end
-    else
-        battwidget:set_markup('<span color="#eeeeee">'.. batstat.." ".. '</span>'.. '<span color="#eeeeee">'.. batcap.."% "..'</span>')
-end
-end
+    --if (batstat == "Discharging") then
+        --if (batcap <= "30") then
+        --battwidget:set_markup('<span color="#DC0000">'.. batstat.." ".. '</span>'.. '<span color="#DC0000">'.. batcap.."% "..'</span>')
+        --else
+        --battwidget:set_markup('<span color="#eeeeee">'.. batstat.." ".. '</span>'.. '<span color="#eeeeee">'.. batcap.."% "..'</span>')
+        --end
+    --else
+        --battwidget:set_markup('<span color="#eeeeee">'.. batstat.." ".. '</span>'.. '<span color="#eeeeee">'.. batcap.."% "..'</span>')
+--end
+--end
 
 --Battery_widget()
 --battery_timer = timer({timeout=60})
@@ -336,19 +336,19 @@ end
 --battery_timer:start()
 
 -- Wi-Fi connection widget
-wifi_widget= wibox.widget.textbox()
+--wifi_widget= wibox.widget.textbox()
 
-function Wifi()
-    wifistat_file = io.open("/sys/class/net/wlp3s0/operstate", "r")
-    wifistat = wifistat_file:read()
-    wifistat_file:close()
+--function Wifi()
+    --wifistat_file = io.open("/sys/class/net/wlp3s0/operstate", "r")
+    --wifistat = wifistat_file:read()
+    --wifistat_file:close()
 
-    if (wifistat == "up") then
-        wifi_widget:set_markup('<span color="#FFA500">Wi-Fi</span>')
-    else
-        wifi_widget:set_markup('<span color="#848484">Wi-Fi</span>')
-    end
-end
+    --if (wifistat == "up") then
+        --wifi_widget:set_markup('<span color="#FFA500">Wi-Fi</span>')
+    --else
+        --wifi_widget:set_markup('<span color="#848484">Wi-Fi</span>')
+    --end
+--end
 
 --Wifi()
 
@@ -357,19 +357,19 @@ end
 --wifi_timer:start()
 
 -- Ethernet connection widget
-ethernet_widget = wibox.widget.textbox()
+--ethernet_widget = wibox.widget.textbox()
 
-function Ethernet()
-    ethstat_file = io.open("/sys/class/net/enp4s0/operstate", "r")
-    ethstat = ethstat_file:read()
-    ethstat_file:close()
+--function Ethernet()
+    --ethstat_file = io.open("/sys/class/net/enp4s0/operstate", "r")
+    --ethstat = ethstat_file:read()
+    --ethstat_file:close()
 
-    if (ethstat == "up") then
-        ethernet_widget:set_markup('<span color="#00BFFF">Wired Connection</span>')
-    else
-        ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
-    end
-end
+    --if (ethstat == "up") then
+        --ethernet_widget:set_markup('<span color="#00BFFF">Wired Connection</span>')
+    --else
+        --ethernet_widget:set_markup('<span color="#848484">Wired Connection</span>')
+    --end
+--end
 --Ethernet()
 
 --eth_timer = timer({timeout=10})
@@ -377,35 +377,35 @@ end
 --eth_timer:start()
 
 -- Volume indicator wiget
-volume_widget = wibox.widget.textbox()
+--volume_widget = wibox.widget.textbox()
 
-function Vol_widget()
+--function Vol_widget()
 
-    local volstat_command = io.popen("amixer get Master | egrep Playback | egrep -o off")
-    local volstat = volstat_command:read("*a")
-    volstat_command:close()
+    --local volstat_command = io.popen("amixer get Master | egrep Playback | egrep -o off")
+    --local volstat = volstat_command:read("*a")
+    --volstat_command:close()
 
-    local vol_value_command = io.popen("amixer get Master | egrep Playback | egrep -o '[^[]*%'")
-    local vol_value = vol_value_command:read()
-    vol_value_command:close()
+    --local vol_value_command = io.popen("amixer get Master | egrep Playback | egrep -o '[^[]*%'")
+    --local vol_value = vol_value_command:read()
+    --vol_value_command:close()
 
-    if string.find(volstat, "off") then
-        volume_widget:set_markup('<span color="#C3C3C3">Volume</span>')
-    else
-        volume_widget:set_markup('<span color="#000000">Volume</span>')
-    end
-end
+    --if string.find(volstat, "off") then
+        --volume_widget:set_markup('<span color="#C3C3C3">Volume</span>')
+    --else
+        --volume_widget:set_markup('<span color="#000000">Volume</span>')
+    --end
+--end
 
 --Vol_widget()
 
 -- Clock and calendar widget
-clockcal_widget = wibox.widget.textbox()
+--clockcal_widget = wibox.widget.textbox()
 
-function Clockcal()
-    --clockcal_widget:set_markup('<span color="#000000">' .. os.date("%A %B %d  %H:%M") .. '</span>')
-    --clockcal_widget:set_markup('<span color="#FF8C00">' .. os.date("%H:%M") .. '</span>')
-    clockcal_widget:set_markup('<span color="#eeeeee">' .. os.date("%H:%M") .. '</span>')
-end
+--function Clockcal()
+    ----clockcal_widget:set_markup('<span color="#000000">' .. os.date("%A %B %d  %H:%M") .. '</span>')
+    ----clockcal_widget:set_markup('<span color="#FF8C00">' .. os.date("%H:%M") .. '</span>')
+    --clockcal_widget:set_markup('<span color="#eeeeee">' .. os.date("%H:%M") .. '</span>')
+--end
 
 --clockcal_tooltip = awful.tooltip({ objects = { clockcal_widget } })
 
@@ -431,67 +431,67 @@ end
 --mytextclock = awful.widget.textclock()
 
 -- Create a wibox for each screen and add it
-mywibox = {}
-mywibox2 = {}
-mypromptbox = {}
-mylayoutbox = {}
-mytaglist = {}
-mytaglist.buttons = awful.util.table.join(
-                    awful.button({ }, 1, awful.tag.viewonly),
-                    awful.button({ modkey }, 1, awful.client.movetotag),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
-                    )
-mytasklist = {}
-mytasklist.buttons = awful.util.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  -- Without this, the following
-                                                  -- :isvisible() makes no sense
-                                                  c.minimized = false
-                                                  if not c:isvisible() then
-                                                      awful.tag.viewonly(c:tags()[1])
-                                                  end
-                                                  -- This will also un-minimize
-                                                  -- the client, if needed
-                                                  client.focus = c
-                                                  c:raise()
-                                              end
-                                          end),
-                     awful.button({ }, 3, function ()
-                                              if instance then
-                                                  instance:hide()
-                                                  instance = nil
-                                              else
-                                                  instance = awful.menu.clients({
-                                                      theme = { width = 250 }
-                                                  })
-                                              end
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                              if client.focus then client.focus:raise() end
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                              if client.focus then client.focus:raise() end
-                                          end))
+--mywibox = {}
+--mywibox2 = {}
+--mypromptbox = {}
+--mylayoutbox = {}
+--mytaglist = {}
+--mytaglist.buttons = awful.util.table.join(
+                    --awful.button({ }, 1, awful.tag.viewonly),
+                    --awful.button({ modkey }, 1, awful.client.movetotag),
+                    --awful.button({ }, 3, awful.tag.viewtoggle),
+                    --awful.button({ modkey }, 3, awful.client.toggletag),
+                    --awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
+                    --awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+                    --)
+--mytasklist = {}
+--mytasklist.buttons = awful.util.table.join(
+                     --awful.button({ }, 1, function (c)
+                                              --if c == client.focus then
+                                                  --c.minimized = true
+                                              --else
+                                                  ---- Without this, the following
+                                                  ---- :isvisible() makes no sense
+                                                  --c.minimized = false
+                                                  --if not c:isvisible() then
+                                                      --awful.tag.viewonly(c:tags()[1])
+                                                  --end
+                                                  ---- This will also un-minimize
+                                                  ---- the client, if needed
+                                                  --client.focus = c
+                                                  --c:raise()
+                                              --end
+                                          --end),
+                     --awful.button({ }, 3, function ()
+                                              --if instance then
+                                                  --instance:hide()
+                                                  --instance = nil
+                                              --else
+                                                  --instance = awful.menu.clients({
+                                                      --theme = { width = 250 }
+                                                  --})
+                                              --end
+                                          --end),
+                     --awful.button({ }, 4, function ()
+                                              --awful.client.focus.byidx(1)
+                                              --if client.focus then client.focus:raise() end
+                                          --end),
+                     --awful.button({ }, 5, function ()
+                                              --awful.client.focus.byidx(-1)
+                                              --if client.focus then client.focus:raise() end
+                                          --end))
 
-for s = 1, screen.count() do
-    -- Create a promptbox for each screen
-    mypromptbox[s] = awful.widget.prompt()
-    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    mylayoutbox[s] = awful.widget.layoutbox(s)
-    mylayoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+--for s = 1, screen.count() do
+    ---- Create a promptbox for each screen
+    --mypromptbox[s] = awful.widget.prompt()
+    ---- Create an imagebox widget which will contains an icon indicating which layout we're using.
+    ---- We need one layoutbox per screen.
+    --mylayoutbox[s] = awful.widget.layoutbox(s)
+    --mylayoutbox[s]:buttons(awful.util.table.join(
+                           --awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
+                           --awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
+                           --awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
+                           --awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
     --mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
@@ -529,15 +529,15 @@ for s = 1, screen.count() do
     --mywibox[s]:set_widget(layout)
     --mywibox2[s]:set_widget(bottom_layout)
 
-end
+--end
 --
 
 --  Mouse bindings
-root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+--root.buttons(awful.util.table.join(
+    --awful.button({ }, 3, function () mymainmenu:toggle() end),
+    --awful.button({ }, 4, awful.tag.viewnext),
+    --awful.button({ }, 5, awful.tag.viewprev)
+--))
 --
 
 --  Key bindings
@@ -545,7 +545,7 @@ globalkeys = awful.util.table.join(
     --awful.key({ modkey,           }, ",",   awful.tag.viewprev       ),
     --awful.key({ modkey,           }, ".",   awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-    awful.key({                   }, "XF86AudioMute", function () Vol_widget() end),
+    --awful.key({                   }, "XF86AudioMute", function () Vol_widget() end),
     awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer sset Master toggle") end),
     awful.key({                   }, "XF86AudioLowerVolume", function () Vol_widget() end),
     awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -M sset Master 5%-") end),
