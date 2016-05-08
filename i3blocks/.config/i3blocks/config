@@ -4,7 +4,7 @@ separator_block_width=25
 markup=none
 
 [mail]
-command=gmailcheck.sh && echo "Mail: $(cat ~/.mutt/newmail_count)"
+command=i3_mailcheck
 interval=600
 
 [battery]

@@ -122,10 +122,10 @@ takef(){
 
 takesh(){
 
-    touch $1
-    chmod +x $1
-    echo "#!/bin/bash" > $1
-    $EDITOR $1
+    touch ~/scripts/$1
+    chmod +x ~/scripts/$1
+    echo "#!/bin/bash" > ~/scripts/$1
+    $EDITOR ~/scripts/$1
 
 }
 
