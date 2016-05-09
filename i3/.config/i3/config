@@ -31,10 +31,10 @@ bindsym Mod1+$up focus up
 bindsym Mod1+$right focus right
 
 # Move focused window
-bindsym Mod1+Shift+$left move left
-bindsym Mod1+Shift+$down move down
-bindsym Mod1+Shift+$up move up
-bindsym Mod1+Shift+$right move right
+bindsym Mod1+Control+$left move left
+bindsym Mod1+Control+$down move down
+bindsym Mod1+Control+$up move up
+bindsym Mod1+Control+$right move right
 
 # Split in horizontal orientation
 bindsym Mod1+space split h
@@ -103,7 +103,7 @@ bindsym Mod1+r mode "resize"
 
 
 # Switch keyboard
-bindsym Mod1+Control+k exec ~/scripts/skbd
+bindsym Mod1+Control+e exec ~/scripts/skbd
 
 # Switch wifi
 bindsym Mod1+Control+w exec ~/scripts/swifi
