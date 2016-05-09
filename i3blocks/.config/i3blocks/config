@@ -12,5 +12,6 @@ command=paste -d" " /sys/class/power_supply/BAT0/status /sys/class/power_supply/
 interval=300
 
 [date]
-command=date +'%a %b %d, %H:%M'
+#command=date +'%a %b %d, %H:%M'
+command=i3_date
 interval=60

@@ -143,6 +143,7 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 # ==============
 
 for_window [class = "mpv" ] floating enable
+for_window [title = "^cal$" ] floating enable
 assign [class = "Firefox" ] 1
 for_window [class = "Spotify" ] move container to workspace 5
 
