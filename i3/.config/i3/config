@@ -61,18 +61,26 @@ bindsym Mod1+9 workspace 9
 bindsym Mod1+0 workspace 10
 bindsym Mod1+comma workspace prev
 bindsym Mod1+period workspace next
+bindsym Mod1+n workspace back_and_forth
+bindsym Mod1+Control+n move container to workspace back_and_forth; workspace back_and_forth
+
 
 # Move focused container to workspace
-bindsym Mod1+Control+1 move container to workspace 1
-bindsym Mod1+Control+2 move container to workspace 2
-bindsym Mod1+Control+3 move container to workspace 3
-bindsym Mod1+Control+4 move container to workspace 4
-bindsym Mod1+Control+5 move container to workspace 5
-bindsym Mod1+Control+6 move container to workspace 6
-bindsym Mod1+Control+7 move container to workspace 7
-bindsym Mod1+Control+8 move container to workspace 8
-bindsym Mod1+Control+9 move container to workspace 9
-bindsym Mod1+Control+0 move container to workspace 10
+bindsym Mod1+Control+1 move workspace 1; workspace 1
+bindsym Mod1+Control+2 move workspace 2; workspace 2
+bindsym Mod1+Control+3 move workspace 3; workspace 3
+bindsym Mod1+Control+4 move workspace 4; workspace 4
+bindsym Mod1+Control+5 move workspace 5; workspace 5
+bindsym Mod1+Control+6 move workspace 6; workspace 6
+bindsym Mod1+Control+7 move workspace 7; workspace 7
+bindsym Mod1+Control+8 move workspace 8; workspace 8
+bindsym Mod1+Control+9 move workspace 9; workspace 9
+bindsym Mod1+Control+0 move workspace 10; workspace 10
+
+# Mark window
+bindsym Mod1+a exec i3-input -F 'mark %s' -P 'Mark name: '
+# Go to marked window
+bindsym Mod1+g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 # Scratchpad
 bindsym Mod1+Shift+minus move scratchpad
@@ -145,6 +153,8 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 for_window [class = "mpv" ] floating enable
 for_window [title = "^cal$" ] floating enable
 assign [class = "Firefox" ] 1
+# Jump to firefox
+bindsym Mod1+b [class = "Firefox"] focus
 for_window [class = "Spotify" ] move container to workspace 5
 
 # I3 status bar
