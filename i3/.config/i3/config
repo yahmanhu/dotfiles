@@ -17,6 +17,7 @@ floating_modifier Mod1
 
 # Start a terminal
 bindsym Mod1+Return exec urxvtc
+#bindsym Mod1+Return exec i3-sensible-terminal
 
 # Kill focused window
 bindsym Mod1+q kill
@@ -64,8 +65,7 @@ bindsym Mod1+period workspace next
 bindsym Mod1+n workspace back_and_forth
 bindsym Mod1+Control+n move container to workspace back_and_forth; workspace back_and_forth
 
-
-# Move focused container to workspace
+# Move focused container to workspace and switch workspace
 bindsym Mod1+Control+1 move workspace 1; workspace 1
 bindsym Mod1+Control+2 move workspace 2; workspace 2
 bindsym Mod1+Control+3 move workspace 3; workspace 3
@@ -108,7 +108,6 @@ mode "resize" {
 }
 
 bindsym Mod1+r mode "resize"
-
 
 # Switch keyboard
 bindsym Mod1+Control+e exec ~/scripts/skbd

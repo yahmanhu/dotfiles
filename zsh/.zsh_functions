@@ -140,12 +140,17 @@ free_space(){
 
 bbdl() {
 
+    # yesterday
+    date=$(date +"%y%m%d" -d "-1 days")
+    wget -P ~/downloads http://video.builder.hu/bunny/bb.radio_$date.mp3
+
+    # today and the next few days
     start_date=$(date)
     num_days=5
     for i in $(seq 0 $num_days)
     do
-        date=$(date +"%y%m%d" -d "${start_date}+${i} days")
-        wget -P ~/downloads http://video.builder.hu/bunny/bb.radio_$date.mp3
+       date=$(date +"%y%m%d" -d "${start_date}+${i} days")
+       wget -P ~/downloads http://video.builder.hu/bunny/bb.radio_$date.mp3
     done
 
 }
@@ -191,4 +196,10 @@ news(){
     else
         newsbeuter -C ~/.newsbeuter/config_tty
     fi
+}
+
+trrt(){
+
+    transmission-remote -t$1 -r
+
 }

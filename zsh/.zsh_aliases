@@ -51,6 +51,7 @@ alias trc='transmission-remote-cli'
 alias trl='transmission-remote -l'
 alias trs='transmission-remote -tall --start'
 alias trp='transmission-remote -tall --stop'
+#alias trrt='transmission-remote -r'
 
 # Mail
 

@@ -22,7 +22,7 @@ URxvt.background: [100]#000000
 ! Native (fake) transparency
 !URxvt*.transparent: true
 ! URxvt..shading: 0 to 99 darkens, 101 to 200 lightens
-URxvt*.shading: 10
+!URxvt*.shading: 10
 
 ! Use the specified colour as the windows foreground colour [default Black]; option -fg.
 URxvt.foreground: #FFFFFF
@@ -49,7 +49,7 @@ URxvt.scrollBar: false
 !URxvt.dynamicColors: on
 
 ! Perl Extensions: copy/paste, url-selection,
-URxvt.perl-ext-common: default,clipboard,matcher,url-select-plus
+URxvt.perl-ext-common: default,clipboard,matcher
 !URxvt.url-select-plus.mediaplayer: urxvtc -e mpv
 !URxvt.url-select-plus.imgviewer: feh
 !URxvt.url-select-plus.launcher: /usr/bin/firefox
@@ -62,7 +62,7 @@ URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.clipboard.copycmd: xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
-URxvt.tabbed.autohide: true
+!URxvt.tabbed.autohide: true
 URxvt.cursorUnderline: true
 
 !! Basic colors
