@@ -289,8 +289,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" C Highlighting
 	call <SID>X("cType", s:yellow, "", "")
 	call <SID>X("cStorageClass", s:purple, "", "")
-	call <SID>X("cConditional", s:purple, "", "")
-	call <SID>X("cRepeat", s:purple, "", "")
+	call <SID>X("cConditional", s:blue, "", "")
+	call <SID>X("cRepeat", s:blue, "", "")
 
 	" PHP Highlighting
 	call <SID>X("phpVarSelector", s:red, "", "")

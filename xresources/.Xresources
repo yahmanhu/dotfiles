@@ -12,7 +12,7 @@ URxvt.terminalName: rxvt-unicode-256color
 !URxvt.background: [100]#300A24
 !URxvt.background: [100]#005577
 !URxvt.background: [100]#222222
-URxvt.background: [100]#000000
+!URxvt.background: [100]#000000
 !URxvt.background: [100]#2B66C9
 !URxvt.background: [100]#4B0082
 !URxvt.background: [100]#4B0082
@@ -25,7 +25,7 @@ URxvt.background: [100]#000000
 !URxvt*.shading: 10
 
 ! Use the specified colour as the windows foreground colour [default Black]; option -fg.
-URxvt.foreground: #FFFFFF
+URxvt.foreground: #000000
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for
 !URxvt.font: 9x15
@@ -112,7 +112,7 @@ URxvt.cursorUnderline: true
 !!URxvt.cursorColor: #222222
 !!URxvt.cursorColor: #005577
 !!URxvt.cursorColor: grey
-!!URxvt.cursorColor: black
+URxvt.cursorColor: black
 !URxvt.cursorColor: white
 
 !! Newsbeuter colors

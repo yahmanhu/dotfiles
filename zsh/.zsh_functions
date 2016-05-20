@@ -138,7 +138,7 @@ free_space(){
 
 }
 
-bbdl() {
+bbdl(){
 
     # yesterday
     date=$(date +"%y%m%d" -d "-1 days")

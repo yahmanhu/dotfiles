@@ -5,7 +5,7 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="yahmanhu"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting; vi-mode)
+#plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/rio/scripts:/home/rio/.gem/ruby/2.3.0/bin"
