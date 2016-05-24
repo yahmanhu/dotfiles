@@ -152,7 +152,6 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 # Window options
 # ==============
 
-#for_window [class = "mpv" ] floating enable
 for_window [title = "^cal$" ] floating enable
 assign [class = "Firefox" ] 1
 # Jump to firefox
