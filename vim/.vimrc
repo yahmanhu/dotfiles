@@ -27,7 +27,8 @@ set number
 set t_Co=256
 syntax on
 filetype plugin indent on
-colorscheme Tomorrow-Night-Eighties-yahman
+"colorscheme Tomorrow-Night-Eighties-yahman
+colorscheme yahman
 set showcmd
 set linebreak
 set hlsearch
@@ -78,12 +79,12 @@ set spelllang=hu,en
 "" 4 -> normal underscore
 "" 5 -> blinking vertical bar
 "" 6 -> normal vertical bar
-""let &t_SI = "\<Esc>]12;white\x7"
-""let &t_EI = "\<Esc>]12;green\x7"
-""let &t_SI .= "\<Esc>[2 q"
-""let &t_EI .= "\<Esc>[2 q"
-""silent !echo -ne "\033]12;yellow\007"
-""autocmd VimLeave * silent !echo -ne "\033]12;green\007"
+let &t_SI = "\<Esc>]12;black\x7"
+let &t_EI = "\<Esc>]12;black\x7"
+let &t_SI .= "\<Esc>[4 q"
+let &t_EI .= "\<Esc>[4 q"
+silent !echo -ne "\033]12;black\007"
+autocmd VimLeave * silent !echo -ne "\033]12;white\007"
 
 "===============
 "Custom commands

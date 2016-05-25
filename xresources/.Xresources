@@ -28,17 +28,17 @@ URxvt.background: [100]#000000
 URxvt.foreground: #ffffff
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for
-!URxvt.font: 9x15
+!URxvt.font: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
+URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
 
+!URxvt.font: 9x15
 !URxvt.font: xft:Dejavu Sans Mono:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Liberation Mono for Powerline:pixelsize=15:antialias=true:hinting=true
 !URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:pixelsize=17:antialias=true:hinting=true
 !URxvt.letterSpace: -2
-URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
 !URxvt.font: -ctrld-fixed-medium-r-normal--13-80-96-96-c-80-iso10646-1
 !URxvt.font: -ctrld-fixed-medium-r-normal-*-16-*-*-*-*-*-*-*
-!URxvt.font: -misc-tamsyn-medium-r-normal-*-16-*-*-*-*-*-*-*
 !URxvt.font: -misc-fixed-medium-r-*-*-13-*-*-*-*-60-*-*
 !URxvt.font: 8x13
 URxvt.lineSpace: 1

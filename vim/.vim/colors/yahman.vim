@@ -1,17 +1,19 @@
 " Default GUI Colours
 let s:foreground = "000000"
-let s:background = "ffffff"
+let s:background = "EEEEEE"
 let s:selection = "c2c2c2"
 let s:line = "e2e2e2"
-let s:comment = "717171"
+let s:comment = "880000"
 let s:red = "d40000"
 let s:orange = "d40000"
 let s:yellow = "ffff00"
 "let s:green = "159F15"
-let s:green = "26740C"
-let s:aqua = "0000ff"
+"let s:green = "26740C"
+let s:green = "008800"
+let s:aqua = "006666"
 let s:blue = "0000ff"
-let s:purple = "b500b5"
+"let s:purple = "b500b5"
+let s:purple = "660066"
 let s:window = "e2e2e2"
 
 hi clear
@@ -271,7 +273,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Function", s:blue, "", "")
 	call <SID>X("Constant", s:orange, "", "")
 	call <SID>X("Keyword", s:orange, "", "")
-	call <SID>X("String", s:red, "", "")
+	call <SID>X("String", s:green, "", "")
 	call <SID>X("Special", s:foreground, "", "")
 	call <SID>X("PreProc", s:purple, "", "")
 	call <SID>X("Operator", s:aqua, "", "none")
