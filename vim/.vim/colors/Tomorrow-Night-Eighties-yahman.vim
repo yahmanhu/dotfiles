@@ -14,7 +14,7 @@ let s:orange = "ff9400"
 let s:yellow = "ffff00"
 let s:green = "00ff00"
 let s:aqua = "00ffff"
-let s:blue = "00ffff"
+let s:blue = "0000ff"
 let s:purple = "ff00ff"
 let s:window = "4d5057"
 
@@ -233,10 +233,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Vim Highlighting
 	call <SID>X("Normal", s:foreground, s:background, "")
-	call <SID>X("LineNr", s:selection, "", "")
+	call <SID>X("LineNr", s:foreground, "", "")
+	call <SID>X("CursorLineNr", s:background, s:green, "")
 	call <SID>X("NonText", s:selection, "", "")
 	call <SID>X("SpecialKey", s:selection, "", "")
-	call <SID>X("Search", s:background, s:yellow, "")
+	call <SID>X("Search", s:background, s:blue, "")
 	call <SID>X("TabLine", s:window, s:foreground, "reverse")
 	call <SID>X("TabLineFill", s:window, s:foreground, "reverse")
 	call <SID>X("StatusLine", s:window, s:yellow, "reverse")
@@ -271,13 +272,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Conditional", s:foreground, "", "")
 	call <SID>X("Repeat", s:foreground, "", "")
 	call <SID>X("Structure", s:purple, "", "")
-	call <SID>X("Function", s:blue, "", "")
+	call <SID>X("Function", s:purple, "", "")
 	call <SID>X("Constant", s:orange, "", "")
 	call <SID>X("Keyword", s:orange, "", "")
 	call <SID>X("String", s:green, "", "")
 	call <SID>X("Special", s:foreground, "", "")
 	call <SID>X("PreProc", s:purple, "", "")
-	call <SID>X("Operator", s:aqua, "", "none")
+	call <SID>X("Operator", s:orange, "", "none")
 	call <SID>X("Type", s:blue, "", "none")
 	call <SID>X("Define", s:purple, "", "none")
 	call <SID>X("Include", s:blue, "", "")
@@ -332,11 +333,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Python Highlighting
 	call <SID>X("pythonInclude", s:purple, "", "")
-	call <SID>X("pythonStatement", s:purple, "", "")
-	call <SID>X("pythonConditional", s:purple, "", "")
-	call <SID>X("pythonRepeat", s:purple, "", "")
+	call <SID>X("pythonStatement", s:aqua, "", "")
+	call <SID>X("pythonConditional", s:aqua, "", "")
+	call <SID>X("pythonRepeat", s:aqua, "", "")
 	call <SID>X("pythonException", s:purple, "", "")
-	call <SID>X("pythonFunction", s:blue, "", "")
+	call <SID>X("pythonFunction", s:purple, "", "")
 	call <SID>X("pythonPreCondit", s:purple, "", "")
 	call <SID>X("pythonRepeat", s:aqua, "", "")
 	call <SID>X("pythonExClass", s:orange, "", "")

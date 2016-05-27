@@ -5,12 +5,12 @@ let s:selection = "c2c2c2"
 let s:line = "e2e2e2"
 let s:comment = "880000"
 let s:red = "d40000"
-let s:orange = "d40000"
+let s:orange = "ff5000"
 let s:yellow = "ffff00"
 "let s:green = "159F15"
 "let s:green = "26740C"
 let s:green = "008800"
-let s:aqua = "006666"
+let s:aqua = "0000ff"
 let s:blue = "0000ff"
 "let s:purple = "b500b5"
 let s:purple = "660066"
@@ -271,7 +271,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Repeat", s:blue, "", "")
 	call <SID>X("Structure", s:purple, "", "")
 	call <SID>X("Function", s:blue, "", "")
-	call <SID>X("Constant", s:orange, "", "")
+	call <SID>X("Constant", s:red, "", "")
 	call <SID>X("Keyword", s:orange, "", "")
 	call <SID>X("String", s:green, "", "")
 	call <SID>X("Special", s:foreground, "", "")
@@ -331,14 +331,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Python Highlighting
 	call <SID>X("pythonInclude", s:purple, "", "")
-	call <SID>X("pythonStatement", s:purple, "", "")
-	call <SID>X("pythonConditional", s:purple, "", "")
-	call <SID>X("pythonRepeat", s:purple, "", "")
+	call <SID>X("pythonStatement", s:blue, "", "")
+	call <SID>X("pythonConditional", s:blue, "", "")
+	call <SID>X("pythonRepeat", s:blue, "", "")
 	call <SID>X("pythonException", s:purple, "", "")
-	call <SID>X("pythonFunction", s:blue, "", "")
+	call <SID>X("pythonFunction", s:orange, "", "")
 	call <SID>X("pythonPreCondit", s:purple, "", "")
 	call <SID>X("pythonRepeat", s:aqua, "", "")
-	call <SID>X("pythonExClass", s:orange, "", "")
+	call <SID>X("pythonExClass", s:red, "", "")
 
 	" JavaScript Highlighting
 	call <SID>X("javaScriptBraces", s:foreground, "", "")
