@@ -16,7 +16,7 @@ let s:green = "00ff00"
 let s:aqua = "00ffff"
 let s:blue = "0000ff"
 let s:purple = "ff00ff"
-let s:window = "4d5057"
+let s:window = "000000"
 
 hi clear
 syntax reset
@@ -240,7 +240,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Search", s:background, s:aqua, "")
 	call <SID>X("TabLine", s:window, s:foreground, "reverse")
 	call <SID>X("TabLineFill", s:window, s:foreground, "reverse")
-	call <SID>X("StatusLine", s:window, s:yellow, "reverse")
+	call <SID>X("StatusLine", s:background, s:orange, "reverse")
 	call <SID>X("StatusLineNC", s:window, s:foreground, "reverse")
 	call <SID>X("VertSplit", s:window, s:window, "none")
 	call <SID>X("Visual", "", s:selection, "")
@@ -267,7 +267,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Comment", s:comment, "", "")
 	call <SID>X("Todo", s:comment, s:background, "")
 	call <SID>X("Title", s:comment, "", "")
-	call <SID>X("Identifier", s:red, "", "none")
+	call <SID>X("Identifier", s:orange, "", "none")
 	call <SID>X("Statement", s:foreground, "", "")
 	call <SID>X("Conditional", s:foreground, "", "")
 	call <SID>X("Repeat", s:foreground, "", "")
@@ -288,10 +288,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("vimCommand", s:red, "", "none")
 
 	" C Highlighting
-	call <SID>X("cType", s:red, "", "")
+	call <SID>X("cType", s:orange, "", "")
 	call <SID>X("cStorageClass", s:purple, "", "")
 	call <SID>X("cConditional", s:blue, "", "")
-	call <SID>X("cRepeat", s:blue, "", "")
+	call <SID>X("cRepeat", s:aqua, "", "")
+	call <SID>X("cInclude", s:purple, "", "")
 
 	" PHP Highlighting
 	call <SID>X("phpVarSelector", s:red, "", "")
