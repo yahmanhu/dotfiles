@@ -77,6 +77,12 @@ bindsym Mod1+Control+8 move workspace 8; workspace 8
 bindsym Mod1+Control+9 move workspace 9; workspace 9
 bindsym Mod1+Control+0 move workspace 10; workspace 10
 
+# Switch tty
+bindsym Mod1+F1 exec "sudo chvt 1"
+bindsym Mod1+F2 exec "sudo chvt 2"
+bindsym Mod1+F3 exec "sudo chvt 3"
+bindsym Mod1+F4 exec "sudo chvt 4"
+
 # Create a grid
 bindsym Mod1+Control+g exec i3_grid
 
