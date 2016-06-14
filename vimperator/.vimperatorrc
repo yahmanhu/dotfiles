@@ -81,6 +81,9 @@ vmap <leader>t :trans<CR>
 nmap <leader>g :google<CR>
 vmap <leader>g :google<CR>
 
+"Add magnet links to transmission
+nnoremap M ;M
+
 nmap v cvv
 vnoremap q <ESC>
 
