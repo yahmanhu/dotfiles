@@ -241,21 +241,21 @@ nnoremap e el
 "Select all text
 nnoremap <C-a> ggVG
 
-"Shell script abbreviations
-au FileType sh iab iff if [[ ]]; then<CR>fi<Esc>?[[ ]]<Esc>:noh<Esc>i
-au FileType sh iab eliff elif [[ ]]; then<Esc>?[[ ]]<Esc>:noh<Esc>i
-"au FileType sh iab awkk awk '{ }'<Esc>{? }<Esc>:noh<Esc>i
-au FileType sh iab forr for; do<CR>done<Esc>?;<Esc>:noh<Esc>i
-"au FileType sh iab " ""<Esc>:"?"<CR>:noh<Esc>i
+"Set/unset spellcheck
+nnoremap <leader>s :set spell<CR>
+nnoremap <leader>S :set nospell<CR>
 
 "============
 "Autocommands
 "============
 
-autocmd BufRead .vimperatorrc setfiletype vim
-autocmd BufRead *.markdown,*tex call DistractFree#DistractFreeToggle() | wincmd w
+"Shell script abbreviations
+au FileType sh iab iff if [[ ]]; then<CR>fi<Esc>?[[ ]]<Esc>:noh<Esc>i
+au FileType sh iab eliff elif [[ ]]; then<Esc>?[[ ]]<Esc>:noh<Esc>i
+"au FileType sh iab awkk awk '{ }'<Esc>{? }<Esc>:noh<Esc>i
+au FileType sh iab forr for; do<CR>done<Esc>?;<Esc>:noh<Esc>i
 
-au BufRead,BufNewFile *.fountain set filetype=fountain
-autocmd BufRead *.markdown,*fountain call DistractFree#DistractFreeToggle() | wincmd w
 "Remove trailing whitespace when saving the file
 autocmd BufWritePre * :%s/\s\+$//e
+
+autocmd BufRead .vimperatorrc setfiletype vim
