@@ -226,9 +226,6 @@ nnoremap L $
 vmap H ^
 vmap L $
 
-"Delete end of line and go into insert mode
-nnoremap d$ d$<ESC>a
-
 "Change word
 nnoremap cw ciw
 
