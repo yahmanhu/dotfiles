@@ -30,8 +30,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #zstyle ":completion:*:descriptions" format "%B%d%b"
 
 # Custom key-bindings
-bindkey ^k up-line-or-history
-bindkey ^j down-line-or-history
+bindkey ^k up-line-or-search
+bindkey ^j down-line-or-search
 
 bindkey -M menuselect '^o' accept-and-infer-next-history
 bindkey -M menuselect '^s' accept-and-menu-complete

@@ -48,7 +48,7 @@ man() {
 
 lsgrep() {
 
-    ls -lh --color=auto | grep $1
+    ls -lh --color=auto | grep -i $1
 
 }
 
