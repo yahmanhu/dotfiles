@@ -242,6 +242,9 @@ nnoremap <C-a> ggVG
 nnoremap <leader>s :set spell<CR>
 nnoremap <leader>S :set nospell<CR>
 
+"Spell suggestions
+vnoremap <leader>s z=
+
 "============
 "Autocommands
 "============

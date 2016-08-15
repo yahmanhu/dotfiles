@@ -3,6 +3,10 @@
 
 font -*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
 
+# Desable mouse focus
+# ===================
+focus_follows_mouse no
+
 # Key bindigns
 # ============
 
@@ -23,7 +27,7 @@ bindsym Mod1+Return exec urxvtc
 bindsym Mod1+q kill
 
 # Start dmenu
-bindsym Mod1+d exec "dmenu_run -i -fn Terminus"
+bindsym Mod1+Menu exec "dmenu_run -i -fn Terminus"
 
 # Change focus
 bindsym Mod1+$left focus left
@@ -119,7 +123,7 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 # Switch keyboard
-bindsym Mod1+Control+e exec ~/scripts/skbd
+bindsym Mod1+e exec ~/scripts/skbd
 
 # Switch wifi
 bindsym Mod1+Control+w exec ~/scripts/swifi
