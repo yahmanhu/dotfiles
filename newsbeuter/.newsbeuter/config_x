@@ -52,13 +52,13 @@ macro d set browser "urxvtc -e youtube-dl -f 22 %u"; open-in-browser ; set brows
 
 # Colors for X
 
-color background white black
-color listnormal white black
+color background black white
+color listnormal black white
 color listfocus  white blue
-color listnormal_unread white black
+color listnormal_unread black white
 color listfocus_unread  white blue
 color info       black white
-color article    white black
+color article    black white
 
 search-highlight-colors color9 color1 bold
 highlight feedlist "Youtube" white red

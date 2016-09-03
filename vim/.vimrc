@@ -27,8 +27,8 @@ set number
 set t_Co=256
 syntax on
 filetype plugin indent on
-colorscheme Tomorrow-Night-Eighties-yahman
-"colorscheme yahman
+"colorscheme Tomorrow-Night-Eighties-yahman
+colorscheme yahman
 set showcmd
 set linebreak
 set hlsearch
@@ -60,6 +60,8 @@ set statusline=
 set statusline+=%f%m%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ L:%l/%L\ C:%c\ (%P)
 set mouse=a
 set spelllang=hu,en
+set guicursor=a:hor20-Cursor
+set guicursor+=a:blinkon0
 
 ""===============
 ""Cursor settings
@@ -79,12 +81,21 @@ set spelllang=hu,en
 "" 4 -> normal underscore
 "" 5 -> blinking vertical bar
 "" 6 -> normal vertical bar
-let &t_SI = "\<Esc>]12;green\x7"
-let &t_EI = "\<Esc>]12;white\x7"
+
+let &t_SI = "\<Esc>]12;red\x7"
+let &t_EI = "\<Esc>]12;black\x7"
 let &t_SI .= "\<Esc>[4 q"
 let &t_EI .= "\<Esc>[4 q"
-silent !echo -ne "\033]12;white\007"
-autocmd VimLeave * silent !echo -ne "\033]12;white\007"
+silent !echo -ne "\033]12;black\007"
+autocmd VimLeave * silent !echo -ne "\033]12;black\007"
+
+"let &t_SI = "\<Esc>]12;green\x7"
+"let &t_EI = "\<Esc>]12;black\x7"
+"let &t_SI .= "\<Esc>[4 q"
+"let &t_EI .= "\<Esc>[4 q"
+"silent !echo -ne "\033]12;black\007"
+"autocmd VimLeave * silent !echo -ne "\033]12;white\007"
+
 
 "===============
 "Custom commands
@@ -239,11 +250,14 @@ nnoremap e el
 nnoremap <C-a> ggVG
 
 "Set/unset spellcheck
-nnoremap <leader>s :set spell<CR>
-nnoremap <leader>S :set nospell<CR>
+nnoremap <leader>s :set spell<CR> <bar> :set cursorline!<CR>
+nnoremap <leader>S :set nospell<CR> <bar> :set cursorline<CR>
 
 "Spell suggestions
 vnoremap <leader>s z=
+
+nnoremap S [s
+nnoremap s ]s
 
 "============
 "Autocommands

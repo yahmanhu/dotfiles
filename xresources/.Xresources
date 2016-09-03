@@ -8,7 +8,7 @@ URxvt.termName: rxvt-unicode-256color
 URxvt.terminalName: rxvt-unicode-256color
 
 ! True transparency - Ranger w3m image display will not work when enabled -- using compton setting instead
-!URxvt.depth: 32
+URxvt.depth: 32
 !URxvt.background: [100]#300A24
 !URxvt.background: [100]#005577
 !URxvt.background: [100]#222222
@@ -17,7 +17,7 @@ URxvt.terminalName: rxvt-unicode-256color
 !URxvt.background: [100]#4B0082
 !URxvt.background: [100]#4B0082
 !URxvt.background: [100]#365588
-URxvt.background: [100]#000000
+URxvt.background: [100]#eee
 
 ! Native (fake) transparency
 !URxvt*.transparent: true
@@ -25,18 +25,18 @@ URxvt.background: [100]#000000
 !URxvt*.shading: 10
 
 ! Use the specified colour as the windows foreground colour [default Black]; option -fg.
-URxvt.foreground: #ffffff
+URxvt.foreground: #000000
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for
 !URxvt.font: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
-URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
+!URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
 
 !URxvt.font: 9x15
+URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Dejavu Sans Mono:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Liberation Mono for Powerline:pixelsize=15:antialias=true:hinting=true
-!URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:pixelsize=17:antialias=true:hinting=true
-!URxvt.letterSpace: -2
+!URxvt.letterSpace: 0
 !URxvt.font: -ctrld-fixed-medium-r-normal--13-80-96-96-c-80-iso10646-1
 !URxvt.font: -ctrld-fixed-medium-r-normal-*-16-*-*-*-*-*-*-*
 !URxvt.font: -misc-fixed-medium-r-*-*-13-*-*-*-*-60-*-*
@@ -70,49 +70,35 @@ URxvt.cursorUnderline: true
 !URxvt.color0: #000000
 !URxvt.color8: #121212
 !! red
-!URxvt.color1: #DC0000
-!URxvt.color9: #DC0000
+URxvt.color1: #d40000
+URxvt.color9: #d40000
 !! green
-!!URxvt.color2: #20EC11
-!!URxvt.color10: #20EC11
-!!URxvt.color2:#5FE36C
-!!URxvt.color10:#5FE36C
-!URxvt.color2: #26740c
-!URxvt.color10: #26740c
+URxvt.color2: #008800
+URxvt.color10: #008800
 !! yellow
-!URxvt.color3: #FAE56B
-!URxvt.color11: #FAE56B
+URxvt.color3: #ff5000
+URxvt.color11: #ff5000
 !! blue
-!!URxvt.color4: #71A6B7
-!!URxvt.color12:#1C7EFF
-!!URxvt.color4: #1C7EFF
-!URxvt.color12:#005577
-!URxvt.color4: #005577
-!!URxvt.color4: #1C7EFF
+URxvt.color4: #0000ff
+URxvt.color12:#0000ff
 !! magenta
-!URxvt.color5: #F860CD
-!URxvt.color13: #F860CD
-!!URxvt.color5: #90A7D0
-!!URxvt.color13: #90A7D0
+URxvt.color5: #660066
+URxvt.color13: #660066
 !! cyan
-!!URxvt.color6: #4D7A89
-!!URxvt.color14: #4D7A89
-!!URxvt.color6: #2FC8C8
-!!URxvt.color14: #2FC8C8
-!URxvt.color6:#0000ff
-!URxvt.color14:#0000ff
+URxvt.color6: #0000ff
+URxvt.color14: #0000ff
 !! white
 !URxvt.color7: #ffffff
 !URxvt.color15: #ffffff
 
 !! Cursor color
+URxvt.cursorColor: black
 !!URxvt.cursorColor: #00AA00
 !!URxvt.cursorColor: #5FE36C
 !!URxvt.cursorColor: #FFFFFF
 !!URxvt.cursorColor: #222222
 !!URxvt.cursorColor: #005577
 !!URxvt.cursorColor: grey
-!URxvt.cursorColor: black
 !URxvt.cursorColor: white
 
 !! Newsbeuter colors

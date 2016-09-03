@@ -52,7 +52,7 @@ macro o set browser "DISPLAY=:0 xdg-open %u"; open-in-browser ; set browser "/us
 # color <element> <foreground color> <background color> [<attribute> ...]
 
 # Colors for tty
-color background white black
+color background white white
 color listnormal white black
 color listfocus  white blue
 color listnormal_unread white black
