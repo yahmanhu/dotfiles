@@ -63,6 +63,8 @@ set spelllang=hu,en
 set guicursor=a:hor20-Cursor
 set guicursor+=a:blinkon0
 
+hi SpellBad    ctermfg=007      ctermbg=001     cterm=bold      guifg=#ffffff   guibg=#d40000   gui=none
+
 ""===============
 ""Cursor settings
 ""===============

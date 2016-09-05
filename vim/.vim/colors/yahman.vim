@@ -1,8 +1,8 @@
 " Default GUI Colours
 let s:foreground = "000000"
-let s:background = "EEEEEE"
+let s:background = "e2e2e2"
 let s:selection = "c2c2c2"
-let s:line = "e2e2e2"
+let s:line = "c2c2c2"
 let s:comment = "880000"
 let s:red = "d40000"
 let s:orange = "ff5000"
@@ -10,7 +10,7 @@ let s:yellow = "ffff00"
 "let s:green = "159F15"
 "let s:green = "26740C"
 let s:green = "008800"
-let s:aqua = "0000ff"
+let s:aqua = "00ffff"
 let s:blue = "0000ff"
 "let s:purple = "b500b5"
 let s:purple = "660066"
@@ -238,8 +238,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Search", s:background, s:blue, "")
 	call <SID>X("TabLine", s:window, s:foreground, "reverse")
 	call <SID>X("TabLineFill", s:window, s:foreground, "reverse")
-	call <SID>X("StatusLine", s:window, s:foreground, "reverse")
-	call <SID>X("StatusLineNC", s:window, s:foreground, "reverse")
+	call <SID>X("StatusLine", s:window, s:foreground, "bold")
+	call <SID>X("StatusLineNC", s:window, s:foreground, "bold")
 	call <SID>X("VertSplit", s:window, s:window, "none")
 	call <SID>X("Visual", "", s:selection, "")
 	call <SID>X("Directory", s:blue, "", "")
@@ -253,8 +253,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	if version >= 700
 		call <SID>X("CursorLine", "", s:line, "none")
 		call <SID>X("CursorColumn", "", s:line, "none")
-		call <SID>X("PMenu", s:foreground, s:selection, "none")
-		call <SID>X("PMenuSel", s:foreground, s:selection, "reverse")
+		call <SID>X("PMenu", s:foreground, s:background, "none")
+		call <SID>X("PMenuSel", s:foreground, s:selection, "none")
 		call <SID>X("SignColumn", "", s:background, "none")
 	end
 	if version >= 703

@@ -17,7 +17,7 @@ URxvt.depth: 32
 !URxvt.background: [100]#4B0082
 !URxvt.background: [100]#4B0082
 !URxvt.background: [100]#365588
-URxvt.background: [100]#eee
+URxvt.background: [100]#e2e2e2
 
 ! Native (fake) transparency
 !URxvt*.transparent: true
@@ -88,8 +88,8 @@ URxvt.color13: #660066
 URxvt.color6: #0000ff
 URxvt.color14: #0000ff
 !! white
-!URxvt.color7: #ffffff
-!URxvt.color15: #ffffff
+URxvt.color7: #ffffff
+URxvt.color15: #ffffff
 
 !! Cursor color
 URxvt.cursorColor: black
