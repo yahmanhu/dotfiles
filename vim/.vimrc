@@ -130,6 +130,7 @@ nnoremap J <C-d>
 nnoremap K <C-u>
 
 "Map ESC key
+imap <ESC> <ESC>l
 imap ii <ESC>
 
 "Switch between buffers"

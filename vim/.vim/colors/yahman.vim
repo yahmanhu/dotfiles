@@ -7,6 +7,8 @@ let s:comment = "880000"
 let s:red = "d40000"
 let s:orange = "ff5000"
 let s:yellow = "ffff00"
+let s:white = "ffffff"
+let s:black = "000000"
 "let s:green = "159F15"
 "let s:green = "26740C"
 let s:green = "008800"
@@ -253,8 +255,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	if version >= 700
 		call <SID>X("CursorLine", "", s:line, "none")
 		call <SID>X("CursorColumn", "", s:line, "none")
-		call <SID>X("PMenu", s:foreground, s:background, "none")
-		call <SID>X("PMenuSel", s:foreground, s:selection, "none")
+		call <SID>X("PMenu", s:foreground, s:line, "none")
+		call <SID>X("PMenuSel", s:white, s:black, "none")
 		call <SID>X("SignColumn", "", s:background, "none")
 	end
 	if version >= 703
