@@ -162,6 +162,7 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 # Window options
 # ==============
 
+for_window [title = "termite" ] move container to workspace 4
 for_window [title = "^cal$" ] floating enable
 assign [class = "Firefox" ] 1
 # Jump to firefox

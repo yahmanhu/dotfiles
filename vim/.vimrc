@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
     "Plug 'chrisbra/Colorizer', { 'on': 'ColorHighlight' }
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/nerdcommenter'
+    "Plug 'itchyny/vim-cursorword-master'
 
 call plug#end()
 
@@ -63,7 +64,15 @@ set spelllang=hu,en
 set guicursor=a:hor20-Cursor
 set guicursor+=a:blinkon0
 
-hi SpellBad    ctermfg=007      ctermbg=001     cterm=bold      guifg=#ffffff   guibg=#d40000   gui=none
+"Highlight spell checking
+hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guifg=#ffffff   guibg=#d40000   gui=none
+
+"Gvim options
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+set guifont=DejaVu\ Sans\ Mono\ 10
 
 ""===============
 ""Cursor settings
@@ -162,7 +171,7 @@ nnoremap y "+y
 vnoremap y "+y
 
 "Paste from system clipboard
-imap PP <Esc>"+p<ESC>
+nnoremap PP <Esc>"+p<ESC>
 
 "Quick pairs
 imap <leader>' ''<ESC>i
@@ -224,8 +233,16 @@ nnoremap <tab> >>
 vnoremap <S-tab> <gv
 vnoremap <tab> >gv
 
-"Use ENTER is normal mode
+"Use Enter in normal mode
+nmap <S-CR> i<Enter><ESC>
 nmap <Enter> o<ESC>
+
+"Use space in normal mode
+nmap <Space> i<Space><ESC>
+nmap <S-Space> <Backspace>
+
+"Use backspace in normal mode
+nmap <Backspace> i<Backspace><ESC>
 
 "Use TAB for Neocomplete
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -255,12 +272,31 @@ nnoremap <C-a> ggVG
 "Set/unset spellcheck
 nnoremap <leader>s :set spell<CR> <bar> :set cursorline!<CR>
 nnoremap <leader>S :set nospell<CR> <bar> :set cursorline<CR>
+vnoremap <leader>S 1z=
 
 "Spell suggestions
 vnoremap <leader>s z=
 
 nnoremap S [s
 nnoremap s ]s
+
+"Paste at the end of line
+nnoremap P A<Space><ESC>p
+
+"Use " in normal mode
+nnoremap " i"<ESC>
+
+"Close buffer (for gvim)_
+nnoremap <F4> :bd<CR>
+
+"No highlight
+nnoremap <leader>n :noh<CR>
+
+"=============
+"Abbreviations
+"=============
+iab wiht with
+iab wihtout without
 
 "============
 "Autocommands

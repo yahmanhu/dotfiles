@@ -177,7 +177,7 @@ color quoted2       blue            default                     # Quoted text in
 color quoted3       magenta         default                     # Quoted text in messages
 
 color error         white           red                         # Error messages
-color message       white           default                     # Message  informational messages
+color message       black           default                     # Message  informational messages
 color indicator     white           blue                  # Selection highlight (on the current message)
 color status        white           blue                        # "Window" color (statusbar)
 color tree          yellow          default                     # Tree indicator (of threads)

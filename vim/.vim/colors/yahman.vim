@@ -17,6 +17,7 @@ let s:blue = "0000ff"
 "let s:purple = "b500b5"
 let s:purple = "660066"
 let s:window = "e2e2e2"
+let s:i3blue = "285577"
 
 hi clear
 syntax reset
@@ -237,7 +238,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("CursorLineNr", s:red, "" , "")
 	call <SID>X("NonText", s:selection, "", "")
 	call <SID>X("SpecialKey", s:selection, "", "")
-	call <SID>X("Search", s:background, s:blue, "")
+	call <SID>X("Search", s:blue, s:white, "bold")
 	call <SID>X("TabLine", s:window, s:foreground, "reverse")
 	call <SID>X("TabLineFill", s:window, s:foreground, "reverse")
 	call <SID>X("StatusLine", s:window, s:foreground, "bold")
@@ -252,11 +253,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("MatchParen", "", s:selection, "")
 	call <SID>X("Folded", s:comment, s:background, "")
 	call <SID>X("FoldColumn", "", s:background, "")
+	call <SID>X("hlcursor", s:foreground, s:line, "bold")
 	if version >= 700
 		call <SID>X("CursorLine", "", s:line, "none")
 		call <SID>X("CursorColumn", "", s:line, "none")
-		call <SID>X("PMenu", s:foreground, s:line, "none")
-		call <SID>X("PMenuSel", s:white, s:black, "none")
+		call <SID>X("PMenu", s:foreground, s:line, "reverse")
+		call <SID>X("PMenuSel", s:white, s:i3blue, "none")
 		call <SID>X("SignColumn", "", s:background, "none")
 	end
 	if version >= 703
@@ -265,7 +267,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Standard Highlighting
 	call <SID>X("Comment", s:comment, "", "")
-	call <SID>X("Todo", s:comment, s:background, "")
+	call <SID>X("Todo", s:foreground, s:line, "bold")
 	call <SID>X("Title", s:comment, "", "")
 	call <SID>X("Identifier", s:red, "", "none")
 	call <SID>X("Statement", s:foreground, "", "")

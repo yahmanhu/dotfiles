@@ -87,6 +87,13 @@ nnoremap M ;M
 nmap v cvv
 vnoremap q <ESC>
 
+"Beginning/end of line
+nnoremap I gi<Home>
+nnoremap A gi<End>
+
+" Unmap F1 key
+nnoremap <F1> <Nop>
+inoremap <F1> <Nop>
 
 "============================================"
 "   Commands                                 "
