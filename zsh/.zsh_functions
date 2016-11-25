@@ -171,7 +171,7 @@ fzf-vim-open() {
     dirs=(~/dotfiles ~/documents ~/scripts ~/.config/firefoxnewtab ~/.config/spotymenu ~/.config/youtube-dl ~/.config/i3 ~/.config/i3blocks/config)
     list=$(find "${dirs[@]}" -type f ! -iregex ".*[/]\.git[/]?.*\|^.+\.png$\|^.+\.jpg$\|^.+\.psd$\|^.+\.pdf$\|^.+\.odt$\|^.+\.ods$\|^.+\.docx?$\|^.+\.xlsx?$\|^.+\.epub$\|^.+\.mobi$\|^.+\.svg$\|^.+\.celtx$" | fzf --header "Edit file")
     # Run Vim only if something was selected
-    [[ ! -z $list ]] && echo "$list" | xargs bash -c '</dev/tty vim "$@"' ignoreme
+    [[ ! -z $list ]] && echo "$list" | xargs bash -c '</dev/tty gvim "$@"' ignoreme
 
 }
 zle -N fzf-vim-open

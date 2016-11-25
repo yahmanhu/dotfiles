@@ -95,6 +95,8 @@ nnoremap A gi<End>
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>
 
+nnoremap <leader>n :noh<CR>
+
 "============================================"
 "   Commands                                 "
 "============================================"

@@ -65,14 +65,21 @@ set guicursor=a:hor20-Cursor
 set guicursor+=a:blinkon0
 
 "Highlight spell checking
-hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guifg=#ffffff   guibg=#d40000   gui=none
+hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guibg=#ffffff   guifg=#d40000   gui=bold
 
 "Gvim options
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-set guifont=DejaVu\ Sans\ Mono\ 10
+"set guifont=Monospace\ 10
+set guifont=Nimbus\ Mono\ PS\ 12
+
+highlight Cursor guibg=#000000
+highlight iCursor guibg=#d40000
+set guicursor=n-c:hor10-Cursor-blinkon0
+set guicursor=i:hor10-iCursor-blinkon0
+
 
 ""===============
 ""Cursor settings
