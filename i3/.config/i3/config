@@ -137,6 +137,9 @@ bindsym Mod1+w exec ~/scripts/dmw
 # dmb
 bindsym Mod1+semicolon exec ~/scripts/dmb
 
+# dmo
+bindsym Mod1+o exec ~/scripts/dmo
+
 # Change backlight
 bindsym XF86Back exec "xbacklight -time 0 -dec 10%"
 bindsym XF86Forward exec "xbacklight -time 0 -inc 15%"
@@ -153,7 +156,7 @@ bindsym Print exec "scrot"
 # Spotify control / spotymenu
 # ===========================
 
-bindsym Mod1+o exec ~/scripts/spotymenu
+#bindsym Mod1+o exec ~/scripts/spotymenu
 bindsym Mod1+p exec "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym Mod1+Control+Left exec "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
