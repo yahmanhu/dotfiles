@@ -22,6 +22,9 @@ nnoremap k 3k
 nnoremap J <C-d>
 nnoremap K <C-u>
 
+nnoremap h 3h
+nnoremap l 3l
+
 "Tabs
 nnoremap > :tabnext<CR>
 nnoremap < :tabprevious<CR>
@@ -33,7 +36,7 @@ nmap , :back<CR>
 nmap . :forward<CR>
 
 "Quick help
-nnoremap h :help<Space>
+"nnoremap h :help<Space>
 
 "Quick select text in CARET/VISUAL mode: move to the beginning/end of line
 vnoremap H ^
@@ -62,7 +65,7 @@ nnoremap <C-a> i<C-a>
 inoremap <C-a> i<C-a>
 
 "Add bookmark
-nnoremap B :bmark<CR>
+"nnoremap B :bmark<CR>
 
 "Open bookmarks
 nnoremap bm :bmarks!<Space>

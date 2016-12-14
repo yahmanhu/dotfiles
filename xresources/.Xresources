@@ -31,8 +31,8 @@ URxvt.foreground: #000000
 !URxvt.font: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
 !URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
 
-URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
-!URxvt.font: xft:Nimbus Mono PS:pixelsize=14:antialias=true:hinting=true
+!URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
+URxvt.font: xft:Nimbus Mono PS:pixelsize=16:antialias=true:hinting=true
 !URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
 !URxvt.font: xft:Nimbus Mono PS:pixelsize=16:antialias=true:hinting=true
 !URxvt.font: xft:Adobe Garamond Pro:pixelsize=16:antialias=true:hinting=true

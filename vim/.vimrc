@@ -70,7 +70,7 @@ hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guibg=#ffffff   
 "Gvim options
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=r "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 "set guifont=Monospace\ 10
 set guifont=Nimbus\ Mono\ PS\ 12
@@ -100,12 +100,12 @@ set guicursor=i:hor10-iCursor-blinkon0
 "" 5 -> blinking vertical bar
 "" 6 -> normal vertical bar
 
-let &t_SI = "\<Esc>]12;red\x7"
-let &t_EI = "\<Esc>]12;black\x7"
-let &t_SI .= "\<Esc>[4 q"
-let &t_EI .= "\<Esc>[4 q"
-silent !echo -ne "\033]12;black\007"
-autocmd VimLeave * silent !echo -ne "\033]12;black\007"
+"let &t_SI = "\<Esc>]12;red\x7"
+"let &t_EI = "\<Esc>]12;black\x7"
+"let &t_SI .= "\<Esc>[4 q"
+"let &t_EI .= "\<Esc>[4 q"
+"silent !echo -ne "\033]12;black\007"
+"autocmd VimLeave * silent !echo -ne "\033]12;black\007"
 
 "let &t_SI = "\<Esc>]12;green\x7"
 "let &t_EI = "\<Esc>]12;black\x7"
@@ -179,6 +179,7 @@ vnoremap y "+y
 
 "Paste from system clipboard
 nnoremap PP <Esc>"+p<ESC>
+inoremap PP <Esc>"+p<ESC>
 
 "Quick pairs
 imap <leader>' ''<ESC>i
