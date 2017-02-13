@@ -61,8 +61,8 @@ set statusline=
 set statusline+=%f%m%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ L:%l/%L\ C:%c\ (%P)
 set mouse=a
 set spelllang=hu,en
-set guicursor=a:hor20-Cursor
-set guicursor+=a:blinkon0
+"set guicursor=a:hor20-Cursor
+"set guicursor+=a:blinkon0
 
 "Highlight spell checking
 hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guibg=#ffffff   guifg=#d40000   gui=bold
@@ -79,6 +79,8 @@ highlight Cursor guibg=#000000
 highlight iCursor guibg=#d40000
 set guicursor=n-c:hor10-Cursor-blinkon0
 set guicursor=i:hor10-iCursor-blinkon0
+"set guicursor=i:ver15-iCursor-blinkon0
+"set guicursor=i:hor10-iCursor-blinkwait10
 
 
 ""===============
@@ -147,7 +149,7 @@ nnoremap K <C-u>
 
 "Map ESC key
 imap <ESC> <ESC>l
-imap ii <ESC>
+"imap ii <ESC>
 
 "Switch between buffers"
 nmap < :bprevious<CR>
@@ -212,6 +214,7 @@ vnoremap <leader>[ <ESC>`<i[<ESC>`>la]<ESC>
 vnoremap <leader>] <ESC>`<i[<ESC>`>la]<ESC>
 vnoremap <leader>< <ESC>`<i<<ESC>`>la><ESC>
 vnoremap <leader>> <ESC>`<i<<ESC>`>la><ESC>
+vnoremap <leader>_ <ESC>`<i_<ESC>`>la_<ESC>
 
 "Delete surrounding quotes, brackets etc.
 noremap <leader><leader>{ F{xf}x

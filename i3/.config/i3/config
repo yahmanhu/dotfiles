@@ -138,7 +138,7 @@ bindsym Mod1+w exec ~/scripts/dmw
 bindsym Mod1+semicolon exec ~/scripts/dmb
 
 ## dmo
-#bindsym Mod1+o exec ~/scripts/dmo
+bindsym Mod1+f exec ~/scripts/dmo
 
 # Change backlight
 bindsym XF86Back exec "xbacklight -time 0 -dec 10%"
@@ -170,10 +170,11 @@ for_window [title = "^cal$" ] floating enable
 assign [class = "Firefox" ] 1
 # Jump to firefox
 bindsym Mod1+b [class = "Firefox"] focus
-for_window [class = "Spotify" ] move container to workspace 5
 # Jump to spotify
+for_window [class = "Spotify" ] move container to workspace 6
 bindsym Mod1+i [class = "Spotify"] focus
-for_window [class = "libreoffice" ] move container to workspace 6
+# Jump to office
+for_window [class = "libreoffice" ] move container to workspace 5
 
 # I3 status bar
 # =============

@@ -94,15 +94,22 @@ vnoremap q <ESC>
 nnoremap I gi<Home>
 nnoremap A gi<End>
 
-" Unmap F1 key
+"Unmap F1 key
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>
 
+"Nohighlight
 nnoremap <leader>n :noh<CR>
+
+"Delete all tabs
+nnoremap D :tabonly<CR> :tabclose<CR>
 
 "============================================"
 "   Commands                                 "
 "============================================"
+
+"Open dictionaries
+command! -description="Open dictionaries" dict :open http://angol-magyar-szotar.hu/, http://dictionary.cambridge.org/, https://en.wiktionary.org/wiki/
 
 "Quick open Addons
 command! -description="Open addons page (custom command)" AA :tabopen about:addons

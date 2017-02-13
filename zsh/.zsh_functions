@@ -12,8 +12,8 @@ te() {
     if [[ "$(ls ~/.local/share/Trash/files/)" == "total 0" ]]; then
         echo "Trash is empty."
     else
-        echo -e "Are you sure you want to remove these files? (y = yes)"
         trash --list
+        echo -e "Are you sure you want to remove these files? (y = yes)"
         read answer_trash
         if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
             trash --empty
