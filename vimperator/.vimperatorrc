@@ -104,6 +104,14 @@ nnoremap <leader>n :noh<CR>
 "Delete all tabs
 nnoremap D :tabonly<CR> :tabclose<CR>
 
+"Quick switch between tabs
+nnoremap g1 bb1<CR>
+nnoremap g2 bb2<CR>
+nnoremap g3 bb3<CR>
+nnoremap g4 bb4<CR>
+nnoremap g5 bb5<CR>
+nnoremap g6 bb6<CR>
+
 "============================================"
 "   Commands                                 "
 "============================================"

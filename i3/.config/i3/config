@@ -50,8 +50,8 @@ bindsym Mod1+v split v
 # Full screen mode
 bindsym Mod1+m fullscreen toggle
 
-# Toggle tiling / floating
-bindsym Mod1+Control+space floating toggle
+# Focus floating window
+bindsym Mod1+Control+space focus floating
 
 # Switch to workspace
 bindsym Mod1+1 workspace 1
@@ -90,6 +90,9 @@ bindsym Mod1+F4 exec "sudo chvt 4"
 # Create a grid
 #bindsym Mod1+Control+g exec i3_grid
 
+# Translator
+bindsym Mod1+Control+t exec "urxvtc -e gthu"; split v; exec "urxvtc -e gten"
+
 # Mark window
 bindsym Mod1+a exec i3-input -F 'mark %s' -P 'Mark name: '
 # Go to marked window
@@ -109,18 +112,21 @@ bindsym Mod1+Control+r restart
 bindsym Mod1+Control+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Resize window
-mode "resize" {
-        bindsym $left       resize grow width 10 px or 10 ppt
-        bindsym $right      resize shrink width 10 px or 10 ppt
-        bindsym $down       resize shrink height 10 px or 10 ppt
-        bindsym $up         resize grow height 10 px or 10 ppt
+#mode "resize" {
+        #bindsym $left       resize grow width 10 px or 10 ppt
+        #bindsym $right      resize shrink width 10 px or 10 ppt
+        #bindsym $down       resize shrink height 10 px or 10 ppt
+        #bindsym $up         resize grow height 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+        ## back to normal: Enter or Escape
+        #bindsym Return mode "default"
+        #bindsym Escape mode "default"
+#}
 
-bindsym Mod1+r mode "resize"
+#bindsym Mod1+r mode "resize"
+
+# Open a floating terminal
+bindsym Mod1+r exec "urxvtc -name 'terminal' -geometry 80x20"
 
 # Switch keyboard
 bindsym Mod1+e exec ~/scripts/skbd
@@ -166,6 +172,7 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 # ==============
 
 for_window [title = "termite" ] move container to workspace 4
+for_window [title = "terminal" ] floating enable
 for_window [title = "^cal$" ] floating enable
 assign [class = "Firefox" ] 1
 # Jump to firefox
@@ -176,6 +183,11 @@ bindsym Mod1+i [class = "Spotify"] focus
 # Jump to office
 for_window [class = "libreoffice" ] move container to workspace 5
 
+
+# class                 border  backgr. text    indicator child_border
+#client.focused          #4B58A5 #4B58A5 #ffffff #2e9ef4   #4B58A5
+
+
 # I3 status bar
 # =============
 
@@ -184,6 +196,7 @@ bar {
             urgent_workspace   #2f343a #FF0000 #ffffff
             separator #285577
             background #222222
+            #background #4B58A5
 
 
 }

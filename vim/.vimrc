@@ -5,10 +5,8 @@
 call plug#begin('~/.vim/plugged')
     Plug 'lilydjwg/colorizer'
     Plug 'ap/vim-buftabline'
-    "Plug 'chrisbra/Colorizer', { 'on': 'ColorHighlight' }
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/nerdcommenter'
-    "Plug 'itchyny/vim-cursorword-master'
 
 call plug#end()
 
@@ -78,7 +76,7 @@ set guifont=Nimbus\ Mono\ PS\ 12
 highlight Cursor guibg=#000000
 highlight iCursor guibg=#d40000
 set guicursor=n-c:hor10-Cursor-blinkon0
-set guicursor=i:hor10-iCursor-blinkon0
+set guicursor=i:hor10-iCursor-blinkwait5
 "set guicursor=i:ver15-iCursor-blinkon0
 "set guicursor=i:hor10-iCursor-blinkwait10
 
@@ -283,7 +281,9 @@ nnoremap <C-a> ggVG
 "Set/unset spellcheck
 nnoremap <leader>s :set spell<CR> <bar> :set cursorline!<CR>
 nnoremap <leader>S :set nospell<CR> <bar> :set cursorline<CR>
-vnoremap <leader>S 1z=
+
+"Correct spell automatically
+nnoremap <leader>z ve1z=
 
 "Spell suggestions
 vnoremap <leader>s z=
@@ -302,6 +302,16 @@ nnoremap <F4> :bd<CR>
 
 "No highlight
 nnoremap <leader>n :noh<CR>
+
+"Explorer
+nnoremap <leader>e :Sexplore<CR>
+
+"Put date
+nnoremap <F5> oDate: "<ESC>"=strftime('%A %B %d %Y, %H:%M')<CR>PA<Backspace><ESC>
+nnoremap <F6> oLast update: "<ESC>"=strftime('%A %B %d %Y, %H:%M')<CR>PA<Backspace><ESC>
+
+"Exact search
+nnoremap ? /\<\><left><left>
 
 "=============
 "Abbreviations
