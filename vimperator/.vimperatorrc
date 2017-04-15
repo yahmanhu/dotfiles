@@ -11,6 +11,7 @@ set! ui.caretWidth=8
 set! ui.caretBlinkTime=0
 "set editor="urxvtc -e vim"
 "let mapleader = "\"
+set focuscontent
 
 "============================================"
 "   Key mappings                             "
