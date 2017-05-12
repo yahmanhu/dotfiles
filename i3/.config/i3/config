@@ -126,7 +126,7 @@ bindsym Mod1+Control+q exec "i3-nagbar -t warning -m 'You pressed the exit short
 #bindsym Mod1+r mode "resize"
 
 # Open a floating terminal
-bindsym Mod1+r exec "urxvtc -name 'terminal' -geometry 80x20"
+#bindsym Mod1+r exec "urxvtc -name 'terminal' -geometry 80x20"
 
 # Switch keyboard
 bindsym Mod1+e exec ~/scripts/skbd
@@ -171,7 +171,8 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 # Window options
 # ==============
 
-for_window [title = "termite" ] move container to workspace 4
+#for_window [title = "termite" ] move container to workspace 4
+for_window [title = "qBittorrent" ] move container to workspace 5
 for_window [title = "terminal" ] floating enable
 for_window [title = "^cal$" ] floating enable
 assign [class = "Firefox" ] 1
@@ -181,7 +182,7 @@ bindsym Mod1+b [class = "Firefox"] focus
 for_window [class = "Spotify" ] move container to workspace 6
 bindsym Mod1+i [class = "Spotify"] focus
 # Jump to office
-for_window [class = "libreoffice" ] move container to workspace 5
+for_window [class = "libreoffice" ] move container to workspace 4
 
 
 # class                 border  backgr. text    indicator child_border
