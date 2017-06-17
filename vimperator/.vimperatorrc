@@ -112,10 +112,16 @@ nnoremap g3 bb3<CR>
 nnoremap g4 bb4<CR>
 nnoremap g5 bb5<CR>
 nnoremap g6 bb6<CR>
+nnoremap g7 bb7<CR>
+nnoremap g8 bb8<CR>
+nnoremap g9 bb9<CR>
 
 "============================================"
 "   Commands                                 "
 "============================================"
+
+"Open about:config
+command! -description="config" config :open about:config
 
 "Open dictionaries
 command! -description="Open dictionaries" dict :open http://angol-magyar-szotar.hu/, http://dictionary.cambridge.org/, https://en.wiktionary.org/wiki/

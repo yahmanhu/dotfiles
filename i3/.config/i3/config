@@ -135,7 +135,7 @@ bindsym Mod1+e exec ~/scripts/skbd
 bindsym Mod1+Control+w exec ~/scripts/swifi
 
 # dms
-bindsym Mod1+slash exec ~/scripts/dms
+#bindsym Mod1+slash exec ~/scripts/dms
 
 # dmw
 bindsym Mod1+w exec ~/scripts/dmw
