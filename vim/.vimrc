@@ -59,56 +59,9 @@ set statusline=
 set statusline+=%f%m%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ L:%l/%L\ C:%c\ (%P)
 set mouse=a
 set spelllang=hu,en
-"set guicursor=a:hor20-Cursor
-"set guicursor+=a:blinkon0
 
 "Highlight spell checking
 hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guibg=#ffffff   guifg=#d40000   gui=bold
-
-"Gvim options
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-"set guifont=Monospace\ 10
-set guifont=Nimbus\ Mono\ PS\ 12
-
-"Gvim cursor
-highlight Cursor guibg=#000000
-highlight iCursor guibg=#d40000
-set guicursor=n-c:hor10-Cursor-blinkon0
-set guicursor=i:hor10-iCursor-blinkwait5
-"set guicursor=i:ver15-iCursor-blinkon0
-"set guicursor=i:hor10-iCursor-blinkwait10
-
-"Format text in plain text (gvim)
-:hi Ita guibg=background guifg=foreground gui=italic
-:syntax region Ita start='_' end='_'
-
-:hi Empty guibg=background guifg=foreground gui=bold
-:syntax region Empty start='\[' end='\]'
-
-" ToggleQuote Function
-
-let s:tq = 0
-
-function! ToggleQuote()
-    if s:tq == 0
-
-        :hi Quote guibg=background guifg=foreground gui=bold
-        :syntax region Quote start='\"' end='\"'
-        let s:tq = 1
-
-    else
-
-        :hi Quote guibg=background guifg=foreground gui=none
-        :syntax region Quote start='\"' end='\"'
-        let s:tq = 0
-
-    endif
-endfunction
-
-nnoremap <F4> :call ToggleQuote()<CR>
 
 ""===============
 ""Cursor settings
@@ -325,9 +278,6 @@ nnoremap P A<Space><ESC>p
 
 "Use " in normal mode
 nnoremap " i"<ESC>
-
-"Close buffer (for gvim)_
-"nnoremap <F4> :bd<CR>
 
 "No highlight
 nnoremap <leader>n :noh<CR>
