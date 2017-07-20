@@ -1,6 +1,6 @@
-"=======
-"Options
-"=======
+"================
+"General settings
+"================
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -9,9 +9,10 @@ set guioptions-=L  "remove left-hand scroll bar
 "set guifont=Monospace\ 10
 set guifont=Nimbus\ Mono\ PS\ 12
 
-"==============
-"Cursor options
-"==============
+"===============
+"Cursor settings
+"===============
+
 highlight Cursor guibg=#000000
 highlight iCursor guibg=#d40000
 set guicursor=n-c:hor10-Cursor-blinkon0
@@ -35,7 +36,7 @@ set guicursor=i:hor10-iCursor-blinkwait5
 "====================
 "ToggleQuote Function
 "====================
-"
+
 let s:tq = 0
 
 function! ToggleQuote()
