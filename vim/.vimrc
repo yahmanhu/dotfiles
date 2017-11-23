@@ -18,6 +18,8 @@ let g:neocomplete#enable_smart_case = 1 "smartcase for Neocomplete
 
 let g:buftabline_indicators = 1
 
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
 "================
 "General settings
 "================
@@ -160,8 +162,8 @@ nnoremap y "+y
 vnoremap y "+y
 
 "Paste from system clipboard
-nnoremap PP <Esc>"+p<ESC>
-inoremap PP <Esc>"+p<ESC>
+nnoremap PP <Esc>"+p<ESC>a
+inoremap PP <Esc>"+p<ESC>a
 
 "Quick pairs
 imap <leader>' ''<ESC>i
@@ -292,6 +294,10 @@ nnoremap <F6> oLast update: "<ESC>"=strftime('%A %B %d %Y, %H:%M')<CR>PA<Backspa
 "Exact search
 nnoremap ? /\<\><left><left>
 
+" Hide/show comments
+nnoremap <F5> :hi! link Comment Ignore<CR>
+nnoremap <F6> :hi! link Comment Comment<CR>
+
 "=============
 "Abbreviations
 "=============
@@ -312,3 +318,4 @@ au FileType sh iab forr for; do<CR>done<Esc>?;<Esc>:noh<Esc>i
 autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd BufRead .vimperatorrc setfiletype vim
+"autocmd BufEnter *.py colorscheme Tomorrow-Night-Eighties-yahman

@@ -6,14 +6,16 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-"set guifont=Monospace\ 10
-set guifont=Nimbus\ Mono\ PS\ 12
+set guifont=Monospace\ 11
+"set guifont=Nimbus\ Mono\ PS\ 12
+
+hi Visual guifg=#FFFFFF guibg=#FF0000 gui=none
 
 "===============
 "Cursor settings
 "===============
 
-highlight Cursor guibg=#000000
+highlight Cursor guibg=#d40000
 highlight iCursor guibg=#d40000
 set guicursor=n-c:hor10-Cursor-blinkon0
 set guicursor=i:hor10-iCursor-blinkwait5

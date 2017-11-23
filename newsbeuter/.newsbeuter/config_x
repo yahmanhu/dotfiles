@@ -4,7 +4,7 @@
 feedlist-format "%4i %n %11u %T %t"
 articlelist-format "%4i %f %D %6L  %?T?|%-17T|  ?%t"
 auto-reload yes
-browser /usr/bin/firefox
+browser /usr/bin/chromium
 #html-renderer "/usr/bin/lynx -display_charset=utf-8 -cfg ~/.config/lynx/lynx.cfg -dump"
 #confirm-exit yes
 #datetime-format %b %d

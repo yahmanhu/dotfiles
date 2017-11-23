@@ -11,7 +11,7 @@ plugins=(git zsh-syntax-highlighting)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/rio/scripts:/home/rio/.gem/ruby/2.3.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR='vim'
-export BROWSER='firefox'
+export BROWSER='chromium'
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_aliases

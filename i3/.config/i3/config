@@ -134,6 +134,9 @@ bindsym Mod1+e exec ~/scripts/skbd
 # Switch wifi
 bindsym Mod1+Control+w exec ~/scripts/swifi
 
+# Switch monitor
+bindsym Mod1+Control+m exec ~/scripts/smon
+
 # dms
 #bindsym Mod1+slash exec ~/scripts/dms
 
@@ -156,6 +159,18 @@ bindsym Pause exec "xset dpms force off"
 # Mute/unmute
 bindsym XF86AudioMute exec "amixer sset Master toggle"
 
+# Open chromium
+bindsym XF86HomePage exec "chromium"
+
+# Open mutt
+bindsym XF86Mail exec "urxvtc -e mutt -F ~/.mutt/account.1.muttrc"
+
+# Run calculator
+bindsym XF86Calculator exec "urxvtc --hold -e bash -c python -ic 'import division; import math; import random'"
+
+# Run qBittorrent
+bindsym XF86AudioMedia exec "qbittorrent" workspace 5
+
 # Printscreen
 bindsym Print exec "scrot"
 
@@ -175,9 +190,9 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 for_window [title = "qBittorrent" ] move container to workspace 5
 for_window [title = "terminal" ] floating enable
 for_window [title = "^cal$" ] floating enable
-assign [class = "Firefox" ] 1
-# Jump to firefox
-bindsym Mod1+b [class = "Firefox"] focus
+assign [class = "Chromium" ] 1
+# Jump to chromium
+bindsym Mod1+b [class = "Chromium"] focus
 # Jump to spotify
 for_window [class = "Spotify" ] move container to workspace 6
 bindsym Mod1+i [class = "Spotify"] focus

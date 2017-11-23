@@ -1,0 +1,31 @@
+let hintcharacters = "hjklasdfgrtzu"
+let barposition = "bottom"
+let completionengines = ['google', 'youtube', 'wikipedia']
+let searchengine apkg = "https://www.archlinux.org/packages/?q=%s"
+let searchengine aur = "https://aur.archlinux.org/packages/?K=%s"
+let searchengine g = "https://google.com/search?q=%s"
+let searchengine imdb = "http://www.imdb.com/find?s=all&q=%s"
+let searchengine rarbg = "https://rarbg.to/torrents.php?search=%s"
+let searchengine tpb = "https://thepiratebay.se/search/%s"
+let searchengine wiki = "https://en.wikipedia.org/wiki/Special:Search?search=%s"
+let searchengine wikihu = "https://hu.wikipedia.org/wiki/Special:Search?search=%s"
+let searchengine yt = "https://www.youtube.com/results?search_query=%s"
+let mapleader = "\\"
+
+map d :quit<CR>
+map u :undo<CR>
+map J :call scrollPageDown<CR>
+map K :call scrollPageUp<CR>
+map > :call nextTab<CR>
+map < :call previousTab<CR>
+map A :call createBookmark<CR>
+map B :tabnew chrome://bookmarks<CR>
+map E :tabnew chrome://extensions<CR>
+map D :tabnew chrome://downloads<CR>
+map bm :bookmarks<Space>
+map <Leader>n :nohlsearch<CR>:ttt
+map <BS> goBack
+map <S-BS> goForward
+map p <Noop>
+
+command dict script javascript:window.open('http://angol-magyar-szotar.hu/');window.open('http://dictionary.cambridge.org/');window.open('https://en.wiktionary.org/wiki/')

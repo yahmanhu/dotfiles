@@ -37,6 +37,10 @@ alias mnt0='udisksctl mount -b /dev/sdb'
 alias umnt0='udisksctl unmount -b /dev/sdb'
 alias mnt1='udisksctl mount -b /dev/sdb1'
 alias umnt1='udisksctl unmount -b /dev/sdb1'
+alias mntc0='udisksctl mount -b /dev/sdc'
+alias umntc0='udisksctl unmount -b /dev/sdc'
+alias mntc1='udisksctl mount -b /dev/sdc1'
+alias umntc1='udisksctl unmount -b /dev/sdc1'
 
 # Git
 alias gstat='git status'
@@ -81,9 +85,9 @@ alias -s mp3=mpv
 
 #Youtube-dl
 alias ytdl='youtube-dl -f 22' #Default youtube-dl alias
-alias ytpl='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"' #Download videos from playlist with index (use --playlist-item option with range (0-10 for example))
-alias music-download='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/downloads/%(title)s.%(ext)s"' #Dowload music from single video
-alias playlist-download='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"' #Dowload complete playlist in audio format
+alias playlist-downloader='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"' #Download videos from playlist with index (use --playlist-item option with range (0-10 for example))
+alias music-downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/downloads/%(title)s.%(ext)s"' #Dowload music from single video
+alias album-downloader='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"' #Dowload complete playlist in audio format
 
 # Other
 alias RR='source ~/.zshrc && clear'
@@ -99,7 +103,7 @@ alias calc='python -ic "from __future__ import division; from math import *; fro
 alias svol='volume-switcher'
 alias BB='quick-backup'
 alias del='trash'
-alias cdprv='cd $OLDPWD'
+alias H='cd $OLDPWD'
 alias trr='trash -r'
 alias sww='sudo rfkill block wifi && startx'
 alias printer='system-config-printer'
@@ -115,3 +119,4 @@ alias mpvc='mpv -vo=opengl -ao=alsa'
 alias wttr='curl wttr.in/pecs'
 alias off='poweroff'
 alias sgrep='grep -rnwi'
+alias pal=~/scripts/pal.py

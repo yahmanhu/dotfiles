@@ -2,7 +2,7 @@
 "   General settings                          "
 "============================================="
 
-colorscheme yahman_theme
+colorscheme yahman_theme_light
 set toolbars=nonavigation
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set newtab=all
