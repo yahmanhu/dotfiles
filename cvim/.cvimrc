@@ -10,22 +10,32 @@ let searchengine tpb = "https://thepiratebay.se/search/%s"
 let searchengine wiki = "https://en.wikipedia.org/wiki/Special:Search?search=%s"
 let searchengine wikihu = "https://hu.wikipedia.org/wiki/Special:Search?search=%s"
 let searchengine yt = "https://www.youtube.com/results?search_query=%s"
+let searchengine sz = "https://szinonimaszotar.hu/keres/"
 let mapleader = "\\"
-
 map d :quit<CR>
 map u :undo<CR>
 map J :call scrollPageDown<CR>
 map K :call scrollPageUp<CR>
 map > :call nextTab<CR>
 map < :call previousTab<CR>
-map A :call createBookmark<CR>
+map a :call createBookmark
+map A gi
+map I gi
 map B :tabnew chrome://bookmarks<CR>
 map E :tabnew chrome://extensions<CR>
 map D :tabnew chrome://downloads<CR>
-map bm :bookmarks<Space>
-map <Leader>n :nohlsearch<CR>:ttt
+map bm :bookmarks!<Space>
+map <Leader>n :nohlsearch<CR>
 map <BS> goBack
 map <S-BS> goForward
 map p <Noop>
-
+map L moveTabRight
+map H moveTabLeft
+map g1 2%
+map g2 3%
+map g3 4%
+map g4 5%
+map g5 6%
+map g6 7%
+map g7 8%
 command dict script javascript:window.open('http://angol-magyar-szotar.hu/');window.open('http://dictionary.cambridge.org/');window.open('https://en.wiktionary.org/wiki/')

@@ -170,6 +170,7 @@ bindsym XF86Calculator exec "urxvtc --hold -e bash -c python -ic 'import divisio
 
 # Run qBittorrent
 bindsym XF86AudioMedia exec "qbittorrent" workspace 5
+bindsym Mod1+i [class = "qBittorrent"] focus
 
 # Printscreen
 bindsym Print exec "scrot"
@@ -195,7 +196,7 @@ assign [class = "Chromium" ] 1
 bindsym Mod1+b [class = "Chromium"] focus
 # Jump to spotify
 for_window [class = "Spotify" ] move container to workspace 6
-bindsym Mod1+i [class = "Spotify"] focus
+#bindsym Mod1+i [class = "Spotify"] focus
 # Jump to office
 for_window [class = "libreoffice" ] move container to workspace 4
 

@@ -288,8 +288,8 @@ nnoremap <leader>n :noh<CR>
 nnoremap <leader>e :Sexplore<CR>
 
 "Put date
-nnoremap <F5> oDate: "<ESC>"=strftime('%A %B %d %Y, %H:%M')<CR>PA<Backspace><ESC>
-nnoremap <F6> oLast update: "<ESC>"=strftime('%A %B %d %Y, %H:%M')<CR>PA<Backspace><ESC>
+nnoremap <F1> i"<ESC>"=strftime('%B %d, %Y')<CR>PA<Backspace><ESC>
+"nnoremap <F6> oLast update: "<ESC>"=strftime('%A %B %d %Y, %H:%M')<CR>PA<Backspace><ESC>
 
 "Exact search
 nnoremap ? /\<\><left><left>

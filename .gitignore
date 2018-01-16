@@ -18,3 +18,5 @@ __pycache__
 __init__.py
 *.swp
 *.swo
+qutebrowser/.config/qutebrowser/bookmarks
+qutebrowser/.config/qutebrowser/quickmarks

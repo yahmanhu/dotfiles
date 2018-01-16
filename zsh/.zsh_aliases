@@ -119,4 +119,7 @@ alias mpvc='mpv -vo=opengl -ao=alsa'
 alias wttr='curl wttr.in/pecs'
 alias off='poweroff'
 alias sgrep='grep -rnwi'
+alias sgrepc='grep -rnwic'
 alias pal=~/scripts/pal.py
+alias tv='tvm | less'
+alias playcd='mpv cdda:///dev/sr0'

@@ -42,8 +42,8 @@ bind-key g pageup
 bind-key G pagedown
 bind-key ^N reload-all
 bind-key ; macro-prefix
-macro m set browser "mpv %u"; open-in-browser ; set browser "/usr/bin/firefox"
-macro d set browser "urxvtc -e youtube-dl -f 22 %u"; open-in-browser ; set browser "/usr/bin/firefox"
+macro m set browser "mpv %u"; open-in-browser ; set browser "/usr/bin/chromium"
+macro d set browser "urxvtc -e youtube-dl -f 22 %u"; open-in-browser ; set browser "/usr/bin/chromium"
 
 # COLORS
 # ------

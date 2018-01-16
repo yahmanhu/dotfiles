@@ -8,8 +8,8 @@
 #cVim-command-bar {
   position: fixed;
   z-index: 2147483646;
-  background-color: #cccccc;
-  color: #000;
+  background-color: #285577;
+  color: #fff;
   display: none;
   box-sizing: content-box;
   box-shadow: 0 3px 3px rgba(0,0,0,0.4);
@@ -26,12 +26,12 @@
   height: 100%;
   width: 10px;
   padding-top: 2px;
-  color: #000;
+  color: #fff;
 }
 
 #cVim-command-bar-input {
-  background-color: #cccccc;
-  color: #000;
+  background-color: #285577;
+  color: #fff;
   height: 100%;
   right: 0;
   top: 0;
@@ -60,33 +60,32 @@
 }
 
 .cVim-completion-item:nth-child(even) {
-  background-color: #fff;
-}
-
-.cVim-completion-item {
-  width: 100%; left: 0;
-  background-color: #ccc;
-  color: #000000;
+  background-color: #285577;
+  color: #fff;
 }
 
 .cVim-completion-item[active] {
   width: 100%; left: 0;
   color: #ffffff;
-  background-color: #000000;
+  background-color: #4d4d4d;
 }
 
 .cVim-completion-item[active] span {
   color: #fff;
 }
 
+.cVim-completion-item {
+  width: 100%; left: 0;
+  background-color: #285577;
+  color: #fff;
+}
+
 .cVim-completion-item .cVim-left {
-  color: #000;
   width: 37%;
 }
 
 .cVim-completion-item .cVim-right {
   font-style: italic;
-  color: #000;
   width: 57%;
 }
 
