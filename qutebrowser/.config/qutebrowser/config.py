@@ -6,7 +6,7 @@ c.url.start_pages = '~/.config/newtab/newtab.html'
 c.tabs.last_close = "default-page"
 c.tabs.background = True
 c.statusbar.position = 'top'
-c.statusbar.hide = True
+# c.statusbar.hide = True
 c.tabs.position = 'top'
 
 # Selected item colors
@@ -44,8 +44,10 @@ c.downloads.location.directory = '~/downloads'
 # Scroll bar
 c.scrolling.bar = True
 
-# Commmands
-# =========
+
+
+# Key bindings
+# ============
 
 # Fast scroll
 config.bind('J', 'scroll-px 0 200')
@@ -86,8 +88,10 @@ config.bind('R', 'config-source')
 
 # Select input field
 config.bind('I', 'hint inputs')
+config.bind('A', 'hint inputs')
 
 # Search engines
+# ==============
 c.url.searchengines = {
     "DEFAULT": "https://www.google.com/search?q={}",
     "aur": "https://aur.archlinux.org/packages/?K={}",
@@ -98,3 +102,9 @@ c.url.searchengines = {
     "sz": "https://szinonimaszotar.hu/keres/{}",
     "t": "http://www.thesaurus.com/browse/{}"
 }
+
+# Aliases
+# =======
+
+c.aliases['dict'] = 'open http://angol-magyar-szotar.hu/;; open -t http://dictionary.cambridge.org/;; open -t https://en.wiktionary.org/wiki/'
+
