@@ -1,0 +1,70 @@
+# SETTINGS
+# --------
+
+feedlist-format "%4i %n %11u %T %t"
+articlelist-format "%4i %f %D %6L  %?T?|%-17T|  ?%t"
+auto-reload yes
+browser /usr/bin/chromium
+#html-renderer "/usr/bin/lynx -display_charset=utf-8 -cfg ~/.config/lynx/lynx.cfg -dump"
+#confirm-exit yes
+#datetime-format %b %d
+display-article-progress yes
+goto-next-feed no
+goto-first-unread no
+history-limit 0
+max-items 20
+reload-time 15
+download-path "~/downloads" #podbeuter
+save-path "~/downloads"
+show-keymap-hint yes
+show-read-feeds yes
+show-read-articles yes
+suppress-first-reload no
+text-width 80
+
+# KEY BINDINGS
+# ------------
+
+unbind-key ^K
+unbind-key ^J
+
+bind-key j next
+bind-key k prev
+bind-key j down article
+bind-key k up article
+bind-key l open
+bind-key h quit
+bind-key J pagedown
+bind-key K pageup
+bind-key n next-unread
+bind-key N prev-unread
+bind-key g pageup
+bind-key G pagedown
+bind-key ^N reload-all
+bind-key ; macro-prefix
+macro m set browser "mpv %u"; open-in-browser ; set browser "/usr/bin/chromium"
+macro d set browser "urxvtc -e youtube-dl -f 22 %u"; open-in-browser ; set browser "/usr/bin/chromium"
+
+# COLORS
+# ------
+
+# color <element> <foreground color> <background color> [<attribute> ...]
+
+#  Colors for X
+color background color0 color7
+color listnormal color0 color7
+color listfocus  color7 color6
+color listnormal_unread color0 color7
+color listfocus_unread  color7 color6
+color info       color0 color7
+color article    color0 color7
+
+search-highlight-colors color9 color1 bold
+highlight feedlist "Youtube" color7 color1
+highlight feedlist "Youtube" color7 color1
+highlight feedlist "News" color7 color4
+highlight feedlist "Blog" color7 color2
+#highlight feedlist "--Unread--" color9 color1 bold
+#highlight feedlist "--Later--" color9 color1 bold
+ highlight article "https?://[^ ]+" color1 color7 bold
+highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:)" color7 color4

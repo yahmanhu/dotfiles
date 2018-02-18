@@ -181,15 +181,15 @@ fzf-history () { RBUFFER=$(fc -ln -500 | fzf --tac --no-sort --header="History")
 zle -N fzf-history
 bindkey ^s fzf-history
 
-news(){
+#news(){
 
-    if [[ $DISPLAY = ":0" ]]; then
-        #urxvtc -name newsbeuter -e newsbeuter -C ~/.newsbeuter/config_x
-        newsbeuter -C ~/.newsbeuter/config_x
-    else
-        newsbeuter -C ~/.newsbeuter/config_tty
-    fi
-}
+    #if [[ $DISPLAY = ":0" ]]; then
+        ##urxvtc -name newsbeuter -e newsbeuter -C ~/.newsbeuter/config_x
+        #newsbeuter -C ~/.newsbeuter/config_x
+    #else
+        #newsbeuter -C ~/.newsbeuter/config_tty
+    #fi
+#}
 
 trrt(){
 

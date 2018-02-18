@@ -166,11 +166,11 @@ bindsym XF86HomePage exec "chromium"
 bindsym XF86Mail exec "urxvtc -e mutt -F ~/.mutt/account.1.muttrc"
 
 # Run calculator
-bindsym XF86Calculator exec "urxvtc --hold -e bash -c python -ic 'import division; import math; import random'"
+bindsym XF86Calculator exec "mate-calc"
 
-# Run qBittorrent
-bindsym XF86AudioMedia exec "qbittorrent" workspace 5
-bindsym Mod1+i [class = "qBittorrent"] focus
+# Run Deluge
+bindsym XF86AudioMedia exec "deluge" workspace 5
+bindsym Mod1+i [class = "Deluge"] focus
 
 # Printscreen
 bindsym Print exec "scrot"
@@ -188,9 +188,10 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 # ==============
 
 #for_window [title = "termite" ] move container to workspace 4
-for_window [title = "qBittorrent" ] move container to workspace 5
+for_window [title = "Deluge" ] move container to workspace 5
 for_window [title = "terminal" ] floating enable
 for_window [title = "^cal$" ] floating enable
+for_window [title = "Calculator" ] floating disable
 assign [class = "Chromium" ] 1
 # Jump to chromium
 bindsym Mod1+b [class = "Chromium"] focus

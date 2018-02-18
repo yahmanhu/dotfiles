@@ -1,0 +1,37 @@
+# yahmanh theme
+
+background				= white		black
+frame					= green		black
+window_title			= white		black bold
+directory				= white		black bold
+selected_directory		= white		green	bold
+playlist				= white		black
+selected_playlist		= white		black	reverse
+file					= white		black
+selected_file			= white		green	bold
+marked_file				= white		black	bold
+marked_info             = white     black   bold
+marked_selected_file	= white		green	bold
+marked_selected_info    = white     green   bold
+info					= white		black
+selected_info           = white     green   bold
+status					= white		black
+title					= white		black	bold
+state					= white		black
+current_time			= white		black	bold
+time_left				= yellow		black	bold
+total_time				= white		black	bold
+time_total_frames		= white		black   bold
+sound_parameters		= white		black	bold
+legend					= white		black
+disabled				= white		black
+enabled					= red		black	bold
+empty_mixer_bar			= white		black
+filled_mixer_bar		= white		green   bold
+empty_time_bar			= green		black
+filled_time_bar			= green		black	reverse
+entry					= white		black
+entry_title				= white		black
+error					= red		black	bold,underline
+message					= white		black
+plist_time				= green		black   bold

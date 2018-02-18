@@ -123,3 +123,5 @@ alias sgrepc='grep -rnwic'
 alias pal=~/scripts/pal.py
 alias tv='tvm | less'
 alias playcd='mpv cdda:///dev/sr0'
+alias news='newsboat'
+alias moc='mocp'
