@@ -103,7 +103,7 @@ bindsym Mod1+Shift+minus move scratchpad
 bindsym Mod1+minus scratchpad show
 
 # Reload the configuration file
-bindsym Mod1+Control+c reload
+#bindsym Mod1+Control+c reload
 
 # Restart i3 inplace
 bindsym Mod1+Control+r restart
@@ -186,6 +186,9 @@ bindsym Mod1+Control+Right exec "dbus-send --type=method_call --dest=org.mpris.M
 
 # Window options
 # ==============
+
+#for_window [title="[.]*"] move left
+for_window [title="^(?!.*(gten|gthu))"] move left
 
 #for_window [title = "termite" ] move container to workspace 4
 for_window [title = "Deluge" ] move container to workspace 5

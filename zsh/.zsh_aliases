@@ -27,7 +27,7 @@ alias awerc='vim ~/.config/awesome/rc.lua'
 alias awetheme='vim ~/.config/awesome/themes/yahman/theme.lua'
 alias rangerrc='vim ~/.config/ranger/rc.conf'
 alias xinitrc='vim ~/.xinitrc'
-alias xresources='vim ~/.Xresources'
+alias xresources='gvim ~/.Xresources'
 alias XRR='xrdb -load ~/.Xresources'
 alias muttrc='vim ~/.mutt/muttrc'
 alias tmuxconf='vim ~/.tmux.conf'
@@ -86,8 +86,8 @@ alias -s mp3=mpv
 #Youtube-dl
 alias ytdl='youtube-dl -f 22' #Default youtube-dl alias
 alias playlist-downloader='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"' #Download videos from playlist with index (use --playlist-item option with range (0-10 for example))
-alias music-downloader='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/downloads/%(title)s.%(ext)s"' #Dowload music from single video
-alias album-downloader='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"' #Dowload complete playlist in audio format
+alias mdl='youtube-dl --extract-audio --audio-format="mp3" --audio-quality=0 -o "~/downloads/%(title)s.%(ext)s"' #Dowload music from single video
+alias aldl='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"' #Dowload complete playlist in audio format
 
 # Other
 alias RR='source ~/.zshrc && clear'
@@ -125,3 +125,4 @@ alias tv='tvm | less'
 alias playcd='mpv cdda:///dev/sr0'
 alias news='newsboat'
 alias moc='mocp'
+alias sens='sensors'

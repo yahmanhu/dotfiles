@@ -16,8 +16,8 @@ URxvt.depth: 32
 !URxvt.background: [100]#2B66C9
 !URxvt.background: [100]#4B0082
 !URxvt.background: [100]#4B0082
-!URxvt.background: [100]#090300
-URxvt.background: [100]#e2e2e2
+URxvt.background: [100]#090300
+!URxvt.background: [100]#e2e2e2
 
 ! Native (fake) transparency
 !URxvt*.transparent: true
@@ -25,8 +25,8 @@ URxvt.background: [100]#e2e2e2
 !URxvt*.shading: 10
 
 ! Use the specified colour as the windows foreground colour [default Black]; option -fg.
-URxvt.foreground: #000000
-!URxvt.foreground: #a5a2a2
+!URxvt.foreground: #000000
+URxvt.foreground: #ffffff
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for
 !URxvt.font: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
@@ -72,58 +72,74 @@ URxvt.cursorUnderline: true
 
 !! Basic colors
 !! black
-URxvt.color0: #090300
-URxvt.color8: #5c5855
+URxvt.color0: black
+URxvt.color8: black
+!URxvt.color0: #090300
+!URxvt.color8: #5c5855
 !! red
-URxvt.color1: #d40000
-URxvt.color9: #d40000
+URxvt.color1: red
+URxvt.color9: red
+!URxvt.color1: #d40000
+!URxvt.color9: #d40000
 !URxvt.color1: #db2d20
 !URxvt.color1: #db2d20
 !URxvt.color9: #A12F31
 !URxvt.color1: #A12F31
 !! green
-URxvt.color2: #008800
-URxvt.color10: #008800
-!URxvt.color2: #01a252
+URxvt.color2: green
+URxvt.color10: green
+!URxvt.color2: #008800
+!URxvt.color10: #008800
+!!URxvt.color2: #01a252
 !URxvt.color10: #01a252
 !URxvt.color2: #2DB039
 !URxvt.color10: #2DB039
 !! yellow
+URxvt.color3: yellow
+URxvt.color11: yellow
 !URxvt.color3: #fff000
 !URxvt.color11: #fff000
-URxvt.color3: #F1C83E
-URxvt.color11: #F1C83E
+!URxvt.color3: #F1C83E
+!URxvt.color11: #F1C83E
 !! blue
-URxvt.color4: #0000ff
-URxvt.color12:#0000ff
+URxvt.color4: blue
+URxvt.color12: blue
+!URxvt.color4: #0000ff
+!URxvt.color12:#0000ff
 !URxvt.color4: #01a0e4
 !URxvt.color12: #01a0e4
 !URxvt.color4: #2E51A2
 !URxvt.color12: #2E51A2
 !! magenta
-URxvt.color5: #660066
-URxvt.color13: #660066
+URxvt.color5: magenta
+URxvt.color13: magenta
+!URxvt.color5: #660066
+!URxvt.color13: #660066
+!URxvt.color5: #b500b5
+!URxvt.color13: #b500b5
 !URxvt.color5: #a16a94
 !URxvt.color13: #a16a94
 !! cyan
+URxvt.color6: cyan
+URxvt.color14: cyan
 !URxvt.color6: #B5E4F4
 !URxvt.color14: #B5E4F4
 !URxvt.color6: #01a252
 !URxvt.color14: #01a252
 !URxvt.color6: #01a0e4
 !URxvt.color14: #01a0e4
-URxvt.color6: #0000ff
-URxvt.color14:#0000ff
+!URxvt.color6: #0000ff
+!URxvt.color14:#0000ff
 !! white
 URxvt.color7: #ffffff
 URxvt.color15: #ffffff
 
 !! Cursor color
-URxvt.cursorColor: black
+!URxvt.cursorColor: black
 !URxvt.cursorColor: green
 !!URxvt.cursorColor: #00AA00
 !!URxvt.cursorColor: #5FE36C
-!!URxvt.cursorColor: #FFFFFF
+URxvt.cursorColor: #FFFFFF
 !!URxvt.cursorColor: #222222
 !!URxvt.cursorColor: #005577
 !!URxvt.cursorColor: grey

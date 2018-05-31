@@ -15,12 +15,12 @@ hi Visual guifg=#FFFFFF guibg=#FF0000 gui=none
 "Cursor settings
 "===============
 
-highlight Cursor guibg=#d40000
-highlight iCursor guibg=#d40000
+"highlight Cursor guibg=#d40000
+"highlight iCursor guibg=#d40000
 set guicursor=n-c:hor10-Cursor-blinkon0
 set guicursor=i:hor10-iCursor-blinkwait5
-"set guicursor=i:ver15-iCursor-blinkon0
-"set guicursor=i:hor10-iCursor-blinkwait10
+set guicursor=i:ver15-iCursor-blinkon0
+set guicursor=i:hor10-iCursor-blinkwait10
 
 "=========================
 "Format text in plain text
@@ -44,7 +44,7 @@ let s:tq = 0
 function! ToggleQuote()
     if s:tq == 0
 
-        :hi Quote guibg=background guifg=foreground gui=bold
+        :hi Quote guibg=#FFFFFF guifg=foreground gui=bold
         :syntax region Quote start='\"' end='\"'
         let s:tq = 1
 

@@ -1,11 +1,15 @@
 " Default GUI Colours
 let s:foreground = "000000"
 let s:background = "e2e2e2"
+"let s:background = "fff8DC"
+"let s:background = "FEFBEF"
 let s:selection = "c2c2c2"
 let s:line = "c2c2c2"
+"let s:line = "E7DEB9"
 let s:comment = "880000"
 let s:red = "d40000"
-let s:orange = "ff5000"
+"let s:orange = "ff5000"
+let s:orange = "ff9632"
 let s:yellow = "ffff00"
 let s:white = "ffffff"
 let s:black = "000000"
@@ -16,8 +20,9 @@ let s:aqua = "00ffff"
 let s:blue = "0000ff"
 "let s:purple = "b500b5"
 let s:purple = "660066"
-let s:window = "e2e2e2"
+let s:window = "fff8DC"
 let s:i3blue = "285577"
+let s:gray = "e2e2e2"
 
 hi clear
 syntax reset
@@ -238,10 +243,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("CursorLineNr", s:red, "" , "")
 	call <SID>X("NonText", s:selection, "", "")
 	call <SID>X("SpecialKey", s:selection, "", "")
-	call <SID>X("Search", s:blue, s:white, "bold")
-	call <SID>X("TabLine", s:window, s:foreground, "reverse")
-	call <SID>X("TabLineFill", s:window, s:foreground, "reverse")
-	call <SID>X("StatusLine", s:foreground, s:window, "bold")
+	call <SID>X("Search", s:foreground, s:orange, "bold")
+	call <SID>X("TabLine", s:line, s:foreground, "")
+	call <SID>X("TabLineFill", s:line, s:foreground, "")
+	call <SID>X("TabLineSel", s:foreground, s:line, "bold")
+	call <SID>X("StatusLine", s:foreground, s:line, "bold")
 	call <SID>X("StatusLineNC", s:window, s:foreground, "")
 	call <SID>X("VertSplit", s:window, s:window, "none")
 	call <SID>X("Visual", "", s:selection, "")

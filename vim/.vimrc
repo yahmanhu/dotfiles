@@ -29,7 +29,8 @@ set t_Co=256
 syntax on
 filetype plugin indent on
 "colorscheme Tomorrow-Night-Eighties-yahman
-colorscheme yahman
+"colorscheme yahman
+colorscheme blue2
 set showcmd
 set linebreak
 set hlsearch
