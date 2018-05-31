@@ -203,6 +203,8 @@ for_window [class = "Spotify" ] move container to workspace 6
 #bindsym Mod1+i [class = "Spotify"] focus
 # Jump to office
 for_window [class = "libreoffice" ] move container to workspace 4
+#for_window [class = "Gvim" ] resize grow width 6 px or 6 ppt
+
 
 
 # class                 border  backgr. text    indicator child_border

@@ -12,25 +12,25 @@ alias pacconf='sudo -e /etc/pacman.conf'
 alias pacinfo='pacman -Qi'
 alias pacsrc='pacman -Ss'
 alias packages='pacman -Q'
-alias pacfunc='vim ~/.pacman_functions'
+alias pacfunc='gvim ~/.pacman_functions'
 
 # Config files
-alias zshrc='vim ~/.zshrc'
-alias zalias='vim ~/.zsh_aliases'
-alias zfunc='vim ~/.zsh_functions'
-alias zcomp='vim ~/.zsh_completions'
-alias zshtheme='vim ~/.oh-my-zsh/themes/yahmanhu.zsh-theme'
-alias vimrc='vim ~/.vimrc'
-alias vimprc='vim ~/.vimperatorrc'
-alias vimpcolors='vim ~/.vimperator/colors/yahman_theme.vimp'
-alias awerc='vim ~/.config/awesome/rc.lua'
-alias awetheme='vim ~/.config/awesome/themes/yahman/theme.lua'
-alias rangerrc='vim ~/.config/ranger/rc.conf'
-alias xinitrc='vim ~/.xinitrc'
+alias zshrc='gvim ~/.zshrc'
+alias zalias='gvim ~/.zsh_aliases'
+alias zfunc='gvim ~/.zsh_functions'
+alias zcomp='gvim ~/.zsh_completions'
+alias zshtheme='gvim ~/.oh-my-zsh/themes/yahmanhu.zsh-theme'
+alias gvimrc='gvim ~/.gvimrc'
+alias gvimprc='gvim ~/.gvimperatorrc'
+alias gvimpcolors='gvim ~/.gvimperator/colors/yahman_theme.gvimp'
+alias awerc='gvim ~/.config/awesome/rc.lua'
+alias awetheme='gvim ~/.config/awesome/themes/yahman/theme.lua'
+alias rangerrc='gvim ~/.config/ranger/rc.conf'
+alias xinitrc='gvim ~/.xinitrc'
 alias xresources='gvim ~/.Xresources'
 alias XRR='xrdb -load ~/.Xresources'
-alias muttrc='vim ~/.mutt/muttrc'
-alias tmuxconf='vim ~/.tmux.conf'
+alias muttrc='gvim ~/.mutt/muttrc'
+alias tmuxconf='gvim ~/.tmux.conf'
 
 # Mount
 alias mnt0='udisksctl mount -b /dev/sdb'
@@ -78,7 +78,7 @@ alias fap='find-and-play'
 
 # Suffix aliases
 alias -s pdf=zathura
-alias -s tex=vim
+alias -s tex=gvim
 alias -s mp4=mpv
 alias -s mkv=mpv
 alias -s mp3=mpv
