@@ -4,8 +4,9 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "yahman_2"
-hi Normal	    guifg=#000000	    guibg=#ffffff ctermfg=yellow	ctermbg=darkBlue
-hi NonText		guifg=green	ctermfg=lightMagenta
+hi Normal	    guifg=lightGreen	    guibg=#285577
+"hi Normal	    guifg=#ffffff	    guibg=#333333
+hi NonText		guifg=lightGreen	ctermfg=lightMagenta
 hi comment		guifg=gray		ctermfg=gray	ctermbg=darkBlue	gui=bold
 hi constant		guifg=cyan		ctermfg=cyan
 hi identifier	guifg=gray		ctermfg=red
@@ -24,16 +25,16 @@ hi MoreMsg		guifg=yellow	gui=NONE	ctermfg=yellow
 hi Error		guifg=red		guibg=darkBlue	gui=underline	ctermfg=red
 
 hi Todo			guifg=black		guibg=orange	ctermfg=black	ctermbg=darkYellow
-hi Cursor		guifg=black		guibg=red		ctermfg=black	ctermbg=white
-hi iCursor      guifg=black     guibg=red
+hi Cursor		guifg=black		guibg=white		ctermfg=black	ctermbg=white
+hi iCursor      guifg=black     guibg=white
 hi Search		guifg=black		guibg=orange	ctermfg=black	ctermbg=darkYellow
 hi IncSearch	guifg=green		guibg=black	ctermfg=black	ctermbg=darkYellow
-hi LineNr		guifg=#285577		ctermfg=cyan
-hi CursorLineNr	guifg=#285577	ctermfg=yellow
+hi LineNr		guifg=lightgray guibg=#1E6DAA	ctermfg=cyan
+hi CursorLineNr	guifg=lightgray guibg=#1E6DAA	ctermfg=yellow
 hi title		guifg=white	gui=bold	cterm=bold
 
-hi StatusLineNC	gui=NONE	guifg=black guibg=blue	ctermfg=black  ctermbg=blue
-hi StatusLine	gui=bold	guifg=black	guibg=gray	ctermfg=cyan   ctermbg=blue
+hi StatusLineNC	gui=NONE	guifg=lightgray guibg=#1E6DAA	ctermfg=black  ctermbg=blue
+hi StatusLine	gui=NONE	guifg=lightgray	guibg=#1E6DAA	ctermfg=cyan   ctermbg=blue
 hi VertSplit	gui=none	guifg=blue	guibg=blue	ctermfg=blue	ctermbg=blue
 
 hi Visual		term=reverse		ctermfg=black	ctermbg=darkCyan	guifg=black		guibg=green
@@ -47,14 +48,14 @@ hi Folded		guibg=orange		guifg=black		ctermbg=yellow		ctermfg=black
 hi FoldColumn	guibg=gray30		guifg=black	ctermbg=gray		ctermfg=black
 hi cIf0			guifg=gray			ctermfg=gray
 
-hi TabLine      guibg=black guifg=gray
-hi TabLineFill  guibg=black guifg=gray
-hi TabLineSel   guibg=gray guifg=black
+hi TabLine      guibg=black guifg=#1E6DAA
+hi TabLineFill  guibg=black guifg=#1E6DAA
+hi TabLineSel   guibg=#C2BFA5 guifg=black
 
 hi PMenu        guibg=gray guifg=black
-hi PMenuSel     guifg=gray guibg=#285577 gui=bold
+hi PMenuSel     guifg=black guibg=lightgreen gui=bold
 
-hi CursorLine   guibg=#e2e2e2
+"hi CursorLine   guibg=lightGreen
 
 :hi Ita guibg=background guifg=foreground gui=italic
 :syntax region Ita start='_' end='_'

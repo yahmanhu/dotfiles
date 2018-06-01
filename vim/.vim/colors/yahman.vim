@@ -13,9 +13,10 @@ let s:orange = "ff9632"
 let s:yellow = "ffff00"
 let s:white = "ffffff"
 let s:black = "000000"
-"let s:green = "159F15"
-"let s:green = "26740C"
-let s:green = "008800"
+let s:green = "159f15"
+let s:green2 = "00ff00"
+"let s:green = "26740c"
+"let s:green = "008800"
 let s:aqua = "00ffff"
 let s:blue = "0000ff"
 "let s:purple = "b500b5"
@@ -244,6 +245,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("NonText", s:selection, "", "")
 	call <SID>X("SpecialKey", s:selection, "", "")
 	call <SID>X("Search", s:foreground, s:orange, "bold")
+	call <SID>X("IncSearch", s:foreground, s:green2, "bold")
 	call <SID>X("TabLine", s:line, s:foreground, "")
 	call <SID>X("TabLineFill", s:line, s:foreground, "")
 	call <SID>X("TabLineSel", s:foreground, s:line, "bold")

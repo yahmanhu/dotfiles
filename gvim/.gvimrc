@@ -8,9 +8,10 @@
 set guioptions-=L  "remove left-hand scroll bar
 "set guifont=Monospace\ 11
 set guifont=DejaVu\ Sans\ Mono\ 11
+"set guifont=DejaVu\ Sans\ Mono\ Bold\ 11
 "set guifont=Nimbus\ Mono\ PS\ 12
 
-hi Visual guifg=#FFFFFF guibg=#FF0000 gui=none
+"hi Visual guifg=#FFFFFF guibg=#FF0000 gui=none
 
 "===============
 "Cursor settings
@@ -45,7 +46,7 @@ let s:tq = 0
 function! ToggleQuote()
     if s:tq == 0
 
-        :hi Quote guibg=#FFFFFF guifg=foreground gui=bold
+        :hi Quote guibg=NONE guifg=foreground gui=bold
         :syntax region Quote start='\"' end='\"'
         let s:tq = 1
 
