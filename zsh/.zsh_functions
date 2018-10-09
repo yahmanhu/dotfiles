@@ -196,3 +196,7 @@ trrt(){
     transmission-remote -t$1 -r
 
 }
+
+sgrepc(){
+    grep -rnwic "$1" | grep -v ':0$'
+}

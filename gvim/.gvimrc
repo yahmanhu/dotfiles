@@ -13,6 +13,10 @@ set guifont=DejaVu\ Sans\ Mono\ 11
 
 "hi Visual guifg=#FFFFFF guibg=#FF0000 gui=none
 
+set linespace=3
+
+colorscheme yahman_2
+
 "===============
 "Cursor settings
 "===============
@@ -20,7 +24,6 @@ set guifont=DejaVu\ Sans\ Mono\ 11
 "highlight Cursor guibg=#d40000
 "highlight iCursor guibg=#d40000
 set guicursor=n-c:hor10-Cursor-blinkon0
-set guicursor=i:hor10-iCursor-blinkwait5
 set guicursor=i:ver15-iCursor-blinkon0
 set guicursor=i:hor10-iCursor-blinkwait10
 
@@ -28,14 +31,14 @@ set guicursor=i:hor10-iCursor-blinkwait10
 "Format text in plain text
 "=========================
 
-:hi Ita guibg=background guifg=foreground gui=italic
-:syntax region Ita start='_' end='_'
+":hi Ita guibg=background guifg=foreground gui=italic
+":syntax region Ita start='_' end='_'
 
-:hi Blank guibg=background guifg=foreground gui=bold
-:syntax region Blank start='\[' end='\]'
+":hi Blank guibg=background guifg=foreground gui=bold
+":syntax region Blank start='\[' end='\]'
 
-:hi Asterisk guibg=background guifg=#880000 gui=italic
-:syntax region Asterisk start='*' end='*'
+":hi Asterisk guibg=background guifg=#880000 gui=italic
+":syntax region Asterisk start='*' end='*'
 
 "====================
 "ToggleQuote Function
@@ -46,7 +49,7 @@ let s:tq = 0
 function! ToggleQuote()
     if s:tq == 0
 
-        :hi Quote guibg=NONE guifg=foreground gui=bold
+        :hi Quote guibg=NONE guifg=white gui=bold
         :syntax region Quote start='\"' end='\"'
         let s:tq = 1
 

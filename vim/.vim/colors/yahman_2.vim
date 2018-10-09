@@ -4,7 +4,7 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "yahman_2"
-hi Normal	    guifg=lightGreen	    guibg=#285577
+hi Normal	    guifg=lightcyan	    guibg=#666666
 "hi Normal	    guifg=#ffffff	    guibg=#333333
 hi NonText		guifg=lightGreen	ctermfg=lightMagenta
 hi comment		guifg=gray		ctermfg=gray	ctermbg=darkBlue	gui=bold
@@ -12,7 +12,7 @@ hi constant		guifg=cyan		ctermfg=cyan
 hi identifier	guifg=gray		ctermfg=red
 hi statement	guifg=white		ctermfg=white	ctermbg=darkBlue	gui=none
 hi preproc		guifg=green		ctermfg=green
-hi type			guifg=orange	ctermfg=lightRed	ctermbg=darkBlue
+hi type			guifg=white	ctermfg=lightRed	ctermbg=darkBlue
 hi special		guifg=magenta	ctermfg=lightMagenta	ctermbg=darkBlue
 hi Underlined	guifg=cyan		ctermfg=cyan	gui=underline	cterm=underline
 hi label		guifg=yellow	ctermfg=yellow
@@ -24,20 +24,20 @@ hi ModeMsg		guifg=yellow	gui=NONE	ctermfg=yellow
 hi MoreMsg		guifg=yellow	gui=NONE	ctermfg=yellow
 hi Error		guifg=red		guibg=darkBlue	gui=underline	ctermfg=red
 
-hi Todo			guifg=black		guibg=orange	ctermfg=black	ctermbg=darkYellow
+hi Todo			guifg=black		guibg=lightgreen	ctermfg=black	ctermbg=darkYellow
 hi Cursor		guifg=black		guibg=white		ctermfg=black	ctermbg=white
 hi iCursor      guifg=black     guibg=white
 hi Search		guifg=black		guibg=orange	ctermfg=black	ctermbg=darkYellow
-hi IncSearch	guifg=green		guibg=black	ctermfg=black	ctermbg=darkYellow
-hi LineNr		guifg=lightgray guibg=#1E6DAA	ctermfg=cyan
-hi CursorLineNr	guifg=lightgray guibg=#1E6DAA	ctermfg=yellow
+hi IncSearch	guifg=lightblue		guibg=black	ctermfg=black	ctermbg=darkYellow
+hi LineNr		guifg=black guibg=darkgray	ctermfg=cyan
+hi CursorLineNr	guifg=white guibg=#555555	ctermfg=yellow
 hi title		guifg=white	gui=bold	cterm=bold
 
-hi StatusLineNC	gui=NONE	guifg=lightgray guibg=#1E6DAA	ctermfg=black  ctermbg=blue
-hi StatusLine	gui=NONE	guifg=lightgray	guibg=#1E6DAA	ctermfg=cyan   ctermbg=blue
+hi StatusLineNC	gui=NONE	guifg=black guibg=darkgray	ctermfg=black  ctermbg=blue
+hi StatusLine	gui=NONE	guifg=black	guibg=darkgray	ctermfg=cyan   ctermbg=blue
 hi VertSplit	gui=none	guifg=blue	guibg=blue	ctermfg=blue	ctermbg=blue
 
-hi Visual		term=reverse		ctermfg=black	ctermbg=darkCyan	guifg=black		guibg=green
+hi Visual		term=reverse		ctermfg=black	ctermbg=darkCyan	guifg=black		guibg=lightblue
 
 hi DiffChange	guibg=darkGreen		guifg=black	ctermbg=darkGreen	ctermfg=black
 hi DiffText		guibg=olivedrab		guifg=black		ctermbg=lightGreen	ctermfg=black
@@ -50,12 +50,14 @@ hi cIf0			guifg=gray			ctermfg=gray
 
 hi TabLine      guibg=black guifg=#1E6DAA
 hi TabLineFill  guibg=black guifg=#1E6DAA
-hi TabLineSel   guibg=#C2BFA5 guifg=black
+hi TabLineSel   guibg=#1E6DAA guifg=white
 
 hi PMenu        guibg=gray guifg=black
-hi PMenuSel     guifg=black guibg=lightgreen gui=bold
+hi PMenuSel     guifg=black guibg=lightblue gui=bold
 
-"hi CursorLine   guibg=lightGreen
+hi CursorLine   guibg=#555555
+
+hi SpellBad gui=bold guifg=lightred
 
 :hi Ita guibg=background guifg=foreground gui=italic
 :syntax region Ita start='_' end='_'
@@ -63,5 +65,16 @@ hi PMenuSel     guifg=black guibg=lightgreen gui=bold
 :hi Blank guibg=background guifg=foreground gui=bold
 :syntax region Blank start='\[' end='\]'
 
-:hi Asterisk guibg=background guifg=red gui=italic
-:syntax region Asterisk start='*' end='*'
+:hi Hasgtag guibg=background guifg=yellow gui=italic
+:syntax region Hasgtag start='#' end='#'
+
+":au InsertEnter * hi CursorLine guibg=#666666 guifg=lightcyan
+":au InsertLeave * hi CursorLine guibg=#555555 guifg=lightcyan
+":au InsertEnter * hi iCursor guibg=black guifg=black
+":au InsertLeave * hi Cursor guibg=white guifg=white
+"
+":au InsertEnter * hi StatusLine guifg=white	guibg=darkCyan
+":au InsertLeave * hi StatusLine guifg=black	guibg=darkgray
+
+":au InsertEnter * hi Normal guifg=black	guibg=lightcyan
+":au InsertLeave * hi Normal guifg=lightcyan	guibg=#666666

@@ -4,7 +4,7 @@
 
 call plug#begin('~/.vim/plugged')
     Plug 'lilydjwg/colorizer'
-    Plug 'ap/vim-buftabline'
+    "Plug 'ap/vim-buftabline'
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/nerdcommenter'
 
@@ -29,8 +29,8 @@ set t_Co=256
 syntax on
 filetype plugin indent on
 "colorscheme Tomorrow-Night-Eighties-yahman
-"colorscheme yahman
-colorscheme yahman_2
+colorscheme default
+"colorscheme yahman_2
 set showcmd
 set linebreak
 set hlsearch
@@ -64,7 +64,7 @@ set mouse=a
 set spelllang=hu,en
 
 "Highlight spell checking
-hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guibg=#ffffff   guifg=#d40000   gui=bold
+"hi SpellBad    ctermfg=001      ctermbg=007     cterm=bold      guibg=#ffffff   guifg=#d40000   gui=bold
 
 ""===============
 ""Cursor settings
@@ -119,6 +119,8 @@ command! QQ bd
 "Turn on color highlight
 command! COL :ColorHighlight syntax<CR>
 
+command! Blank :normal /[...<CR>
+
 "==================
 "Custom keybindings
 "==================
@@ -135,8 +137,11 @@ imap <ESC> <ESC>l
 "imap ii <ESC>
 
 "Switch between buffers"
-nmap < :bprevious<CR>
-nmap > :bnext<CR>
+"nmap < :bprevious<CR>
+"nmap > :bnext<CR>
+
+"No highlight
+nnoremap <leader>n :noh<CR>
 
 "Move on displayed lines, not real lines"
 noremap k gk
@@ -255,7 +260,11 @@ vmap L $
 nnoremap cw ciw
 
 "Delete word
-nnoremap dw diw
+"nnoremap dw diw
+nnoremap dw daw
+
+"Delete to the beginning of line
+nnoremap dH d0
 
 "Jump to end of word then add an extra space
 nnoremap e el
@@ -282,9 +291,6 @@ nnoremap P A<Space><ESC>p
 "Use " in normal mode
 nnoremap " i"<ESC>
 
-"No highlight
-nnoremap <leader>n :noh<CR>
-
 "Explorer
 nnoremap <leader>e :Sexplore<CR>
 
@@ -295,9 +301,12 @@ nnoremap <F1> i"<ESC>"=strftime('%B %d, %Y')<CR>PA<Backspace><ESC>
 "Exact search
 nnoremap ? /\<\><left><left>
 
-" Hide/show comments
+"Hide/show comments
 nnoremap <F5> :hi! link Comment Ignore<CR>
 nnoremap <F6> :hi! link Comment Comment<CR>
+
+"Toggle line number
+nnoremap <C-n> :set invnumber<CR>
 
 "=============
 "Abbreviations
@@ -320,3 +329,20 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd BufRead .vimperatorrc setfiletype vim
 "autocmd BufEnter *.py colorscheme Tomorrow-Night-Eighties-yahman
+
+"noremap n n:call HighlightNearCursor()<CR>
+"noremap N N:call HighlightNearCursor()<CR>
+"noremap * *:call HighlightNearCursor()<CR>
+"nnoremap <leader>n :noh<CR> :call NoHighlightNearCursor()<CR>
+
+"function HighlightNearCursor()
+    "match Todo /\k*\%#\k*/
+    "let s:highlightcursor=1
+"endfunction
+
+"function NoHighlightNearCursor()
+  "if exists("s:highlightcursor")
+    "match None
+    "unlet s:highlightcursor
+  "endif
+"endfunction

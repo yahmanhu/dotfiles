@@ -97,10 +97,12 @@ URxvt.color10: #008800
 !! yellow
 !URxvt.color3: yellow
 !URxvt.color11: yellow
-URxvt.color3: #fff000
-URxvt.color11: #fff000
+!URxvt.color3: #fff000
+!URxvt.color11: #fff000
 !URxvt.color3: #F1C83E
-!URxvt.color11: #F1C83E
+!URxvt.color3: #F1C83E
+URxvt.color3: #C08D08
+URxvt.color11: #C08D08
 !! blue
 !URxvt.color4: blue
 !URxvt.color12: blue
