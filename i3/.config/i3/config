@@ -48,7 +48,7 @@ bindsym Mod1+Return exec urxvtc
 bindsym Mod1+q kill
 
 # Start dmenu
-bindsym Mod1+Menu exec "dmenu_run -i -fn Terminus"
+bindsym Mod1+Menu exec "dmenu_run -i -nb '#fff' -nf '#000000' -sb '#4084D6' -sf '#ffffff' -fn 'DejaVu-Sans-Mono-Bold-10'"
 
 # Change focus
 bindsym Mod1+$left focus left
