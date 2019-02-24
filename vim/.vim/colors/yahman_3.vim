@@ -4,9 +4,9 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "yahman_2"
-hi Normal	    guifg=lightcyan	    guibg=#666666
+hi Normal	    guifg=black	    guibg=white
 "hi Normal	    guifg=#ffffff	    guibg=#333333
-hi NonText		guifg=lightGreen	ctermfg=lightMagenta
+hi NonText		guifg=black	ctermfg=lightMagenta
 hi comment		guifg=gray		ctermfg=gray	ctermbg=darkBlue	gui=bold
 hi constant		guifg=cyan		ctermfg=cyan
 hi identifier	guifg=gray		ctermfg=red
@@ -18,19 +18,19 @@ hi Underlined	guifg=cyan		ctermfg=cyan	gui=underline	cterm=underline
 hi label		guifg=yellow	ctermfg=yellow
 hi operator		guifg=orange	gui=bold	ctermfg=lightRed	ctermbg=darkBlue
 
-hi ErrorMsg		guifg=orange	guibg=darkBlue	ctermfg=lightRed
+hi ErrorMsg		guifg=red	guibg=white gui=bold	ctermfg=lightRed
 hi WarningMsg	guifg=cyan		guibg=darkBlue	ctermfg=cyan	gui=bold
-hi ModeMsg		guifg=yellow	gui=NONE	ctermfg=yellow
-hi MoreMsg		guifg=yellow	gui=NONE	ctermfg=yellow
-hi Error		guifg=red		guibg=darkBlue	gui=underline	ctermfg=red
+hi ModeMsg		guifg=blue	gui=Bold	ctermfg=yellow
+hi MoreMsg		guifg=blue	gui=NONE	ctermfg=yellow
+hi Error		guifg=red		guibg=white	gui=bold	ctermfg=red
 
 hi Todo			guifg=black		guibg=lightgreen	ctermfg=black	ctermbg=darkYellow
-hi Cursor		guifg=black		guibg=white		ctermfg=black	ctermbg=white
-hi iCursor      guifg=black     guibg=white
+hi Cursor		guifg=white		guibg=black		ctermfg=black	ctermbg=white
+hi iCursor      guifg=white     guibg=black
 hi Search		guifg=black		guibg=orange	ctermfg=black	ctermbg=darkYellow
 hi IncSearch	guifg=lightblue		guibg=black	ctermfg=black	ctermbg=darkYellow
-hi LineNr		guifg=black guibg=darkgray	ctermfg=cyan
-hi CursorLineNr	guifg=white guibg=#555555	ctermfg=yellow
+hi LineNr		guifg=black guibg=white	ctermfg=cyan
+hi CursorLineNr	guifg=black guibg=white	ctermfg=yellow
 hi title		guifg=white	gui=bold	cterm=bold
 
 hi StatusLineNC	gui=NONE	guifg=black guibg=darkgray	ctermfg=black  ctermbg=blue
@@ -55,10 +55,12 @@ hi TabLineSel   guibg=#1E6DAA guifg=white
 hi PMenu        guibg=gray guifg=black
 hi PMenuSel     guifg=black guibg=lightblue gui=bold
 
-hi CursorLine   guibg=#555555
+hi CursorLine   guibg=white
 
-hi SpellBad gui=bold guifg=lightred
+hi SpellBad guifg=red
 hi SpellCap gui=undercurl guisp=red
+
+hi MatchParen guifg=black guibg=cyan
 
 :hi Ita guibg=background guifg=foreground gui=italic
 :syntax region Ita start='_' end='_'
@@ -66,7 +68,7 @@ hi SpellCap gui=undercurl guisp=red
 :hi Blank guibg=background guifg=foreground gui=bold
 :syntax region Blank start='\[' end='\]'
 
-:hi Hashtag guibg=background guifg=yellow gui=italic
+:hi Hashtag guibg=background guifg=blue gui=italic
 :syntax region Hashtag start='#' end='#'
 
 ":au InsertEnter * hi CursorLine guibg=#666666 guifg=lightcyan
@@ -79,3 +81,6 @@ hi SpellCap gui=undercurl guisp=red
 
 ":au InsertEnter * hi Normal guifg=black	guibg=lightcyan
 ":au InsertLeave * hi Normal guifg=lightcyan	guibg=#666666
+
+
+set guifont=Courier\ New\ 12

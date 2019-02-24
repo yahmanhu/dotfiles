@@ -6,17 +6,20 @@ tl() {
     ls -lh ~/.local/share/Trash/files/
 }
 
-# trashman: empty
+# empty trash
 te() {
 
     if [[ "$(ls ~/.local/share/Trash/files/)" == "total 0" ]]; then
         echo "Trash is empty."
     else
-        trash --list
+        #trash --list
+        find ~/.local/share/Trash/files  -printf "%f\n"
         echo -e "Are you sure you want to remove these files? (y = yes)"
         read answer_trash
         if [[ $answer_trash == "y" ]] || [[ $answer_trash == "Y" ]]; then
-            trash --empty
+            #trash --empty
+            rm -r ~/.local/share/Trash/files/*
+            rm -r ~/.local/share/Trash/info/*
             echo -e "Trash is empty."
         else
             echo -e "Trash hasn't been emptied."

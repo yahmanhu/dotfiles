@@ -1,7 +1,9 @@
 # Font
 # ====
 
-font -*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
+
+#font -*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
+font pango:DejaVu Sans Mono Bold 10
 
 # Desable mouse focus
 # ===================
@@ -9,12 +11,31 @@ focus_follows_mouse no
 
 # Key bindigns
 # ============
+set $mod Mod1
 
 # Moving keys
 set $up k
 set $down j
 set $left h
 set $right l
+
+# Window titles in i3bar
+bindsym --release $mod+j exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+k exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+l exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+h exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+period exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+comma exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+1 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+2 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+3 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+4 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+5 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+6 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+7 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+8 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+0 exec pkill -SIGRTMIN+10 i3blocks
+
 
 # Use modkey to drag floating window
 floating_modifier Mod1
@@ -45,7 +66,7 @@ bindsym Mod1+Control+$right move right
 bindsym Mod1+space split h
 
 # Split in vertical orientation
-bindsym Mod1+v split v
+#bindsym Mod1+v split v
 
 # Full screen mode
 bindsym Mod1+m fullscreen toggle
@@ -99,8 +120,8 @@ bindsym Mod1+a exec i3-input -F 'mark %s' -P 'Mark name: '
 bindsym Mod1+g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 # Scratchpad
-bindsym Mod1+Shift+minus move scratchpad
-bindsym Mod1+minus scratchpad show
+#bindsym Mod1+Shift+minus move scratchpad
+#bindsym Mod1+minus scratchpad show
 
 # Reload the configuration file
 #bindsym Mod1+Control+c reload
@@ -172,9 +193,12 @@ bindsym XF86Calculator exec "mate-calc"
 bindsym XF86AudioMedia exec "deluge" workspace 5
 bindsym Mod1+i [class = "Deluge"] focus
 
+# Libreoffice
+bindsym XF86MyComputer exec "libreoffice"
+
 # Run Stardict
-bindsym XF86Search exec "stardict"
-bindsym Mod1+p [class = "Stardict"] focus
+#bindsym XF86Search exec "stardict"
+#bindsym Mod1+p [class = "Stardict"] focus
 
 #bindsym Mod1+p [class = "Stardict"] focus
 
@@ -193,30 +217,31 @@ bindsym Print exec "scrot"
 # Window options
 # ==============
 
-#for_window [title="[.]*"] move left
 for_window [title="^(?!.*(gten|gthu))"] move left
-for_window [class="Stardict"] move container to workspace 3
-#for_window [class="Stardict"] focus; floating enable; resize set 800 600
-
-#for_window [title = "termite" ] move container to workspace 4
 for_window [title = "Deluge" ] move container to workspace 5
 for_window [title = "terminal" ] floating enable
 for_window [title = "^cal$" ] floating enable
 for_window [title = "Calculator" ] floating disable
 assign [class = "Chromium" ] 1
-# Jump to chromium
 bindsym Mod1+b [class = "Chromium"] focus
-# Jump to spotify
 for_window [class = "Spotify" ] move container to workspace 6
-#bindsym Mod1+i [class = "Spotify"] focus
-# Jump to office
-for_window [class = "libreoffice" ] move container to workspace 4
-#for_window [class = "Gvim" ] resize grow width 6 px or 6 ppt
+#for_window [class = "URxvt" ] move down
+for_window [workspace=1] move down
+for_window [workspace=2] move down
+for_window [class="^.*"] border pixel 1
 
+# Colors
+# ======
 
+# border, background, text, indicator, child_border
 
-# class                 border  backgr. text    indicator child_border
-#client.focused          #4B58A5 #4B58A5 #ffffff #2e9ef4   #4B58A5
+client.focused          #4084D6 #4084D6 #ffffff #2e9ef4 #4084D6
+client.unfocused        #333333  #767676 #ffffff #767676 #767676
+client.focused_inactive        #333333  #767676 #ffffff #767676 #767676
+
+#client.focused          #333333 #5f676a #ffffff #484e50   #5f676a
+#client.unfocused          #333333 #222222 #ffffff #484e50   #5f676a
+#client.focused_inactive       #333333 #222222 #888888 #292d2e   #222222
 
 
 # I3 status bar
@@ -224,9 +249,13 @@ for_window [class = "libreoffice" ] move container to workspace 4
 
 bar {
         colors{
+            inactive_workspace  #4084D6 #4084D6  #ffffff
+            focused_workspace #F5F6F7 #F5F6F7 #000000
             urgent_workspace   #2f343a #FF0000 #ffffff
-            separator #285577
-            background #222222
+            separator #4084D6
+            background #4084D6
+            #background #222222
+            statusline #ffffff
             #background #4B58A5
 
 

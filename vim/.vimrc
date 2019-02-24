@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
     "Plug 'ap/vim-buftabline'
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/nerdcommenter'
+    Plug 'dpelle/vim-LanguageTool'
 
 call plug#end()
 
@@ -19,6 +20,8 @@ let g:neocomplete#enable_smart_case = 1 "smartcase for Neocomplete
 let g:buftabline_indicators = 1
 
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
+let g:languagetool_jar='$HOME/.languagetool/LanguageTool-4.3/languagetool-commandline.jar'
 
 "================
 "General settings
@@ -136,9 +139,9 @@ nnoremap K <C-u>
 imap <ESC> <ESC>l
 "imap ii <ESC>
 
-"Switch between buffers"
-"nmap < :bprevious<CR>
-"nmap > :bnext<CR>
+"Switch between windows"
+nmap , <c-w>
+nmap . <c-w>
 
 "No highlight
 nnoremap <leader>n :noh<CR>
@@ -273,11 +276,14 @@ nnoremap e el
 nnoremap <C-a> ggVG
 
 "Set/unset spellcheck
-nnoremap <leader>s :set spell<CR> <bar> :set cursorline!<CR>
-nnoremap <leader>S :set nospell<CR> <bar> :set cursorline<CR>
+"nnoremap <leader>s :set spell<CR> <bar> :set cursorline!<CR>
+"nnoremap <leader>S :set nospell<CR> <bar> :set cursorline<CR>
 
 "Correct spell automatically
 nnoremap <leader>z ve1z=
+
+"Add word to spellfile
+nnoremap zz zg
 
 "Spell suggestions
 vnoremap <leader>s z=
@@ -317,6 +323,9 @@ iab wihtout without
 "============
 "Autocommands
 "============
+
+"Set spell for plaintext files
+"autocmd BufEnter * if &filetype == "" | setlocal spell | endif
 
 "Shell script abbreviations
 au FileType sh iab iff if [[ ]]; then<CR>fi<Esc>?[[ ]]<Esc>:noh<Esc>i

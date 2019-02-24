@@ -8,14 +8,15 @@
 set guioptions-=L  "remove left-hand scroll bar
 "set guifont=Monospace\ 11
 set guifont=DejaVu\ Sans\ Mono\ 11
-"set guifont=DejaVu\ Sans\ Mono\ Bold\ 11
-"set guifont=Nimbus\ Mono\ PS\ 12
+"set guifont=Courier\ New\ 12
 
 "hi Visual guifg=#FFFFFF guibg=#FF0000 gui=none
 
 set linespace=3
 
 colorscheme yahman_2
+"colorscheme yahman
+"autocmd BufEnter * if &filetype == "" | colorscheme yahman_3 | endif
 
 "===============
 "Cursor settings
@@ -62,3 +63,5 @@ function! ToggleQuote()
     endif
 endfunction
 nnoremap <F4> :call ToggleQuote()<CR>
+
+autocmd BufEnter * if &filetype == "" | setlocal spell | endif
