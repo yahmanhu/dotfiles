@@ -1,5 +1,5 @@
 [global]
-    font = Terminus
+    font = "DejaVu Sans Mono"
 
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -150,7 +150,7 @@
 
 [frame]
     width = 1
-    color = "#285577"
+    color = "#4084D6"
 
 [shortcuts]
 
@@ -176,16 +176,16 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+    foreground = "#4084D6"
+    background = "#ffffff"
     timeout = 3
 
 [urgency_normal]
-    background = "#222222"
-    foreground = "#ffffff"
+    foreground = "#4084D6"
+    background = "#ffffff"
     timeout = 3
 
 [urgency_critical]
-    background = "#222222"
-    foreground = "#ffffff"
+    foreground = "#4084D6"
+    background = "#ffffff"
     timeout = 10

@@ -1,0 +1,1 @@
+DMENU='dmenu -i -l 20  -nb '#fff' -nf '#000000' -sb '#4084D6' -sf '#ffffff' -fn "DejaVu-Sans-Mono-Bold-10"'

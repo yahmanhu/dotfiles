@@ -3,14 +3,6 @@ separator=true
 separator_block_width=25
 markup=none
 
-[focused window]
-command=xdotool getwindowfocus getwindowname
-min_width=700
-align=center
-interval=3
-signal=10
-
-
 [mail]
 command=i3_mailcheck
 interval=600

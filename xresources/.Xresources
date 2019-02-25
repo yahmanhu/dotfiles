@@ -104,10 +104,12 @@ URxvt.color10: #008800
 URxvt.color3: #C08D08
 URxvt.color11: #C08D08
 !! blue
+URxvt.color4: #4084D6
+URxvt.color12:#4084D6
+!URxvt.color4: #0000ff
+!URxvt.color12:#0000ff
 !URxvt.color4: blue
 !URxvt.color12: blue
-URxvt.color4: #0000ff
-URxvt.color12:#0000ff
 !URxvt.color4: #01a0e4
 !URxvt.color12: #01a0e4
 !URxvt.color4: #2E51A2
@@ -115,13 +117,15 @@ URxvt.color12:#0000ff
 !! magenta
 !URxvt.color5: magenta
 !URxvt.color13: magenta
-URxvt.color5: #660066
-URxvt.color13: #660066
+!URxvt.color5: #660066
+!URxvt.color13: #660066
 !URxvt.color5: #b500b5
 !URxvt.color13: #b500b5
-!URxvt.color5: #a16a94
-!URxvt.color13: #a16a94
+URxvt.color5: #a16a94
+URxvt.color13: #a16a94
 !! cyan
+URxvt.color6: #4084D6
+URxvt.color14:#4084D6
 !URxvt.color6: cyan
 !URxvt.color14: cyan
 !URxvt.color6: #B5E4F4
@@ -130,8 +134,8 @@ URxvt.color13: #660066
 !URxvt.color14: #01a252
 !URxvt.color6: #01a0e4
 !URxvt.color14: #01a0e4
-URxvt.color6: #0000ff
-URxvt.color14:#0000ff
+!URxvt.color6: #0000ff
+!URxvt.color14:#0000ff
 !! white
 URxvt.color7: #ffffff
 URxvt.color15: #ffffff

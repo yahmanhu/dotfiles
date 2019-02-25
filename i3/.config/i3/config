@@ -20,21 +20,21 @@ set $left h
 set $right l
 
 # Window titles in i3bar
-bindsym --release $mod+j exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+k exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+l exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+h exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+period exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+comma exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+1 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+2 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+3 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+4 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+5 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+6 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+7 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+8 exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release $mod+0 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+j exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+k exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+l exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+h exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+period exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+comma exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+1 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+2 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+3 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+4 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+5 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+6 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+7 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+8 exec pkill -SIGRTMIN+10 i3blocks
+#bindsym --release $mod+0 exec pkill -SIGRTMIN+10 i3blocks
 
 
 # Use modkey to drag floating window
@@ -228,7 +228,7 @@ for_window [class = "Spotify" ] move container to workspace 6
 #for_window [class = "URxvt" ] move down
 for_window [workspace=1] move down
 for_window [workspace=2] move down
-for_window [class="^.*"] border pixel 1
+#for_window [class="^.*"] border pixel 1
 
 # Colors
 # ======
@@ -249,14 +249,19 @@ client.focused_inactive        #333333  #767676 #ffffff #767676 #767676
 
 bar {
         colors{
-            inactive_workspace  #4084D6 #4084D6  #ffffff
-            focused_workspace #F5F6F7 #F5F6F7 #000000
+            focused_workspace #4084D6 #4084D6 #ffffff
+            inactive_workspace #E7EAED #E7EAED #000000
             urgent_workspace   #2f343a #FF0000 #ffffff
             separator #4084D6
-            background #4084D6
-            #background #222222
-            statusline #ffffff
-            #background #4B58A5
+            background #E7EAED
+            statusline #4084D6
+
+            #inactive_workspace #ffffff #ffffff #000000
+            #focused_workspace #4084D6 #4084D6 #ffffff
+            #urgent_workspace   #2f343a #FF0000 #ffffff
+            #separator #4084D6
+            #background #ffffff
+            #statusline #4084D6
 
 
 }
