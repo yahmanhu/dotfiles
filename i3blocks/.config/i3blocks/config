@@ -3,6 +3,13 @@ separator=false
 separator_block_width=10
 markup=none
 
+[date]
+align=center
+min_width=1100
+#command=date +'%a %b %d, %H:%M'
+command=i3_date
+interval=60
+
 [mail]
 markup=pango
 command=$HOME/scripts/i3_mail
@@ -12,8 +19,3 @@ interval=600
 markup=pango
 command=$HOME/scripts/i3_battery
 interval=300
-
-[date]
-#command=date +'%a %b %d, %H:%M'
-command=i3_date
-interval=60

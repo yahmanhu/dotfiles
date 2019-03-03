@@ -65,6 +65,7 @@ hdr_order from: to: cc: date: subject:                                      # sh
 
 # Basic
 macro index,pager,compose,browser -r "<enter-command>source ~/.mutt/muttrc<enter>" "Source muttrc"
+bind index n toggle-new
 bind index gg first-entry
 bind index G last-entry
 macro index h "<change-folder>+INBOX<enter>" "Go to INBOX"
