@@ -3,7 +3,7 @@
 
 
 #font -*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
-font pango:DejaVu Sans Mono Bold 10
+font pango:DejaVu Sans Mono 10
 
 # Desable mouse focus
 # ===================
@@ -235,9 +235,9 @@ for_window [workspace=2] move down
 
 # border, background, text, indicator, child_border
 
-client.focused          #4084D6 #4084D6 #ffffff #2e9ef4 #4084D6
-client.unfocused        #333333  #767676 #ffffff #767676 #767676
-client.focused_inactive        #333333  #767676 #ffffff #767676 #767676
+client.focused          #E9E9FF #E9E9FF #444444  #E9E9FF #E9E9FF
+client.unfocused        #999999  #999999 #ffffff #999999 #000000
+client.focused_inactive        #999999  #999999 #ffffff #999999 #999999
 
 #client.focused          #333333 #5f676a #ffffff #484e50   #5f676a
 #client.unfocused          #333333 #222222 #ffffff #484e50   #5f676a
@@ -249,12 +249,19 @@ client.focused_inactive        #333333  #767676 #ffffff #767676 #767676
 
 bar {
         colors{
-            focused_workspace #4084D6 #4084D6 #ffffff
-            inactive_workspace #E7EAED #E7EAED #000000
-            urgent_workspace   #2f343a #FF0000 #ffffff
-            separator #4084D6
+            focused_workspace  #e9e9ff #E9E9FF #000000
+            inactive_workspace #E7EAED #E7EAED #999999
+            urgent_workspace   #e9e9ff #FF0000 #ffffff
+            separator #444444
             background #E7EAED
-            statusline #4084D6
+            statusline #444444
+
+            #focused_workspace #4084D6 #4084D6 #ffffff
+            #inactive_workspace #E7EAED #E7EAED #000000
+            #urgent_workspace   #2f343a #FF0000 #ffffff
+            #separator #4084D6
+            #background #E7EAED
+            #statusline #4084D6
 
             #inactive_workspace #ffffff #ffffff #000000
             #focused_workspace #4084D6 #4084D6 #ffffff
@@ -266,6 +273,7 @@ bar {
 
 }
         position top
+        strip_workspace_numbers yes
         #separator_symbol " | "
         status_command i3blocks
 

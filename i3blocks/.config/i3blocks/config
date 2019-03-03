@@ -1,14 +1,16 @@
 command=/usr/lib/i3blocks/$BLOCK_NAME
-separator=true
-separator_block_width=25
+separator=false
+separator_block_width=10
 markup=none
 
 [mail]
-command=i3_mailcheck
+markup=pango
+command=$HOME/scripts/i3_mail
 interval=600
 
 [battery]
-command=paste -d" " /sys/class/power_supply/BAT0/status /sys/class/power_supply/BAT0/capacity
+markup=pango
+command=$HOME/scripts/i3_battery
 interval=300
 
 [date]

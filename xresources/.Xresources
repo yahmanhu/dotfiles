@@ -29,15 +29,15 @@ URxvt.background: [100]#e2e2e2
 URxvt.foreground: #000000
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for
+URxvt.font: xft:Dejavu Sans Mono:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
 !URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
 
-URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
+!URxvt.font: xft:monospace:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:Nimbus Mono PS:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-*
 !URxvt.font: xft:Nimbus Mono PS:pixelsize=16:antialias=true:hinting=true
 !URxvt.font: xft:Adobe Garamond Pro:pixelsize=16:antialias=true:hinting=true
-!URxvt.font: xft:Dejavu Sans Mono:pixelsize=14:antialias=true:hinting=true
 !URxvt.font: xft:GaramondNo8\\-Regular:pixelsize=12:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:pixelsize=17:antialias=true:hinting=true
 !URxvt.letterSpace: -1
@@ -68,6 +68,7 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.clipboard.copycmd: xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
 !URxvt.tabbed.autohide: true
+!URxvt.cursorBlink: true
 URxvt.cursorUnderline: true
 
 !! Basic colors
